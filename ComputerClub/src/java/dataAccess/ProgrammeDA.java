@@ -18,7 +18,8 @@ public class ProgrammeDA {
     private final String dbUser = "nbuser";
     private final String dbPass = "nbuser";
     private FacultyDA facultyDA;
-    
+    private String tableName = " programme ";
+
     //No-arg constructor
     public ProgrammeDA() {
         initDBConnection();
@@ -50,7 +51,7 @@ public class ProgrammeDA {
 
         return programme;
     }
-    
+
     //Method to retrieve all records
     public ArrayList<Programme> retrieveAllProgrammes() {
         ArrayList<Programme> programme = new ArrayList<Programme>();
@@ -66,5 +67,108 @@ public class ProgrammeDA {
         }
 
         return programme;
+    }
+
+    //Select record method
+    public ResultSet selectRecord(String progID, String facultyID/*ADD FROM SERVLET*/) {
+        ResultSet rs = null;
+        String queryStr = "SELECT * FROM" + tableName + "WHERE PROGID = ? AND FACULTYID = ?";
+
+        try {
+            pstmt = conn.prepareStatement(queryStr);
+            pstmt.setString(1, progID);
+            pstmt.setString(2, facultyID);
+            rs = pstmt.executeQuery();
+        } catch (SQLException ex) {
+            //ADD ERR RESPONSE
+        }
+
+        return rs;
+    }
+
+    //Create method
+    public void createRecord() {
+        String progID = null; //ADD ID FROM SERVLET
+        String progName = null; //ADD NAME FROM SERVLET
+        String facultyID = null; //ADD NAME FROM SERVLET
+        String queryStr = "INSERT INTO" + tableName + "VALUES(?,?,?)";
+        ResultSet rs = selectRecord(progID, facultyID);
+
+        try {
+            if (rs.next()) {
+                //ADD ERR MSG
+            } else {
+                pstmt = conn.prepareStatement(queryStr);
+                pstmt.setString(1, progID);
+                pstmt.setString(2, progName);
+                pstmt.setString(3, facultyID);
+                pstmt.executeUpdate();
+
+                //ADD SUCCESS RESPONSE
+            }
+        } catch (SQLException ex) {
+            //ADD ERR RESPONSE
+        }
+    }
+
+    //Retrieve method
+    public void retrieveRecord() {
+        String progID = null; //ADD ID FROM SERVLET
+        String facultyID = null; //ADD NAME FROM SERVLET
+        ResultSet rs = selectRecord(progID, facultyID);
+
+        try {
+            if (rs.next()) {
+                //ADD RESPONSE
+            } else {
+                //ADD INVALID RESPONSE
+            }
+        } catch (SQLException ex) {
+            //ADD ERR RESPONSE
+        }
+    }
+
+    //Update method
+    public void updateRecord() {
+        String progID = null; //ADD ID FROM SERVLET
+        String progName = null; //ADD NAME FROM SERVLET
+        String facultyID = null; //ADD NAME FROM SERVLET
+        String queryStr = "UPDATE" + tableName + "SET PROGNAME = ? WHERE PROGID = ? AND FACULTYID = ?";
+        ResultSet rs = selectRecord(progID, facultyID);
+
+        try {
+            if (rs.next()) {
+                pstmt = conn.prepareStatement(queryStr);
+                pstmt.setString(1, progName);
+                pstmt.setString(2, progID);
+                pstmt.setString(3, facultyID);
+                pstmt.executeUpdate();
+            } else {
+                //ADD INVALID RESPONSE
+            }
+        } catch (SQLException ex) {
+            //ADD ERR RESPONSE
+        }
+    }
+
+    //Delete method
+    public void deleteRecord() {
+        String progID = null; //ADD ID FROM SERVLET
+        String facultyID = null; //ADD NAME FROM SERVLET
+        String queryStr = "DELETE FROM" + tableName + "WHERE PROGID = ? AND FACULTYID = ?";
+        ResultSet rs = selectRecord(progID, facultyID);
+
+        try {
+            if (rs.next()) {
+                pstmt = conn.prepareStatement(queryStr);
+                pstmt.setString(1, progID);
+                pstmt.setString(2, facultyID);
+                pstmt.executeUpdate();
+            } else {
+                //ADD INVALID RESPONSE
+            }
+        } catch (SQLException ex) {
+            //ADD ERR RESPONSE
+        }
     }
 }
