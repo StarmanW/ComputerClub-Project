@@ -6,7 +6,7 @@ package model;
 
 public class Programme {
 
-    private String progCode;
+    private String progID;
     private String progName;
     private Faculty faculty;
 
@@ -14,15 +14,15 @@ public class Programme {
 
     }
 
-    public Programme(String progCode, String progName, Faculty faculty) {
-        this.progCode = progCode;
+    public Programme(String progID, String progName, Faculty faculty) {
+        this.progID = progID;
         this.progName = progName;
         this.faculty = faculty;
     }
 
     //Getters
-    public String getProgCode() {
-        return progCode;
+    public String getProgID() {
+        return progID;
     }
 
     public String getProgName() {
@@ -34,8 +34,8 @@ public class Programme {
     }
 
     //Setters
-    public void setProgCode(String progCode) {
-        this.progCode = progCode;
+    public void setProgID(String progID) {
+        this.progID = progID;
     }
 
     public void setProgName(String progName) {

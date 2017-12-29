@@ -26,19 +26,19 @@ public class FacultyDA {
     //Method to initialize database connection
     private final void initDBConnection() {
         try {
-            conn = DriverManager.getConnection(dbUrl, dbUser, dbUser);
+            conn = DriverManager.getConnection(dbUrl, dbUser, dbPass);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
     //Method to retrieve a specific faculty
-    public Faculty retrieveFaculty(String facultyCode) {
+    public Faculty retrieveFaculty(String facultyID) {
         Faculty faculty = null;
         
         try {
-            pstmt = conn.prepareCall("SELECT * FROM FACULTY WHERE FACULTYCODE = ?");
-            pstmt.setString(1, facultyCode);
+            pstmt = conn.prepareCall("SELECT * FROM FACULTY WHERE FACULTYID = ?");
+            pstmt.setString(1, facultyID);
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 faculty = new Faculty(rs.getString(1), rs.getString(2));

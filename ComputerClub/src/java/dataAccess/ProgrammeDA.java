@@ -36,11 +36,11 @@ public class ProgrammeDA {
     }
 
     //Method to retrieve a specific programme
-    public Programme retrieveProgramme(String progCode) {
+    public Programme retrieveProgramme(String progID) {
         Programme programme = null;
         try {
-            pstmt = conn.prepareCall("SELECT * FROM PROGRAMME WHERE PROGCODE = ?");
-            pstmt.setString(1, progCode);
+            pstmt = conn.prepareCall("SELECT * FROM PROGRAMME WHERE PROGID = ?");
+            pstmt.setString(1, progID);
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 programme = new Programme(rs.getString(1), rs.getString(2), facultyDA.retrieveFaculty(rs.getString(3)));

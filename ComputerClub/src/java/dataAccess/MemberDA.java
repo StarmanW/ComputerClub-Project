@@ -19,6 +19,8 @@ public class MemberDA {
     private final String dbUrl = "jdbc:derby://localhost:1527/computerclubdb";
     private final String dbUser = "nbuser";
     private final String dbPass = "nbuser";
+    private final String tableName = "MEMBERS";
+    
     private ProgrammeDA programmeDA;
     
     //No-arg constructor
@@ -29,10 +31,30 @@ public class MemberDA {
     //Method to initialize database connection
     private final void initDBConnection() {
         try {
-             conn = DriverManager.getConnection(dbUrl, dbUser, dbUser);
+             conn = DriverManager.getConnection(dbUrl, dbUser, dbPass);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+    
+    //Method to create new recored
+    public int createRecord(Member member) throws Exception {
+        pstmt = conn.prepareStatement("INSERT INTO " + tableName + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        pstmt.setString(1, member.getStudID());
+        pstmt.setString(2, member.getProgramme().getProgID());
+        pstmt.setString(3, member.getStudName().getFirstName());
+        pstmt.setString(4, member.getStudName().getLastName());
+        pstmt.setString(5, member.getEmail());
+        pstmt.setString(6, member.getContactNo());
+        pstmt.setString(7, member.getIc());
+        pstmt.setString(8, member.getPassword());
+        pstmt.setString(9, String.valueOf(member.getGender()));
+        pstmt.setBoolean(10, member.isMembershipFeeStatus());
+        pstmt.setInt(11, member.getPosition());
+        pstmt.setString(12, member.getAcademicYear());
+        int successInsert = pstmt.executeUpdate();
+        
+        return successInsert;
     }
     
     //Method to retrieve all records
