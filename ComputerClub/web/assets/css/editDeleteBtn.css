@@ -1,0 +1,35 @@
+#edit-delete-td {
+    width: 80px;
+}
+
+.edit-button,
+.delete-button {
+    margin: 0;
+    width: 30px;
+    height: 30px;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    transition: .2s
+}
+
+.edit-button img,
+.delete-button img {
+    width: 30px;
+    height: 30px;
+}
+
+.edit-button:focus,
+.delete-button:focus {
+    outline: none;
+}
+
+.edit-button:hover {
+    background-color: #c1c1c1;
+}
+
+.delete-button:hover {
+    background-color: #ff8080;
+}

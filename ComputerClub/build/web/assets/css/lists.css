@@ -1,0 +1,14 @@
+h2 {
+    color: white !important;
+}
+
+.table-backpanel {
+    background-color: #cacaca; 
+    padding-top: 15px;
+}
+
+.form-control,
+.table {
+    background-color: #eaeaea !important;
+}
+
