@@ -4,52 +4,55 @@
 <%
     session = request.getSession();
 %>
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-        <link rel="shortcut icon" href="assets/images/logo-1-3508x2480.jpg" type="image/x-icon">
-        <meta name="description" content="Member List">
-        <title>Member List</title>
-        <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
-        <link rel="stylesheet" href="assets/tether/tether.min.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-        <link rel="stylesheet" href="assets/socicon/css/styles.css">
-        <link rel="stylesheet" href="assets/dropdown/css/style.css">
-        <link rel="stylesheet" href="assets/datatables/data-tables.bootstrap4.min.css">
-        <link rel="stylesheet" href="assets/theme/css/style.css">
-        <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-        <link rel="stylesheet" href="assets/css/editDeleteBtn.css" type="text/css">
-        <link rel="stylesheet" href="assets/css/lists.css" type="text/css">
-    </head>
+        <head>
+            <!-- Site made with Mobirise Website Builder v4.5.2, https://mobirise.com -->
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
+            <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+            <link rel="shortcut icon" href="assets/images/logo-1-3508x2480.jpg" type="image/x-icon">
+            <meta name="description" content="Member List">
+            <title>Member List</title>
+            <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+            <link rel="stylesheet" href="assets/tether/tether.min.css">
+            <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+            <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+            <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+            <link rel="stylesheet" href="assets/socicon/css/styles.css">
+            <link rel="stylesheet" href="assets/dropdown/css/style.css">
+            <link rel="stylesheet" href="assets/datatables/data-tables.bootstrap4.min.css">
+            <link rel="stylesheet" href="assets/theme/css/style.css">
+            <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+            <link rel="stylesheet" href="assets/css/editDeleteBtn.css" type="text/css">
+            <link rel="stylesheet" href="assets/css/lists.css" type="text/css">
+        </head>
 
-    <body>
-        <section class="menu cid-qDNS0J8sKR" once="menu" id="menu1-k" data-rv-view="2425">
-            <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <div class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+        <body>
+            <section class="menu cid-qDNS0J8sKR" once="menu" id="menu1-k" data-rv-view="2425">
+                <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    <div class="menu-logo">
+                        <div class="navbar-brand">
+                            <span class="navbar-logo">
+                                <a href="homepage.jsp">
+                                    <img src="assets/images/logo-1-3508x2480.jpg" title="" media-simple="true" style="height: 4.5rem;">
+                                </a>
+                            </span>
+                            <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="homepage.jsp">
+                                    COMPUTER CLUB</a></span>
+                        </div>
                     </div>
-                </button>
-                <div class="menu-logo">
-                    <div class="navbar-brand">
-                        <span class="navbar-logo">
-                            <a href="homepage.jsp">
-                                <img src="assets/images/logo-1-3508x2480.jpg" title="" media-simple="true" style="height: 4.5rem;">
-                            </a>
-                        </span>
-                        <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="homepage.jsp">
-                                COMPUTER CLUB</a></span>
-                    </div>
+<<<<<<< HEAD
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
@@ -61,45 +64,57 @@
                         </li>
                     </ul>
                     <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
+=======
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                            <li class="nav-item dropdown open"><a class="nav-link link text-white dropdown-toggle display-4" aria-expanded="true" data-toggle="dropdown-submenu">REGISTER</a>
+                                <div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="registerMember.jsp" aria-expanded="false">MEMBER</a><a class="text-white dropdown-item display-4" href="registerEvent.jsp" aria-expanded="false">EVENT</a><a class="text-white dropdown-item display-4" href="registerCollaborator.jsp" aria-expanded="false">COLLABORATOR</a><a class="dropdown-item text-white display-4" href="registerSponsoredItem.jsp">SPONSORED ITEMS</a></div>
+                            </li>
+                            <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown-submenu" aria-expanded="false">MANAGE</a>
+                                <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItem.jsp">SPONSORED ITEMS</a></div>
+                            </li>
+                        </ul>
+                        <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
+>>>>>>> parent of c15eeec... Merge branch 'master' of https://github.com/StarmanW/ComputerClub-Project
 
-                            LOGOUT</a></div>
+                                LOGOUT</a></div>
+                    </div>
+                </nav>
+            </section>
+            <section class="section-table cid-qEC8mwEb5q mbr-parallax-background" id="table1-t" data-rv-view="4052">
+                <div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(35, 35, 35);">
                 </div>
-            </nav>
-        </section>
-        <section class="section-table cid-qEC8mwEb5q mbr-parallax-background" id="table1-t" data-rv-view="4052">
-            <div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(35, 35, 35);">
-            </div>
-            <div class="container container-table">
-                <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Member List</strong><strong><br></strong></h2>
-                <div class="table-backpanel">
-                    <div class="table-wrapper">
-                        <div class="container">
-                            <div class="row search">
-                                <div class="col-md-6"></div>
-                                <div class="col-md-6">
-                                    <div class="dataTables_filter">
-                                        <label class="searchInfo mbr-fonts-style display-7">Search:</label>
-                                        <input class="form-control input-sm" disabled="">
+                <div class="container container-table">
+                    <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Member List</strong><strong><br></strong></h2>
+                    <div class="table-backpanel">
+                        <div class="table-wrapper">
+                            <div class="container">
+                                <div class="row search">
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6">
+                                        <div class="dataTables_filter">
+                                            <label class="searchInfo mbr-fonts-style display-7">Search:</label>
+                                            <input class="form-control input-sm" disabled="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="container scroll">
-                            <table class="table isSearch" cellspacing="0">
-                                <thead>
-                                    <tr class="table-heads ">
-                                        <th class="head-item mbr-fonts-style display-7">Name</th>
-                                        <th class="head-item mbr-fonts-style display-7">Member ID</th>
-                                        <th class="head-item mbr-fonts-style display-7">Position</th>
-                                        <th class="head-item mbr-fonts-style display-7">Gender</th>
-                                        <th class="head-item mbr-fonts-style display-7">Academic Year</th>
-                                        <th class="head-item mbr-fonts-style display-7">Programme</th>
-                                        <th class="head-item mbr-fonts-style display-7">
-                                            </div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                            <div class="container scroll">
+                                <table class="table isSearch" cellspacing="0">
+                                    <thead>
+                                        <tr class="table-heads ">
+                                            <th class="head-item mbr-fonts-style display-7">Name</th>
+                                            <th class="head-item mbr-fonts-style display-7">Member ID</th>
+                                            <th class="head-item mbr-fonts-style display-7">Position</th>
+                                            <th class="head-item mbr-fonts-style display-7">Gender</th>
+                                            <th class="head-item mbr-fonts-style display-7">Academic Year</th>
+                                            <th class="head-item mbr-fonts-style display-7">Programme</th>
+                                            <th class="head-item mbr-fonts-style display-7">
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                     <%
                                         ArrayList<Member> memberList = memberDA.selectAllMembersList();
                                         for (int i = 0; i < memberList.size(); i++) {
