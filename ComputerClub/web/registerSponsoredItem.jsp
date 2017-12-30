@@ -2,7 +2,6 @@
 <html>
 
     <head>
-        <!-- Site made with Mobirise Website Builder v4.5.2, https://mobirise.com -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
@@ -51,7 +50,7 @@
                             <div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="registerMember.jsp" aria-expanded="false">MEMBER</a><a class="text-white dropdown-item display-4" href="registerEvent.jsp" aria-expanded="false">EVENT</a><a class="text-white dropdown-item display-4" href="registerCollaborator.jsp" aria-expanded="false">COLLABORATOR</a><a class="dropdown-item text-white display-4" href="registerSponsoredItem.jsp">SPONSORED ITEMS</a></div>
                         </li>
                         <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown-submenu" aria-expanded="false">MANAGE</a>
-                        <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItem.jsp">SPONSORED ITEMS</a></div>
+                        <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItemList.jsp">SPONSORED ITEMS</a></div>
                         </li>
                     </ul>
                     <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
@@ -77,31 +76,20 @@
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
-                                            <label><span style="color:red;">*</span>Item ID</label>
-                                            <input type="text" name="itemId" placeholder="S0001" class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - S9999" required="required">
-                                        </div> 
-                                        <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Item Name</label>
-                                            <input type="text" name="itemName" placeholder="Hamper" class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Nike" required="required">
-                                        </div> 
-                                        </br>
-                                        
+                                            <input type="text" name="itemName" placeholder="Hamper" class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - John" required="required">
+                                        </div>                                    
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Item Type</label>
-                                            <input type="text" name="itemType" placeholder="" class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Bottle" required="required">
+                                            <input type="text" name="itemType" placeholder="" class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - John" required="required">
                                         </div>
-                                        
-                                            <div class="col-sm-6 form-group">
-                                        <label><span style="color:red;">*</span>Item Quantity</label>
-                                        <input type="number"  class="form-control" min="0" required="required">
-                                        </div>  
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
-                                            <div class="row" style="margin:auto">
-                                            <label>Item Details</label>
-                                            <input type="textarea" name="itemDetails" placeholder="Enter if needed" class="form-control">
-                                        </div>
+                                    <div class="row" style="margin:auto">
+                                        <label><span style="color:red;">*</span>Item Quantity</label>
+                                        <input type="number"  class="form-control" min="0" required="required">
+                                    </div>
                                 </div>
                                 <br />
                                 <div class="submit-button">
