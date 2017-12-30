@@ -9,8 +9,8 @@ public class Member {
     private String studID;
     private Programme programme;
     private Name studName;
-    private String email;
-    private String contactNo;
+    private String studEmail;
+    private String studContact;
     private String ic;
     private String password;
     private char gender;
@@ -22,12 +22,12 @@ public class Member {
 
     }
 
-    public Member(String studID, Programme programme, Name studName, String email, String contactNo, String ic, String password, char gender, boolean membershipFeeStatus, int position, String academicYear) {
+    public Member(String studID, Programme programme, Name studName, String studEmail, String studContact, String ic, String password, char gender, boolean membershipFeeStatus, int position, String academicYear) {
         this.studID = studID;
         this.programme = programme;
         this.studName = studName;
-        this.email = email;
-        this.contactNo = contactNo;
+        this.studEmail = studEmail;
+        this.studContact = studContact;
         this.ic = ic;
         this.password = password;
         this.gender = gender;
@@ -49,12 +49,12 @@ public class Member {
         return studName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getStudEmail() {
+        return studEmail;
     }
 
     public String getContactNo() {
-        return contactNo;
+        return studContact;
     }
 
     public String getIc() {
@@ -94,12 +94,12 @@ public class Member {
         this.studName = studName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setStudEmail(String studEmail) {
+        this.studEmail = studEmail;
     }
 
-    public void setContactNo(String contactNo) {
-        this.contactNo = contactNo;
+    public void setContactNo(String studContact) {
+        this.studContact = studContact;
     }
 
     public void setIc(String ic) {
