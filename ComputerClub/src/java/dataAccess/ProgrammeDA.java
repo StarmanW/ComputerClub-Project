@@ -107,7 +107,7 @@ public class ProgrammeDA {
     }
 
     //Retrieve method
-    public void retrieveRecord(String progID, String facultyID) {
+    public void retrieveRecord(String progID, String facultyID) throws Exception {
 
         try {
             selectRecord(progID);
