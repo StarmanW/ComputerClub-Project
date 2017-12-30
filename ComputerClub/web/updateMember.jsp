@@ -3,83 +3,85 @@
 <jsp:useBean id="programmeDA" class="dataAccess.ProgrammeDA" scope="application"></jsp:useBean>
 <jsp:useBean id="memberDA" class="dataAccess.MemberDA" scope="application"></jsp:useBean>
 <%
+    session = request.getSession();
+    session.setAttribute("studIDOriginal", request.getParameter("studID"));
     Member member = memberDA.selectRecord(request.getParameter("studID"));
 %>
-    <!DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html>
 
-        <head>
-            <!-- Site made with Mobirise Website Builder v4.5.2, https://mobirise.com -->
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
-            <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-            <link rel="shortcut icon" href="assets/images/logo-1-3508x2480.jpg" type="image/x-icon">
-            <meta name="description" content="Website Creator Description">
-            <title>Update Member</title>
-            <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
-            <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
-            <link rel="stylesheet" href="assets/tether/tether.min.css">
-            <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-            <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-            <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-            <link rel="stylesheet" href="assets/socicon/css/styles.css">
-            <link rel="stylesheet" href="assets/dropdown/css/style.css">
-            <link rel="stylesheet" href="assets/theme/css/style.css">
-            <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-            <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-            <link rel="stylesheet" href="assets/css/registerMember.css" type="text/css">
-        </head>
-        <body>
-            <section class="menu cid-qDNS0J8sKR" once="menu" id="menu1-k" data-rv-view="2425">
-                <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
-                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <div class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </button>
-                    <div class="menu-logo">
-                        <div class="navbar-brand">
-                            <span class="navbar-logo">
-                                <a href="homepage.jsp">
-                                    <img src="assets/images/logo-1-3508x2480.jpg" title="" media-simple="true" style="height: 4.5rem;">
-                                </a>
-                            </span>
-                            <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="homepage.jsp">
-                                    COMPUTER CLUB</a></span>
-                        </div>
+    <head>
+        <!-- Site made with Mobirise Website Builder v4.5.2, https://mobirise.com -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <link rel="shortcut icon" href="assets/images/logo-1-3508x2480.jpg" type="image/x-icon">
+        <meta name="description" content="Website Creator Description">
+        <title>Update Member</title>
+        <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+        <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+        <link rel="stylesheet" href="assets/tether/tether.min.css">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+        <link rel="stylesheet" href="assets/socicon/css/styles.css">
+        <link rel="stylesheet" href="assets/dropdown/css/style.css">
+        <link rel="stylesheet" href="assets/theme/css/style.css">
+        <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+        <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+        <link rel="stylesheet" href="assets/css/registerMember.css" type="text/css">
+    </head>
+    <body>
+        <section class="menu cid-qDNS0J8sKR" once="menu" id="menu1-k" data-rv-view="2425">
+            <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-                            <li class="nav-item dropdown open"><a class="nav-link link text-white dropdown-toggle display-4" aria-expanded="true" data-toggle="dropdown-submenu">REGISTER</a>
-                                <div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="registerMember.jsp" aria-expanded="false">MEMBER</a><a class="text-white dropdown-item display-4" href="registerEvent.jsp" aria-expanded="false">EVENT</a><a class="text-white dropdown-item display-4" href="registerCollaborator.jsp" aria-expanded="false">COLLABORATOR</a><a class="dropdown-item text-white display-4" href="registerSponsoredItem.jsp">SPONSORED ITEMS</a></div>
-                            </li>
-                            <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown-submenu" aria-expanded="false">MANAGE</a>
-                                <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItem.jsp">SPONSORED ITEMS</a></div>
-                            </li>
-                        </ul>
-                        <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
+                </button>
+                <div class="menu-logo">
+                    <div class="navbar-brand">
+                        <span class="navbar-logo">
+                            <a href="homepage.jsp">
+                                <img src="assets/images/logo-1-3508x2480.jpg" title="" media-simple="true" style="height: 4.5rem;">
+                            </a>
+                        </span>
+                        <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="homepage.jsp">
+                                COMPUTER CLUB</a></span>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                        <li class="nav-item dropdown open"><a class="nav-link link text-white dropdown-toggle display-4" aria-expanded="true" data-toggle="dropdown-submenu">REGISTER</a>
+                            <div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="registerMember.jsp" aria-expanded="false">MEMBER</a><a class="text-white dropdown-item display-4" href="registerEvent.jsp" aria-expanded="false">EVENT</a><a class="text-white dropdown-item display-4" href="registerCollaborator.jsp" aria-expanded="false">COLLABORATOR</a><a class="dropdown-item text-white display-4" href="registerSponsoredItem.jsp">SPONSORED ITEMS</a></div>
+                        </li>
+                        <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown-submenu" aria-expanded="false">MANAGE</a>
+                            <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItem.jsp">SPONSORED ITEMS</a></div>
+                        </li>
+                    </ul>
+                    <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
 
-                                LOGOUT</a></div>
-                    </div>
-                </nav>
-            </section>
-            <section class="cid-qECj4TnJzd mbr-fullscreen mbr-parallax-background" id="header2-14" data-rv-view="3093">
-                <div class="container align-center">
-                    <br />
-                    <br />
-                    <div class="form-container">
-                        <h1 class="well">Update Member Details</h1>
-                        <hr style="border-top:1px solid gray;" />
-                        <div class="col-lg-12 well">
-                            <div class="row">
-                                <form method="get" action="">
-                                    <p style="color:red; float: left;">"*" Required fields</p>
-                                    <br />
-                                    <br />
+                            LOGOUT</a></div>
+                </div>
+            </nav>
+        </section>
+        <section class="cid-qECj4TnJzd mbr-fullscreen mbr-parallax-background" id="header2-14" data-rv-view="3093">
+            <div class="container align-center">
+                <br />
+                <br />
+                <div class="form-container">
+                    <h1 class="well">Update Member Details</h1>
+                    <hr style="border-top:1px solid gray;" />
+                    <div class="col-lg-12 well">
+                        <div class="row">
+                            <form method="post" action="ProcessUpdateMember">
+                                <p style="color:red; float: left;">"*" Required fields</p>
+                                <br />
+                                <br />
                                 <% if (request.getParameter("empty") != null) {%>
                                 <p style="color:red">Please ensure all the fields are not left blank</p>
                                 <%}%>
@@ -120,7 +122,7 @@
                                             <select name="progID" class="form-control" required="required">
                                                 <option disabled selected value>Select programme ID</option>
                                                 <%
-                                                    ArrayList<model.Programme> progList = programmeDA.selectAllProgrammes();
+                                                    ArrayList<model.Programme> progList = programmeDA.selectAllProgrammesList();
                                                     String progID = member.getProgramme().getProgID();
                                                     for (int i = 0; i < progList.size(); i++) {
                                                         if (progID.equals(progList.get(i).getProgID())) {
@@ -129,7 +131,7 @@
                                                 <%} else {%>
                                                 <option value="<%=progList.get(i).getProgID()%>"><%=progList.get(i).getProgID()%></option>
                                                 <% }
-                                                }
+                                                    }
                                                 %>
                                             </select>
                                         </div>
@@ -140,11 +142,10 @@
                                                 <%
                                                     java.time.LocalDateTime time = java.time.LocalDateTime.now();
                                                     int year = time.getYear();
-                                                    String academicYear = member.getAcademicYear();
                                                     for (int i = 0; i < 5; i++) {
                                                         if (i == 0) {
                                                 %>
-                                                <option value="<%=year - 1%>/<%=year%>" ><%=year - 1%>/<%=year%></option>
+                                                <option value="<%=year - 1%>/<%=year%>" <%if(member.getAcademicYear().equals(<%=year - 1%>/<%=year%>) { %> selected="selected" <%}%>><%=year - 1%>/<%=year%></option>
                                                 <%} else if (i == 1) {%>
                                                 <option value="<%=year%>/<%=year + i%>"><%=year%>/<%=year + i%></option>
                                                 <%} else {%>
@@ -160,25 +161,25 @@
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Gender:</label>
                                             <br/>
-                                            <input type="radio" name="gender" value="M" required="required"> Male &nbsp;
-                                            <input type="radio" name="gender" value="F"> Female
+                                            <input type="radio" name="gender" value="M" <%if (member.getGender() == 'M') {%> checked="checked" <%}%> required="required"> Male &nbsp;
+                                            <input type="radio" name="gender" value="F" <%if (member.getGender() == 'F') {%> checked="checked" <%}%>> Female
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Membership Fee Status:</label>
                                             <br/>
-                                            <input type="radio" name="memFeeStats" value="false" required="required"> Pending &nbsp;
-                                            <input type="radio" name="memFeeStats" value="true"> Paid
+                                            <input type="radio" name="memFeeStats" <%if (!member.isMembershipFeeStatus()) {%>checked="checked" <%}%> value="false" required="required"> Pending &nbsp;
+                                            <input type="radio" name="memFeeStats" <%if (member.isMembershipFeeStatus()) {%>checked="checked" <%}%> value="true"> Paid
                                         </div>
                                     </div>
                                     <div class="row" style="margin:auto">
                                         <label><span style="color:red;">*</span>Position</label>
                                         <select name="position" class="form-control" required="required">
                                             <option disabled selected value>Select member position</option>
-                                            <option value="5">President</option>
-                                            <option value="4">Vice President</option>
-                                            <option value="3">Secretary</option>
-                                            <option value="2">Treasurer</option>
-                                            <option value="1">Member</option>
+                                            <option value="5" <%if(member.getPosition() == 5) {%> selected="selected" <%}%> >President</option>
+                                            <option value="4" <%if(member.getPosition() == 4) {%> selected="selected" <%}%> >Vice President</option>
+                                            <option value="3" <%if(member.getPosition() == 3) {%> selected="selected" <%}%> >Secretary</option>
+                                            <option value="2" <%if(member.getPosition() == 2) {%> selected="selected" <%}%> >Treasurer</option>
+                                            <option value="1" <%if(member.getPosition() == 1) {%> selected="selected" <%}%> >Member</option>
                                         </select>
                                     </div>
                                 </div>
@@ -271,7 +272,7 @@
         <script>
             var urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('success')) {
-                window.alert("New Member details successfully updated!");
+                window.alert("Member details successfully updated!");
             } else if (urlParams.has('error')) {
                 window.alert("Oh no! An error has occured, please contact the system administrator.");
             }

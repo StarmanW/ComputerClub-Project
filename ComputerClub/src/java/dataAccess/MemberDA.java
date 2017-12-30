@@ -118,7 +118,7 @@ public class MemberDA {
     }
 
     //Method to update a record
-    public int updateRecord(Member member) {
+    public int updateRecord(Member member, String studIDOriginal) {
         int successUpdate = 0;
 
         try {
@@ -137,7 +137,7 @@ public class MemberDA {
                 pstmt.setBoolean(10, member.isMembershipFeeStatus());
                 pstmt.setInt(11, member.getPosition());
                 pstmt.setString(12, member.getAcademicYear());
-                pstmt.setString(13, member.getStudID());
+                pstmt.setString(13, studIDOriginal);    //Get the original Student ID
                 successUpdate = pstmt.executeUpdate();
             }
         } catch (Exception ex) {

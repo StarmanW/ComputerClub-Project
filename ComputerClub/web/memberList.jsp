@@ -1,6 +1,9 @@
 <%@page import="model.Member"%>
 <%@page import="java.util.ArrayList"%>
 <jsp:useBean id="memberDA" class="dataAccess.MemberDA" scope="application"></jsp:useBean>
+<%
+    session = request.getSession();
+%>
     <!DOCTYPE html>
     <html>
 
@@ -99,7 +102,7 @@
                                     </thead>
                                     <tbody>
                                     <%
-                                        ArrayList<Member> memberList = memberDA.selectAllMembers();
+                                        ArrayList<Member> memberList = memberDA.selectAllMemberList();
                                         for (int i = 0; i < memberList.size(); i++) {
                                     %>
                                     <tr>

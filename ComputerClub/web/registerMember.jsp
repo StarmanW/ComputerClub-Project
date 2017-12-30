@@ -115,7 +115,7 @@
                                             <select name="progID" class="form-control" required="required">
                                                 <option disabled selected value>Select programme ID</option>
                                                 <%
-                                                    ArrayList<model.Programme> progList = programmeDA.selectAllProgrammes();
+                                                    ArrayList<model.Programme> progList = programmeDA.selectAllProgrammesList();
                                                     for (int i = 0; i < progList.size(); i++) {
                                                 %>
                                                 <option value="<%=progList.get(i).getProgID()%>"><%=progList.get(i).getProgID()%></option>
