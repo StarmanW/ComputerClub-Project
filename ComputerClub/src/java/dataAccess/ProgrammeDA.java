@@ -44,7 +44,7 @@ public class ProgrammeDA {
             pstmt = conn.prepareCall("SELECT * FROM PROGRAMME");
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                programme.add(new Programme(rs.getString(1), rs.getString(2), facultyDA.selectFaculty(rs.getString(3))));
+                programme.add(new Programme(rs.getString(1), rs.getString(2), facultyDA.selectRecord(rs.getString(3))));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -57,22 +57,26 @@ public class ProgrammeDA {
     public Programme selectProgramme(String progID) {
         return (Programme) selectRecord(progID);
     }
-    
+
     //Select record method
-    public ResultSet selectRecord(String progID) {
-        ResultSet rs = null;
+    public Programme selectRecord(String progID) {
+        Programme programme = null;
         String queryStr = "SELECT * FROM" + tableName + "WHERE PROGID = ? AND FACULTYID = ?";
+        Faculty faculty = facultyDA.selectRecord(progID);
 
         try {
             pstmt = conn.prepareStatement(queryStr);
             pstmt.setString(1, progID);
-            pstmt.setString(2, facultyDA.selectFaculty(progID).getFacultyID());
+            pstmt.setString(2, faculty.getFacultyID());
             rs = pstmt.executeQuery();
+            if (rs.next()) {
+                programme = new Programme(rs.getString(1), rs.getString(2), faculty);
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return rs;
+        return programme;
     }
 
     //Create method
@@ -82,9 +86,10 @@ public class ProgrammeDA {
         String progName = programme.getProgName();
         String facultyID = faculty.getFacultyID();
         String queryStr = "INSERT INTO" + tableName + "VALUES(?,?,?)";
-        ResultSet rs = selectRecord(progID);
 
         try {
+            selectRecord(progID);
+
             if (rs.next()) {
                 //ADD ERR MSG
             } else {
@@ -105,9 +110,10 @@ public class ProgrammeDA {
 
     //Retrieve method
     public void retrieveRecord(String progID, String facultyID) {
-        ResultSet rs = selectRecord(progID);
 
         try {
+            selectRecord(progID);
+
             if (rs.next()) {
                 //ADD RESPONSE
             } else {
@@ -126,9 +132,10 @@ public class ProgrammeDA {
         String progName = programme.getProgName();
         String facultyID = faculty.getFacultyID();
         String queryStr = "UPDATE" + tableName + "SET PROGNAME = ? WHERE PROGID = ? AND FACULTYID = ?";
-        ResultSet rs = selectRecord(progID);
 
         try {
+            selectRecord(progID);
+
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, progName);
@@ -152,9 +159,10 @@ public class ProgrammeDA {
         int succesInsert = 0;
 
         String queryStr = "DELETE FROM" + tableName + "WHERE PROGID = ? AND FACULTYID = ?";
-        ResultSet rs = selectRecord(progID);
 
         try {
+            selectRecord(progID);
+
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, progID);

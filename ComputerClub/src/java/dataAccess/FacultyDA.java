@@ -49,25 +49,23 @@ public class FacultyDA {
         return faculty;
     }
 
-    //Method to retrieve a specific faculty
-    public Faculty selectFaculty(String facultyID) {
-        return (Faculty) selectRecord(facultyID);
-    }
-
     //Select record method
-    public ResultSet selectRecord(String facultyID) {
-        ResultSet rs = null;
+    public Faculty selectRecord(String facultyID) {
+        Faculty faculty = null;
         String queryStr = "SELECT * FROM" + tableName + "WHERE FACULTYID = ?";
 
         try {
             pstmt = conn.prepareStatement(queryStr);
             pstmt.setString(1, facultyID);
             rs = pstmt.executeQuery();
+            if (rs.next()) {
+                faculty = new Faculty(rs.getString(1), rs.getString(2));
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return rs;
+        return faculty;
     }
 
     //Create method
@@ -76,9 +74,10 @@ public class FacultyDA {
         String facultyID = faculty.getFacultyID();
         String facultyName = faculty.getFacultyName();
         String queryStr = "INSERT INTO" + tableName + "VALUES(?,?)";
-        ResultSet rs = selectRecord(facultyID);
 
         try {
+            selectRecord(facultyID);
+
             if (rs.next()) {
                 //ADD ERR MSG
             } else {
@@ -98,9 +97,10 @@ public class FacultyDA {
 
     //Retrieve method
     public void retrieveRecord(String facultyID) {
-        ResultSet rs = selectRecord(facultyID);
 
         try {
+            selectRecord(facultyID);
+
             if (rs.next()) {
                 //ADD RESPONSE
             } else {
@@ -118,9 +118,10 @@ public class FacultyDA {
         String facultyID = faculty.getFacultyID();
         String facultyName = faculty.getFacultyName();
         String queryStr = "UPDATE" + tableName + "SET FACULTYNAME = ? WHERE FACULTYID = ?";
-        ResultSet rs = selectRecord(facultyID);
 
         try {
+            selectRecord(facultyID);
+
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, facultyName);
@@ -143,9 +144,10 @@ public class FacultyDA {
         int succesInsert = 0;
 
         String queryStr = "DELETE FROM" + tableName + "WHERE FACULTYID = ?";
-        ResultSet rs = selectRecord(facultyID);
 
         try {
+            selectRecord(facultyID);
+
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, facultyID);
