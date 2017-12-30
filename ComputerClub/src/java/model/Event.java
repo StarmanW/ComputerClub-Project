@@ -11,7 +11,7 @@ public class Event {
 
     private String eventID;
     private String eventName;
-    private int eventType;
+    private char eventType;
     private Date eventDate;
     private String eventTime;
     private String eventLocation;
@@ -25,7 +25,7 @@ public class Event {
     }
 
     //Parameterized constructor
-    public Event(String eventID, String eventName, int eventType, Date eventDate, String eventTime, String eventLocation, ArrayList<Collaborator> eventColab, ArrayList<Item> sponsoredItem, ArrayList<Member> parpicipant) {
+    public Event(String eventID, String eventName, char eventType, Date eventDate, String eventTime, String eventLocation, ArrayList<Collaborator> eventColab, ArrayList<Item> sponsoredItem, ArrayList<Member> parpicipant) {
         this.eventID = eventID;
         this.eventName = eventName;
         this.eventType = eventType;
@@ -46,7 +46,7 @@ public class Event {
         this.eventName = eventName;
     }
 
-    public void setEventType(int eventType) {
+    public void setEventType(char eventType) {
         this.eventType = eventType;
     }
 
@@ -83,35 +83,10 @@ public class Event {
         return eventName;
     }
 
-    public int getEventType() {
+    public char getEventType() {
         return eventType;
     }
-    
-    public String getEventTypeString() {
-       String eventTypeString = null;
-       
-       switch(eventType) {
-           case 1:
-               eventTypeString = "Others";
-               break;
-           case 2:
-               eventTypeString = "Event Exhibitions";
-               break;
-           case 3:
-               eventTypeString = "Workshops/Talks";
-               break;
-           case 4:
-               eventTypeString = "Educational Visit/Trips";
-               break;
-           case 5:
-               eventTypeString = "Competitions";
-               break;
-            default:
-                break;
-       }
-       return eventTypeString;
-    }
-    
+
     public Date getEventDate() {
         return eventDate;
     }

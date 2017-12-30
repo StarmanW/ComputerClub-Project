@@ -11,6 +11,7 @@
 <html>
 
     <head>
+        <!-- Site made with Mobirise Website Builder v4.5.2, https://mobirise.com -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
@@ -148,13 +149,13 @@
                                                 %>
                                                 <option value="<%=year - 1%>/<%=year%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year - 1%>/<%=year%></option>
                                                 <%} else if (i == 1) {
-                                                    acadYear = (year) + "/" + (year + i);
+                                                        acadYear = (year - 1) + "/" + year;
                                                 %>
                                                 <option value="<%=year%>/<%=year + i%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year%>/<%=year + i%></option>
                                                 <%} else {
-                                                    acadYear = (year + i - 1) + "/" + (year + i);
+                                                        acadYear = (year - 1) + "/" + year;
                                                 %>
-                                                <option value="<%=year + i - 1%>/<%=year + i%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year + i - 1%>/<%=year + i%></option>
+                                                <option value="<%=year + i - 1%>/<%=year + i%>"><%=year + i - 1%>/<%=year + i%></option>
                                                 <%
                                                         }
                                                     }
@@ -166,32 +167,39 @@
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Gender:</label>
                                             <br/>
-                                            <input type="radio" name="gender" value="M" <%if (member.getGender() == 'M') {%> checked="checked" <%}%> required="required"> Male &nbsp;
-                                            <input type="radio" name="gender" value="F" <%if (member.getGender() == 'F') {%> checked="checked" <%}%>> Female
+                                                   <input type="radio" name="gender" value="M" <%if (member.getGender()
+                                                               == 'M') {%> checked="checked" <%}%> required="required"> Male &nbsp;
+                                                   <input type="radio" name="gender" value="F" <%if (member.getGender()
+                                                               == 'F') {%> checked="checked" <%}%>> Female
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Membership Fee Status:</label>
                                             <br/>
-                                            <input type="radio" name="memFeeStats" <%if (!member.isMembershipFeeStatus()) {%>checked="checked" <%}%> value="false" required="required"> Pending &nbsp;
-                                            <input type="radio" name="memFeeStats" <%if (member.isMembershipFeeStatus()) {%>checked="checked" <%}%> value="true"> Paid
+                                                   <input type="radio" name="memFeeStats" <%if (!member.isMembershipFeeStatus()) {%>checked="checked" <%}%> value="false" required="required"> Pending &nbsp;
+                                                   <input type="radio" name="memFeeStats" <%if (member.isMembershipFeeStatus()) {%>checked="checked" <%}%> value="true"> Paid
                                         </div>
                                     </div>
                                     <div class="row" style="margin:auto">
                                         <label><span style="color:red;">*</span>Position</label>
                                         <select name="position" class="form-control" required="required">
                                             <option disabled selected value>Select member position</option>
-                                            <option value="5" <%if (member.getPosition() == 5) {%> selected="selected" <%}%> >President</option>
-                                            <option value="4" <%if (member.getPosition() == 4) {%> selected="selected" <%}%> >Vice President</option>
-                                            <option value="3" <%if (member.getPosition() == 3) {%> selected="selected" <%}%> >Secretary</option>
-                                            <option value="2" <%if (member.getPosition() == 2) {%> selected="selected" <%}%> >Treasurer</option>
-                                            <option value="1" <%if (member.getPosition() == 1) {%> selected="selected" <%}%> >Member</option>
+                                                    <option value="5" <%if (member.getPosition()
+                                                                == 5) {%> selected="selected" <%}%> >President</option>
+                                                    <option value="4" <%if (member.getPosition()
+                                                                == 4) {%> selected="selected" <%}%> >Vice President</option>
+                                                    <option value="3" <%if (member.getPosition()
+                                                                == 3) {%> selected="selected" <%}%> >Secretary</option>
+                                                    <option value="2" <%if (member.getPosition()
+                                                                == 2) {%> selected="selected" <%}%> >Treasurer</option>
+                                                    <option value="1" <%if (member.getPosition()
+                                                                == 1) {%> selected="selected" <%}%> >Member</option>
                                         </select>
                                     </div>
                                 </div>
                                 <br />
                                 <div class="submit-button">
-                                    <button type="submit" class="btn btn-lg btn-info">Update</button>
-                                    <a href="memberList.jsp"><button type="button" class="btn btn-lg btn-info">Back</button></a>
+                                    <button type="submit" class="btn btn-lg btn-info">Submit</button>
+                                    <button type="reset" class="btn btn-lg btn-info">Reset</button>
                                 </div>
                             </form>
                         </div>
