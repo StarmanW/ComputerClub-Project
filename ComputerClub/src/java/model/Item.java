@@ -16,12 +16,12 @@ public class Item {
 
     }
 
-    public Item(String itemID, int itemType, String itemName, int quantity, Collaborator collaborator) {
+    public Item(String itemID, Collaborator collaborator, int itemType, String itemName, int quantity) {
         this.itemID = itemID;
+        this.collaborator = collaborator;
         this.itemType = itemType;
         this.itemName = itemName;
         this.quantity = quantity;
-        this.collaborator = collaborator;
     }
 
     //Getters
