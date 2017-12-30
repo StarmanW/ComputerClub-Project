@@ -77,30 +77,6 @@ public class Member {
         return position;
     }
 
-    public String getPositionString() {
-        String positionTitle = null;
-        switch (position) {
-            case 1:
-                positionTitle = "Member";
-                break;
-            case 2:
-                positionTitle = "Treasurer";
-                break;
-            case 3:
-                positionTitle = "Secretary";
-                break;
-            case 4:
-                positionTitle = "Vice President";
-                break;
-            case 5:
-                positionTitle = "President";
-                break;
-            default:
-                break;
-        }
-        return positionTitle;
-    }
-    
     public String getAcademicYear() {
         return academicYear;
     }

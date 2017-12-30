@@ -107,7 +107,7 @@
                                     <tr>
                                         <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getStudName().getFullName()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getStudID()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getPositionString()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getPosition()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getGender()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getAcademicYear()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getProgramme().getProgID()%></td>

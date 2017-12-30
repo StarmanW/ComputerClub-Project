@@ -50,23 +50,7 @@ public class Collaborator {
     public String getAdditionalNotes() {
         return additionalNotes;
     }
-
-    public String getCollabTypeString() {
-        String collabTypeString = null;
-        
-        switch (collabType) {
-            case 1:
-                collabTypeString = "Company";
-                break;
-            case 2:
-                collabTypeString = "Individual";
-                break;
-            default:
-                break;
-        }
-        return collabTypeString;
-    }
-
+    
     //Setters
     public void setColabID(String collabID) {
         this.collabID = collabID;
