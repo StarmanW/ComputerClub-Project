@@ -109,11 +109,11 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Contact Number</label>
-                                            <input type="text" name="contactNo" placeholder="0195421325" class="form-control" value="<%=member.getContactNo()%>" pattern="([0-9]|[0-9\-]){3,20}" title="Numeric and '-' symbols only. E.g. 014-8897875" required="required">
+                                            <input type="text" name="contactNo" placeholder="0195421325" class="form-control" value="<%=member.getStudContact()%>" pattern="([0-9]|[0-9\-]){3,20}" title="Numeric and '-' symbols only. E.g. 014-8897875" required="required">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Email</label>
-                                            <input type="email" name="email" placeholder="email@hotmail.com" class="form-control" value="<%=member.getEmail()%>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="E.g. - cisco@business.co.uk" required="required">
+                                            <input type="email" name="email" placeholder="email@hotmail.com" class="form-control" value="<%=member.getStudEmail()%>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="E.g. - cisco@business.co.uk" required="required">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -142,13 +142,19 @@
                                                 <%
                                                     java.time.LocalDateTime time = java.time.LocalDateTime.now();
                                                     int year = time.getYear();
+                                                    String acadYear = null;
                                                     for (int i = 0; i < 5; i++) {
                                                         if (i == 0) {
+                                                            acadYear = (year - 1) + "/" + year;
                                                 %>
-                                                <option value="<%=year - 1%>/<%=year%>" <%if(member.getAcademicYear().equals(<%=year - 1%>/<%=year%>) { %> selected="selected" <%}%>><%=year - 1%>/<%=year%></option>
-                                                <%} else if (i == 1) {%>
-                                                <option value="<%=year%>/<%=year + i%>"><%=year%>/<%=year + i%></option>
-                                                <%} else {%>
+                                                <option value="<%=year - 1%>/<%=year%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year - 1%>/<%=year%></option>
+                                                <%} else if (i == 1) {
+                                                        acadYear = (year - 1) + "/" + year;
+                                                %>
+                                                <option value="<%=year%>/<%=year + i%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year%>/<%=year + i%></option>
+                                                <%} else {
+                                                        acadYear = (year - 1) + "/" + year;
+                                                %>
                                                 <option value="<%=year + i - 1%>/<%=year + i%>"><%=year + i - 1%>/<%=year + i%></option>
                                                 <%
                                                         }
@@ -161,25 +167,32 @@
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Gender:</label>
                                             <br/>
-                                            <input type="radio" name="gender" value="M" <%if (member.getGender() == 'M') {%> checked="checked" <%}%> required="required"> Male &nbsp;
-                                            <input type="radio" name="gender" value="F" <%if (member.getGender() == 'F') {%> checked="checked" <%}%>> Female
+                                                   <input type="radio" name="gender" value="M" <%if (member.getGender()
+                                                               == 'M') {%> checked="checked" <%}%> required="required"> Male &nbsp;
+                                                   <input type="radio" name="gender" value="F" <%if (member.getGender()
+                                                               == 'F') {%> checked="checked" <%}%>> Female
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Membership Fee Status:</label>
                                             <br/>
-                                            <input type="radio" name="memFeeStats" <%if (!member.isMembershipFeeStatus()) {%>checked="checked" <%}%> value="false" required="required"> Pending &nbsp;
-                                            <input type="radio" name="memFeeStats" <%if (member.isMembershipFeeStatus()) {%>checked="checked" <%}%> value="true"> Paid
+                                                   <input type="radio" name="memFeeStats" <%if (!member.isMembershipFeeStatus()) {%>checked="checked" <%}%> value="false" required="required"> Pending &nbsp;
+                                                   <input type="radio" name="memFeeStats" <%if (member.isMembershipFeeStatus()) {%>checked="checked" <%}%> value="true"> Paid
                                         </div>
                                     </div>
                                     <div class="row" style="margin:auto">
                                         <label><span style="color:red;">*</span>Position</label>
                                         <select name="position" class="form-control" required="required">
                                             <option disabled selected value>Select member position</option>
-                                            <option value="5" <%if(member.getPosition() == 5) {%> selected="selected" <%}%> >President</option>
-                                            <option value="4" <%if(member.getPosition() == 4) {%> selected="selected" <%}%> >Vice President</option>
-                                            <option value="3" <%if(member.getPosition() == 3) {%> selected="selected" <%}%> >Secretary</option>
-                                            <option value="2" <%if(member.getPosition() == 2) {%> selected="selected" <%}%> >Treasurer</option>
-                                            <option value="1" <%if(member.getPosition() == 1) {%> selected="selected" <%}%> >Member</option>
+                                                    <option value="5" <%if (member.getPosition()
+                                                                == 5) {%> selected="selected" <%}%> >President</option>
+                                                    <option value="4" <%if (member.getPosition()
+                                                                == 4) {%> selected="selected" <%}%> >Vice President</option>
+                                                    <option value="3" <%if (member.getPosition()
+                                                                == 3) {%> selected="selected" <%}%> >Secretary</option>
+                                                    <option value="2" <%if (member.getPosition()
+                                                                == 2) {%> selected="selected" <%}%> >Treasurer</option>
+                                                    <option value="1" <%if (member.getPosition()
+                                                                == 1) {%> selected="selected" <%}%> >Member</option>
                                         </select>
                                     </div>
                                 </div>

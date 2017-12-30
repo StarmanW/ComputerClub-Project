@@ -124,7 +124,7 @@ public class MemberDA {
         try {
             findRecord(member.getStudID());
             if (rs.next()) {
-                pstmt = conn.prepareStatement("UPDATE " + tableName + " SET MEMBERID = ?, PROGID = ?, FIRSTNAME = ?, LASTNAME = ?, EMAIL = ?, CONTACTNUM = ?, ICNUM = ?, PASS = ?, GENDER = ?, MEMFEESTATS = ?, POSITION = ?, ACADEMICYEAR = ? WHERE MEMBERID = ?");
+                pstmt = conn.prepareStatement("UPDATE " + tableName + " SET MEMBERID = ?, PROGID = ?, FIRSTNAME = ?, LASTNAME = ?, STUDEMAIL = ?, STUDCONTACT = ?, ICNUM = ?, PASS = ?, GENDER = ?, MEMFEESTATS = ?, POSITION = ?, ACADEMICYEAR = ? WHERE MEMBERID = ?");
                 pstmt.setString(1, member.getStudID());
                 pstmt.setString(2, member.getProgramme().getProgID());
                 pstmt.setString(3, member.getStudName().getFirstName());
@@ -148,14 +148,14 @@ public class MemberDA {
     }
 
     //Method to select all records
-    public ArrayList<Member> selectAllMembers() {
-        ArrayList<Member> members = new ArrayList<Member>();
+    public ArrayList<Member> selectAllMembersList() {
+        ArrayList<Member> selectAllMembersList = new ArrayList<Member>();
         try {
             programmeDA = new ProgrammeDA();
             pstmt = conn.prepareCall("SELECT * FROM " + tableName);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                members.add(new Member(rs.getString(1), programmeDA.selectRecord(rs.getString(2)),
+                selectAllMembersList.add(new Member(rs.getString(1), programmeDA.selectRecord(rs.getString(2)),
                         new Name(rs.getString(3), rs.getString(4)), rs.getString(5), rs.getString(6),
                         rs.getString(7),
                         rs.getString(8),
@@ -167,6 +167,6 @@ public class MemberDA {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return members;
+        return selectAllMembersList;
     }
 }

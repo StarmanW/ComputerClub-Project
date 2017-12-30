@@ -37,20 +37,20 @@ public class ProgrammeDA {
     }
 
     //Method to retrieve all records
-    public ArrayList<Programme> selectAllProgrammes() {
-        ArrayList<Programme> programme = new ArrayList<Programme>();
+    public ArrayList<Programme> selectAllProgrammesList() {
+        ArrayList<Programme> programmeList = new ArrayList<Programme>();
 
         try {
             pstmt = conn.prepareCall("SELECT * FROM PROGRAMME");
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                programme.add(new Programme(rs.getString(1), rs.getString(2), facultyDA.selectRecord(rs.getString(3))));
+                programmeList.add(new Programme(rs.getString(1), rs.getString(2), facultyDA.selectRecord(rs.getString(3))));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        return programme;
+        return programmeList;
     }
 
     //Method to retrieve a specific programme

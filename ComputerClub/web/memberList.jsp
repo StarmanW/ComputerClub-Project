@@ -102,7 +102,7 @@
                                     </thead>
                                     <tbody>
                                     <%
-                                        ArrayList<Member> memberList = memberDA.selectAllMemberList();
+                                        ArrayList<Member> memberList = memberDA.selectAllMembersList();
                                         for (int i = 0; i < memberList.size(); i++) {
                                     %>
                                     <tr>
