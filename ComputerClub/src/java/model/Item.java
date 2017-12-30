@@ -7,10 +7,10 @@ package model;
 public class Item {
 
     private String itemID;
+    private Collaborator collaborator;
     private int itemType;
     private String itemName;
     private int quantity;
-    private Collaborator collaborator;
 
     public Item() {
 
