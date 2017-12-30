@@ -53,6 +53,7 @@
                         </div>
                     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
@@ -65,6 +66,8 @@
                     </ul>
                     <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
 =======
+=======
+>>>>>>> parent of c15eeec... Merge branch 'master' of https://github.com/StarmanW/ComputerClub-Project
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
                             <li class="nav-item dropdown open"><a class="nav-link link text-white dropdown-toggle display-4" aria-expanded="true" data-toggle="dropdown-submenu">REGISTER</a>
@@ -75,6 +78,9 @@
                             </li>
                         </ul>
                         <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
+<<<<<<< HEAD
+>>>>>>> parent of c15eeec... Merge branch 'master' of https://github.com/StarmanW/ComputerClub-Project
+=======
 >>>>>>> parent of c15eeec... Merge branch 'master' of https://github.com/StarmanW/ComputerClub-Project
 
                                 LOGOUT</a></div>
