@@ -35,18 +35,18 @@ public class FacultyDA {
 
     //Method to retrieve all records
     public ArrayList<Faculty> selectAllFaculty() {
-        ArrayList<Faculty> faculty = new ArrayList<Faculty>();
+        ArrayList<Faculty> selectAllFacultyList = new ArrayList<Faculty>();
 
         try {
             pstmt = conn.prepareCall("SELECT * FROM FACULTY");
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                faculty.add(new Faculty(rs.getString(1), rs.getString(2)));
+                selectAllFacultyList.add(new Faculty(rs.getString(1), rs.getString(2)));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return faculty;
+        return selectAllFacultyList;
     }
 
     //Select record method
