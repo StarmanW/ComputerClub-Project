@@ -17,7 +17,7 @@ public class FacultyDA {
     private final String dbUrl = "jdbc:derby://localhost:1527/computerclubdb";
     private final String dbUser = "nbuser";
     private final String dbPass = "nbuser";
-    String tableName = " faculty ";
+    String tableName = " FACULTY ";
 
     //No-arg constructor
     public FacultyDA() {

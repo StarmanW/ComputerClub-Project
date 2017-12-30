@@ -19,7 +19,7 @@ public class ProgrammeDA {
     private final String dbUser = "nbuser";
     private final String dbPass = "nbuser";
     private FacultyDA facultyDA;
-    private String tableName = " programme ";
+    private String tableName = " PROGRAMME ";
 
     //No-arg constructor
     public ProgrammeDA() {
