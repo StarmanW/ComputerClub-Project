@@ -36,32 +36,15 @@ public class ProgrammeDA {
         }
     }
 
-    //Method to retrieve a specific programme
-    public Programme retrieveProgramme(String progID) {
-        Programme programme = null;
-        try {
-            pstmt = conn.prepareCall("SELECT * FROM PROGRAMME WHERE PROGID = ?");
-            pstmt.setString(1, progID);
-            rs = pstmt.executeQuery();
-            while (rs.next()) {
-                programme = new Programme(rs.getString(1), rs.getString(2), facultyDA.retrieveFaculty(rs.getString(3)));
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        return programme;
-    }
-
     //Method to retrieve all records
-    public ArrayList<Programme> retrieveAllProgrammes() {
+    public ArrayList<Programme> selectAllProgrammes() {
         ArrayList<Programme> programme = new ArrayList<Programme>();
 
         try {
             pstmt = conn.prepareCall("SELECT * FROM PROGRAMME");
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                programme.add(new Programme(rs.getString(1), rs.getString(2), facultyDA.retrieveFaculty(rs.getString(3))));
+                programme.add(new Programme(rs.getString(1), rs.getString(2), facultyDA.selectFaculty(rs.getString(3))));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -70,6 +53,11 @@ public class ProgrammeDA {
         return programme;
     }
 
+    //Method to retrieve a specific programme
+    public Programme selectProgramme(String progID, String facultyID) {
+        return (Programme) selectRecord(progID, facultyID);
+    }
+    
     //Select record method
     public ResultSet selectRecord(String progID, String facultyID) {
         ResultSet rs = null;
@@ -81,14 +69,14 @@ public class ProgrammeDA {
             pstmt.setString(2, facultyID);
             rs = pstmt.executeQuery();
         } catch (SQLException ex) {
-            //ADD ERR RESPONSE
+            ex.printStackTrace();
         }
 
         return rs;
     }
 
     //Create method
-    public int createRecord(Programme programme, Faculty faculty) throws Exception{
+    public int createRecord(Programme programme, Faculty faculty) throws Exception {
         int successInsert = 0;
         String progID = programme.getProgID();
         String progName = programme.getProgName();
@@ -109,9 +97,9 @@ public class ProgrammeDA {
                 successInsert = pstmt.executeUpdate();
             }
         } catch (SQLException ex) {
-            //ADD ERR RESPONSE
+            ex.printStackTrace();
         }
-        
+
         return successInsert;
     }
 
@@ -126,14 +114,14 @@ public class ProgrammeDA {
                 //ADD INVALID RESPONSE
             }
         } catch (SQLException ex) {
-            //ADD ERR RESPONSE
+            ex.printStackTrace();
         }
     }
 
     //Update method
     public int updateRecord(Programme programme, Faculty faculty) throws Exception {
         int successInsert = 0;
-        
+
         String progID = programme.getProgID();
         String progName = programme.getProgName();
         String facultyID = faculty.getFacultyID();
@@ -147,15 +135,15 @@ public class ProgrammeDA {
                 pstmt.setString(2, progID);
                 pstmt.setString(3, facultyID);
                 pstmt.executeUpdate();
-            
+
                 successInsert = pstmt.executeUpdate();
             } else {
                 //ADD INVALID RESPONSE
             }
         } catch (SQLException ex) {
-            //ADD ERR RESPONSE
+            ex.printStackTrace();
         }
-        
+
         return successInsert;
     }
 
@@ -172,15 +160,15 @@ public class ProgrammeDA {
                 pstmt.setString(1, progID);
                 pstmt.setString(2, facultyID);
                 pstmt.executeUpdate();
-        
+
                 succesInsert = pstmt.executeUpdate();
             } else {
                 //ADD INVALID RESPONSE
             }
         } catch (SQLException ex) {
-            //ADD ERR RESPONSE
+            ex.printStackTrace();
         }
-        
-        return succesInsert; 
+
+        return succesInsert;
     }
 }
