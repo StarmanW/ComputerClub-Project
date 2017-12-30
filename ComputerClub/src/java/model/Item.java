@@ -7,7 +7,7 @@ package model;
 public class Item {
 
     private String itemID;
-    private Int itemType;
+    private int itemType;
     private String itemName;
     private int quantity;
     private Collaborator collaborator;
@@ -16,7 +16,7 @@ public class Item {
 
     }
 
-    public Item(String itemID, String itemType, String itemName, int quantity, Collaborator collaborator) {
+    public Item(String itemID, int itemType, String itemName, int quantity, Collaborator collaborator) {
         this.itemID = itemID;
         this.itemType = itemType;
         this.itemName = itemName;
@@ -29,7 +29,7 @@ public class Item {
         return itemID;
     }
 
-    public String getItemType() {
+    public int getItemType() {
         return itemType;
     }
 
@@ -50,7 +50,7 @@ public class Item {
         this.itemID = itemID;
     }
 
-    public void setItemType(String itemType) {
+    public void setItemType(int itemType) {
         this.itemType = itemType;
     }
 
