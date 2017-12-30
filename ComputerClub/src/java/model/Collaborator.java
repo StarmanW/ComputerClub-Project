@@ -11,17 +11,19 @@ public class Collaborator {
     private int collabType;
     private String collabContact;
     private String collabEmail;
+    private String additionalNotes;
 
     public Collaborator() {
 
     }
 
-    public Collaborator(String collabID, String collabName, char collabType, String collabContact, String collabEmail) {
+    public Collaborator(String collabID, String collabName, char collabType, String collabContact, String collabEmail, String additionalNotes) {
         this.collabID = collabID;
         this.collabName = collabName;
         this.collabType = collabType;
         this.collabContact = collabContact;
         this.collabEmail = collabEmail;
+        this.additionalNotes = additionalNotes;
     }
 
     //Getters
@@ -45,6 +47,10 @@ public class Collaborator {
         return collabEmail;
     }
 
+    public String getAdditionalNotes() {
+        return additionalNotes;
+    }
+    
     //Setters
     public void setColabID(String collabID) {
         this.collabID = collabID;
@@ -64,6 +70,10 @@ public class Collaborator {
 
     public void setCollabEmail(String collabEmail) {
         this.collabEmail = collabEmail;
+    }
+
+    public void setAdditionalNotes(String additionalNotes) {
+        this.additionalNotes = additionalNotes;
     }
 
 }

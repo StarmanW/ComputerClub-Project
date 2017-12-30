@@ -18,7 +18,6 @@ public class Event {
     private ArrayList<Collaborator> eventColab;
     private ArrayList<Item> sponsoredItem;
     private ArrayList<Member> parpicipant;
-    private String additionalNotes;
 
     //No-arg constructor
     public Event() {
@@ -26,7 +25,7 @@ public class Event {
     }
 
     //Parameterized constructor
-    public Event(String eventID, String eventName, char eventType, Date eventDate, String eventTime, String eventLocation, ArrayList<Collaborator> eventColab, ArrayList<Item> sponsoredItem, ArrayList<Member> parpicipant, String additionalNotes) {
+    public Event(String eventID, String eventName, char eventType, Date eventDate, String eventTime, String eventLocation, ArrayList<Collaborator> eventColab, ArrayList<Item> sponsoredItem, ArrayList<Member> parpicipant) {
         this.eventID = eventID;
         this.eventName = eventName;
         this.eventType = eventType;
@@ -36,7 +35,6 @@ public class Event {
         this.eventColab = eventColab;
         this.sponsoredItem = sponsoredItem;
         this.parpicipant = parpicipant;
-        this.additionalNotes = additionalNotes;
     }
 
     //Setters
@@ -76,11 +74,6 @@ public class Event {
         this.parpicipant = parpicipant;
     }
 
-    public void setAdditionalNotes(String additionalNotes) {
-        this.additionalNotes = additionalNotes;
-    }
-
-    
     //Getters
     public String getEventID() {
         return eventID;
@@ -116,10 +109,6 @@ public class Event {
 
     public ArrayList<Member> getParpicipant() {
         return parpicipant;
-    }
-
-    public String getAdditionalNotes() {
-        return additionalNotes;
     }
 
 }
