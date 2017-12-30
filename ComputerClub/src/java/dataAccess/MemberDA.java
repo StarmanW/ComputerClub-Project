@@ -36,7 +36,7 @@ public class MemberDA {
     }
 
     //Method to select a specific record
-    public Member retrieveRecord(String studID) {
+    public Member selectRecord(String studID) {
         Member member = null;
         try {
             pstmt = conn.prepareStatement("SELECT * FROM " + tableName + " WHERE MEMBERID = ?");
@@ -57,13 +57,24 @@ public class MemberDA {
         }
         return member;
     }
+    
+    //Method to find a specific record - ONLY used to check for duplication 
+    private void findRecord(String studID) {
+        try {
+            pstmt = conn.prepareStatement("SELECT * FROM " + tableName + " WHERE MEMBERID = ?");
+            pstmt.setString(1, studID);
+            rs = pstmt.executeQuery();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
     //Method to create new recored
     public int createRecord(Member member) {
         int successInsert = 0;
 
         try {
-            retrieveRecord(member.getStudID());
+            findRecord(member.getStudID());
             if (rs.next()) {
                 successInsert = -1;
             } else {
@@ -93,7 +104,7 @@ public class MemberDA {
     public int deleteRecord(Member member) {
         int successDelete = 0;
         try {
-            retrieveRecord(member.getStudID());
+            findRecord(member.getStudID());
             if (rs.next()) {
                 pstmt = conn.prepareStatement("DELETE FROM " + tableName + " WHERE MEMBERID = ?");
                 pstmt.setString(1, member.getStudID());
@@ -107,11 +118,28 @@ public class MemberDA {
     }
 
     //Method to update a record
-    public int updateRecord() {
+    public int updateRecord(Member member) {
         int successUpdate = 0;
 
         try {
-
+            findRecord(member.getStudID());
+            if (rs.next()) {
+                pstmt = conn.prepareStatement("UPDATE " + tableName + " SET MEMBERID = ?, PROGID = ?, FIRSTNAME = ?, LASTNAME = ?, EMAIL = ?, CONTACTNUM = ?, ICNUM = ?, PASS = ?, GENDER = ?, MEMFEESTATS = ?, POSITION = ?, ACADEMICYEAR = ? WHERE MEMBERID = ?");
+                pstmt.setString(1, member.getStudID());
+                pstmt.setString(2, member.getProgramme().getProgID());
+                pstmt.setString(3, member.getStudName().getFirstName());
+                pstmt.setString(4, member.getStudName().getLastName());
+                pstmt.setString(5, member.getEmail());
+                pstmt.setString(6, member.getContactNo());
+                pstmt.setString(7, member.getIc());
+                pstmt.setString(8, member.getPassword());
+                pstmt.setString(9, String.valueOf(member.getGender()));
+                pstmt.setBoolean(10, member.isMembershipFeeStatus());
+                pstmt.setInt(11, member.getPosition());
+                pstmt.setString(12, member.getAcademicYear());
+                pstmt.setString(13, member.getStudID());
+                successUpdate = pstmt.executeUpdate();
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -119,7 +147,7 @@ public class MemberDA {
         return successUpdate;
     }
 
-    //Method to retrieve all records
+    //Method to select all records
     public ArrayList<Member> selectAllMembers() {
         ArrayList<Member> members = new ArrayList<Member>();
         try {
@@ -127,7 +155,7 @@ public class MemberDA {
             pstmt = conn.prepareCall("SELECT * FROM " + tableName);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                members.add(new Member(rs.getString(1), programmeDA.selectProgramme(rs.getString(2)),
+                members.add(new Member(rs.getString(1), programmeDA.selectRecord(rs.getString(2)),
                         new Name(rs.getString(3), rs.getString(4)), rs.getString(5), rs.getString(6),
                         rs.getString(7),
                         rs.getString(8),

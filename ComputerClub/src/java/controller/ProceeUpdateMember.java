@@ -17,11 +17,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author StarmanW
  */
-@WebServlet(name = "ProcessRegistration", urlPatterns = {"/ProcessRegistration"})
-public class ProcessRegistration extends HttpServlet {
+@WebServlet(name = "ProceeUpdateMember", urlPatterns = {"/ProceeUpdateMember"})
+public class ProceeUpdateMember extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        
     }
 }
