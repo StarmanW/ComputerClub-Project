@@ -149,13 +149,13 @@
                                                 %>
                                                 <option value="<%=year - 1%>/<%=year%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year - 1%>/<%=year%></option>
                                                 <%} else if (i == 1) {
-                                                        acadYear = (year - 1) + "/" + year;
+                                                        acadYear = (year) + "/" + (year + i);
                                                 %>
                                                 <option value="<%=year%>/<%=year + i%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year%>/<%=year + i%></option>
                                                 <%} else {
-                                                        acadYear = (year - 1) + "/" + year;
+                                                        acadYear = (year + i - 1) + "/" + (year + i);
                                                 %>
-                                                <option value="<%=year + i - 1%>/<%=year + i%>"><%=year + i - 1%>/<%=year + i%></option>
+                                                <option value="<%=year + i - 1%>/<%=year + i%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year + i - 1%>/<%=year + i%></option>
                                                 <%
                                                         }
                                                     }
