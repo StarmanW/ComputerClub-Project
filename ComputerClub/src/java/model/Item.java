@@ -7,7 +7,8 @@ package model;
 public class Item {
 
     private String itemID;
-    private String itemType;
+    private Collaborator collaborator;
+    private int itemType;
     private String itemName;
     private int quantity;
 
@@ -15,8 +16,9 @@ public class Item {
 
     }
 
-    public Item(String itemID, String itemName, String itemType, int quantity) {
+    public Item(String itemID, Collaborator collaborator, int itemType, String itemName, int quantity) {
         this.itemID = itemID;
+        this.collaborator = collaborator;
         this.itemType = itemType;
         this.itemName = itemName;
         this.quantity = quantity;
@@ -27,7 +29,7 @@ public class Item {
         return itemID;
     }
 
-    public String getItemType() {
+    public int getItemType() {
         return itemType;
     }
 
@@ -39,12 +41,16 @@ public class Item {
         return quantity;
     }
 
+    public Collaborator getCollaborator() {
+        return collaborator;
+    }
+
     //Setters
     public void setItemID(String itemID) {
         this.itemID = itemID;
     }
 
-    public void setItemType(String itemType) {
+    public void setItemType(int itemType) {
         this.itemType = itemType;
     }
 
@@ -54,6 +60,10 @@ public class Item {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public void setCollaborator(Collaborator collaborator) {
+        this.collaborator = collaborator;
     }
 
 }
