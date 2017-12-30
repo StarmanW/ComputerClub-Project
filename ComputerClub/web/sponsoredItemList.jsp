@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <link rel="shortcut icon" href="assets/images/logo-1-3508x2480.jpg" type="image/x-icon">
     <meta name="description" content="Event List">
-    <title>Event List</title>
+    <title>Sponsored Item List</title>
     <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
     <link rel="stylesheet" href="assets/tether/tether.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -60,12 +60,12 @@
             </div>
         </nav>
     </section>
-    <section class="engine"><a href="https://mobirise.co/b">free web creator</a></section>
-    <section class="section-table cid-qECfQou8Ns mbr-parallax-background" id="table1-w" data-rv-view="3875">
-        <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);">
+    <section class="engine"><a href="https://mobirise.co/n">bootstrap modal popup</a></section>
+    <section class="section-table cid-qEChLAALjA mbr-parallax-background" id="table1-z" data-rv-view="3793">
+        <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(35, 35, 35);">
         </div>
         <div class="container container-table">
-            <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Event List</strong><strong><br></strong></h2>
+            <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Sponsored Item List</strong><strong><br></strong></h2>
             <div class="table-backpanel">
                 <div class="table-wrapper">
                     <div class="container">
@@ -83,77 +83,38 @@
                         <table class="table isSearch" cellspacing="0">
                             <thead>
                                 <tr class="table-heads ">
-                                    <th class="head-item mbr-fonts-style display-7">Event ID</th>
-                                    <th class="head-item mbr-fonts-style display-7">Event Name</th>
-                                    <th class="head-item mbr-fonts-style display-7">Event Category</th>
-                                    <th class="head-item mbr-fonts-style display-7">Event Date</th>
-                                    <th class="head-item mbr-fonts-style display-7">Event Time</th>
-                                    <th class="head-item mbr-fonts-style display-7">Event Location</th>
+                                    <th class="head-item mbr-fonts-style display-7">Item ID</th>
+                                    <th class="head-item mbr-fonts-style display-7">Collaborator ID</th>
+                                    <th class="head-item mbr-fonts-style display-7">Collaborator Type</th>
+                                    <th class="head-item mbr-fonts-style display-7">Item Name</th>
+                                    <th class="head-item mbr-fonts-style display-7">Item Quantity</th>
                                     <th class="head-item mbr-fonts-style display-7"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="body-item mbr-fonts-style display-7">E0001</td>
-                                    <td class="body-item mbr-fonts-style display-7">What Is Network Security?</td>
-                                    <td class="body-item mbr-fonts-style display-7">Workshop/Talk</td>
-                                    <td class="body-item mbr-fonts-style display-7">2016-10-17</td>
-                                    <td class="body-item mbr-fonts-style display-7">2pm-4pm</td>
-                                    <td class="body-item mbr-fonts-style display-7">Lot 5-2</td>
+                                    <td class="body-item mbr-fonts-style display-7">H0001</td>
+                                    <td class="body-item mbr-fonts-style display-7">C0001</td>
+                                    <td class="body-item mbr-fonts-style display-7">Mee Woo Enterprise</td>
+                                    <td class="body-item mbr-fonts-style display-7">Hamper</td>
+                                    <td class="body-item mbr-fonts-style display-7">10</td>
                                     <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
                                         <button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button>
                                         <button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="body-item mbr-fonts-style display-7">E0001</td>
-                                    <td class="body-item mbr-fonts-style display-7">What Is Network Security?</td>
-                                    <td class="body-item mbr-fonts-style display-7">Workshop/Talk</td>
-                                    <td class="body-item mbr-fonts-style display-7">2016-10-17</td>
-                                    <td class="body-item mbr-fonts-style display-7">2pm-4pm</td>
-                                    <td class="body-item mbr-fonts-style display-7">Lot 5-2</td>
+                                    <td class="body-item mbr-fonts-style display-7">H0002</td>
+                                    <td class="body-item mbr-fonts-style display-7">C0002</td>
+                                    <td class="body-item mbr-fonts-style display-7">SKC Sdn.Bhd</td>
+                                    <td class="body-item mbr-fonts-style display-7">Prizes</td>
+                                    <td class="body-item mbr-fonts-style display-7">25</td>
                                     <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
                                         <button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button>
                                         <button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button>
-                                    </td>
+                                        </td>
                                 </tr>
-                                <tr>
-                                    <td class="body-item mbr-fonts-style display-7">E0001</td>
-                                    <td class="body-item mbr-fonts-style display-7">What Is Network Security?</td>
-                                    <td class="body-item mbr-fonts-style display-7">Workshop/Talk</td>
-                                    <td class="body-item mbr-fonts-style display-7">2016-10-17</td>
-                                    <td class="body-item mbr-fonts-style display-7">2pm-4pm</td>
-                                    <td class="body-item mbr-fonts-style display-7">Lot 5-2</td>
-                                    <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
-                                        <button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button>
-                                        <button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="body-item mbr-fonts-style display-7">E0001</td>
-                                    <td class="body-item mbr-fonts-style display-7">What Is Network Security?</td>
-                                    <td class="body-item mbr-fonts-style display-7">Workshop/Talk</td>
-                                    <td class="body-item mbr-fonts-style display-7">2016-10-17</td>
-                                    <td class="body-item mbr-fonts-style display-7">2pm-4pm</td>
-                                    <td class="body-item mbr-fonts-style display-7">Lot 5-2</td>
-                                    <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
-                                        <button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button>
-                                        <button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="body-item mbr-fonts-style display-7">E0001</td>
-                                    <td class="body-item mbr-fonts-style display-7">What Is Network Security?</td>
-                                    <td class="body-item mbr-fonts-style display-7">Workshop/Talk</td>
-                                    <td class="body-item mbr-fonts-style display-7">2016-10-17</td>
-                                    <td class="body-item mbr-fonts-style display-7">2pm-4pm</td>
-                                    <td class="body-item mbr-fonts-style display-7">Lot 5-2</td>
-                                    <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
-                                        <button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button>
-                                        <button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button>
-                                    </td>
-                                </tr>
-                            </tbody>
+                             </tbody>
                         </table>
                     </div>
                     <div class="container table-info-container">
@@ -175,7 +136,7 @@
             </div>
         </div>
     </section>
-    <section class="cid-qECfQpVpR9" id="footer1-x" data-rv-view="740">
+    <section class="cid-qEChLCCjpO" id="footer1-10" data-rv-view="555">
         <div class="container">
             <div class="media-container-row content text-white">
                 <div class="col-12 col-md-3">
@@ -221,7 +182,7 @@
                 <div class="media-container-row mbr-white">
                     <div class="col-sm-6 copyright">
                         <p class="mbr-text mbr-fonts-style display-7">
-                            © Copyright 2017 TAR UC Computer Club - All Rights Reserved
+                            Â© Copyright 2017 TAR UC Computer Club - All Rights Reserved
                         </p>
                     </div>
                     <div class="col-md-6">
