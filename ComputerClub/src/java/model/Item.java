@@ -10,6 +10,7 @@ public class Item {
     private String itemType;
     private String itemName;
     private int quantity;
+    private Collaborator collaborator;
 
     public Item() {
 
@@ -39,6 +40,10 @@ public class Item {
         return quantity;
     }
 
+    public Collaborator getCollaborator() {
+        return collaborator;
+    }
+
     //Setters
     public void setItemID(String itemID) {
         this.itemID = itemID;
@@ -54,6 +59,10 @@ public class Item {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    } 
+
+    public void setCollaborator(Collaborator collaborator) {
+        this.collaborator = collaborator;
     }
 
 }
