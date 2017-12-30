@@ -6,9 +6,9 @@ package model;
 
 public class Collaborator {
 
-    private String colabID;
-    private String colabName;
-    private char colabType;
+    private String collabID;
+    private String collabName;
+    private char collabType;
     private String contactNo;
     private String email;
 
@@ -16,25 +16,25 @@ public class Collaborator {
 
     }
 
-    public Collaborator(String colabID, String colabName, char colabType, String contactNo, String email) {
-        this.colabID = colabID;
-        this.colabName = colabName;
-        this.colabType = colabType;
+    public Collaborator(String collabID, String collabName, char collabType, String contactNo, String email) {
+        this.collabID = collabID;
+        this.collabName = collabName;
+        this.collabType = collabType;
         this.contactNo = contactNo;
         this.email = email;
     }
 
     //Getters
     public String getColabID() {
-        return colabID;
+        return collabID;
     }
 
     public String getColabName() {
-        return colabName;
+        return collabName;
     }
 
     public char getColabType() {
-        return colabType;
+        return collabType;
     }
 
     public String getContactNo() {
@@ -46,16 +46,16 @@ public class Collaborator {
     }
 
     //Setters
-    public void setColabID(String colabID) {
-        this.colabID = colabID;
+    public void setColabID(String collabID) {
+        this.collabID = collabID;
     }
 
-    public void setColabName(String colabName) {
-        this.colabName = colabName;
+    public void setColabName(String collabName) {
+        this.collabName = collabName;
     }
 
-    public void setColabType(char colabType) {
-        this.colabType = colabType;
+    public void setColabType(char collabType) {
+        this.collabType = collabType;
     }
 
     public void setContactNo(String contactNo) {
