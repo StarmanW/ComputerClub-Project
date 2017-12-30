@@ -83,8 +83,8 @@ public class MemberDA {
                 pstmt.setString(2, member.getProgramme().getProgID());
                 pstmt.setString(3, member.getStudName().getFirstName());
                 pstmt.setString(4, member.getStudName().getLastName());
-                pstmt.setString(5, member.getEmail());
-                pstmt.setString(6, member.getContactNo());
+                pstmt.setString(5, member.getStudEmail());
+                pstmt.setString(6, member.getStudContact());
                 pstmt.setString(7, member.getIc());
                 pstmt.setString(8, member.getPassword());
                 pstmt.setString(9, String.valueOf(member.getGender()));
@@ -129,8 +129,8 @@ public class MemberDA {
                 pstmt.setString(2, member.getProgramme().getProgID());
                 pstmt.setString(3, member.getStudName().getFirstName());
                 pstmt.setString(4, member.getStudName().getLastName());
-                pstmt.setString(5, member.getEmail());
-                pstmt.setString(6, member.getContactNo());
+                pstmt.setString(5, member.getStudEmail());
+                pstmt.setString(6, member.getStudContact());
                 pstmt.setString(7, member.getIc());
                 pstmt.setString(8, member.getPassword());
                 pstmt.setString(9, String.valueOf(member.getGender()));

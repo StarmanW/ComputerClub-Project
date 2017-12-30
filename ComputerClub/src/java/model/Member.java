@@ -53,7 +53,7 @@ public class Member {
         return studEmail;
     }
 
-    public String getContactNo() {
+    public String getStudContact() {
         return studContact;
     }
 
@@ -98,7 +98,7 @@ public class Member {
         this.studEmail = studEmail;
     }
 
-    public void setContactNo(String studContact) {
+    public void setStudContact(String studContact) {
         this.studContact = studContact;
     }
 
