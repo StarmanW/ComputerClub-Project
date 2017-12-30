@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/logo-1-3508x2480.jpg" type="image/x-icon">
         <meta name="description" content="Website Creator Description">
-        <title>Register Event</title>
+        <title>Register Sponsored Item</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
@@ -51,7 +51,7 @@
                             <div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="registerMember.jsp" aria-expanded="false">MEMBER</a><a class="text-white dropdown-item display-4" href="registerEvent.jsp" aria-expanded="false">EVENT</a><a class="text-white dropdown-item display-4" href="registerCollaborator.jsp" aria-expanded="false">COLLABORATOR</a><a class="dropdown-item text-white display-4" href="registerSponsoredItem.jsp">SPONSORED ITEMS</a></div>
                         </li>
                         <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown-submenu" aria-expanded="false">MANAGE</a>
-                            <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItem.jsp">SPONSORED ITEMS</a></div>
+                        <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItem.jsp">SPONSORED ITEMS</a></div>
                         </li>
                     </ul>
                     <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
@@ -60,14 +60,14 @@
                 </div>
             </nav>
         </section>
-        <section class="cid-qEH6htC0aL mbr-fullscreen mbr-parallax-background" id="header2-19" data-rv-view="3101">
+        <section class="cid-qEH6gWFb4i mbr-fullscreen mbr-parallax-background" id="header2-16" data-rv-view="3109">
             <div class="container align-center">
                 <br />
                 <br />
                 <div class="form-container">
-                    <h1 class="well">Register New Event</h1>
+                    <h1 class="well">Register Sponsored Item</h1>
                     <hr style="border-top:1px solid gray;" />
-                    <div class="col-lg-12 well" style="margin:auto; width:90%">
+                    <div class="col-lg-12 well">
                         <div class="row">
                             <form>
                                 <p style="color:red; float: left;">"*" Required fields</p>
@@ -77,43 +77,23 @@
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
-                                            <label><span style="color:red;">*</span>Event Name</label>
-                                            <input type="text" placeholder="Capture The Flag" class="form-control" pattern="[0-9A-Za-z\-@ ]{2,}" title="Alphanumeric, @ and - symbols only. E.g. - Dota Competition 1v1" required="required">
-                                        </div>
+                                            <label><span style="color:red;">*</span>Item Name</label>
+                                            <input type="text" name="itemName" placeholder="Hamper" class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - John" required="required">
+                                        </div>                                    
                                         <div class="col-sm-6 form-group">
-                                            <label><span style="color:red;">*</span>Event Date</label>
-                                            <input type="date" class="form-control" required="required">
+                                            <label><span style="color:red;">*</span>Item Type</label>
+                                            <input type="text" name="itemType" placeholder="" class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - John" required="required">
                                         </div>
                                     </div>
-                                    <br/>
+                                </div>
+                                <div class="col-sm-12">
                                     <div class="row" style="margin:auto">
-                                        <label><span style="color:red;">*</span>Event Time: &nbsp;</label>
-                                        <br/>
-                                        <input type="time" name="startTime" value="" required="required">&nbsp;to&nbsp;
-                                        <input type="time" name="endTime" value="" required="required">
+                                        <label><span style="color:red;">*</span>Item Quantity</label>
+                                        <input type="number"  class="form-control" min="0" required="required">
                                     </div>
-                                    <br/>
-                                    <div class="row" style="margin:auto">
-                                        <br />
-                                        <label><span style="color:red;">*</span>Event Location</label>
-                                        <input type="text" placeholder="Lot 1-1" class="form-control" required="required">
-                                    </div>
-                                    <br/>
-                                    <div class="row" style="margin:auto">
-                                        <label><span style="color:red;">*</span>Event Category</label>
-                                        <select name="" class="form-control" required="required">
-                                            <option disabled selected value>Select an event category</option>
-                                            <option value="5">Competitions</option>
-                                            <option value="4">Educational Visit/Trips</option>
-                                            <option value="3">Workshops/Talks</option>
-                                            <option value="2">Event Exhibitions</option>
-                                            <option value="1">Others</option>
-                                        </select>
-                                    </div>
-                                    <br/>
                                 </div>
                                 <br />
-                                <div class="form-group">
+                                <div class="submit-button">
                                     <button type="submit" class="btn btn-lg btn-info">Submit</button>
                                     <button type="reset" class="btn btn-lg btn-info">Reset</button>
                                 </div>
@@ -121,11 +101,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- /.container -->
-            <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-            <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-            <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+                <!-- /.container -->
+                <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+                <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+                <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
         </section>
         <section class="cid-qECiDnaZnD" id="footer1-12" data-rv-view="11590">
             <div class="container">
@@ -173,7 +152,7 @@
                     <div class="media-container-row mbr-white">
                         <div class="col-sm-6 copyright">
                             <p class="mbr-text mbr-fonts-style display-7">
-                                © Copyright 2017 TAR UC Computer Club - All Rights Reserved
+                                Â© Copyright 2017 TAR UC Computer Club - All Rights Reserved
                             </p>
                         </div>
                         <div class="col-md-6">

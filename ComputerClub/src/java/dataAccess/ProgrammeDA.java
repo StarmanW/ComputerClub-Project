@@ -61,16 +61,14 @@ public class ProgrammeDA {
     //Select record method
     public Programme selectRecord(String progID) {
         Programme programme = null;
-        String queryStr = "SELECT * FROM" + tableName + "WHERE PROGID = ? AND FACULTYID = ?";
-        Faculty faculty = facultyDA.selectRecord(progID);
+        String queryStr = "SELECT * FROM" + tableName + "WHERE PROGID = ?";
 
         try {
             pstmt = conn.prepareStatement(queryStr);
             pstmt.setString(1, progID);
-            pstmt.setString(2, faculty.getFacultyID());
             rs = pstmt.executeQuery();
             if (rs.next()) {
-                programme = new Programme(rs.getString(1), rs.getString(2), faculty);
+                programme = new Programme(rs.getString(1), rs.getString(2), facultyDA.selectRecord(rs.getString(3)));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -1,5 +1,10 @@
+<%@page import="model.Member"%>
 <%@page import="java.util.ArrayList"%>
 <jsp:useBean id="programmeDA" class="dataAccess.ProgrammeDA" scope="application"></jsp:useBean>
+<jsp:useBean id="memberDA" class="dataAccess.MemberDA" scope="application"></jsp:useBean>
+<%
+    Member member = memberDA.selectRecord(request.getParameter("studID"));
+%>
     <!DOCTYPE html>
     <html>
 
@@ -11,7 +16,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
             <link rel="shortcut icon" href="assets/images/logo-1-3508x2480.jpg" type="image/x-icon">
             <meta name="description" content="Website Creator Description">
-            <title>Register Member</title>
+            <title>Update Member</title>
             <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
             <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
             <link rel="stylesheet" href="assets/tether/tether.min.css">
@@ -67,11 +72,11 @@
                     <br />
                     <br />
                     <div class="form-container">
-                        <h1 class="well">Register New Member</h1>
+                        <h1 class="well">Update Member Details</h1>
                         <hr style="border-top:1px solid gray;" />
                         <div class="col-lg-12 well">
                             <div class="row">
-                                <form method="post" action="ProcessRegistrationMember">
+                                <form method="get" action="">
                                     <p style="color:red; float: left;">"*" Required fields</p>
                                     <br />
                                     <br />
@@ -82,31 +87,31 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>First Name</label>
-                                            <input type="text" name="fName" placeholder="John" class="form-control" pattern="[A-Za-z\-@ ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - John" required="required">
+                                            <input type="text" name="fName" placeholder="John" class="form-control" value="<%=member.getStudName().getFirstName()%>" pattern="[A-Za-z\-@ ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - John" required="required">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Last Name</label>
-                                            <input type="text" name="lName" placeholder="Doe" class="form-control" pattern="[A-Za-z\-@ ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Smith" required="required">
+                                            <input type="text" name="lName" placeholder="Doe" class="form-control" value="<%=member.getStudName().getLastName()%>" pattern="[A-Za-z\-@ ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Smith" required="required">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>IC Number</label>
-                                            <input type="text" name="icNum" placeholder="981213125523" class="form-control" pattern="\d{12}" title="Numeric only. E.g. 985564127789" required="required">
+                                            <input type="text" name="icNum" placeholder="981213125523" class="form-control" value="<%=member.getIc()%>" pattern="\d{12}" title="Numeric only. E.g. 985564127789" required="required">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Member ID</label>
-                                            <input type="text" name="memID" placeholder="16SMD00990" class="form-control" pattern="^\d{2}[A-Z]{3}\d{5}$" title="E.g. 16SMD00990" required="required">
+                                            <input type="text" name="memID" placeholder="16SMD00990" class="form-control" value="<%=member.getStudID()%>" pattern="^\d{2}[A-Z]{3}\d{5}$" title="E.g. 16SMD00990" required="required">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Contact Number</label>
-                                            <input type="text" name="contactNo" placeholder="0195421325" class="form-control" pattern="([0-9]|[0-9\-]){3,20}" title="Numeric and '-' symbols only. E.g. 014-8897875" required="required">
+                                            <input type="text" name="contactNo" placeholder="0195421325" class="form-control" value="<%=member.getContactNo()%>" pattern="([0-9]|[0-9\-]){3,20}" title="Numeric and '-' symbols only. E.g. 014-8897875" required="required">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Email</label>
-                                            <input type="email" name="email" placeholder="email@hotmail.com" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="E.g. - cisco@business.co.uk" required="required">
+                                            <input type="email" name="email" placeholder="email@hotmail.com" class="form-control" value="<%=member.getEmail()%>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="E.g. - cisco@business.co.uk" required="required">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -116,10 +121,16 @@
                                                 <option disabled selected value>Select programme ID</option>
                                                 <%
                                                     ArrayList<model.Programme> progList = programmeDA.selectAllProgrammes();
+                                                    String progID = member.getProgramme().getProgID();
                                                     for (int i = 0; i < progList.size(); i++) {
+                                                        if (progID.equals(progList.get(i).getProgID())) {
                                                 %>
+                                                <option value="<%=progList.get(i).getProgID()%>" selected="selected"><%=progList.get(i).getProgID()%></option>
+                                                <%} else {%>
                                                 <option value="<%=progList.get(i).getProgID()%>"><%=progList.get(i).getProgID()%></option>
-                                                <%}%>
+                                                <% }
+                                                }
+                                                %>
                                             </select>
                                         </div>
                                         <div class="col-sm-6 form-group">
@@ -129,10 +140,11 @@
                                                 <%
                                                     java.time.LocalDateTime time = java.time.LocalDateTime.now();
                                                     int year = time.getYear();
+                                                    String academicYear = member.getAcademicYear();
                                                     for (int i = 0; i < 5; i++) {
                                                         if (i == 0) {
                                                 %>
-                                                <option value="<%=year - 1%>/<%=year%>"><%=year - 1%>/<%=year%></option>
+                                                <option value="<%=year - 1%>/<%=year%>" ><%=year - 1%>/<%=year%></option>
                                                 <%} else if (i == 1) {%>
                                                 <option value="<%=year%>/<%=year + i%>"><%=year%>/<%=year + i%></option>
                                                 <%} else {%>
@@ -259,9 +271,7 @@
         <script>
             var urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('success')) {
-                window.alert("New Member successfully added!");
-            } else if (urlParams.has('duplicated')) {
-                window.alert("Duplicated records found, please ensure the new member record does not exist in the member list.");
+                window.alert("New Member details successfully updated!");
             } else if (urlParams.has('error')) {
                 window.alert("Oh no! An error has occured, please contact the system administrator.");
             }
