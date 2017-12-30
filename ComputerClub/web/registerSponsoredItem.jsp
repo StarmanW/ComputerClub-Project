@@ -77,20 +77,31 @@
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
+                                            <label><span style="color:red;">*</span>Item ID</label>
+                                            <input type="text" name="itemId" placeholder="S0001" class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - S9999" required="required">
+                                        </div> 
+                                        <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Item Name</label>
-                                            <input type="text" name="itemName" placeholder="Hamper" class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - John" required="required">
-                                        </div>                                    
+                                            <input type="text" name="itemName" placeholder="Hamper" class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Nike" required="required">
+                                        </div> 
+                                        </br>
+                                        
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Item Type</label>
-                                            <input type="text" name="itemType" placeholder="" class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - John" required="required">
+                                            <input type="text" name="itemType" placeholder="" class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Bottle" required="required">
                                         </div>
+                                        
+                                            <div class="col-sm-6 form-group">
+                                        <label><span style="color:red;">*</span>Item Quantity</label>
+                                        <input type="number"  class="form-control" min="0" required="required">
+                                        </div>  
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
-                                    <div class="row" style="margin:auto">
-                                        <label><span style="color:red;">*</span>Item Quantity</label>
-                                        <input type="number"  class="form-control" min="0" required="required">
-                                    </div>
+                                            <div class="row" style="margin:auto">
+                                            <label>Item Details</label>
+                                            <input type="textarea" name="itemDetails" placeholder="Enter if needed" class="form-control">
+                                        </div>
                                 </div>
                                 <br />
                                 <div class="submit-button">
