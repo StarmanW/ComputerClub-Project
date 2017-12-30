@@ -54,19 +54,19 @@ public class ProgrammeDA {
     }
 
     //Method to retrieve a specific programme
-    public Programme selectProgramme(String progID, String facultyID) {
-        return (Programme) selectRecord(progID, facultyID);
+    public Programme selectProgramme(String progID) {
+        return (Programme) selectRecord(progID);
     }
     
     //Select record method
-    public ResultSet selectRecord(String progID, String facultyID) {
+    public ResultSet selectRecord(String progID) {
         ResultSet rs = null;
         String queryStr = "SELECT * FROM" + tableName + "WHERE PROGID = ? AND FACULTYID = ?";
 
         try {
             pstmt = conn.prepareStatement(queryStr);
             pstmt.setString(1, progID);
-            pstmt.setString(2, facultyID);
+            pstmt.setString(2, facultyDA.selectFaculty(progID).getFacultyID());
             rs = pstmt.executeQuery();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -82,7 +82,7 @@ public class ProgrammeDA {
         String progName = programme.getProgName();
         String facultyID = faculty.getFacultyID();
         String queryStr = "INSERT INTO" + tableName + "VALUES(?,?,?)";
-        ResultSet rs = selectRecord(progID, facultyID);
+        ResultSet rs = selectRecord(progID);
 
         try {
             if (rs.next()) {
@@ -105,7 +105,7 @@ public class ProgrammeDA {
 
     //Retrieve method
     public void retrieveRecord(String progID, String facultyID) {
-        ResultSet rs = selectRecord(progID, facultyID);
+        ResultSet rs = selectRecord(progID);
 
         try {
             if (rs.next()) {
@@ -126,7 +126,7 @@ public class ProgrammeDA {
         String progName = programme.getProgName();
         String facultyID = faculty.getFacultyID();
         String queryStr = "UPDATE" + tableName + "SET PROGNAME = ? WHERE PROGID = ? AND FACULTYID = ?";
-        ResultSet rs = selectRecord(progID, facultyID);
+        ResultSet rs = selectRecord(progID);
 
         try {
             if (rs.next()) {
@@ -152,7 +152,7 @@ public class ProgrammeDA {
         int succesInsert = 0;
 
         String queryStr = "DELETE FROM" + tableName + "WHERE PROGID = ? AND FACULTYID = ?";
-        ResultSet rs = selectRecord(progID, facultyID);
+        ResultSet rs = selectRecord(progID);
 
         try {
             if (rs.next()) {
