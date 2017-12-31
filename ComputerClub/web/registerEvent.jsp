@@ -68,7 +68,7 @@
                     <hr style="border-top:1px solid gray;" />
                     <div class="col-lg-12 well" style="margin:auto; width:90%">
                         <div class="row">
-                            <form>
+                            <form action="" method="POST">
                                 <p style="color:red; float: left;">"*" Required fields</p>
                                 <br />
                                 <br />
@@ -77,11 +77,11 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Event Name</label>
-                                            <input type="text" placeholder="Capture The Flag" class="form-control" pattern="[0-9A-Za-z\-@ ]{2,}" title="Alphanumeric, @ and - symbols only. E.g. - Dota Competition 1v1" required="required">
+                                            <input type="text" name="eventName" placeholder="Capture The Flag" class="form-control" pattern="[0-9A-Za-z\-@ ]{2,}" title="Alphanumeric, @ and - symbols only. E.g. - Dota Competition 1v1" required="required">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Event Date</label>
-                                            <input type="date" class="form-control" required="required">
+                                            <input type="date" name="eventDate" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <br/>
@@ -95,12 +95,12 @@
                                     <div class="row" style="margin:auto">
                                         <br />
                                         <label><span style="color:red;">*</span>Event Location</label>
-                                        <input type="text" placeholder="Lot 1-1" class="form-control" required="required">
+                                        <input type="text" name="eventLocation" placeholder="Lot 1-1" class="form-control" required="required">
                                     </div>
                                     <br/>
                                     <div class="row" style="margin:auto">
                                         <label><span style="color:red;">*</span>Event Category</label>
-                                        <select name="" class="form-control" required="required">
+                                        <select name="eventType" class="form-control" required="required">
                                             <option disabled selected value>Select an event category</option>
                                             <option value="5">Competitions</option>
                                             <option value="4">Educational Visit/Trips</option>
