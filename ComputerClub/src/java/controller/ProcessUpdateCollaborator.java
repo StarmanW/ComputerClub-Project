@@ -14,8 +14,8 @@ import model.Collaborator;
  *
  * @author StarmanW
  */
-@WebServlet(name = "ProcessRegistrationCollaborator", urlPatterns = {"/ProcessRegistrationCollaborator"})
-public class ProcessRegistrationCollaborator extends HttpServlet {
+@WebServlet(name = "ProcessUpdateCollaborator", urlPatterns = {"/ProcessUpdateCollaborator"})
+public class ProcessUpdateCollaborator extends HttpServlet {
 
     CollaboratorDA collaboratorDA;
 

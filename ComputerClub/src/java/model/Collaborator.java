@@ -27,15 +27,15 @@ public class Collaborator {
     }
 
     //Getters
-    public String getColabID() {
+    public String getCollabID() {
         return collabID;
     }
 
-    public String getColabName() {
+    public String getCollabName() {
         return collabName;
     }
 
-    public int getColabType() {
+    public int getCollabType() {
         return collabType;
     }
 
@@ -68,15 +68,15 @@ public class Collaborator {
     }
 
     //Setters
-    public void setColabID(String collabID) {
+    public void setCollabID(String collabID) {
         this.collabID = collabID;
     }
 
-    public void setColabName(String collabName) {
+    public void setCollabName(String collabName) {
         this.collabName = collabName;
     }
 
-    public void setColabType(char collabType) {
+    public void setCollabType(char collabType) {
         this.collabType = collabType;
     }
 

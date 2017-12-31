@@ -3,6 +3,7 @@
 <%
     session = request.getSession();
     Collaborator collaborator = collaboratorDA.selectRecord(request.getParameter("collabID"));
+    session.setAttribute("collabID", collaborator.getCollabID());
 %>
 <!DOCTYPE html>
 <html>
@@ -70,7 +71,7 @@
                 <br />
                 <br />
                 <div class="form-container">
-                    <h1 class="well">Update Collaborator Details</h1>
+                    <h1 class="well">Update Collaborator <%=collaborator.getCollabID()%> Details</h1>
                     <hr style="border-top:1px solid gray;" />
                     <div class="col-lg-12 well">
                         <div class="row">
@@ -85,14 +86,14 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Collaborator Name</label>
-                                            <input type="text" name="collabName" placeholder="Ajax Inc." class="form-control" value="<%=collaborator.getColabName()%>" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - John" required="required">
+                                            <input type="text" name="collabName" placeholder="Ajax Inc." class="form-control" value="<%=collaborator.getCollabName()%>" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - John" required="required">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Collaborator Type</label>
                                             </br>
                                             </br>
-                                            <input type="radio" name="collabType" value="1" <%if (collaborator.getColabType() == 1) {%> checked="checked" <%}%> required="required" /> Company &nbsp;
-                                            <input type="radio" name="collabType" value="2" <%if (collaborator.getColabType() == 2) {%> checked="checked" <%}%> /> Individual
+                                            <input type="radio" name="collabType" value="1" <%if (collaborator.getCollabType() == 1) {%> checked="checked" <%}%> required="required" /> Company &nbsp;
+                                            <input type="radio" name="collabType" value="2" <%if (collaborator.getCollabType() == 2) {%> checked="checked" <%}%> /> Individual
                                         </div>
                                     </div>
                                     <div class="row">

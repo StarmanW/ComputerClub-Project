@@ -103,14 +103,14 @@
                                         for (int i = 0; i < collabList.size(); i++) {
                                     %>
                                     <tr>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getColabID()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getColabName()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabID()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabName()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabTypeString()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabContact()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabEmail()%></td>
                                         <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
-                                            <a href="updateCollaborator.jsp?collabID=<%=collabList.get(i).getColabID()%>"><button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button></a>
-                                            <a href="deleteCollaborator.jsp?collabID=<%=collabList.get(i).getColabID()%>"><button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button></a>
+                                            <a href="updateCollaborator.jsp?collabID=<%=collabList.get(i).getCollabID()%>"><button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button></a>
+                                            <a href="deleteCollaborator.jsp?collabID=<%=collabList.get(i).getCollabID()%>"><button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button></a>
                                         </td>
                                     </tr>
                                     <%}%>

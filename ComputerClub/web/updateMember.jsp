@@ -73,7 +73,7 @@
                 <br />
                 <br />
                 <div class="form-container">
-                    <h1 class="well">Update Member Details</h1>
+                    <h1 class="well">Update Member <%=member.getStudID()%> Details</h1>
                     <hr style="border-top:1px solid gray;" />
                     <div class="col-lg-12 well">
                         <div class="row">

@@ -66,9 +66,9 @@ public class CollaboratorDA {
     //Create method
     public int createRecord(Collaborator collaborator) throws Exception {
         int successInsert = 0;
-        String collabID = collaborator.getColabID();
-        String collabName = collaborator.getColabName();
-        int collabType = collaborator.getColabType();
+        String collabID = collaborator.getCollabID();
+        String collabName = collaborator.getCollabName();
+        int collabType = collaborator.getCollabType();
         String collabContact = collaborator.getCollabContact();
         String collabEmail = collaborator.getCollabEmail();
         String additionalNotes = collaborator.getAdditionalNotes();
@@ -99,9 +99,9 @@ public class CollaboratorDA {
     public int updateRecord(Collaborator collaborator) throws Exception {
         int successUpdate = 0;
 
-        String collabID = collaborator.getColabID();
-        String collabName = collaborator.getColabName();
-        int collabType = collaborator.getColabType();
+        String collabID = collaborator.getCollabID();
+        String collabName = collaborator.getCollabName();
+        int collabType = collaborator.getCollabType();
         String collabContact = collaborator.getCollabContact();
         String collabEmail = collaborator.getCollabEmail();
         String additionalNotes = collaborator.getAdditionalNotes();

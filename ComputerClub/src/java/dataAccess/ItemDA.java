@@ -74,7 +74,7 @@ public class ItemDA {
         int successInsert = 0;
         
         String itemID = item.getItemID();
-        String collabID = collaborator.getColabID();
+        String collabID = collaborator.getCollabID();
         int itemType = item.getItemType();
         String itemName = item.getItemName();
         int itemQuantity = item.getQuantity();
@@ -125,7 +125,7 @@ public class ItemDA {
         int successInsert = 0;
 
         String itemID = item.getItemID();
-        String collabID = collaborator.getColabID();
+        String collabID = collaborator.getCollabID();
         int itemType = item.getItemType();
         String itemName = item.getItemName();
         int itemQuantity = item.getQuantity();
