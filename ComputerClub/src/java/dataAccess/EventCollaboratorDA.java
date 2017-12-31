@@ -37,7 +37,7 @@ public class EventCollaboratorDA {
     }
 
     //Method to retrieve all records
-    public ArrayList<EventCollaborator> selectAllCollaboratorList() {
+    public ArrayList<EventCollaborator> selectAllEventCollabList() {
         ArrayList<EventCollaborator> selectAllEventCollabList = new ArrayList<EventCollaborator>();
 
         try {
