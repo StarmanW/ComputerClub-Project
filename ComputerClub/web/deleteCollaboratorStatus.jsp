@@ -1,9 +1,6 @@
-<%@page import="model.Member"%>
-<jsp:useBean id="memberDA" class="dataAccess.MemberDA" scope="application"></jsp:useBean>
+<%@page import="model.Collaborator"%>
 <%
-    session = request.getSession();
-    Member member = memberDA.selectRecord(request.getParameter("studID"));
-    session.setAttribute("memberToDelete", member);
+    Collaborator collaborator = (Collaborator) session.getAttribute("collaboratorToDelete");
 %>
 <!DOCTYPE html>
 <html>
@@ -15,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/logo-1-3508x2480.jpg" type="image/x-icon">
         <meta name="description" content="Website Creator Description">
-        <title>Delete Member</title>
+        <title>Delete Collaborator Status</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
@@ -57,7 +54,7 @@
                             <div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="registerMember.jsp" aria-expanded="false">MEMBER</a><a class="text-white dropdown-item display-4" href="registerEvent.jsp" aria-expanded="false">EVENT</a><a class="text-white dropdown-item display-4" href="registerCollaborator.jsp" aria-expanded="false">COLLABORATOR</a><a class="dropdown-item text-white display-4" href="registerSponsoredItem.jsp">SPONSORED ITEMS</a></div>
                         </li>
                         <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown-submenu" aria-expanded="false">MANAGE</a>
-                            <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItem.jsp">SPONSORED ITEMS</a></div>
+                            <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItemList.jsp">SPONSORED ITEMS</a></div>
                         </li>
                     </ul>
                     <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
@@ -66,24 +63,31 @@
                 </div>
             </nav>
         </section>
-        <section class="cid-qECj4TnJzd mbr-fullscreen mbr-parallax-background" id="header2-14" data-rv-view="3093">
+        <section class="cid-qEH6gWFb4i mbr-fullscreen mbr-parallax-background" id="header2-16" data-rv-view="3109">
             <div class="container align-center">
                 <br />
                 <br />
                 <div class="form-container">
-                    <h1 class="well">Confirm Delete Member <%=member.getStudID()%></h1>
+                    <h1 class="well">Deletion Status</h1>
                     <hr style="border-top:1px solid gray;" />
                     <div class="col-lg-12 well">
                         <div class="row">
-                            <form method="post" action="ProcessDeleteMember">
+                            <form method="post" action="">
                                 <div class="row" style="margin:auto">
-                                    <h5>Confirm delete member <%=member.getStudID()%> (<%=member.getStudName().getFullName()%>) details? 
-                                        <br/><br/><span style="color:red">*Please note that this action cannot be undone.</span></h5>
+                                    <%
+                                        if (request.getParameter("success") != null) {
+                                    %>
+                                    <h5>Collaborator <%=collaborator.getCollabID()%> (<%=collaborator.getCollabName()%>) has been successfully deleted.</h5>
+                                    <%} else {%>
+                                    <h5>An error has occurred while deleting <%=collaborator.getCollabID()%><br />
+                                        The errors are:<br/>
+                                        <%=session.getAttribute("errorMsg")%>
+                                    </h5>
+                                    <%}%>
                                 </div>
                                 <br />
-                                <div class="submit-button">
-                                    <button type="submit" class="btn btn-lg btn-info">Confirm Delete</button>
-                                    <a href="memberList.jsp"><button type="button" class="btn btn-lg btn-info">Back</button></a>
+                                <div class="submit-button" style="margin-left:0">
+                                    <a href="collaboratorList.jsp"><button type="button" class="btn btn-lg btn-info">Back</button></a>
                                 </div>
                             </form>
                         </div>
@@ -141,7 +145,7 @@
                     <div class="media-container-row mbr-white">
                         <div class="col-sm-6 copyright">
                             <p class="mbr-text mbr-fonts-style display-7">
-                                © Copyright 2017 TAR UC Computer Club - All Rights Reserved
+                                Â© Copyright 2017 TAR UC Computer Club - All Rights Reserved
                             </p>
                         </div>
                         <div class="col-md-6">

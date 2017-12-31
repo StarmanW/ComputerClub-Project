@@ -54,8 +54,8 @@ public class ProcessUpdateMember extends HttpServlet {
         //Perform update on member detail
         try {
             memberDA = new MemberDA();
-            int successInsert = memberDA.updateRecord(member, studIDOriginal);
-            switch (successInsert) {
+            int successUpdate = memberDA.updateRecord(member, studIDOriginal);
+            switch (successUpdate) {
                 case 1:
                     response.sendRedirect("updateMember.jsp?studID=" + member.getStudID() + "&success");
                     break;

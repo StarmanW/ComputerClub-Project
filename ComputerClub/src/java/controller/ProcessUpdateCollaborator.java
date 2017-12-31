@@ -43,8 +43,8 @@ public class ProcessUpdateCollaborator extends HttpServlet {
             //Creating new collaborator object
             Collaborator collaborator = new Collaborator(String.format(collabID, (collabList.size() + 1)), collabName, collabType, collabContact, collabEmail, additionalNotes);
 
-            int successInsert = collaboratorDA.updateRecord(collaborator);
-            switch (successInsert) {
+            int successUpdate = collaboratorDA.updateRecord(collaborator);
+            switch (successUpdate) {
                 case 1:
                     response.sendRedirect("updateCollaborator.jsp?collabID=" + collabID + "&success");
                     break;
