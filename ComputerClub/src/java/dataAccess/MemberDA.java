@@ -124,7 +124,7 @@ public class MemberDA {
         int successUpdate = 0;
 
         try {
-            findRecord(member.getStudID());
+            findRecord(studIDOriginal);
             if (rs.next()) {
                 pstmt = conn.prepareStatement("UPDATE" + tableName + "SET MEMBERID = ?, PROGID = ?, FIRSTNAME = ?, LASTNAME = ?, STUDEMAIL = ?, STUDCONTACT = ?, ICNUM = ?, PASS = ?, GENDER = ?, MEMFEESTATS = ?, POSITION = ?, ACADEMICYEAR = ? WHERE MEMBERID = ?");
                 pstmt.setString(1, member.getStudID());

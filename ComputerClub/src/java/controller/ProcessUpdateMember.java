@@ -25,7 +25,7 @@ public class ProcessUpdateMember extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         programmeDA = new ProgrammeDA();
         
-        String studIDOriginal = String.valueOf(request.getSession().getAttribute("studIDOriginal"));
+        String studIDOriginal = (String) request.getSession().getAttribute("studIDOriginal");
         
         //Retrieve all the values
         String fName = request.getParameter("fName");
