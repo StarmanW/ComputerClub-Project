@@ -2,8 +2,6 @@ package dataAccess;
 
 import java.sql.*;
 import java.util.ArrayList;
-import model.Collaborator;
-import model.Event;
 import model.EventCollaborator;
 
 /**
