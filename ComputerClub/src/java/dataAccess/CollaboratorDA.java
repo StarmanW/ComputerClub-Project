@@ -118,8 +118,6 @@ public class CollaboratorDA {
                 pstmt.setString(4, collabEmail);
                 pstmt.setString(5, additionalNotes);
                 pstmt.setString(6, collabID);
-                pstmt.executeUpdate();
-
                 successUpdate = pstmt.executeUpdate();
             } else {
                 successUpdate = 0;
@@ -139,11 +137,9 @@ public class CollaboratorDA {
 
         try {
             findRecord(collabID);
-
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, collabID);
-                pstmt.executeUpdate();
                 successDelete = pstmt.executeUpdate();
             } else {
                 successDelete = 0;

@@ -1,9 +1,9 @@
-<%@page import="model.Member"%>
-<jsp:useBean id="memberDA" class="dataAccess.MemberDA" scope="application"></jsp:useBean>
+<%@page import="model.Collaborator"%>
+<jsp:useBean id="collaboratorDA" class="dataAccess.CollaboratorDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
-    Member member = memberDA.selectRecord(request.getParameter("studID"));
-    session.setAttribute("memberToDelete", member);
+    Collaborator collaborator = collaboratorDA.selectRecord(request.getParameter("collabID"));
+    session.setAttribute("collaboratorToDelete", collaborator);
 %>
 <!DOCTYPE html>
 <html>
@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/logo-1-3508x2480.jpg" type="image/x-icon">
         <meta name="description" content="Website Creator Description">
-        <title>Delete Member</title>
+        <title>Delete Collaborator</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
@@ -66,24 +66,24 @@
                 </div>
             </nav>
         </section>
-        <section class="cid-qECj4TnJzd mbr-fullscreen mbr-parallax-background" id="header2-14" data-rv-view="3093">
+        <section class="cid-qEH6gWFb4i mbr-fullscreen mbr-parallax-background" id="header2-16" data-rv-view="3109">
             <div class="container align-center">
                 <br />
                 <br />
                 <div class="form-container">
-                    <h1 class="well">Confirm Delete Member <%=member.getStudID()%></h1>
+                    <h1 class="well">Confirm Delete Collaborator <%=collaborator.getCollabID()%></h1>
                     <hr style="border-top:1px solid gray;" />
                     <div class="col-lg-12 well">
                         <div class="row">
-                            <form method="post" action="ProcessDeleteMember">
+                            <form method="post" action="ProcessDeleteCollaborator">
                                 <div class="row" style="margin:auto">
-                                    <h5>Confirm delete member <%=member.getStudID()%> (<%=member.getStudName().getFullName()%>) details? 
+                                    <h5>Confirm delete collaborator <%=collaborator.getCollabID()%> (<%=collaborator.getCollabName()%>) details? 
                                         <br/><br/><span style="color:red">*Please note that this action cannot be undone.</span></h5>
                                 </div>
                                 <br />
                                 <div class="submit-button">
                                     <button type="submit" class="btn btn-lg btn-info">Confirm Delete</button>
-                                    <a href="memberList.jsp"><button type="button" class="btn btn-lg btn-info">Back</button></a>
+                                    <a href="collaboratorList.jsp"><button type="button" class="btn btn-lg btn-info">Back</button></a>
                                 </div>
                             </form>
                         </div>
