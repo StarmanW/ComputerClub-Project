@@ -48,7 +48,7 @@ public class CollaboratorDA {
         return selectAllCollabList;
     }
 
-//Select record method
+    //Select record method
     public Collaborator selectRecord(String facultyID) {
         Collaborator collaborator = null;
         String queryStr = "SELECT * FROM" + tableName + "WHERE COLLABID = ?";
@@ -139,7 +139,7 @@ public class CollaboratorDA {
                 pstmt.setInt(2, collabType);
                 pstmt.setString(3, collabContact);
                 pstmt.setString(4, collabEmail);
-                pstmt.setString(5,additionalNotes);
+                pstmt.setString(5, additionalNotes);
                 pstmt.setString(6, collabID);
                 pstmt.executeUpdate();
 
