@@ -126,7 +126,6 @@ public class EventCollaboratorDA {
                 pstmt.setString(1, eventID);
                 pstmt.setString(2, collabID);
                 pstmt.setString(3, eventCollabID);
-                pstmt.executeUpdate();
 
                 successUpdate = pstmt.executeUpdate();
             } else {
@@ -151,7 +150,6 @@ public class EventCollaboratorDA {
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, eventCollabID);
-                pstmt.executeUpdate();
                 successDelete = pstmt.executeUpdate();
             } else {
                 successDelete = 0;
