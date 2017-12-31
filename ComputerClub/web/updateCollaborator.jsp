@@ -1,3 +1,9 @@
+<%@page import="model.Collaborator"%>
+<jsp:useBean id="collaboratorDA" class="dataAccess.CollaboratorDA" scope="application"></jsp:useBean>
+<%
+    session = request.getSession();
+    Collaborator collaborator = collaboratorDA.selectRecord(request.getParameter("collabID"));
+%>
 <!DOCTYPE html>
 <html>
 
@@ -8,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/logo-1-3508x2480.jpg" type="image/x-icon">
         <meta name="description" content="Website Creator Description">
-        <title>Register Collaborator</title>
+        <title>Update Collaborator</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
@@ -19,9 +25,9 @@
         <link rel="stylesheet" href="assets/dropdown/css/style.css">
         <link rel="stylesheet" href="assets/theme/css/style.css">
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+        <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
         <link rel="stylesheet" href="assets/css/registerMember.css" type="text/css">
     </head>
-
     <body>
         <section class="menu cid-qDNS0J8sKR" once="menu" id="menu1-k" data-rv-view="2425">
             <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
@@ -64,50 +70,50 @@
                 <br />
                 <br />
                 <div class="form-container">
-                    <h1 class="well">Register New Collaborator</h1>
+                    <h1 class="well">Update Collaborator Details</h1>
                     <hr style="border-top:1px solid gray;" />
                     <div class="col-lg-12 well">
                         <div class="row">
-                            <form method="POST" action="ProcessRegistrationCollaborator">
+                            <form method="POST" action="ProcessUpdateCollaborator">
                                 <p style="color:red; float: left;">"*" Required fields</p>
                                 <br />
                                 <br />
                                 <% if (request.getParameter("empty") != null) {%>
                                 <p style="color:red">Please ensure all the fields are not left blank</p>
-                                <%}%>                                
+                                <%}%> 
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Collaborator Name</label>
-                                            <input type="text" name="collabName" placeholder="Ajax Inc." class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - John" required="required">
+                                            <input type="text" name="collabName" placeholder="Ajax Inc." class="form-control" value="<%=collaborator.getColabName()%>" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - John" required="required">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Collaborator Type</label>
                                             </br>
                                             </br>
-                                            <input type="radio" name="collabType" value="1" required="required" /> Company &nbsp;
-                                            <input type="radio" name="collabType" value="2" /> Individual
+                                            <input type="radio" name="collabType" value="1" <%if (collaborator.getColabType() == 1) {%> checked="checked" <%}%> required="required" /> Company &nbsp;
+                                            <input type="radio" name="collabType" value="2" <%if (collaborator.getColabType() == 2) {%> checked="checked" <%}%> /> Individual
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Contact Number</label>
-                                            <input type="text" name="collabContact" placeholder="0195421325" class="form-control" pattern="([0-9]|[0-9\-]){3,20}" title="Numeric and '-' symbols only. E.g. 014-8897875" required="required">
+                                            <input type="text" name="collabContact" placeholder="0195421325" value="<%=collaborator.getCollabContact()%>" class="form-control" pattern="([0-9]|[0-9\-]){3,20}" title="Numeric and '-' symbols only. E.g. 014-8897875" required="required">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Email</label>
-                                            <input type="email" name="collabEmail" placeholder="email@hotmail.com" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="E.g. - cisco@business.co.uk" required="required">
+                                            <input type="email" name="collabEmail" placeholder="email@hotmail.com" value="<%=collaborator.getCollabEmail()%>" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="E.g. - cisco@business.co.uk" required="required">
                                         </div>
                                     </div>
                                     <div class="row" style="margin:auto">
                                         <label>Additional Notes</label>
-                                        <textarea class="form-control" name="additionalNotes" row="20" style="height:180px;resize: none;"></textarea>
+                                        <textarea class="form-control" name="additionalNotes" row="20" value="<%=collaborator.getAdditionalNotes()%>" style="height:180px;resize: none;"></textarea>
                                     </div>
                                 </div>
                                 <br />
                                 <div class="submit-button">
-                                    <button type="submit" class="btn btn-lg btn-info">Submit</button>
-                                    <button type="reset" class="btn btn-lg btn-info">Reset</button>
+                                    <button type="submit" class="btn btn-lg btn-info">Update</button>
+                                    <a href="collaboratorList.jsp"><button type="button" class="btn btn-lg btn-info">Back</button></a>
                                 </div>
                             </form>
                         </div>
@@ -193,9 +199,7 @@
         <script>
             var urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('success')) {
-                window.alert("New Collaborator successfully added!");
-            } else if (urlParams.has('duplicated')) {
-                window.alert("Duplicated records found, please ensure the new collaborator record does not exist in the collaborator list.");
+                window.alert("Collaborator details successfully updated!");
             } else if (urlParams.has('error')) {
                 window.alert("Oh no! An error has occured, please contact the system administrator.");
             }

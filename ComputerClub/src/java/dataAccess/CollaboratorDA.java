@@ -31,40 +31,36 @@ public class CollaboratorDA {
             ex.printStackTrace();
         }
     }
-
-    //Method to retrieve all records
-    public ArrayList<Collaborator> selectAllFaculty() {
-        ArrayList<Collaborator> selectAllCollabList = new ArrayList<Collaborator>();
-
-        try {
-            pstmt = conn.prepareCall("SELECT * FROM" + tableName);
-            rs = pstmt.executeQuery();
-            while (rs.next()) {
-                selectAllCollabList.add(new Collaborator(rs.getString(1), rs.getString(2), rs.getString(3).charAt(0), rs.getString(4), rs.getString(5), rs.getString(6)));
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return selectAllCollabList;
-    }
-
+    
     //Select record method
-    public Collaborator selectRecord(String facultyID) {
+    public Collaborator selectRecord(String collabID) {
         Collaborator collaborator = null;
         String queryStr = "SELECT * FROM" + tableName + "WHERE COLLABID = ?";
 
         try {
             pstmt = conn.prepareStatement(queryStr);
-            pstmt.setString(1, facultyID);
+            pstmt.setString(1, collabID);
             rs = pstmt.executeQuery();
             if (rs.next()) {
-                collaborator = new Collaborator(rs.getString(1), rs.getString(2), rs.getString(3).charAt(0), rs.getString(4), rs.getString(5), rs.getString(6));
+                collaborator = new Collaborator(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
         return collaborator;
+    }
+
+    //Retrieve method
+    private void findRecord(String collabID) {
+        String queryStr = "SELECT * FROM" + tableName + "WHERE COLLABID = ?";
+        try {
+            pstmt = conn.prepareStatement(queryStr);
+            pstmt.setString(1, collabID);
+            rs = pstmt.executeQuery();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     //Create method
@@ -79,10 +75,9 @@ public class CollaboratorDA {
         String queryStr = "INSERT INTO" + tableName + "VALUES(?,?,?,?,?,?)";
 
         try {
-            selectRecord(collabID);
-
+            findRecord(collabID);
             if (rs.next()) {
-                //ADD ERR MSG
+                successInsert = -1;
             } else {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, collabID);
@@ -92,8 +87,8 @@ public class CollaboratorDA {
                 pstmt.setString(5, collabEmail);
                 pstmt.setString(6, additionalNotes);
                 pstmt.executeUpdate();
-
-                successInsert = pstmt.executeUpdate();
+                pstmt.executeUpdate();
+                successInsert = 1;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -102,25 +97,9 @@ public class CollaboratorDA {
         return successInsert;
     }
 
-    //Retrieve method
-    public void retrieveRecord(String collabID) {
-
-        try {
-            selectRecord(collabID);
-
-            if (rs.next()) {
-                //ADD RESPONSE
-            } else {
-                //ADD INVALID RESPONSE
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-
     //Update method
     public int updateRecord(Collaborator collaborator) throws Exception {
-        int successInsert = 0;
+        int successUpdate = 0;
 
         String collabID = collaborator.getColabID();
         String collabName = collaborator.getColabName();
@@ -131,7 +110,7 @@ public class CollaboratorDA {
         String queryStr = "UPDATE" + tableName + "SET COLLABNAME = ?, COLLABTYPE = ?, COLLABCONTACT = ?, COLLABEMAIL = ?, ADDITIONALNOTES = ? WHERE COLLABID = ?";
 
         try {
-            selectRecord(collabID);
+            findRecord(collabID);
 
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
@@ -143,39 +122,55 @@ public class CollaboratorDA {
                 pstmt.setString(6, collabID);
                 pstmt.executeUpdate();
 
-                successInsert = pstmt.executeUpdate();
+                successUpdate = pstmt.executeUpdate();
             } else {
-                //ADD INVALID RESPONSE
+                successUpdate = 0;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return successInsert;
+        return successUpdate;
     }
 
     //Delete method
     public int deleteRecord(String collabID) throws Exception {
-        int succesInsert = 0;
+        int successDelete = 0;
 
         String queryStr = "DELETE FROM" + tableName + "WHERE COLLABID = ?";
 
         try {
-            selectRecord(collabID);
+            findRecord(collabID);
 
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, collabID);
                 pstmt.executeUpdate();
-
-                succesInsert = pstmt.executeUpdate();
+                successDelete = pstmt.executeUpdate();
             } else {
-                //ADD INVALID RESPONSE
+                successDelete = 0;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return succesInsert;
+        return successDelete;
     }
+
+    //Method to retrieve all records
+    public ArrayList<Collaborator> selectAllCollaboratorList() {
+        ArrayList<Collaborator> selectAllCollabList = new ArrayList<Collaborator>();
+
+        try {
+            pstmt = conn.prepareCall("SELECT * FROM" + tableName);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                selectAllCollabList.add(new Collaborator(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return selectAllCollabList;
+    }
+
 }

@@ -17,7 +17,7 @@ public class Collaborator {
 
     }
 
-    public Collaborator(String collabID, String collabName, char collabType, String collabContact, String collabEmail, String additionalNotes) {
+    public Collaborator(String collabID, String collabName, int collabType, String collabContact, String collabEmail, String additionalNotes) {
         this.collabID = collabID;
         this.collabName = collabName;
         this.collabType = collabType;
