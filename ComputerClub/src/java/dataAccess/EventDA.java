@@ -86,10 +86,10 @@ public class EventDA {
         String queryStr = "INSERT INTO" + tableName + "VALUES(?,?,?,?,?,?)";
 
         try {
-            selectRecord(eventID);
+            retrieveRecord(eventID);
 
             if (rs.next()) {
-                //ADD ERR MSG
+                successInsert = -1;
             } else {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, eventID);
@@ -121,7 +121,7 @@ public class EventDA {
 
     //Update method
     public int updateRecord(Event event) throws Exception {
-        int successInsert = 0;
+        int successUpdate = 0;
 
         String eventID = event.getEventID();
         String eventName = event.getEventName();
@@ -132,7 +132,7 @@ public class EventDA {
         String queryStr = "UPDATE" + tableName + "SET EVENTNAME = ?, EVENTTYPE = ?, EVENTDATE = ?, EVENTTIME = ?, EVENTLOCATION = ? WHERE EVENTID = ?";
 
         try {
-            selectRecord(eventID);
+            retrieveRecord(eventID);
 
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
@@ -142,30 +142,30 @@ public class EventDA {
                 pstmt.setString(4, eventTime);
                 pstmt.setString(5, eventLocation);
                 pstmt.setString(6, eventID);
-                successInsert = pstmt.executeUpdate();
+                successUpdate = pstmt.executeUpdate();
             } else {
-                //ADD INVALID RESPONSE
+                successUpdate = 0;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return successInsert;
+        return successUpdate;
     }
 
     //Delete method
     public int deleteRecord(String eventID, String facultyID) throws Exception {
-        int succesInsert = 0;
+        int successDelete = 0;
 
         String queryStr = "DELETE FROM" + tableName + "WHERE EVENTID = ?";
 
         try {
-            selectRecord(eventID);
+            retrieveRecord(eventID);
 
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, eventID);
-                succesInsert = pstmt.executeUpdate();
+                successDelete = pstmt.executeUpdate();
             } else {
                 //ADD INVALID RESPONSE
             }
@@ -173,6 +173,6 @@ public class EventDA {
             ex.printStackTrace();
         }
 
-        return succesInsert;
+        return successDelete;
     }
 }
