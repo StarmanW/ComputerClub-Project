@@ -12,12 +12,9 @@ public class Event {
     private String eventID;
     private String eventName;
     private int eventType;
-    private Date eventDate;
+    private String eventDate;
     private String eventTime;
     private String eventLocation;
-    private ArrayList<Collaborator> eventColab;
-    private ArrayList<Item> sponsoredItem;
-    private ArrayList<Member> parpicipant;
 
     //No-arg constructor
     public Event() {
@@ -25,16 +22,13 @@ public class Event {
     }
 
     //Parameterized constructor
-    public Event(String eventID, String eventName, int eventType, Date eventDate, String eventTime, String eventLocation, ArrayList<Collaborator> eventColab, ArrayList<Item> sponsoredItem, ArrayList<Member> parpicipant) {
+    public Event(String eventID, String eventName, int eventType, String eventDate, String eventTime, String eventLocation) {
         this.eventID = eventID;
         this.eventName = eventName;
         this.eventType = eventType;
         this.eventDate = eventDate;
         this.eventTime = eventTime;
         this.eventLocation = eventLocation;
-        this.eventColab = eventColab;
-        this.sponsoredItem = sponsoredItem;
-        this.parpicipant = parpicipant;
     }
 
     //Setters
@@ -50,7 +44,7 @@ public class Event {
         this.eventType = eventType;
     }
 
-    public void setEventDate(Date eventDate) {
+    public void setEventDate(String eventDate) {
         this.eventDate = eventDate;
     }
 
@@ -60,18 +54,6 @@ public class Event {
 
     public void setEventLocation(String eventLocation) {
         this.eventLocation = eventLocation;
-    }
-
-    public void setEventColab(ArrayList<Collaborator> eventColab) {
-        this.eventColab = eventColab;
-    }
-
-    public void setSponsoredItem(ArrayList<Item> sponsoredItem) {
-        this.sponsoredItem = sponsoredItem;
-    }
-
-    public void setParpicipant(ArrayList<Member> parpicipant) {
-        this.parpicipant = parpicipant;
     }
 
     //Getters
@@ -109,10 +91,11 @@ public class Event {
             default:
                 break;
        }
+       
        return eventTypeString;
     }
     
-    public Date getEventDate() {
+    public String getEventDate() {
         return eventDate;
     }
 
@@ -122,18 +105,6 @@ public class Event {
 
     public String getEventLocation() {
         return eventLocation;
-    }
-
-    public ArrayList<Collaborator> getEventColab() {
-        return eventColab;
-    }
-
-    public ArrayList<Item> getSponsoredItem() {
-        return sponsoredItem;
-    }
-
-    public ArrayList<Member> getParpicipant() {
-        return parpicipant;
     }
 
 }
