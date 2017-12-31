@@ -1,4 +1,14 @@
 /ComputerClub/nbproject/private/
 /ComputerClub/dist/
 /ComputerClub/build/
+/ComputerClub/build
+ComputerClub/build
+ComputerClub/build/
+/ComputerClub/build/
+/build
+/build/
 *.class
+*.class
+*.properties
+ComputerClub/nbproject/ant-deploy.xml
+ComputerClub/nbproject/private/private.properties
