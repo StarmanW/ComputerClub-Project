@@ -24,6 +24,7 @@ public class MemberDA {
     //No-arg constructor
     public MemberDA() {
         initDBConnection();
+        programmeDA = new ProgrammeDA();
     }
 
     //Method to initialize database connection
@@ -152,8 +153,7 @@ public class MemberDA {
     public ArrayList<Member> selectAllMembersList() {
         ArrayList<Member> selectAllMembersList = new ArrayList<Member>();
         try {
-            programmeDA = new ProgrammeDA();
-            pstmt = conn.prepareCall("SELECT * FROM" + tableName);
+            pstmt = conn.prepareStatement("SELECT * FROM" + tableName);
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 selectAllMembersList.add(new Member(rs.getString(1), programmeDA.selectRecord(rs.getString(2)),

@@ -37,7 +37,7 @@ public class CollaboratorDA {
         ArrayList<Collaborator> selectAllCollabList = new ArrayList<Collaborator>();
 
         try {
-            pstmt = conn.prepareCall("SELECT * FROM" + tableName);
+            pstmt = conn.prepareStatement("SELECT * FROM" + tableName);
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 selectAllCollabList.add(new Collaborator(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6)));

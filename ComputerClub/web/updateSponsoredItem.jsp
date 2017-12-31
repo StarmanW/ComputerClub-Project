@@ -1,6 +1,13 @@
+<%@page import="model.Item"%>
 <%@page import="model.Collaborator"%>
 <%@page import="java.util.ArrayList"%>
 <jsp:useBean id="collaboratorDA" class="dataAccess.CollaboratorDA" scope="application"></jsp:useBean>
+<jsp:useBean id="itemDA" class="dataAccess.ItemDA" scope="application"></jsp:useBean>
+<%
+    session = request.getSession();
+    session.setAttribute("itemID", request.getParameter("itemID"));
+    Item item = itemDA.selectRecord(request.getParameter("itemID"));
+%>
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/logo-1-3508x2480.jpg" type="image/x-icon">
         <meta name="description" content="Website Creator Description">
-        <title>Register Sponsored Item</title>
+        <title>Update Item</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
@@ -22,9 +29,9 @@
         <link rel="stylesheet" href="assets/dropdown/css/style.css">
         <link rel="stylesheet" href="assets/theme/css/style.css">
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+        <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
         <link rel="stylesheet" href="assets/css/registerMember.css" type="text/css">
     </head>
-
     <body>
         <section class="menu cid-qDNS0J8sKR" once="menu" id="menu1-k" data-rv-view="2425">
             <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
@@ -67,11 +74,11 @@
                 <br />
                 <br />
                 <div class="form-container">
-                    <h1 class="well">Register Sponsored Item</h1>
+                    <h1 class="well">Update Item <%=item.getItemID()%> Details</h1>
                     <hr style="border-top:1px solid gray;" />
                     <div class="col-lg-12 well">
                         <div class="row">
-                            <form action="ProcessRegistrationSponsoredItem" method="POST" style="margin-left:5%">
+                            <form action="ProcessUpdateSponsoredItem" method="POST" style="margin-left:5%">
                                 <p style="color:red; float: left;">"*" Required fields</p>
                                 <br />
                                 <br />
@@ -82,18 +89,18 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Item Name</label>
-                                            <input type="text" name="itemName" placeholder="Premium package Hamper" class="form-control" pattern="[A-Za-z0-9\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Premium package Hamper" required="required">
+                                            <input type="text" name="itemName" placeholder="Premium package Hamper" value="<%=item.getItemName()%>" class="form-control" pattern="[A-Za-z0-9\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Premium package Hamper" required="required">
                                         </div>                                    
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Item Type</label>
                                             <select name="itemType" class="form-control" required="required">
                                                 <option disabled selected value>Select item type</option>
-                                                <option value="6">Trophy</option>
-                                                <option value="5">Equipments</option>
-                                                <option value="4">Certificates</option>
-                                                <option value="3">Foods & drinks</option>
-                                                <option value="2">Funds</option>
-                                                <option value="1">Others</option>
+                                                <option value="6" <%if (item.getItemType() == 6) {%> selected="selected" <%}%>>Trophy</option>
+                                                <option value="5" <%if (item.getItemType() == 5) {%> selected="selected" <%}%>>Equipments</option>
+                                                <option value="4" <%if (item.getItemType() == 4) {%> selected="selected" <%}%>>Certificates</option>
+                                                <option value="3" <%if (item.getItemType() == 3) {%> selected="selected" <%}%>>Foods & drinks</option>
+                                                <option value="2" <%if (item.getItemType() == 2) {%> selected="selected" <%}%>>Funds</option>
+                                                <option value="1" <%if (item.getItemType() == 1) {%> selected="selected" <%}%>>Others</option>
                                             </select>
                                         </div>
                                     </div>
@@ -101,7 +108,7 @@
                                 <div class="col-sm-12">
                                     <div class="row" style="margin:auto">
                                         <label><span style="color:red;">*</span>Item Quantity</label>
-                                        <input type="number" name="quantity" class="form-control" min="1" required="required">
+                                        <input type="number" name="quantity" class="form-control" min="1" required="required" value="<%=item.getQuantity()%>">
                                     </div>
                                 </div>
                                 <br />
@@ -114,24 +121,25 @@
                                                 ArrayList<Collaborator> collaboratorList = collaboratorDA.selectAllCollaboratorList();
                                                 for (int i = 0; i < collaboratorList.size(); i++) {
                                             %>
-                                            <option value="<%=collaboratorList.get(i).getCollabID()%>"><%=collaboratorList.get(i).getCollabName()%></option>
+                                            <option value="<%=collaboratorList.get(i).getCollabID()%>" <%if (item.getCollaborator().getCollabID().equals(collaboratorList.get(i).getCollabID())) {%> selected="selected" <%}%>><%=collaboratorList.get(i).getCollabName()%></option>
                                             <%}%>
                                         </select>                                   
                                     </div>
                                 </div>
                                 <br />
                                 <div class="submit-button">
-                                    <button type="submit" class="btn btn-lg btn-info">Submit</button>
-                                    <button type="reset" class="btn btn-lg btn-info">Reset</button>
+                                    <button type="submit" class="btn btn-lg btn-info">Update</button>
+                                    <a href="sponsoredItemList.jsp"><button type="button" class="btn btn-lg btn-info">Back</button></a>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <!-- /.container -->
-                <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-                <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-                <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+            </div>
+            <!-- /.container -->
+            <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+            <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+            <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
         </section>
         <section class="cid-qECiDnaZnD" id="footer1-12" data-rv-view="11590">
             <div class="container">
@@ -179,7 +187,7 @@
                     <div class="media-container-row mbr-white">
                         <div class="col-sm-6 copyright">
                             <p class="mbr-text mbr-fonts-style display-7">
-                                Â© Copyright 2017 TAR UC Computer Club - All Rights Reserved
+                                © Copyright 2017 TAR UC Computer Club - All Rights Reserved
                             </p>
                         </div>
                         <div class="col-md-6">
@@ -207,9 +215,7 @@
         <script>
             var urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('success')) {
-                window.alert("New Sponsored Item successfully added!");
-            } else if (urlParams.has('duplicated')) {
-                window.alert("Duplicated records found, please ensure the new sponsored item record does not exist in the sponsored item list.");
+                window.alert("Item details successfully updated!");
             } else if (urlParams.has('error')) {
                 window.alert("Oh no! An error has occured, please contact the system administrator.");
             }

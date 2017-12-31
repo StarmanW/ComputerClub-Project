@@ -23,6 +23,7 @@ public class ItemDA {
     //No-arg constructor
     public ItemDA() {
         initDBConnection();
+        collaboratorDA = new CollaboratorDA();
     }
 
     //Method to initialize database connection
@@ -39,7 +40,7 @@ public class ItemDA {
         ArrayList<Item> selectAllItemList = new ArrayList<Item>();
 
         try {
-            pstmt = conn.prepareCall("SELECT * FROM" + tableName);
+            pstmt = conn.prepareStatement("SELECT * FROM" + tableName);
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 selectAllItemList.add(new Item(rs.getString(1), collaboratorDA.selectRecord(rs.getString(2)), rs.getInt(3), rs.getString(4), rs.getInt(5)));
@@ -50,7 +51,7 @@ public class ItemDA {
         return selectAllItemList;
     }
 
-//Select record method
+    //Select record method
     public Item selectRecord(String itemID) {
         Item item = null;
         String queryStr = "SELECT * FROM" + tableName + "WHERE ITEMID = ?";
@@ -70,22 +71,21 @@ public class ItemDA {
     }
 
     //Create method
-    public int createRecord(Item item, Collaborator collaborator) throws Exception {
+    public int createRecord(Item item) throws Exception {
         int successInsert = 0;
-        
+
         String itemID = item.getItemID();
-        String collabID = collaborator.getCollabID();
+        String collabID = item.getCollaborator().getCollabID();
         int itemType = item.getItemType();
         String itemName = item.getItemName();
         int itemQuantity = item.getQuantity();
-        
+
         String queryStr = "INSERT INTO" + tableName + "VALUES(?,?,?,?,?)";
 
         try {
-            selectRecord(itemID);
-
+            retrieveRecord(itemID);
             if (rs.next()) {
-                //ADD ERR MSG
+                successInsert = -1;
             } else {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, itemID);
@@ -115,18 +115,18 @@ public class ItemDA {
     }
 
     //Update method
-    public int updateRecord(Item item, Collaborator collaborator) throws Exception {
+    public int updateRecord(Item item) throws Exception {
         int successInsert = 0;
 
         String itemID = item.getItemID();
-        String collabID = collaborator.getCollabID();
+        String collabID = item.getCollaborator().getCollabID();
         int itemType = item.getItemType();
         String itemName = item.getItemName();
         int itemQuantity = item.getQuantity();
         String queryStr = "UPDATE" + tableName + "SET COLLABID = ?, ITEMTYPE = ?, ITEMNAME = ?, ITEMQUANTITY = ? WHERE ITEMID = ?";
 
         try {
-            selectRecord(collabID);
+            retrieveRecord(itemID);
 
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
@@ -153,7 +153,7 @@ public class ItemDA {
         String queryStr = "DELETE FROM" + tableName + "WHERE ITEMID = ?";
 
         try {
-            selectRecord(itemID);
+            retrieveRecord(itemID);
 
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);

@@ -23,6 +23,8 @@ public class EventCollaboratorDA {
     //No-arg constructor
     public EventCollaboratorDA() {
         initDBConnection();
+        eventDA = new EventDA();
+        collaboratorDA = new CollaboratorDA();
     }
 
     //Method to initialize database connection
@@ -39,7 +41,7 @@ public class EventCollaboratorDA {
         ArrayList<EventCollaborator> selectAllEventCollabList = new ArrayList<EventCollaborator>();
 
         try {
-            pstmt = conn.prepareCall("SELECT * FROM" + tableName);
+            pstmt = conn.prepareStatement("SELECT * FROM" + tableName);
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 selectAllEventCollabList.add(new EventCollaborator(rs.getString(1), eventDA.selectRecord(rs.getString(2)), collaboratorDA.selectRecord(rs.getString(3))));

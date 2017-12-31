@@ -41,7 +41,7 @@ public class ProgrammeDA {
         ArrayList<Programme> programmeList = new ArrayList<Programme>();
 
         try {
-            pstmt = conn.prepareCall("SELECT * FROM" + tableName);
+            pstmt = conn.prepareStatement("SELECT * FROM" + tableName);
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 programmeList.add(new Programme(rs.getString(1), rs.getString(2), facultyDA.selectRecord(rs.getString(3))));

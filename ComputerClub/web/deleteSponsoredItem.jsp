@@ -1,6 +1,10 @@
-<%@page import="model.Collaborator"%>
-<%@page import="java.util.ArrayList"%>
-<jsp:useBean id="collaboratorDA" class="dataAccess.CollaboratorDA" scope="application"></jsp:useBean>
+<%@page import="model.Item"%>
+<jsp:useBean id="itemDA" class="dataAccess.ItemDA" scope="application"></jsp:useBean>
+<%
+    session = request.getSession();
+    Item item = itemDA.selectRecord(request.getParameter("itemID"));
+    session.setAttribute("itemToDelete", item);
+%>
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/logo-1-3508x2480.jpg" type="image/x-icon">
         <meta name="description" content="Website Creator Description">
-        <title>Register Sponsored Item</title>
+        <title>Delete Sponsored Item</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
@@ -22,9 +26,9 @@
         <link rel="stylesheet" href="assets/dropdown/css/style.css">
         <link rel="stylesheet" href="assets/theme/css/style.css">
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+        <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
         <link rel="stylesheet" href="assets/css/registerMember.css" type="text/css">
     </head>
-
     <body>
         <section class="menu cid-qDNS0J8sKR" once="menu" id="menu1-k" data-rv-view="2425">
             <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
@@ -53,7 +57,7 @@
                             <div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="registerMember.jsp" aria-expanded="false">MEMBER</a><a class="text-white dropdown-item display-4" href="registerEvent.jsp" aria-expanded="false">EVENT</a><a class="text-white dropdown-item display-4" href="registerCollaborator.jsp" aria-expanded="false">COLLABORATOR</a><a class="dropdown-item text-white display-4" href="registerSponsoredItem.jsp">SPONSORED ITEMS</a></div>
                         </li>
                         <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown-submenu" aria-expanded="false">MANAGE</a>
-                            <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItemList.jsp">SPONSORED ITEMS</a></div>
+                            <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItem.jsp">SPONSORED ITEMS</a></div>
                         </li>
                     </ul>
                     <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
@@ -67,71 +71,29 @@
                 <br />
                 <br />
                 <div class="form-container">
-                    <h1 class="well">Register Sponsored Item</h1>
+                    <h1 class="well">Confirm Delete Item <%=item.getItemID()%></h1>
                     <hr style="border-top:1px solid gray;" />
                     <div class="col-lg-12 well">
                         <div class="row">
-                            <form action="ProcessRegistrationSponsoredItem" method="POST" style="margin-left:5%">
-                                <p style="color:red; float: left;">"*" Required fields</p>
-                                <br />
-                                <br />
-                                <% if (request.getParameter("empty") != null) {%>
-                                <p style="color:red">Please ensure all the fields are not left blank</p>
-                                <%}%>    
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class="col-sm-6 form-group">
-                                            <label><span style="color:red;">*</span>Item Name</label>
-                                            <input type="text" name="itemName" placeholder="Premium package Hamper" class="form-control" pattern="[A-Za-z0-9\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Premium package Hamper" required="required">
-                                        </div>                                    
-                                        <div class="col-sm-6 form-group">
-                                            <label><span style="color:red;">*</span>Item Type</label>
-                                            <select name="itemType" class="form-control" required="required">
-                                                <option disabled selected value>Select item type</option>
-                                                <option value="6">Trophy</option>
-                                                <option value="5">Equipments</option>
-                                                <option value="4">Certificates</option>
-                                                <option value="3">Foods & drinks</option>
-                                                <option value="2">Funds</option>
-                                                <option value="1">Others</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="row" style="margin:auto">
-                                        <label><span style="color:red;">*</span>Item Quantity</label>
-                                        <input type="number" name="quantity" class="form-control" min="1" required="required">
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="col-sm-12">
-                                    <div class="row" style="margin:auto">
-                                        <label><span style="color:red;">*</span>Select Collaborator</label>
-                                        <select name="collabName" class="form-control" required="required">
-                                            <option disabled selected value>Select collaborator type</option>
-                                            <%
-                                                ArrayList<Collaborator> collaboratorList = collaboratorDA.selectAllCollaboratorList();
-                                                for (int i = 0; i < collaboratorList.size(); i++) {
-                                            %>
-                                            <option value="<%=collaboratorList.get(i).getCollabID()%>"><%=collaboratorList.get(i).getCollabName()%></option>
-                                            <%}%>
-                                        </select>                                   
-                                    </div>
+                            <form method="post" action="ProcessDeleteSponsoredItem">
+                                <div class="row" style="margin:auto">
+                                    <h5>Confirm delete item <%=item.getItemID()%> (<%=item.getItemName()%>) details? 
+                                        <br/><br/><span style="color:red">*Please note that this action cannot be undone.</span></h5>
                                 </div>
                                 <br />
                                 <div class="submit-button">
-                                    <button type="submit" class="btn btn-lg btn-info">Submit</button>
-                                    <button type="reset" class="btn btn-lg btn-info">Reset</button>
+                                    <button type="submit" class="btn btn-lg btn-info">Confirm Delete</button>
+                                    <a href="sponsoredItemList.jsp"><button type="button" class="btn btn-lg btn-info">Back</button></a>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <!-- /.container -->
-                <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-                <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-                <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+            </div>
+            <!-- /.container -->
+            <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+            <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+            <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
         </section>
         <section class="cid-qECiDnaZnD" id="footer1-12" data-rv-view="11590">
             <div class="container">
@@ -179,7 +141,7 @@
                     <div class="media-container-row mbr-white">
                         <div class="col-sm-6 copyright">
                             <p class="mbr-text mbr-fonts-style display-7">
-                                Â© Copyright 2017 TAR UC Computer Club - All Rights Reserved
+                                � Copyright 2017 TAR UC Computer Club - All Rights Reserved
                             </p>
                         </div>
                         <div class="col-md-6">
@@ -202,16 +164,6 @@
         <script>
             if (($(window).height() + 100) < $(document).height()) {
                 $('#top-link-block').removeClass('hidden').affix({offset: {top: 100}});
-            }
-        </script>
-        <script>
-            var urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('success')) {
-                window.alert("New Sponsored Item successfully added!");
-            } else if (urlParams.has('duplicated')) {
-                window.alert("Duplicated records found, please ensure the new sponsored item record does not exist in the sponsored item list.");
-            } else if (urlParams.has('error')) {
-                window.alert("Oh no! An error has occured, please contact the system administrator.");
             }
         </script>
         <style>

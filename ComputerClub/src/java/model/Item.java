@@ -33,6 +33,31 @@ public class Item {
         return itemType;
     }
 
+    public String getItemTypeString() {
+        String itemTypeString = null;
+        switch (itemType) {
+            case 1:
+                itemTypeString = "Others";
+                break;
+            case 2:
+                itemTypeString = "Funds";
+                break;
+            case 3:
+                itemTypeString = "Foods & drinks";
+                break;
+            case 4:
+                itemTypeString = "Certificates";
+                break;
+            case 5:
+                itemTypeString = "Equipments";
+                break;
+            case 6:
+                itemTypeString = "Trophy";
+                break;
+        }
+        return itemTypeString;
+    }
+
     public String getItemName() {
         return itemName;
     }

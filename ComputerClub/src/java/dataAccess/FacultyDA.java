@@ -38,7 +38,7 @@ public class FacultyDA {
         ArrayList<Faculty> selectAllFacultyList = new ArrayList<Faculty>();
 
         try {
-            pstmt = conn.prepareCall("SELECT * FROM" + tableName);
+            pstmt = conn.prepareStatement("SELECT * FROM" + tableName);
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 selectAllFacultyList.add(new Faculty(rs.getString(1), rs.getString(2)));

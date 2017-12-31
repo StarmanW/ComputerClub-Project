@@ -41,7 +41,7 @@ public class ProcessUpdateCollaborator extends HttpServlet {
             ArrayList<Collaborator> collabList = collaboratorDA.selectAllCollaboratorList();
             
             //Creating new collaborator object
-            Collaborator collaborator = new Collaborator(String.format(collabID, (collabList.size() + 1)), collabName, collabType, collabContact, collabEmail, additionalNotes);
+            Collaborator collaborator = new Collaborator(collabID, collabName, collabType, collabContact, collabEmail, additionalNotes);
 
             int successUpdate = collaboratorDA.updateRecord(collaborator);
             switch (successUpdate) {

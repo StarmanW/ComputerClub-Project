@@ -79,7 +79,7 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Collaborator Name</label>
-                                            <input type="text" name="collabName" placeholder="Ajax Inc." class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - John" required="required">
+                                            <input type="text" name="collabName" placeholder="Ajax Inc." class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Ajax Inc." required="required">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Collaborator Type</label>
