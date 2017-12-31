@@ -18,7 +18,7 @@ public class MemberDA {
     private final String dbUrl = "jdbc:derby://localhost:1527/computerclubdb";
     private final String dbUser = "nbuser";
     private final String dbPass = "nbuser";
-    private final String tableName = "MEMBERS";
+    private final String tableName = " MEMBERS ";
     private ProgrammeDA programmeDA;
 
     //No-arg constructor
@@ -39,18 +39,19 @@ public class MemberDA {
     public Member selectRecord(String studID) {
         Member member = null;
         try {
-            pstmt = conn.prepareStatement("SELECT * FROM " + tableName + " WHERE MEMBERID = ?");
+            pstmt = conn.prepareStatement("SELECT * FROM" + tableName + "WHERE MEMBERID = ?");
             pstmt.setString(1, studID);
             rs = pstmt.executeQuery();
             if (rs.next()) {
                 member = new Member(rs.getString(1), programmeDA.selectProgramme(rs.getString(2)),
-                        new Name(rs.getString(3), rs.getString(4)), rs.getString(5), rs.getString(6),
-                        rs.getString(7),
-                        rs.getString(8),
-                        rs.getString(9).charAt(0),
-                        rs.getBoolean(10),
-                        rs.getInt(11),
-                        rs.getString(12));
+                                    new Name(rs.getString(3), rs.getString(4)), rs.getString(5), rs.getString(6),
+                                    rs.getString(7),
+                                    rs.getString(8),
+                                    rs.getString(9).charAt(0),
+                                    rs.getBoolean(10),
+                                    rs.getInt(11),
+                                    rs.getString(12)
+                                    );
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -61,7 +62,7 @@ public class MemberDA {
     //Method to find a specific record - ONLY used to check for duplication 
     private void findRecord(String studID) {
         try {
-            pstmt = conn.prepareStatement("SELECT * FROM " + tableName + " WHERE MEMBERID = ?");
+            pstmt = conn.prepareStatement("SELECT * FROM" + tableName + "WHERE MEMBERID = ?");
             pstmt.setString(1, studID);
             rs = pstmt.executeQuery();
         } catch (Exception ex) {
@@ -78,7 +79,7 @@ public class MemberDA {
             if (rs.next()) {
                 successInsert = -1;
             } else {
-                pstmt = conn.prepareStatement("INSERT INTO " + tableName + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                pstmt = conn.prepareStatement("INSERT INTO" + tableName + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
                 pstmt.setString(1, member.getStudID());
                 pstmt.setString(2, member.getProgramme().getProgID());
                 pstmt.setString(3, member.getStudName().getFirstName());
@@ -106,7 +107,7 @@ public class MemberDA {
         try {
             findRecord(member.getStudID());
             if (rs.next()) {
-                pstmt = conn.prepareStatement("DELETE FROM " + tableName + " WHERE MEMBERID = ?");
+                pstmt = conn.prepareStatement("DELETE FROM" + tableName + "WHERE MEMBERID = ?");
                 pstmt.setString(1, member.getStudID());
                 successDelete = pstmt.executeUpdate();
             }
@@ -124,7 +125,7 @@ public class MemberDA {
         try {
             findRecord(member.getStudID());
             if (rs.next()) {
-                pstmt = conn.prepareStatement("UPDATE " + tableName + " SET MEMBERID = ?, PROGID = ?, FIRSTNAME = ?, LASTNAME = ?, STUDEMAIL = ?, STUDCONTACT = ?, ICNUM = ?, PASS = ?, GENDER = ?, MEMFEESTATS = ?, POSITION = ?, ACADEMICYEAR = ? WHERE MEMBERID = ?");
+                pstmt = conn.prepareStatement("UPDATE" + tableName + "SET MEMBERID = ?, PROGID = ?, FIRSTNAME = ?, LASTNAME = ?, STUDEMAIL = ?, STUDCONTACT = ?, ICNUM = ?, PASS = ?, GENDER = ?, MEMFEESTATS = ?, POSITION = ?, ACADEMICYEAR = ? WHERE MEMBERID = ?");
                 pstmt.setString(1, member.getStudID());
                 pstmt.setString(2, member.getProgramme().getProgID());
                 pstmt.setString(3, member.getStudName().getFirstName());
@@ -152,17 +153,18 @@ public class MemberDA {
         ArrayList<Member> selectAllMembersList = new ArrayList<Member>();
         try {
             programmeDA = new ProgrammeDA();
-            pstmt = conn.prepareCall("SELECT * FROM " + tableName);
+            pstmt = conn.prepareCall("SELECT * FROM" + tableName);
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 selectAllMembersList.add(new Member(rs.getString(1), programmeDA.selectRecord(rs.getString(2)),
-                        new Name(rs.getString(3), rs.getString(4)), rs.getString(5), rs.getString(6),
-                        rs.getString(7),
-                        rs.getString(8),
-                        rs.getString(9).charAt(0),
-                        rs.getBoolean(10),
-                        rs.getInt(11),
-                        rs.getString(12)));
+                                         new Name(rs.getString(3), rs.getString(4)), rs.getString(5), rs.getString(6),
+                                         rs.getString(7),
+                                         rs.getString(8),
+                                         rs.getString(9).charAt(0),
+                                         rs.getBoolean(10),
+                                         rs.getInt(11),
+                                         rs.getString(12))
+                                         );
             }
         } catch (Exception ex) {
             ex.printStackTrace();

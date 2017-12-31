@@ -84,8 +84,6 @@ public class FacultyDA {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, facultyID);
                 pstmt.setString(2, facultyName);
-                pstmt.executeUpdate();
-
                 successInsert = pstmt.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -96,16 +94,12 @@ public class FacultyDA {
     }
 
     //Retrieve method
-    public void retrieveRecord(String facultyID) {
-
+    public void retrieveRecord(String facultyID) throws Exception {
+        String queryStr = "SELECT * FROM" + tableName + "WHERE FACULTYID = ?";
         try {
-            selectRecord(facultyID);
-
-            if (rs.next()) {
-                //ADD RESPONSE
-            } else {
-                //ADD INVALID RESPONSE
-            }
+            pstmt = conn.prepareStatement(queryStr);
+            pstmt.setString(1, facultyID);
+            rs = pstmt.executeQuery();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -126,8 +120,6 @@ public class FacultyDA {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, facultyName);
                 pstmt.setString(2, facultyID);
-                pstmt.executeUpdate();
-
                 successInsert = pstmt.executeUpdate();
             } else {
                 //ADD INVALID RESPONSE
@@ -151,8 +143,6 @@ public class FacultyDA {
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, facultyID);
-                pstmt.executeUpdate();
-
                 succesInsert = pstmt.executeUpdate();
             } else {
                 //ADD INVALID RESPONSE

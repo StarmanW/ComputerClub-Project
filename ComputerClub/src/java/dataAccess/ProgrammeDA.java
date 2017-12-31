@@ -41,7 +41,7 @@ public class ProgrammeDA {
         ArrayList<Programme> programmeList = new ArrayList<Programme>();
 
         try {
-            pstmt = conn.prepareCall("SELECT * FROM PROGRAMME");
+            pstmt = conn.prepareCall("SELECT * FROM" + tableName);
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 programmeList.add(new Programme(rs.getString(1), rs.getString(2), facultyDA.selectRecord(rs.getString(3))));
@@ -95,8 +95,6 @@ public class ProgrammeDA {
                 pstmt.setString(1, progID);
                 pstmt.setString(2, progName);
                 pstmt.setString(3, facultyID);
-                pstmt.executeUpdate();
-
                 successInsert = pstmt.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -107,16 +105,12 @@ public class ProgrammeDA {
     }
 
     //Retrieve method
-    public void retrieveRecord(String progID, String facultyID) throws Exception {
-
+    public void retrieveRecord(String progID) throws Exception {
+        String queryStr = "SELECT * FROM" + tableName + "WHERE PROGID = ?";
         try {
-            selectRecord(progID);
-
-            if (rs.next()) {
-                //ADD RESPONSE
-            } else {
-                //ADD INVALID RESPONSE
-            }
+            pstmt = conn.prepareStatement(queryStr);
+            pstmt.setString(1, progID);
+            rs = pstmt.executeQuery();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -139,8 +133,6 @@ public class ProgrammeDA {
                 pstmt.setString(1, progName);
                 pstmt.setString(2, progID);
                 pstmt.setString(3, facultyID);
-                pstmt.executeUpdate();
-
                 successInsert = pstmt.executeUpdate();
             } else {
                 //ADD INVALID RESPONSE
@@ -165,8 +157,6 @@ public class ProgrammeDA {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, progID);
                 pstmt.setString(2, facultyID);
-                pstmt.executeUpdate();
-
                 succesInsert = pstmt.executeUpdate();
             } else {
                 //ADD INVALID RESPONSE

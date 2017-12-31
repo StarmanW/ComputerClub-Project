@@ -93,8 +93,6 @@ public class ItemDA {
                 pstmt.setInt(3, itemType);
                 pstmt.setString(4, itemName);
                 pstmt.setInt(5, itemQuantity);
-                pstmt.executeUpdate();
-
                 successInsert = pstmt.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -105,16 +103,12 @@ public class ItemDA {
     }
 
     //Retrieve method
-    public void retrieveRecord(String itemID) {
-
+    public void retrieveRecord(String itemID) throws Exception {
+        String queryStr = "SELECT * FROM" + tableName + "WHERE ITEMID = ?";
         try {
-            selectRecord(itemID);
-
-            if (rs.next()) {
-                //ADD RESPONSE
-            } else {
-                //ADD INVALID RESPONSE
-            }
+            pstmt = conn.prepareStatement(queryStr);
+            pstmt.setString(1, itemID);
+            rs = pstmt.executeQuery();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -141,8 +135,6 @@ public class ItemDA {
                 pstmt.setString(3, itemName);
                 pstmt.setInt(4, itemQuantity);
                 pstmt.setString(5, itemID);
-                pstmt.executeUpdate();
-
                 successInsert = pstmt.executeUpdate();
             } else {
                 //ADD INVALID RESPONSE
@@ -166,8 +158,6 @@ public class ItemDA {
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, itemID);
-                pstmt.executeUpdate();
-
                 succesInsert = pstmt.executeUpdate();
             } else {
                 //ADD INVALID RESPONSE
