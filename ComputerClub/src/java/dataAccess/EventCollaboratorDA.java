@@ -74,11 +74,11 @@ public class EventCollaboratorDA {
     }
 
     //Create method
-    public int createRecord(EventCollaborator eventCollaborator, Event event, Collaborator collaborator) throws Exception {
+    public int createRecord(EventCollaborator eventCollaborator) throws Exception {
         int successInsert = 0;
         String eventCollabID = eventCollaborator.getEventColladID();
-        String eventID = event.getEventID();
-        String collabID = collaborator.getCollabID();
+        String eventID = eventCollaborator.getEvent().getEventID();
+        String collabID = eventCollaborator.getCollaborator().getCollabID();
         String queryStr = "INSERT INTO" + tableName + "VALUES(?,?,?)";
 
         try {
@@ -115,12 +115,12 @@ public class EventCollaboratorDA {
     }
 
     //Update method
-    public int updateRecord(EventCollaborator eventCollaborator, Event event, Collaborator collaborator) throws Exception {
+    public int updateRecord(EventCollaborator eventCollaborator) throws Exception {
         int successUpdate = 0;
 
         String eventCollabID = eventCollaborator.getEventColladID();
-        String eventID = event.getEventID();
-        String collabID = collaborator.getCollabID();
+        String eventID = eventCollaborator.getEvent().getEventID();
+        String collabID = eventCollaborator.getCollaborator().getCollabID();
         String queryStr = "UPDATE" + tableName + "SET EVENTID = ?, COLLABID = ? WHERE EVENTCOLLABID = ?";
 
         try {
