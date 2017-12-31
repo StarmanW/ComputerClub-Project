@@ -86,9 +86,7 @@ public class CollaboratorDA {
                 pstmt.setString(4, collabContact);
                 pstmt.setString(5, collabEmail);
                 pstmt.setString(6, additionalNotes);
-                pstmt.executeUpdate();
-                pstmt.executeUpdate();
-                successInsert = 1;
+                successInsert = pstmt.executeUpdate();
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
