@@ -98,8 +98,6 @@ public class EventDA {
                 pstmt.setString(4, eventDate);
                 pstmt.setString(5, eventTime);
                 pstmt.setString(6, eventLocation);
-                pstmt.executeUpdate();
-
                 successInsert = pstmt.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -110,16 +108,12 @@ public class EventDA {
     }
 
     //Retrieve method
-    public void retrieveRecord(String eventID, String facultyID) throws Exception {
-
+    public void retrieveRecord(String eventID) throws Exception {
+        String queryStr = "SELECT * FROM" + tableName + "WHERE EVENTID = ?";
         try {
-            selectRecord(eventID);
-
-            if (rs.next()) {
-                //ADD RESPONSE
-            } else {
-                //ADD INVALID RESPONSE
-            }
+            pstmt = conn.prepareStatement(queryStr);
+            pstmt.setString(1, eventID);
+            rs = pstmt.executeQuery();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -148,8 +142,6 @@ public class EventDA {
                 pstmt.setString(4, eventTime);
                 pstmt.setString(5, eventLocation);
                 pstmt.setString(6, eventID);
-                pstmt.executeUpdate();
-
                 successInsert = pstmt.executeUpdate();
             } else {
                 //ADD INVALID RESPONSE
@@ -173,8 +165,6 @@ public class EventDA {
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, eventID);
-                pstmt.executeUpdate();
-
                 succesInsert = pstmt.executeUpdate();
             } else {
                 //ADD INVALID RESPONSE
