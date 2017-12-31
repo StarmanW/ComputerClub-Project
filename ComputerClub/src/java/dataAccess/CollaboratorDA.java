@@ -32,6 +32,22 @@ public class CollaboratorDA {
         }
     }
     
+    //Method to retrieve all records
+    public ArrayList<Collaborator> selectAllCollaboratorList() {
+        ArrayList<Collaborator> selectAllCollabList = new ArrayList<Collaborator>();
+
+        try {
+            pstmt = conn.prepareCall("SELECT * FROM" + tableName);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                selectAllCollabList.add(new Collaborator(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return selectAllCollabList;
+    }
+
     //Select record method
     public Collaborator selectRecord(String collabID) {
         Collaborator collaborator = null;
@@ -153,22 +169,6 @@ public class CollaboratorDA {
         }
 
         return successDelete;
-    }
-
-    //Method to retrieve all records
-    public ArrayList<Collaborator> selectAllCollaboratorList() {
-        ArrayList<Collaborator> selectAllCollabList = new ArrayList<Collaborator>();
-
-        try {
-            pstmt = conn.prepareCall("SELECT * FROM" + tableName);
-            rs = pstmt.executeQuery();
-            while (rs.next()) {
-                selectAllCollabList.add(new Collaborator(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6)));
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return selectAllCollabList;
     }
 
 }
