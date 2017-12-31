@@ -108,7 +108,7 @@
                                     </div>
                                     <div class="row" style="margin:auto">
                                         <label>Additional Notes</label>
-                                        <textarea class="form-control" name="additionalNotes" row="20" value="<%=collaborator.getAdditionalNotes()%>" style="height:180px;resize: none;"></textarea>
+                                        <textarea class="form-control" name="additionalNotes" row="20" style="height:180px;resize: none;"><%=collaborator.getAdditionalNotes()%></textarea>
                                     </div>
                                 </div>
                                 <br />

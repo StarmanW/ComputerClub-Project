@@ -23,6 +23,7 @@ public class ProcessUpdateCollaborator extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Get all parameters value
+        String collabID = (String) request.getSession().getAttribute("collabID");
         String collabName = request.getParameter("collabName");
         int collabType = Integer.parseInt(request.getParameter("collabType"));
         String collabContact = request.getParameter("collabContact");
@@ -32,7 +33,7 @@ public class ProcessUpdateCollaborator extends HttpServlet {
         //Redirect back to registerCollaborator page with parameter ?empty
         //To display empty fields error message
         if (collabName.isEmpty() || collabContact.isEmpty() || collabEmail.isEmpty()) {
-            response.sendRedirect("registerCollaborator.jsp?empty");
+            response.sendRedirect("updateCollaborator.jsp?empty");
         }
 
         try {
@@ -40,18 +41,15 @@ public class ProcessUpdateCollaborator extends HttpServlet {
             ArrayList<Collaborator> collabList = collaboratorDA.selectAllCollaboratorList();
             
             //Creating new collaborator object
-            Collaborator collaborator = new Collaborator(String.format("C%04d", (collabList.size() + 1)), collabName, collabType, collabContact, collabEmail, additionalNotes);
+            Collaborator collaborator = new Collaborator(String.format(collabID, (collabList.size() + 1)), collabName, collabType, collabContact, collabEmail, additionalNotes);
 
-            int successInsert = collaboratorDA.createRecord(collaborator);
+            int successInsert = collaboratorDA.updateRecord(collaborator);
             switch (successInsert) {
                 case 1:
-                    response.sendRedirect("registerCollaborator.jsp?success");
+                    response.sendRedirect("updateCollaborator.jsp?collabID=" + collabID + "&success");
                     break;
-                case -1:
-                    response.sendRedirect("registerCollaborator.jsp?duplicated");
-                    break;
-                case 0:
-                    response.sendRedirect("registerCollaborator.jsp?error");
+                default:
+                    response.sendRedirect("updateCollaborator.jsp?collabID=" + collabID + "&error");
                     break;
             }
         } catch (Exception ex) {
