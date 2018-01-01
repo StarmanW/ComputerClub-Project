@@ -144,19 +144,23 @@
                                                     String acadYear = null;
                                                     for (int i = 0; i < 5; i++) {
                                                         if (i == 0) {
-                                                            acadYear = (year - 1) + "/" + year;
+                                                            acadYear = (year - 2) + "/" + (year - 1);
+                                                %>
+                                                <option value="<%=year - 2%>/<%=year - 1%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year - 2%>/<%=year - 1%></option>
+                                                <%} else if (i == 1) {
+                                                    acadYear = (year - 1) + "/" + (year); 
                                                 %>
                                                 <option value="<%=year - 1%>/<%=year%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year - 1%>/<%=year%></option>
-                                                <%} else if (i == 1) {
-                                                    acadYear = (year) + "/" + (year + i);
+                                                <%} else if (i == 2) {
+                                                    acadYear = (year) + "/" + (year + 1);
                                                 %>
-                                                <option value="<%=year%>/<%=year + i%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year%>/<%=year + i%></option>
+                                                <option value="<%=year%>/<%=year + 1%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year%>/<%=year + 1%></option>
                                                 <%} else {
-                                                    acadYear = (year + i - 1) + "/" + (year + i);
+                                                    acadYear = (year + i - 2) + "/" + (year + i - 1);
                                                 %>
-                                                <option value="<%=year + i - 1%>/<%=year + i%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year + i - 1%>/<%=year + i%></option>
-                                                <%
-                                                        }
+                                                <option value="<%=year + i - 2%>/<%=year + i - 1%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year + i - 2%>/<%=year + i - 1%></option>
+                                                %>
+                                                <%      }
                                                     }
                                                 %>
                                             </select>

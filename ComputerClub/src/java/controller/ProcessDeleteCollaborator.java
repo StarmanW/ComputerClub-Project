@@ -17,31 +17,36 @@ import model.Collaborator;
 @WebServlet(name = "ProcessDeleteCollaborator", urlPatterns = {"/ProcessDeleteCollaborator"})
 public class ProcessDeleteCollaborator extends HttpServlet {
 
-    //Data Access declaration
+    //DA declaration
     CollaboratorDA collaboratorDA;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        //Get member object from session
-        Collaborator collaborator = (Collaborator) request.getSession().getAttribute("collaboratorToDelete");
-        HttpSession session = request.getSession();
+        //If memberToDelete attribute is empty, redirect back to deleteMember.jsp?studID=
+        if (request.getSession().getAttribute("collaboratorToDelete") == null) {
+            response.sendRedirect("deleteCollaborator.jsp?collabID=");
+        } else {
+            //Get member object from session
+            Collaborator collaborator = (Collaborator) request.getSession().getAttribute("collaboratorToDelete");
+            HttpSession session = request.getSession();
 
-        try {
-            //Execute member deletion
-            collaboratorDA = new CollaboratorDA();
-            int successDelete = collaboratorDA.deleteRecord(collaborator.getCollabID());
-            switch (successDelete) {
-                case 1:     //Display deletion status
-                    response.sendRedirect("deleteCollaboratorStatus.jsp?success");
-                    break;
-                default:
-                    break;
+            try {
+                //Perform member DELETE operation
+                collaboratorDA = new CollaboratorDA();
+                int successDelete = collaboratorDA.deleteRecord(collaborator.getCollabID());
+                switch (successDelete) {
+                    case 1:     //Display deletion status
+                        response.sendRedirect("deleteCollaboratorStatus.jsp?success");
+                        break;
+                    default:
+                        break;
+                }
+            } catch (Exception ex) {
+                session.setAttribute("errorMsg", ex.getMessage());
+                response.sendRedirect("deleteCollaboratorStatus.jsp?error");
+                ex.printStackTrace();
             }
-        } catch (Exception ex) {
-            session.setAttribute("errorMsg", ex.getMessage());
-            response.sendRedirect("deleteCollaboratorStatus.jsp?error");
-            ex.printStackTrace();
         }
     }
 }

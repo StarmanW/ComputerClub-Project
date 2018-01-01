@@ -2,8 +2,14 @@
 <jsp:useBean id="collaboratorDA" class="dataAccess.CollaboratorDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
-    Collaborator collaborator = collaboratorDA.selectRecord(request.getParameter("collabID"));
-    session.setAttribute("collaboratorToDelete", collaborator);
+    Collaborator collaborator = null;
+    String collabID = request.getParameter("collabID");
+    if (collabID != null && !collabID.isEmpty()) {
+        collaborator = collaboratorDA.selectRecord(request.getParameter("collabID"));
+        session.setAttribute("collaboratorToDelete", collaborator);
+    } else {
+        session.removeAttribute("collaboratorToDelete");  //Removing attribute, otherwise deletion still can be proceed from previous session
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -57,7 +63,7 @@
                             <div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="registerMember.jsp" aria-expanded="false">MEMBER</a><a class="text-white dropdown-item display-4" href="registerEvent.jsp" aria-expanded="false">EVENT</a><a class="text-white dropdown-item display-4" href="registerCollaborator.jsp" aria-expanded="false">COLLABORATOR</a><a class="dropdown-item text-white display-4" href="registerSponsoredItem.jsp">SPONSORED ITEMS</a></div>
                         </li>
                         <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown-submenu" aria-expanded="false">MANAGE</a>
-                            <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItem.jsp">SPONSORED ITEMS</a></div>
+                            <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItemList.jsp">SPONSORED ITEMS</a></div>
                         </li>
                     </ul>
                     <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
@@ -71,13 +77,13 @@
                 <br />
                 <br />
                 <div class="form-container">
-                    <h1 class="well">Confirm Delete Collaborator <%=collaborator.getCollabID()%></h1>
+                    <h1 class="well">Confirm Delete Collaborator <%if (collabID != null && !collabID.isEmpty()) {%> <%=collaborator.getCollabID()%> <%}%></h1>
                     <hr style="border-top:1px solid gray;" />
                     <div class="col-lg-12 well">
                         <div class="row">
                             <form method="post" action="ProcessDeleteCollaborator">
                                 <div class="row" style="margin:auto">
-                                    <h5>Confirm delete collaborator <%=collaborator.getCollabID()%> (<%=collaborator.getCollabName()%>) details? 
+                                    <h5>Confirm delete collaborator <%if (collabID != null && !collabID.isEmpty()) {%> <%=collaborator.getCollabID()%> (<%=collaborator.getCollabName()%>) <%}%> details? 
                                         <br/><br/><span style="color:red">*Please note that this action cannot be undone.</span></h5>
                                 </div>
                                 <br />

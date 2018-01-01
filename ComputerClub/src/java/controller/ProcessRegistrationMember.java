@@ -18,6 +18,7 @@ import model.Name;
 @WebServlet(name = "ProcessRegistrationMember", urlPatterns = {"/ProcessRegistrationMember"})
 public class ProcessRegistrationMember extends HttpServlet {
 
+    //DAs declaration
     MemberDA memberDA;
     ProgrammeDA programmeDA;
 
@@ -26,7 +27,7 @@ public class ProcessRegistrationMember extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         programmeDA = new ProgrammeDA();
 
-        //Retrieve all the values
+        //Retrieve all the values from request
         String fName = request.getParameter("fName");
         String lName = request.getParameter("lName");
         String icNum = request.getParameter("icNum");
@@ -42,28 +43,30 @@ public class ProcessRegistrationMember extends HttpServlet {
         if (fName.isEmpty() || lName.isEmpty() || icNum.isEmpty() || memID.isEmpty() || contactNo.isEmpty() || email.isEmpty() || progID.isEmpty() || academicYear.isEmpty()
                 || String.valueOf(gender).isEmpty()) {
             response.sendRedirect("registerMember.jsp?empty");
-        }
-        
-        Member member = new Member(memID, programmeDA.selectProgramme(progID),
-                new Name(fName, lName), email, contactNo, icNum,
-                icNum, gender, memFeeStats, position, academicYear);
-
-        try {
-            memberDA = new MemberDA();
-            int successInsert = memberDA.createRecord(member);
-            switch (successInsert) {
-                case 1:
-                    response.sendRedirect("registerMember.jsp?success");
-                    break;
-                case -1:
-                    response.sendRedirect("registerMember.jsp?duplicated");
-                    break;
-                default:
-                    response.sendRedirect("registerMember.jsp?error");
-                    break;
+        } else {
+            try {
+                //Creating memberDA and member object 
+                Member member = new Member(memID, programmeDA.selectProgramme(progID),
+                        new Name(fName, lName), email, contactNo, icNum,
+                        icNum, gender, memFeeStats, position, academicYear);
+                memberDA = new MemberDA();
+                
+                //Perform INSERT operation and validate insert operation
+                int successInsert = memberDA.createRecord(member);
+                switch (successInsert) {
+                    case 1:
+                        response.sendRedirect("registerMember.jsp?success");
+                        break;
+                    case -1:
+                        response.sendRedirect("registerMember.jsp?duplicated");
+                        break;
+                    default:
+                        response.sendRedirect("registerMember.jsp?error");
+                        break;
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
     }
 }

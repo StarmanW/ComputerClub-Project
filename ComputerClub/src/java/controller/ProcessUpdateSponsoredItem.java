@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import dataAccess.CollaboratorDA;
@@ -23,39 +18,46 @@ import model.Item;
 @WebServlet(name = "ProcessUpdateSponsoredItem", urlPatterns = {"/ProcessUpdateSponsoredItem"})
 public class ProcessUpdateSponsoredItem extends HttpServlet {
 
+    //DAs declaration
     CollaboratorDA collaboratorDA;
     ItemDA itemDA;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        //Retrieve all values from request
         String itemID = (String) request.getSession().getAttribute("itemID");
         String itemName = request.getParameter("itemName");
         String collabName = request.getParameter("collabName");
         int itemType = Integer.parseInt(request.getParameter("itemType"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
 
+        //Validate values - if empty, redirect back to page
         if (itemName.isEmpty() || collabName.isEmpty()) {
             response.sendRedirect("registerSponsoredItem.jsp?empty");
-        }
+        } else {
+            try {
+                //Creating collaboratorDA and itemDA object for UPDATE operation
+                //Get the list of item for size check
+                //Creating a new Item object for UPDATE operation
+                collaboratorDA = new CollaboratorDA();
+                itemDA = new ItemDA();
+                ArrayList<Item> itemList = itemDA.selectAllItem();
+                Item item = new Item(itemID, collaboratorDA.selectRecord(collabName), itemType, itemName, quantity);
 
-        try {
-            collaboratorDA = new CollaboratorDA();
-            itemDA = new ItemDA();
-            ArrayList<Item> itemList = itemDA.selectAllItem();
-            Item item = new Item(itemID, collaboratorDA.selectRecord(collabName), itemType, itemName, quantity);
-
-            int successInsert = itemDA.updateRecord(item);
-            switch (successInsert) {
-                case 1:
-                    response.sendRedirect("updateSponsoredItem.jsp?itemID=" + itemID + "&success");
-                    break;
-                case 0:
-                    response.sendRedirect("updateSponsoredItem.jsp?itemID=" + itemID + "&error");
-                    break;
+                //Perform UPDATE operation on new item details
+                int successUpdate = itemDA.updateRecord(item);
+                switch (successUpdate) {
+                    case 1:
+                        response.sendRedirect("updateSponsoredItem.jsp?itemID=" + itemID + "&success");
+                        break;
+                    case 0:
+                        response.sendRedirect("updateSponsoredItem.jsp?itemID=" + itemID + "&error");
+                        break;
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
     }
 }

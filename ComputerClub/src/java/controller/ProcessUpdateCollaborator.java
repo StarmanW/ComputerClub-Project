@@ -17,12 +17,13 @@ import model.Collaborator;
 @WebServlet(name = "ProcessUpdateCollaborator", urlPatterns = {"/ProcessUpdateCollaborator"})
 public class ProcessUpdateCollaborator extends HttpServlet {
 
+    //DA declaration
     CollaboratorDA collaboratorDA;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        //Get all parameters value
+        //Get all parameters value from request
         String collabID = (String) request.getSession().getAttribute("collabID");
         String collabName = request.getParameter("collabName");
         int collabType = Integer.parseInt(request.getParameter("collabType"));
@@ -34,26 +35,27 @@ public class ProcessUpdateCollaborator extends HttpServlet {
         //To display empty fields error message
         if (collabName.isEmpty() || collabContact.isEmpty() || collabEmail.isEmpty()) {
             response.sendRedirect("updateCollaborator.jsp?empty");
-        }
+        } else {
+            try {
+                collaboratorDA = new CollaboratorDA();
+                ArrayList<Collaborator> collabList = collaboratorDA.selectAllCollaboratorList();
 
-        try {
-            collaboratorDA = new CollaboratorDA();
-            ArrayList<Collaborator> collabList = collaboratorDA.selectAllCollaboratorList();
-            
-            //Creating new collaborator object
-            Collaborator collaborator = new Collaborator(collabID, collabName, collabType, collabContact, collabEmail, additionalNotes);
+                //Creating new collaborator object
+                Collaborator collaborator = new Collaborator(collabID, collabName, collabType, collabContact, collabEmail, additionalNotes);
 
-            int successUpdate = collaboratorDA.updateRecord(collaborator);
-            switch (successUpdate) {
-                case 1:
-                    response.sendRedirect("updateCollaborator.jsp?collabID=" + collabID + "&success");
-                    break;
-                default:
-                    response.sendRedirect("updateCollaborator.jsp?collabID=" + collabID + "&error");
-                    break;
+                //Perform UPDATE operation on collaborator object
+                int successUpdate = collaboratorDA.updateRecord(collaborator);
+                switch (successUpdate) {
+                    case 1:
+                        response.sendRedirect("updateCollaborator.jsp?collabID=" + collabID + "&success");
+                        break;
+                    default:
+                        response.sendRedirect("updateCollaborator.jsp?collabID=" + collabID + "&error");
+                        break;
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
     }
 }

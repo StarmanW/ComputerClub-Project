@@ -23,25 +23,30 @@ public class ProcessDeleteMember extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        //Get member object from session
-        Member member = (Member) request.getSession().getAttribute("memberToDelete");
-        HttpSession session = request.getSession();
+        //If memberToDelete attribute is empty, redirect back to deleteMember.jsp?studID=
+        if (request.getSession().getAttribute("memberToDelete") == null) {
+            response.sendRedirect("deleteMember.jsp?studID=");
+        } else {
+            //Get member object from session
+            Member member = (Member) request.getSession().getAttribute("memberToDelete");
+            HttpSession session = request.getSession();
 
-        try {
-            //Execute member deletion
-            memberDA = new MemberDA();
-            int successDelete = memberDA.deleteRecord(member);
-            switch (successDelete) {
-                case 1:     //Display deletion status
-                    response.sendRedirect("deleteMemberStatus.jsp?success");
-                    break;
-                default:
-                    break;
+            try {
+                //Execute member deletion
+                memberDA = new MemberDA();
+                int successDelete = memberDA.deleteRecord(member);
+                switch (successDelete) {
+                    case 1:     //Display deletion status
+                        response.sendRedirect("deleteMemberStatus.jsp?success");
+                        break;
+                    default:
+                        break;
+                }
+            } catch (Exception ex) {
+                session.setAttribute("errorMsg", ex.getMessage());
+                response.sendRedirect("deleteMemberStatus.jsp?error");
+                ex.printStackTrace();
             }
-        } catch (Exception ex) {
-            session.setAttribute("errorMsg", ex.getMessage());
-            response.sendRedirect("deleteMemberStatus.jsp?error");
-            ex.printStackTrace();
         }
     }
 }

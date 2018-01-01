@@ -18,16 +18,15 @@ import model.Name;
 @WebServlet(name = "ProcessUpdateMember", urlPatterns = {"/ProcessUpdateMember"})
 public class ProcessUpdateMember extends HttpServlet {
 
+    //DAs declaration
     MemberDA memberDA;
     ProgrammeDA programmeDA;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        programmeDA = new ProgrammeDA();
-        
+
+        //Retrieve all values from request
         String studIDOriginal = (String) request.getSession().getAttribute("studIDOriginal");
-        
-        //Retrieve all the values
         String fName = request.getParameter("fName");
         String lName = request.getParameter("lName");
         String icNum = request.getParameter("icNum");
@@ -44,27 +43,30 @@ public class ProcessUpdateMember extends HttpServlet {
         if (fName.isEmpty() || lName.isEmpty() || icNum.isEmpty() || memID.isEmpty() || contactNo.isEmpty() || email.isEmpty() || progID.isEmpty() || academicYear.isEmpty()
                 || String.valueOf(gender).isEmpty()) {
             response.sendRedirect("updateMember.jsp?empty");
-        }
-        
-        //Creating a new temporary member object for update
-        Member member = new Member(memID, programmeDA.selectProgramme(progID),
-                new Name(fName, lName), email, contactNo, icNum,
-                icNum, gender, memFeeStats, position, academicYear);
+        } else {
+            try {
+                //Creating programmeDA and memberDA object for UPDATE operation
+                programmeDA = new ProgrammeDA();
+                memberDA = new MemberDA();
 
-        //Perform update on member detail
-        try {
-            memberDA = new MemberDA();
-            int successUpdate = memberDA.updateRecord(member, studIDOriginal);
-            switch (successUpdate) {
-                case 1:
-                    response.sendRedirect("updateMember.jsp?studID=" + member.getStudID() + "&success");
-                    break;
-                default:
-                    response.sendRedirect("updateMember.jsp?studID=" + member.getStudID() + "&error");
-                    break;
+                //Creating member object
+                Member member = new Member(memID, programmeDA.selectProgramme(progID),
+                        new Name(fName, lName), email, contactNo, icNum,
+                        icNum, gender, memFeeStats, position, academicYear);
+
+                //Perform UPDATE on member details
+                int successUpdate = memberDA.updateRecord(member, studIDOriginal);
+                switch (successUpdate) {
+                    case 1:
+                        response.sendRedirect("updateMember.jsp?studID=" + member.getStudID() + "&success");
+                        break;
+                    default:
+                        response.sendRedirect("updateMember.jsp?studID=" + member.getStudID() + "&error");
+                        break;
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
     }
 }

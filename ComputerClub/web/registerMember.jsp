@@ -131,13 +131,15 @@
                                                     for (int i = 0; i < 5; i++) {
                                                         if (i == 0) {
                                                 %>
-                                                <option value="<%=year - 1%>/<%=year%>"><%=year - 1%>/<%=year%></option>
+                                                <option value="<%=year - 2%>/<%=year - 1%>"><%=year - 2%>/<%=year - 1%></option>
                                                 <%} else if (i == 1) {%>
-                                                <option value="<%=year%>/<%=year + i%>"><%=year%>/<%=year + i%></option>
+                                                <option value="<%=year - 1%>/<%=year%>"><%=year - 1%>/<%=year%></option>
+                                                <%} else if (i == 2) {%>
+                                                <option value="<%=year%>/<%=year + 1%>"><%=year%>/<%=year + 1%></option>
                                                 <%} else {%>
-                                                <option value="<%=year + i - 1%>/<%=year + i%>"><%=year + i - 1%>/<%=year + i%></option>
-                                                <%
-                                                        }
+                                                <option value="<%=year + i%>/<%=year + i%>"><%=year + i - 2%>/<%=year + i - 1%></option>
+                                                %>
+                                                <%      }
                                                     }
                                                 %>
                                             </select>
