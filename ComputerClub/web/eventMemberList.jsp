@@ -71,73 +71,75 @@
             </div>
             <div class="container container-table">
                 <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Member List</strong><strong><br></strong></h2>
-                <div class="table-backpanel">
-                    <div class="table-wrapper">
-                        <div class="container">
-                            <div class="row search">
-                                <div class="col-md-6"></div>
-                                <div class="col-md-6">
-                                    <div class="dataTables_filter">
-                                        <label class="searchInfo mbr-fonts-style display-7">Search:</label>
-                                        <input class="form-control input-sm" disabled="">
+                <form method="POST" action="">
+                    <div class="table-backpanel">
+                        <div class="table-wrapper">
+                            <div class="container">
+                                <div class="row search">
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6">
+                                        <div class="dataTables_filter">
+                                            <label class="searchInfo mbr-fonts-style display-7">Search:</label>
+                                            <input class="form-control input-sm" disabled="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="container scroll">
-                            <table class="table isSearch" cellspacing="0">
-                                <thead>
-                                    <tr class="table-heads ">
-                                        <th class="head-item mbr-fonts-style display-7">Name</th>
-                                        <th class="head-item mbr-fonts-style display-7">Member ID</th>
-                                        <th class="head-item mbr-fonts-style display-7">Position</th>
-                                        <th class="head-item mbr-fonts-style display-7">Gender</th>
-                                        <th class="head-item mbr-fonts-style display-7">Academic Year</th>
-                                        <th class="head-item mbr-fonts-style display-7">Programme</th>
-                                        <th class="head-item mbr-fonts-style display-7">
-                                            </div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <%
-                                        ArrayList<Member> memberList = memberDA.selectAllMembersList();
-                                        for (int i = 0; i < memberList.size(); i++) {
-                                    %>
-                                    <tr>
-                                        <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getStudName().getFullName()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getStudID()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getPositionString()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getGender()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getAcademicYear()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getProgramme().getProgID()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="studID" value="<%=memberList.get(i).getStudID()%>" /></td>
-                                    </tr>
-                                    <%}%>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="container table-info-container">
-                            <div class="row info">
-                                <div class="col-md-6">
-                                    <div class="dataTables_info mbr-fonts-style display-7">
-                                        <span class="infoBefore">Showing</span>
-                                        <span class="inactive infoRows"></span>
-                                        <span class="infoAfter">entries</span>
-                                        <span class="infoFilteredBefore">(filtered from</span>
-                                        <span class="inactive infoRows"></span>
-                                        <span class="infoFilteredAfter">total entries)</span>
+                            <div class="container scroll">
+                                <table class="table isSearch" cellspacing="0">
+                                    <thead>
+                                        <tr class="table-heads ">
+                                            <th class="head-item mbr-fonts-style display-7">Name</th>
+                                            <th class="head-item mbr-fonts-style display-7">Member ID</th>
+                                            <th class="head-item mbr-fonts-style display-7">Position</th>
+                                            <th class="head-item mbr-fonts-style display-7">Gender</th>
+                                            <th class="head-item mbr-fonts-style display-7">Academic Year</th>
+                                            <th class="head-item mbr-fonts-style display-7">Programme</th>
+                                            <th class="head-item mbr-fonts-style display-7">
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%
+                                            ArrayList<Member> memberList = memberDA.selectAllMembersList();
+                                            for (int i = 0; i < memberList.size(); i++) {
+                                        %>
+                                        <tr>
+                                            <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getStudName().getFullName()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getStudID()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getPositionString()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getGender()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getAcademicYear()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getProgramme().getProgID()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="studID" value="<%=memberList.get(i).getStudID()%>" /></td>
+                                        </tr>
+                                        <%}%>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="container table-info-container">
+                                <div class="row info">
+                                    <div class="col-md-6">
+                                        <div class="dataTables_info mbr-fonts-style display-7">
+                                            <span class="infoBefore">Showing</span>
+                                            <span class="inactive infoRows"></span>
+                                            <span class="infoAfter">entries</span>
+                                            <span class="infoFilteredBefore">(filtered from</span>
+                                            <span class="inactive infoRows"></span>
+                                            <span class="infoFilteredAfter">total entries)</span>
+                                        </div>
                                     </div>
+                                    <div class="col-md-6"></div>
                                 </div>
-                                <div class="col-md-6"></div>
                             </div>
                         </div>
+                        <div class="form-group" style="margin:auto; width:280px;">
+                            <a href=""><button type="submit" class="btn btn-sm btn-primary" >Submit</button></a>
+                            <a href="registerEvent.jsp"><button type="button" class="btn btn-sm btn-primary">Back</button></a>
+                        </div>
                     </div>
-                    <div class="form-group" style="margin:auto; width:280px;">
-                        <a href=""><button type="submit" class="btn btn-sm btn-primary" >Submit</button></a>
-                        <a href="registerEvent.jsp"><button type="button" class="btn btn-sm btn-primary">Back</button></a>
-                    </div>
-                </div>
+                </form>
             </div>
         </section>
         <section class="cid-qEC8dDOXU7" id="footer1-s" data-rv-view="11961">

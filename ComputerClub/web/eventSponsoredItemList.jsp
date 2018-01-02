@@ -72,69 +72,71 @@
             </div>
             <div class="container container-table">
                 <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Sponsored Item List</strong><strong><br></strong></h2>
-                <div class="table-backpanel">
-                    <div class="table-wrapper">
-                        <div class="container">
-                            <div class="row search">
-                                <div class="col-md-6"></div>
-                                <div class="col-md-6">
-                                    <div class="dataTables_filter">
-                                        <label class="searchInfo mbr-fonts-style display-7">Search:</label>
-                                        <input class="form-control input-sm" disabled="">
+                <form method="POST" action="">
+                    <div class="table-backpanel">
+                        <div class="table-wrapper">
+                            <div class="container">
+                                <div class="row search">
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6">
+                                        <div class="dataTables_filter">
+                                            <label class="searchInfo mbr-fonts-style display-7">Search:</label>
+                                            <input class="form-control input-sm" disabled="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="container scroll">
-                            <table class="table isSearch" cellspacing="0">
-                                <thead>
-                                    <tr class="table-heads ">
-                                        <th class="head-item mbr-fonts-style display-7">Item ID</th>
-                                        <th class="head-item mbr-fonts-style display-7">Item Name</th>
-                                        <th class="head-item mbr-fonts-style display-7">Sponsored By</th>
-                                        <th class="head-item mbr-fonts-style display-7">Item Quantity</th>
-                                        <th class="head-item mbr-fonts-style display-7">Item Type</th>
-                                        <th class="head-item mbr-fonts-style display-7"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <%
-                                        ArrayList<Item> itemList = itemDA.selectAllItem();
-                                        for (int i = 0; i < itemList.size(); i++) {
-                                    %>
-                                    <tr>
-                                        <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemID()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemName()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getCollaborator().getCollabName()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getQuantity()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemTypeString()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="itemID" value="<%=itemList.get(i).getItemID()%>" /></td>
-                                    </tr>
-                                    <%}%>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="container table-info-container">
-                            <div class="row info">
-                                <div class="col-md-6">
-                                    <div class="dataTables_info mbr-fonts-style display-7">
-                                        <span class="infoBefore">Showing</span>
-                                        <span class="inactive infoRows"></span>
-                                        <span class="infoAfter">entries</span>
-                                        <span class="infoFilteredBefore">(filtered from</span>
-                                        <span class="inactive infoRows"></span>
-                                        <span class="infoFilteredAfter">total entries)</span>
+                            <div class="container scroll">
+                                <table class="table isSearch" cellspacing="0">
+                                    <thead>
+                                        <tr class="table-heads ">
+                                            <th class="head-item mbr-fonts-style display-7">Item ID</th>
+                                            <th class="head-item mbr-fonts-style display-7">Item Name</th>
+                                            <th class="head-item mbr-fonts-style display-7">Sponsored By</th>
+                                            <th class="head-item mbr-fonts-style display-7">Item Quantity</th>
+                                            <th class="head-item mbr-fonts-style display-7">Item Type</th>
+                                            <th class="head-item mbr-fonts-style display-7"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%
+                                            ArrayList<Item> itemList = itemDA.selectAllItem();
+                                            for (int i = 0; i < itemList.size(); i++) {
+                                        %>
+                                        <tr>
+                                            <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemID()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemName()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getCollaborator().getCollabName()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getQuantity()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemTypeString()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="itemID" value="<%=itemList.get(i).getItemID()%>" /></td>
+                                        </tr>
+                                        <%}%>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="container table-info-container">
+                                <div class="row info">
+                                    <div class="col-md-6">
+                                        <div class="dataTables_info mbr-fonts-style display-7">
+                                            <span class="infoBefore">Showing</span>
+                                            <span class="inactive infoRows"></span>
+                                            <span class="infoAfter">entries</span>
+                                            <span class="infoFilteredBefore">(filtered from</span>
+                                            <span class="inactive infoRows"></span>
+                                            <span class="infoFilteredAfter">total entries)</span>
+                                        </div>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
+                        <div class="form-group" style="margin:auto; width:280px;">
+                            <a href=""><button type="submit" class="btn btn-sm btn-primary" >Submit</button></a>
+                            <a href="registerEvent.jsp"><button type="button" class="btn btn-sm btn-primary">Back</button></a>
+                        </div>
                     </div>
-                    <div class="form-group" style="margin:auto; width:280px;">
-                        <a href=""><button type="submit" class="btn btn-sm btn-primary" >Submit</button></a>
-                        <a href="registerEvent.jsp"><button type="button" class="btn btn-sm btn-primary">Back</button></a>
-                    </div>
-                </div>
+                </form>
             </div>
         </section>
         <section class="cid-qEChLCCjpO" id="footer1-10" data-rv-view="555">
