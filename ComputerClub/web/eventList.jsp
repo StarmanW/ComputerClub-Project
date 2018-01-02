@@ -83,8 +83,10 @@
                             <table class="table isSearch" cellspacing="0">
                                 <thead>
                                     <tr class="table-heads" style="border-bottom-style:solid;">
-                                        <th class="head-item mbr-fonts-style display-7">
-                                            <a href="registerEvent.jsp"><img class="addNewRecord" src="assets/images/plus-square.svg" width="30px" /><span style="font-weight:bold;color:black;vertical-align: middle;font-size: 100%">&nbsp;Add New Event</span></a>
+                                        <th class="head-item mbr-fonts-style display-7" colspan="7" >
+                                            <div style="text-align: center;">
+                                                <a href="registerEvent.jsp"><img src="assets/images/plus-square.svg" width="30px" /><span class="addNewRecordTxt">&nbsp;Add New Event</span></a>
+                                            </div>
                                         </th>
                                     </tr>
                                     <tr class="table-heads ">

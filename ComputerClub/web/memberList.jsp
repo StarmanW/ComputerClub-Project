@@ -89,8 +89,10 @@
                             <table class="table isSearch" cellspacing="0">
                                 <thead>
                                     <tr class="table-heads" style="border-bottom-style:solid">
-                                        <th class="head-item mbr-fonts-style display-7">
-                                            <a href="registerMember.jsp"><img class="addNewRecord" src="assets/images/plus-square.svg" width="40px" /><span style="font-weight:bold;color:black;vertical-align: middle">&nbsp;Add New Member</span></a>
+                                        <th class="head-item mbr-fonts-style display-7" colspan="7">
+                                            <div style="text-align: center;">
+                                                <a href="registerMember.jsp"><img src="assets/images/plus-square.svg" width="40px" /><span class="addNewRecordTxt">&nbsp;Add New Member</span></a>
+                                            </div>
                                         </th>
                                     </tr>
                                     <tr class="table-heads">
