@@ -34,14 +34,19 @@ public class ProcessRegistrationSponsoredItem extends HttpServlet {
         if (itemName.isEmpty() || collabName.isEmpty()) {
             response.sendRedirect("registerSponsoredItem.jsp?empty");
         } else {
-
-            collaboratorDA = new CollaboratorDA();
-            itemDA = new ItemDA();
-            ArrayList<Item> itemList = itemDA.selectAllItem();
-
             try {
-                //Creating Item object for INSERT operation
-                Item item = new Item(String.format("IT%04d", (itemList.size() + 1)), collaboratorDA.selectRecord(collabName), itemType, itemName, quantity);
+                Item item = null;
+                collaboratorDA = new CollaboratorDA();
+                itemDA = new ItemDA();
+                ArrayList<Item> itemList = itemDA.selectAllItem();
+
+                if (!itemList.isEmpty()) {
+                    int lastID = Integer.parseInt(itemList.get(itemList.size() - 1).getItemID().substring(2, 6));
+                    //Creating Item object for INSERT operation
+                    item = new Item(String.format("IT%04d", (itemList.size() + 1)), collaboratorDA.selectRecord(collabName), itemType, itemName, quantity);
+                } else {
+                    item = new Item(String.format("IT%04d", 1), collaboratorDA.selectRecord(collabName), itemType, itemName, quantity);
+                }
 
                 //Perform INSERT on member details
                 int successInsert = itemDA.createRecord(item);

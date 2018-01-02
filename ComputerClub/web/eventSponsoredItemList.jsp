@@ -72,7 +72,7 @@
             </div>
             <div class="container container-table">
                 <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Sponsored Item List</strong><strong><br></strong></h2>
-                <form method="POST" action="">
+                <form method="POST" action="ProcessRegistrationEventItem">
                     <div class="table-backpanel">
                         <div class="table-wrapper">
                             <div class="container">

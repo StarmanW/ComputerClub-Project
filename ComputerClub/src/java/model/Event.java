@@ -4,30 +4,29 @@
  */
 package model;
 
-import java.util.ArrayList;
-import java.util.Date;
-
 public class Event {
 
     private String eventID;
     private String eventName;
     private int eventType;
     private String eventDate;
-    private String eventTime;
+    private String eventStartTime;
+    private String eventEndTime;
     private String eventLocation;
 
     //No-arg constructor
     public Event() {
 
     }
-
+    
     //Parameterized constructor
-    public Event(String eventID, String eventName, int eventType, String eventDate, String eventTime, String eventLocation) {
+    public Event(String eventID, String eventName, int eventType, String eventDate, String eventStartTime, String eventEndTime, String eventLocation) {
         this.eventID = eventID;
         this.eventName = eventName;
         this.eventType = eventType;
         this.eventDate = eventDate;
-        this.eventTime = eventTime;
+        this.eventStartTime = eventStartTime;
+        this.eventEndTime = eventEndTime;
         this.eventLocation = eventLocation;
     }
 
@@ -48,8 +47,12 @@ public class Event {
         this.eventDate = eventDate;
     }
 
-    public void setEventTime(String eventTime) {
-        this.eventTime = eventTime;
+    public void setEventStartTime(String eventStartTime) {
+        this.eventStartTime = eventStartTime;
+    }
+
+    public void setEventEndTime(String eventEndTime) {
+        this.eventEndTime = eventEndTime;
     }
 
     public void setEventLocation(String eventLocation) {
@@ -99,8 +102,12 @@ public class Event {
         return eventDate;
     }
 
-    public String getEventTime() {
-        return eventTime;
+    public String getEventStartTime() {
+        return eventStartTime;
+    }
+
+    public String getEventEndTime() {
+        return eventEndTime;
     }
 
     public String getEventLocation() {

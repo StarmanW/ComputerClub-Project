@@ -46,7 +46,7 @@ public class EventDA {
             pstmt = conn.prepareStatement("SELECT * FROM" + tableName);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                eventList.add(new Event(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                eventList.add(new Event(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -65,7 +65,7 @@ public class EventDA {
             pstmt.setString(1, eventID);
             rs = pstmt.executeQuery();
             if (rs.next()) {
-                event = new Event(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6));
+                event = new Event(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -81,9 +81,10 @@ public class EventDA {
         String eventName = event.getEventName();
         int eventType = event.getEventType();
         String eventDate = event.getEventDate();
-        String eventTime = event.getEventTime();
+        String eventStartTime = event.getEventStartTime();
+        String eventEndTime = event.getEventEndTime();
         String eventLocation = event.getEventLocation();
-        String queryStr = "INSERT INTO" + tableName + "VALUES(?,?,?,?,?,?)";
+        String queryStr = "INSERT INTO" + tableName + "VALUES(?,?,?,?,?,?,?)";
 
         try {
             retrieveRecord(eventID);
@@ -96,8 +97,9 @@ public class EventDA {
                 pstmt.setString(2, eventName);
                 pstmt.setInt(3, eventType);
                 pstmt.setString(4, eventDate);
-                pstmt.setString(5, eventTime);
-                pstmt.setString(6, eventLocation);
+                pstmt.setString(5, eventStartTime);
+                pstmt.setString(6, eventEndTime);
+                pstmt.setString(7, eventLocation);
                 successInsert = pstmt.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -127,9 +129,10 @@ public class EventDA {
         String eventName = event.getEventName();
         int eventType = event.getEventType();
         String eventDate = event.getEventDate();
-        String eventTime = event.getEventTime();
+        String eventStartTime = event.getEventStartTime();
+        String eventEndTime = event.getEventEndTime();
         String eventLocation = event.getEventLocation();
-        String queryStr = "UPDATE" + tableName + "SET EVENTNAME = ?, EVENTTYPE = ?, EVENTDATE = ?, EVENTTIME = ?, EVENTLOCATION = ? WHERE EVENTID = ?";
+        String queryStr = "UPDATE" + tableName + "SET EVENTNAME = ?, EVENTTYPE = ?, EVENTDATE = ?, EVENTSTARTTIME = ?, EVENTENDTIME = ?, EVENTLOCATION = ? WHERE EVENTID = ?";
 
         try {
             retrieveRecord(eventID);
@@ -139,9 +142,10 @@ public class EventDA {
                 pstmt.setString(1, eventName);
                 pstmt.setInt(2, eventType);
                 pstmt.setString(3, eventDate);
-                pstmt.setString(4, eventTime);
-                pstmt.setString(5, eventLocation);
-                pstmt.setString(6, eventID);
+                pstmt.setString(4, eventStartTime);
+                pstmt.setString(5, eventEndTime);
+                pstmt.setString(6, eventLocation);
+                pstmt.setString(7, eventID);
                 successUpdate = pstmt.executeUpdate();
             } else {
                 successUpdate = 0;

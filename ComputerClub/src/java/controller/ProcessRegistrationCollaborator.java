@@ -36,12 +36,19 @@ public class ProcessRegistrationCollaborator extends HttpServlet {
             response.sendRedirect("registerCollaborator.jsp?empty");
         } else {
             try {
+                Collaborator collaborator = null;
                 collaboratorDA = new CollaboratorDA();
                 ArrayList<Collaborator> collabList = collaboratorDA.selectAllCollaboratorList();
 
-                //Creating new collaborator object
-                Collaborator collaborator = new Collaborator(String.format("C%04d", (collabList.size() + 1)), collabName, collabType, collabContact, collabEmail, additionalNotes);
-
+                //Validate if there is collaborator records in database
+                if (!collabList.isEmpty()) {
+                    int lastID = Integer.parseInt(collabList.get(collabList.size() - 1).getCollabID().substring(1, 5));
+                    //Creating new collaborator object
+                    collaborator = new Collaborator(String.format("C%04d", (lastID + 1)), collabName, collabType, collabContact, collabEmail, additionalNotes);
+                } else {
+                    collaborator = new Collaborator(String.format("C%04d", 1), collabName, collabType, collabContact, collabEmail, additionalNotes);
+                }
+                
                 //Perform INSERT operation on collaborator object
                 int successInsert = collaboratorDA.createRecord(collaborator);
                 switch (successInsert) {

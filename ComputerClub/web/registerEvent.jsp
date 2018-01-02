@@ -1,10 +1,7 @@
-<%@page import="model.Item"%>
-<%@page import="java.util.ArrayList"%>
-<jsp:useBean id="itemDA" class="dataAccess.ItemDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    session.setAttribute("itemIDList", session.getAttribute("itemIDList"));
 %>  
-
 <!DOCTYPE html>
 <html>
 
@@ -80,6 +77,13 @@
                                 <br />
                                 <br />
                                 <p style="color:red">Please ensure all the fields are not left blank</p>
+                                <%
+                                    if (session.getAttribute("itemIDList") != null) {
+                                        String[] itemIDList = (String[]) request.getSession().getAttribute("itemIDList");
+                                        for (int idx = 0; idx < itemIDList.length; idx++) {
+                                %>
+                                <p> <%=itemIDList[idx]%> </p>
+                                <%}}%>
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
@@ -95,8 +99,8 @@
                                     <div class="row" style="margin:auto">
                                         <label><span style="color:red;">*</span>Event Time: &nbsp;</label>
                                         <br/>
-                                        <input type="time" name="startTime" value="" required="required">&nbsp;to&nbsp;
-                                        <input type="time" name="endTime" value="" required="required">
+                                        <input type="time" name="eventStartTime" value="" required="required">&nbsp;to&nbsp;
+                                        <input type="time" name="eventEndTime" value="" required="required">
                                     </div>
                                     <br/>
                                     <div class="row" style="margin:auto">
@@ -211,6 +215,16 @@
         <script>
             if (($(window).height() + 100) < $(document).height()) {
                 $('#top-link-block').removeClass('hidden').affix({offset: {top: 100}});
+            }
+        </script>
+        <script>
+            var urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('success')) {
+                window.alert("New Event successfully added!");
+            } else if (urlParams.has('duplicated')) {
+                window.alert("Duplicated records found, please ensure the new event record does not exist in the event list.");
+            } else if (urlParams.has('error')) {
+                window.alert("Oh no! An error has occured, please contact the system administrator.");
             }
         </script>
         <style>
