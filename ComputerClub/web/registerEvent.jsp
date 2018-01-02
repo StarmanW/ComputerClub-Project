@@ -77,13 +77,6 @@
                                 <br />
                                 <br />
                                 <p style="color:red">Please ensure all the fields are not left blank</p>
-                                <%
-                                    if (session.getAttribute("itemIDList") != null) {
-                                        String[] itemIDList = (String[]) request.getSession().getAttribute("itemIDList");
-                                        for (int idx = 0; idx < itemIDList.length; idx++) {
-                                %>
-                                <p> <%=itemIDList[idx]%> </p>
-                                <%}}%>
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
