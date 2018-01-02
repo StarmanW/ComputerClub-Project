@@ -88,6 +88,11 @@
                         <div class="container scroll">
                             <table class="table isSearch" cellspacing="0">
                                 <thead>
+                                    <tr class="table-heads" style="border-bottom-style:solid">
+                                        <th class="head-item mbr-fonts-style display-7">
+                                            <a href="registerCollaborator.jsp"><img class="addNewRecord" src="assets/images/plus-square.svg" width="30px" /><span style="font-weight:bold;color:black;vertical-align: middle;font-size: 100%">&nbsp;Add New Collaborator</span></a>
+                                        </th>
+                                    </tr>
                                     <tr class="table-heads ">
                                         <th class="head-item mbr-fonts-style display-7">Collaborator ID</th>
                                         <th class="head-item mbr-fonts-style display-7">Collaborator Name</th>

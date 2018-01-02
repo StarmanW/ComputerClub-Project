@@ -72,163 +72,165 @@
             </div>
             <div class="container container-table">
                 <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Collaborator List</strong><strong><br></strong></h2>
-                <div class="table-backpanel">
-                    <div class="table-wrapper">
-                        <div class="container">
-                            <div class="row search">
-                                <div class="col-md-6"></div>
-                                <div class="col-md-6">
-                                    <div class="dataTables_filter">
-                                        <label class="searchInfo mbr-fonts-style display-7">Search:</label>
-                                        <input class="form-control input-sm" disabled="">
+                <form method="POST" action="">
+                    <div class="table-backpanel">
+                        <div class="table-wrapper">
+                            <div class="container">
+                                <div class="row search">
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-6">
+                                        <div class="dataTables_filter">
+                                            <label class="searchInfo mbr-fonts-style display-7">Search:</label>
+                                            <input class="form-control input-sm" disabled="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="container scroll">
-                            <table class="table isSearch" cellspacing="0">
-                                <thead>
-                                    <tr class="table-heads ">
-                                        <th class="head-item mbr-fonts-style display-7">Collaborator ID</th>
-                                        <th class="head-item mbr-fonts-style display-7">Collaborator Name</th>
-                                        <th class="head-item mbr-fonts-style display-7">Collaborator Type</th>
-                                        <th class="head-item mbr-fonts-style display-7">Contact No.</th>
-                                        <th class="head-item mbr-fonts-style display-7">Email</th>
-                                        <th class="head-item mbr-fonts-style display-7"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <%
-                                        ArrayList<Collaborator> collabList = collaboratorDA.selectAllCollaboratorList();
-                                        for (int i = 0; i < collabList.size(); i++) {
-                                    %>
-                                    <tr>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabID()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabName()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabTypeString()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabContact()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabEmail()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="collabID" value="<%=collabList.get(i).getCollabID()%>" /></td>
-                                    </tr>
-                                    <%}%>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="container table-info-container">
-                            <div class="row info">
-                                <div class="col-md-6">
-                                    <div class="dataTables_info mbr-fonts-style display-7">
-                                        <span class="infoBefore">Showing</span>
-                                        <span class="inactive infoRows"></span>
-                                        <span class="infoAfter">entries</span>
-                                        <span class="infoFilteredBefore">(filtered from</span>
-                                        <span class="inactive infoRows"></span>
-                                        <span class="infoFilteredAfter">total entries)</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6"></div>
+                            <div class="container scroll">
+                                <table class="table isSearch" cellspacing="0">
+                                    <thead>
+                                        <tr class="table-heads ">
+                                            <th class="head-item mbr-fonts-style display-7">Collaborator ID</th>
+                                            <th class="head-item mbr-fonts-style display-7">Collaborator Name</th>
+                                            <th class="head-item mbr-fonts-style display-7">Collaborator Type</th>
+                                            <th class="head-item mbr-fonts-style display-7">Contact No.</th>
+                                            <th class="head-item mbr-fonts-style display-7">Email</th>
+                                            <th class="head-item mbr-fonts-style display-7"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%
+                                            ArrayList<Collaborator> collabList = collaboratorDA.selectAllCollaboratorList();
+                                            for (int i = 0; i < collabList.size(); i++) {
+                                        %>
+                                        <tr>
+                                            <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabID()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabName()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabTypeString()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabContact()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabEmail()%></td>
+                                            <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="collabID" value="<%=collabList.get(i).getCollabID()%>" /></td>
+                                        </tr>
+                                        <%}%>
+                                    </tbody>
+                                </table>
                             </div>
+                            <div class="container table-info-container">
+                                <div class="row info">
+                                    <div class="col-md-6">
+                                        <div class="dataTables_info mbr-fonts-style display-7">
+                                            <span class="infoBefore">Showing</span>
+                                            <span class="inactive infoRows"></span>
+                                            <span class="infoAfter">entries</span>
+                                            <span class="infoFilteredBefore">(filtered from</span>
+                                            <span class="inactive infoRows"></span>
+                                            <span class="infoFilteredAfter">total entries)</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin:auto; width:280px;">
+                            <a href=""><button type="submit" class="btn btn-sm btn-primary" >Submit</button></a>
+                            <a href="registerEvent.jsp"><button type="button" class="btn btn-sm btn-primary">Back</button></a>
                         </div>
                     </div>
-                    <div class="form-group" style="margin:auto; width:280px;">
-                        <a href=""><button type="submit" class="btn btn-sm btn-primary" >Submit</button></a>
-                        <a href="registerEvent.jsp"><button type="button" class="btn btn-sm btn-primary">Back</button></a>
+                </form>
+            </div>
+    </section>
+    <section class="cid-qEChLCCjpO" id="footer1-10" data-rv-view="555">
+        <div class="container">
+            <div class="media-container-row content text-white">
+                <div class="col-12 col-md-3">
+                    <div class="media-wrap">
+                        <a href="homepage.jsp"><img src="assets/images/logo-2-3508x2480.jpg" alt="Mobirise" title="" media-simple="true"></a>
                     </div>
                 </div>
+                <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                    <h5 class="pb-3">
+                        Address
+                    </h5>
+                    <p class="mbr-text">Lot 1, Ground Floor,
+                        <br>Pusat Dagangan Donggongon,
+                        <br>Jalan Sapau,
+                        <br>89500 Donggongon,
+                        <br>Penampang, Sabah</p>
+                </div>
+                <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                    <h5 class="pb-3">
+                        Contacts
+                    </h5>
+                    <p class="mbr-text">
+                        Email: sabah@tarc.edu.my
+                        <br>Phone: (6)088-718481, 718482
+                        <br>Fax: (6)088-718486
+                    </p>
+                </div>
+                <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                    <h5 class="pb-3">
+                        Links
+                    </h5>
+                    <p class="mbr-text"><a href="http://www.tarc.edu.my/" target="_blank" class="text-primary">TAR UC</a>
+                        <br><a href="http://www.tarc.edu.my/sabah/index.jsp" class="text-primary" target="_blank">TAR UC Sabah</a>
+                        <br><a class="text-primary" href="https://www.facebook.com/tarucsabah/" target="_blank">TAR UC Sabah Facebook</a></p>
+                </div>
             </div>
-        </section>
-        <section class="cid-qEChLCCjpO" id="footer1-10" data-rv-view="555">
-            <div class="container">
-                <div class="media-container-row content text-white">
-                    <div class="col-12 col-md-3">
-                        <div class="media-wrap">
-                            <a href="homepage.jsp"><img src="assets/images/logo-2-3508x2480.jpg" alt="Mobirise" title="" media-simple="true"></a>
-                        </div>
+            <div class="footer-lower">
+                <div class="media-container-row">
+                    <div class="col-sm-12">
+                        <hr>
                     </div>
-                    <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                        <h5 class="pb-3">
-                            Address
-                        </h5>
-                        <p class="mbr-text">Lot 1, Ground Floor,
-                            <br>Pusat Dagangan Donggongon,
-                            <br>Jalan Sapau,
-                            <br>89500 Donggongon,
-                            <br>Penampang, Sabah</p>
-                    </div>
-                    <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                        <h5 class="pb-3">
-                            Contacts
-                        </h5>
-                        <p class="mbr-text">
-                            Email: sabah@tarc.edu.my
-                            <br>Phone: (6)088-718481, 718482
-                            <br>Fax: (6)088-718486
+                </div>
+                <div class="media-container-row mbr-white">
+                    <div class="col-sm-6 copyright">
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            © Copyright 2017 TAR UC Computer Club - All Rights Reserved
                         </p>
                     </div>
-                    <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                        <h5 class="pb-3">
-                            Links
-                        </h5>
-                        <p class="mbr-text"><a href="http://www.tarc.edu.my/" target="_blank" class="text-primary">TAR UC</a>
-                            <br><a href="http://www.tarc.edu.my/sabah/index.jsp" class="text-primary" target="_blank">TAR UC Sabah</a>
-                            <br><a class="text-primary" href="https://www.facebook.com/tarucsabah/" target="_blank">TAR UC Sabah Facebook</a></p>
-                    </div>
-                </div>
-                <div class="footer-lower">
-                    <div class="media-container-row">
-                        <div class="col-sm-12">
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="media-container-row mbr-white">
-                        <div class="col-sm-6 copyright">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                © Copyright 2017 TAR UC Computer Club - All Rights Reserved
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                        </div>
+                    <div class="col-md-6">
                     </div>
                 </div>
             </div>
-        </section>
-        <script src="assets/web/assets/jquery/jquery.min.js"></script>
-        <script src="assets/popper/popper.min.js"></script>
-        <script src="assets/tether/tether.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/dropdown/js/script.min.js"></script>
-        <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
-        <script src="assets/datatables/jquery.data-tables.min.js"></script>
-        <script src="assets/datatables/data-tables.bootstrap4.min.js"></script>
-        <script src="assets/smoothscroll/smooth-scroll.js"></script>
-        <script src="assets/theme/js/script.js"></script>
-        <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i></i></a></div>
-        <!-- Back to top -->
-        <script>
-            if (($(window).height() + 100) < $(document).height()) {
-                $('#top-link-block').removeClass('hidden').affix({offset: {top: 100}});
-            }
-        </script>
-        <style>
-            #top-link-block>.btn {
-                font-size: 1.5em!important;
-                opacity: 0.4!important;
-                padding: 10px 20px!important
-            }
+        </div>
+    </section>
+    <script src="assets/web/assets/jquery/jquery.min.js"></script>
+    <script src="assets/popper/popper.min.js"></script>
+    <script src="assets/tether/tether.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/dropdown/js/script.min.js"></script>
+    <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+    <script src="assets/datatables/jquery.data-tables.min.js"></script>
+    <script src="assets/datatables/data-tables.bootstrap4.min.js"></script>
+    <script src="assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="assets/theme/js/script.js"></script>
+    <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i></i></a></div>
+    <!-- Back to top -->
+    <script>
+        if (($(window).height() + 100) < $(document).height()) {
+            $('#top-link-block').removeClass('hidden').affix({offset: {top: 100}});
+        }
+    </script>
+    <style>
+        #top-link-block>.btn {
+            font-size: 1.5em!important;
+            opacity: 0.4!important;
+            padding: 10px 20px!important
+        }
 
-            #top-link-block.affix-top {
-                position: absolute;
-                bottom: -82px;
-                right: 10px;
-            }
+        #top-link-block.affix-top {
+            position: absolute;
+            bottom: -82px;
+            right: 10px;
+        }
 
-            #top-link-block.affix {
-                position: fixed;
-                bottom: 18px;
-                right: 10px;
-                z-index: 999;
-            }
-        </style>
-    </body>
+        #top-link-block.affix {
+            position: fixed;
+            bottom: 18px;
+            right: 10px;
+            z-index: 999;
+        }
+    </style>
+</body>
 
 </html>

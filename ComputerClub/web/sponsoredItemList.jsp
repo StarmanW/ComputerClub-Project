@@ -88,6 +88,11 @@
                         <div class="container scroll">
                             <table class="table isSearch" cellspacing="0">
                                 <thead>
+                                    <tr class="table-heads" style="border-bottom-style:solid">
+                                        <th class="head-item mbr-fonts-style display-7">
+                                            <a href="registerSponsoredItem.jsp"><img class="addNewRecord" src="assets/images/plus-square.svg" width="40px" /><span style="font-weight:bold;color:black;vertical-align: middle">&nbsp;Add New Item</span></a>
+                                        </th>
+                                    </tr>
                                     <tr class="table-heads ">
                                         <th class="head-item mbr-fonts-style display-7">Item ID</th>
                                         <th class="head-item mbr-fonts-style display-7">Item Name</th>
