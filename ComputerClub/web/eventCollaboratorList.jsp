@@ -3,6 +3,7 @@
 <jsp:useBean id="collaboratorDA" class="dataAccess.CollaboratorDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    String[] collabIDList = (String[]) session.getAttribute("collabIDList");
 %>
 <!DOCTYPE html>
 <html>
@@ -109,9 +110,22 @@
                                             <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabTypeString()%></td>
                                             <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabContact()%></td>
                                             <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabEmail()%></td>
+                                        <%
+                                                for (int j = 0; j < collabIDList.length; j++) {
+                                                    if (collabIDList[j].equals(collabList.get(i).getCollabID())) {
+                                        %>
+                                            <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="collabID" value="<%=collabList.get(i).getCollabID()%>" checked/></td>
+                                        <%          } else {
+                                        %>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="collabID" value="<%=collabList.get(i).getCollabID()%>" /></td>
+                                        <%
+                                                }
+                                        %>
                                         </tr>
-                                        <%}%>
+                                        <%
+                                                }
+                                            }
+                                        %>
                                     </tbody>
                                 </table>
                             </div>

@@ -1,7 +1,4 @@
-<%
-    session = request.getSession();
-
-%>  
+<%session = request.getSession();%>  
 <!DOCTYPE html>
 <html>
 
@@ -76,7 +73,6 @@
                                 <p style="color:red; float: left;">"*" Required fields</p>
                                 <br />
                                 <br />
-                                <p style="color:red">Please ensure all the fields are not left blank</p>
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
@@ -89,17 +85,21 @@
                                         </div>
                                     </div>
                                     <br/>
-                                    <div class="row" style="margin:auto">
-                                        <label><span style="color:red;">*</span>Event Time: &nbsp;</label>
-                                        <br/>
-                                        <input type="time" name="eventStartTime" value="" required="required">&nbsp;to&nbsp;
-                                        <input type="time" name="eventEndTime" value="" required="required">
-                                    </div>
-                                    <br/>
-                                    <div class="row" style="margin:auto">
-                                        <br />
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <div class="row" style="margin:auto">
+                                                <label><span style="color:red;">*</span>Event Time: &nbsp;</label>
+                                                <br/>
+                                                <div style="display: block;">
+                                                    <input type="time" name="eventStartTime" value="" required="required"><br/>to<br/>
+                                                    <input type="time" name="eventEndTime" value="" required="required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 form-group">
                                         <label><span style="color:red;">*</span>Event Location</label>
                                         <input type="text" name="eventLocation" placeholder="Lot 1-1" class="form-control" required="required">
+                                        </div>
                                     </div>
                                     <br/>
                                     <div class="row" style="margin:auto">

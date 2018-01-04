@@ -3,6 +3,7 @@
 <jsp:useBean id="memberDA" class="dataAccess.MemberDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    String[] memberIDList = (String[]) session.getAttribute("memberIDList");
 %>
 <!DOCTYPE html>
 <html>
@@ -101,7 +102,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <%
+                                        <%                                            
                                             ArrayList<Member> memberList = memberDA.selectAllMembersList();
                                             for (int i = 0; i < memberList.size(); i++) {
                                         %>
@@ -112,9 +113,16 @@
                                             <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getGender()%></td>
                                             <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getAcademicYear()%></td>
                                             <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getProgramme().getProgID()%></td>
+                                            <%
+                                                for (int j = 0; j < memberIDList.length; j++) {
+                                                    if (memberIDList[j].equals(memberList.get(i).getStudID())) {
+                                            %>
+                                            <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="memberID" checked value="<%=memberList.get(i).getStudID()%>" /></td>
+                                            <%} else {%>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="memberID" value="<%=memberList.get(i).getStudID()%>" /></td>
-                                        </tr>
                                         <%}%>
+                                        </tr>
+                                        <%}}%>
                                     </tbody>
                                 </table>
                             </div>
