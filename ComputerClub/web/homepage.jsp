@@ -95,7 +95,7 @@
             <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(35, 35, 35);">
             </div>
             <div class="container align-center">
-                <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1">Upcoming Activities</h2>
+                <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1">Upcoming Events</h2>
                 <div class="container timelines-container" mbri-timelines="">
                     <div class="row timeline-element reverse separline">
                         <div class="timeline-date-panel col-xs-12 col-md-6  align-left">
