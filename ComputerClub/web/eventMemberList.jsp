@@ -71,7 +71,7 @@
             </div>
             <div class="container container-table">
                 <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Member List</strong><strong><br></strong></h2>
-                <form method="POST" action="">
+                <form method="POST" action="ProcessRegistrationEventParticipant">
                     <div class="table-backpanel">
                         <div class="table-wrapper">
                             <div class="container">
@@ -112,7 +112,7 @@
                                             <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getGender()%></td>
                                             <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getAcademicYear()%></td>
                                             <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getProgramme().getProgID()%></td>
-                                            <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="studID" value="<%=memberList.get(i).getStudID()%>" /></td>
+                                            <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="memberID" value="<%=memberList.get(i).getStudID()%>" /></td>
                                         </tr>
                                         <%}%>
                                     </tbody>

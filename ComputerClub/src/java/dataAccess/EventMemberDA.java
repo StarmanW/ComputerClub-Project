@@ -37,7 +37,7 @@ public class EventMemberDA {
     }
 
     //Method to retrieve all records
-    public ArrayList<EventMember> selectAllEventCollabList() {
+    public ArrayList<EventMember> selectAllEventMemberList() {
         ArrayList<EventMember> selectAllEventCollabList = new ArrayList<EventMember>();
 
         try {

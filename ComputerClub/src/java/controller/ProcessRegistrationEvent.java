@@ -10,10 +10,14 @@ import model.*;
 
 /**
  * @author StarmanW
+ * 
+ * Contributed by Chong JH
+ * 
  */
 @WebServlet(name = "ProcessRegistrationEvent", urlPatterns = {"/ProcessRegistrationEvent"})
 public class ProcessRegistrationEvent extends HttpServlet {
 
+    //DAs declaration
     private EventDA eventDA;
     private EventCollaboratorDA eventCollaboratorDA;
     private EventMemberDA eventMemberDA;
@@ -25,19 +29,39 @@ public class ProcessRegistrationEvent extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            instantiateAllDA();
-            String eventID = generateEventID();
+            //Local variable declaration
+            int successEventItemInsert = 0;
+            int successEventCollaboratorInsert = 0;
+            int successEventMemberInsert = 0;
+
+            //Get the length of each list for verification below
             String[] itemIDList = (String[]) request.getSession().getAttribute("itemIDList");
             String[] collabIDList = (String[]) request.getSession().getAttribute("collabIDList");
             String[] memberIDList = (String[]) request.getSession().getAttribute("memberIDList");
 
+            //Instantiate all DA and generate the latest event ID
+            instantiateAllDA();
+            String eventID = generateEventID();
+
+            //Get INSERT success count
             int successEventInsert = insertEvent(request, eventID);
-            int successEventItemInsert = insertEventItem(request, eventID);
-            //int successEventCollaboratorInsert = insertEventCollaborator(request, eventID);
-            //int successEventMemberInsert = insertEventMember(request, eventID);
+
+            //Get INSERT success count if each of the list is not null
+            if (itemIDList != null) {
+                successEventItemInsert = insertEventItem(request, eventID);
+            }
+            if (collabIDList != null) {
+                successEventCollaboratorInsert = insertEventCollaborator(request, eventID);
+            }
+            if (memberIDList != null) {
+                successEventMemberInsert = insertEventMember(request, eventID);
+            }
 
             //Insert validation
-            if ((successEventInsert == 1) && (successEventItemInsert == itemIDList.length)) {
+            if ((successEventInsert == 1)
+                    && ((itemIDList != null && successEventItemInsert == itemIDList.length)
+                    || (collabIDList != null && successEventCollaboratorInsert == collabIDList.length)
+                    || (memberIDList != null && successEventMemberInsert == memberIDList.length))) {
                 response.sendRedirect("registerEvent.jsp?success");
             }
         } catch (Exception ex) {
@@ -47,6 +71,8 @@ public class ProcessRegistrationEvent extends HttpServlet {
 
     //Method to instantiate all DA object
     private void instantiateAllDA() {
+        collaboratorDA = new CollaboratorDA();
+        memberDA = new MemberDA();
         eventDA = new EventDA();
         eventCollaboratorDA = new EventCollaboratorDA();
         eventMemberDA = new EventMemberDA();
@@ -68,7 +94,6 @@ public class ProcessRegistrationEvent extends HttpServlet {
         } else {
             eventID = String.format("E%04d", 1);
         }
-
         return eventID;
     }
 
@@ -114,7 +139,6 @@ public class ProcessRegistrationEvent extends HttpServlet {
             }
 
             EventCollaborator eventCollaborator = new EventCollaborator(eventCollaboratorID, eventDA.selectRecord(eventID), collaboratorDA.selectRecord(collabIDList[i]));
-
             try {
                 eventCollaboratorDA.createRecord(eventCollaborator);
                 successEventCollaboratorInsert++;
@@ -164,6 +188,7 @@ public class ProcessRegistrationEvent extends HttpServlet {
 
         //For loop to create new EventCollaborator object and insert all records
         for (int i = 0; i < memberIDList.length; i++) {
+            eventMemberList = eventMemberDA.selectAllEventMemberList();
 
             if (!eventMemberList.isEmpty()) {
                 int lastID = Integer.parseInt(eventMemberList.get(eventMemberList.size() - 1).getEventMemberID().substring(2, 6));
