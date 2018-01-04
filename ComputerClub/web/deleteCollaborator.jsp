@@ -19,7 +19,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-        <link rel="shortcut icon" href="assets/images/logo-1-3508x2480.jpg" type="image/x-icon">
+        <link rel="shortcut icon" href="assets/images/title bar logo.png" type="image/x-icon">
         <meta name="description" content="Website Creator Description">
         <title>Delete Collaborator</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
