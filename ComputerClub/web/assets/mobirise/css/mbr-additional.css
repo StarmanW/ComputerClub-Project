@@ -11,6 +11,11 @@ a {
     vertical-align: middle;
     font-size: 100%
 }
+#card_text_1,
+#card_text_2,
+#card_text_3 {
+    font-size: calc(18px + 1vw);
+}
 /*End*/
 body {
     font-style: normal;

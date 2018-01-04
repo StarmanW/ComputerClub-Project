@@ -64,27 +64,28 @@
             </div>
             <div class="container">
                 <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1"><br>Welcome, <%%>!<br><br></h2>
+                <!--- CSS Overriden -->
                 <div class="media-container-row container">
                     <!--- CSS Overriden -->
                     <div class="card col-12 col-md-6 p-5 m-3 align-center col-lg-4" id="hover_image" onclick="window.open('memberList.jsp', 'Manage Member');">
                         <div class="card-img">
                             <img src="assets/images/mbr-720x1080.jpg" alt="Mobirise" title="" media-simple="true">
                         </div>
-                        <h4 class="card-title py-2 mbr-fonts-style display-2">Manage<br>Members</h4>
+                        <h4 class="card-title py-2 mbr-fonts-style display-2" id="card_text_1">Manage<br>Members</h4>
                         <p class="mbr-text mbr-fonts-style display-7"></p>
                     </div>
                     <div class="card col-12 col-md-6 p-5 m-3 align-center col-lg-4" id="hover_image" onclick="window.open('eventList.jsp', 'Manage Events');">
                         <div class="card-img">
                             <img src="assets/images/jumbotron2.jpg" alt="Mobirise" media-simple="true">
                         </div>
-                        <h4 class="card-title py-2 mbr-fonts-style display-2">Manage Events<br></h4>
+                        <h4 class="card-title py-2 mbr-fonts-style display-2" id="card_text_2">Manage<br>Events<br></h4>
                         <p class="mbr-text mbr-fonts-style display-7"></p>
                     </div>
                     <div class="card col-12 col-md-6 p-5 m-3 align-center col-lg-4" id="hover_image" onclick="window.open('collaboratorList.jsp', 'Manage Collaborators');">
                         <div class="card-img">
                             <img src="assets/images/mbr-2-1620x1080.jpg" alt="Mobirise" title="" media-simple="true">
                         </div>
-                        <h4 class="card-title py-2 mbr-fonts-style display-2" style="font-size: 2.5em">Manage<br>Collaborators<br></h4>
+                        <h4 class="card-title py-2 mbr-fonts-style display-2" id="card_text_3">Manage<br>Collaborators<br></h4>
                         <p class="mbr-text mbr-fonts-style display-7"></p>
                     </div>
                 </div>
