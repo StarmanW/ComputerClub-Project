@@ -5,12 +5,17 @@
     font-family: 'Rubik';
 }
 
+h1 {
+    font-size: calc(25px + 1vw);
+}
+
 .form-container {
     border: none;
     border-radius: 5%;
     padding: 2%;
     margin: auto;
     width: 50%;
+    min-width: 250px;
     background-color: #d8d8d8;
 }
 
