@@ -6,19 +6,19 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-        <link rel="shortcut icon" href="assets/images/title bar logo.png" type="image/x-icon">
+        <link rel="shortcut icon" href="../assets/images/title bar logo.png" type="image/x-icon">
         <meta name="description" content="Main Homepage for logged-in user">
         <title>Home</title>
-        <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
-        <link rel="stylesheet" href="assets/tether/tether.min.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-        <link rel="stylesheet" href="assets/socicon/css/styles.css">
-        <link rel="stylesheet" href="assets/dropdown/css/style.css">
-        <link rel="stylesheet" href="assets/theme/css/style.css">
-        <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-        <link rel="stylesheet" href="assets/css/hoverImage.css" type="text/css">
+        <link rel="stylesheet" href="../assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+        <link rel="stylesheet" href="../assets/tether/tether.min.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap-reboot.min.css">
+        <link rel="stylesheet" href="../assets/socicon/css/styles.css">
+        <link rel="stylesheet" href="../assets/dropdown/css/style.css">
+        <link rel="stylesheet" href="../assets/theme/css/style.css">
+        <link rel="stylesheet" href="../assets/mobirise/css/mbr-additional.css" type="text/css">
+        <link rel="stylesheet" href="../assets/css/hoverImage.css" type="text/css">
     </head>
 
     <body>
@@ -36,7 +36,7 @@
                     <div class="navbar-brand">
                         <span class="navbar-logo">
                             <a href="homepage.jsp">
-                                <img src="assets/images/logo-1-3508x2480.jpg" title="" media-simple="true" style="height: 4.5rem;">
+                                <img src="../assets/images/logo-1-3508x2480.jpg" title="" media-simple="true" style="height: 4.5rem;">
                             </a>
                         </span>
                         <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="homepage.jsp">
@@ -44,12 +44,13 @@
                     </div>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"> 
-                        <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown-submenu" aria-expanded="false">List</a>
-                            <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBER LIST</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENT LIST</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATOR LIST</a><a class="dropdown-item text-white display-4" href="sponsoredItemList.jsp"></div>
+                    <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                        <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown-submenu" aria-expanded="false">LIST</a>
+                            <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS LIST</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS LIST</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS LIST</a><a class="dropdown-item text-white display-4" href="sponsoredItemList.jsp">SPONSORED ITEMS LIST</a></div>
                         </li>
                     </ul>
                     <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
+
                             LOGOUT</a></div>
                 </div>
             </nav>
@@ -64,21 +65,21 @@
                     <!--- CSS Overriden -->
                     <div class="card col-12 col-md-6 p-5 m-3 align-center col-lg-4" id="hover_image" onclick="window.open('memberList.jsp', 'Manage Member');">
                         <div class="card-img">
-                            <img src="assets/images/mbr-720x1080.jpg" alt="Mobirise" title="" media-simple="true">
+                            <img src="../assets/images/mbr-720x1080.jpg" alt="Mobirise" title="" media-simple="true">
                         </div>
                         <h4 class="card-title py-2 mbr-fonts-style display-2">Member List</h4>
                         <p class="mbr-text mbr-fonts-style display-7"></p>
                     </div>
                     <div class="card col-12 col-md-6 p-5 m-3 align-center col-lg-4" id="hover_image" onclick="window.open('eventList.jsp', 'Manage Events');">
                         <div class="card-img">
-                            <img src="assets/images/jumbotron2.jpg" alt="Mobirise" media-simple="true">
+                            <img src="../assets/images/jumbotron2.jpg" alt="Mobirise" media-simple="true">
                         </div>
                         <h4 class="card-title py-2 mbr-fonts-style display-2">Event<br>List<br></h4>
                         <p class="mbr-text mbr-fonts-style display-7"></p>
                     </div>
                     <div class="card col-12 col-md-6 p-5 m-3 align-center col-lg-4" id="hover_image" onclick="window.open('collaboratorList.jsp', 'Manage Collaborators');">
                         <div class="card-img">
-                            <img src="assets/images/mbr-2-1620x1080.jpg" alt="Mobirise" title="" media-simple="true">
+                            <img src="../assets/images/mbr-2-1620x1080.jpg" alt="Mobirise" title="" media-simple="true">
                         </div>
                         <h4 class="card-title py-2 mbr-fonts-style display-2" style="font-size: 2.5em">Collaborator<br>List<br></h4>
                         <p class="mbr-text mbr-fonts-style display-7"></p>
@@ -154,7 +155,7 @@
                 <div class="media-container-row content text-white">
                     <div class="col-12 col-md-3">
                         <div class="media-wrap">
-                            <a href="homepage.jsp"><img src="assets/images/logo-2-3508x2480.jpg" alt="Mobirise" title="" media-simple="true"></a>
+                            <a href="homepage.jsp"><img src="../assets/images/logo-2-3508x2480.jpg" alt="Mobirise" title="" media-simple="true"></a>
                         </div>
                     </div>
                     <div class="col-12 col-md-3 mbr-fonts-style display-7">
@@ -204,15 +205,15 @@
                 </div>
             </div>
         </section>
-        <script src="assets/web/assets/jquery/jquery.min.js"></script>
-        <script src="assets/popper/popper.min.js"></script>
-        <script src="assets/tether/tether.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/dropdown/js/script.min.js"></script>
-        <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
-        <script src="assets/parallax/jarallax.min.js"></script>
-        <script src="assets/smoothscroll/smooth-scroll.js"></script>
-        <script src="assets/theme/js/script.js"></script>
+        <script src="../assets/web/assets/jquery/jquery.min.js"></script>
+        <script src="../assets/popper/popper.min.js"></script>
+        <script src="../assets/tether/tether.min.js"></script>
+        <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../assets/dropdown/js/script.min.js"></script>
+        <script src="../assets/touchswipe/jquery.touch-swipe.min.js"></script>
+        <script src="../assets/parallax/jarallax.min.js"></script>
+        <script src="../assets/smoothscroll/smooth-scroll.js"></script>
+        <script src="../assets/theme/js/script.js"></script>
         <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i></i></a></div>
         <!-- Back to top -->
         <script>
