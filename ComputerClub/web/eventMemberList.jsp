@@ -105,6 +105,7 @@
                                         <%                                            
                                             ArrayList<Member> memberList = memberDA.selectAllMembersList();
                                             for (int i = 0; i < memberList.size(); i++) {
+                                            boolean checkboxPrinted = false;
                                         %>
                                         <tr>
                                             <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getStudName().getFullName()%></td>
@@ -118,9 +119,10 @@
                                                     if (memberIDList[j].equals(memberList.get(i).getStudID())) {
                                             %>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="memberID" checked value="<%=memberList.get(i).getStudID()%>" /></td>
-                                            <%} else {%>
+                                            <%  checkboxPrinted = true;
+                                                break;}} %>
+                                            <% if (!checkboxPrinted) {%>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="memberID" value="<%=memberList.get(i).getStudID()%>" /></td>
-                                        <%}%>
                                         </tr>
                                         <%}}%>
                                     </tbody>

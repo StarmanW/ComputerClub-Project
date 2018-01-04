@@ -3,6 +3,7 @@
 <jsp:useBean id="itemDA" class="dataAccess.ItemDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    String[] itemIDList = (String[]) session.getAttribute("itemIDList");
 %>
 <!DOCTYPE html>
 <html>
@@ -102,16 +103,26 @@
                                         <%
                                             ArrayList<Item> itemList = itemDA.selectAllItem();
                                             for (int i = 0; i < itemList.size(); i++) {
+                                            boolean checkboxPrinted = false;
                                         %>
                                         <tr>
+
                                             <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemID()%></td>
                                             <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemName()%></td>
                                             <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getCollaborator().getCollabName()%></td>
                                             <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getQuantity()%></td>
                                             <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemTypeString()%></td>
+                                            <%
+                                                    for (int j = 0; j < itemIDList.length; j++) {
+                                                        if (itemIDList[j].equals(itemList.get(i).getItemID())) {
+                                            %>
+                                            <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="itemID" checked value="<%=itemList.get(i).getItemID()%>" /></td>
+                                            <%  checkboxPrinted = true;
+                                                break;}} %>
+                                            <% if (!checkboxPrinted) {%>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="itemID" value="<%=itemList.get(i).getItemID()%>" /></td>
                                         </tr>
-                                        <%}%>
+                                        <%}}%>
                                     </tbody>
                                 </table>
                             </div>

@@ -103,6 +103,7 @@
                                         <%
                                             ArrayList<Collaborator> collabList = collaboratorDA.selectAllCollaboratorList();
                                             for (int i = 0; i < collabList.size(); i++) {
+                                            boolean checkboxPrinted = false;
                                         %>
                                         <tr>
                                             <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabID()%></td>
@@ -115,12 +116,11 @@
                                                     if (collabIDList[j].equals(collabList.get(i).getCollabID())) {
                                         %>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="collabID" value="<%=collabList.get(i).getCollabID()%>" checked/></td>
-                                        <%          } else {
-                                        %>
+                                            <%  checkboxPrinted = true;
+                                                break;}} %>
+                                            <% if (!checkboxPrinted) {%>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="collabID" value="<%=collabList.get(i).getCollabID()%>" /></td>
-                                        <%
-                                                }
-                                        %>
+
                                         </tr>
                                         <%
                                                 }
