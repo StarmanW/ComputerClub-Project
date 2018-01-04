@@ -44,7 +44,7 @@
                     <div class="navbar-brand">
                         <span class="navbar-logo">
                             <a href="homepage.jsp">
-                                <img src="assets/images/title bar logo.png" title="" media-simple="true" style="height: 4.5rem;">
+                                <img src="assets/images/logo-1-3508x2480.jpg" title="" media-simple="true" style="height: 4.5rem;">
                             </a>
                         </span>
                         <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="homepage.jsp">
