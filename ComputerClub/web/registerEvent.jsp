@@ -115,13 +115,13 @@
                                     </div>
                                     <br/>
                                     <div class="form-group" style="margin:auto">
-                                        <a href="eventCollaboratorList.jsp"><button type="button" class="btn btn-sm btn-primary">Add/Modify Collaborators</button></a>
+                                        <a href="eventCollaboratorList.jsp" target="_blank"><button type="button" class="btn btn-sm btn-primary">Add/Modify Collaborators</button></a>
                                     </div>
                                     <div class="form-group" style="margin:auto">
-                                        <a href="eventSponsoredItemList.jsp"><button type="button" class="btn btn-sm btn-primary">Add/Modify Sponsored Items</button></a>
+                                        <a href="eventSponsoredItemList.jsp" target="_blank"><button type="button" class="btn btn-sm btn-primary">Add/Modify Sponsored Items</button></a>
                                     </div>
                                     <div class="form-group" style="margin:auto">
-                                        <a href="eventMemberList.jsp"><button type="button" class="btn btn-sm btn-primary">Add/Modify Participants</button></a>
+                                        <a href="eventMemberList.jsp" target="_blank"><button type="button" class="btn btn-sm btn-primary">Add/Modify Participants</button></a>
                                     </div>
                                 </div>
                                 <br />
