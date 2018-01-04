@@ -60,28 +60,29 @@
             <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(35, 35, 35);">
             </div>
             <div class="container">
-                <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1"><br>Welcome, "username" to <br>Computer Club Webpage<%%>!<br><br></h2>
+                <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1"><br>Welcome, <%%>!<br><br></h2>
+                <!--- CSS Overriden -->
                 <div class="media-container-row container">
                     <!--- CSS Overriden -->
                     <div class="card col-12 col-md-6 p-5 m-3 align-center col-lg-4" id="hover_image" onclick="window.open('memberList.jsp', 'Manage Member');">
                         <div class="card-img">
                             <img src="../assets/images/mbr-720x1080.jpg" alt="Mobirise" title="" media-simple="true">
                         </div>
-                        <h4 class="card-title py-2 mbr-fonts-style display-2">Member List</h4>
+                        <h4 class="card-title py-2 mbr-fonts-style display-2" id="card_text_1">Members<br>List</h4>
                         <p class="mbr-text mbr-fonts-style display-7"></p>
                     </div>
                     <div class="card col-12 col-md-6 p-5 m-3 align-center col-lg-4" id="hover_image" onclick="window.open('eventList.jsp', 'Manage Events');">
                         <div class="card-img">
                             <img src="../assets/images/jumbotron2.jpg" alt="Mobirise" media-simple="true">
                         </div>
-                        <h4 class="card-title py-2 mbr-fonts-style display-2">Event<br>List<br></h4>
+                        <h4 class="card-title py-2 mbr-fonts-style display-2" id="card_text_2">Events<br>List</h4>
                         <p class="mbr-text mbr-fonts-style display-7"></p>
                     </div>
                     <div class="card col-12 col-md-6 p-5 m-3 align-center col-lg-4" id="hover_image" onclick="window.open('collaboratorList.jsp', 'Manage Collaborators');">
                         <div class="card-img">
                             <img src="../assets/images/mbr-2-1620x1080.jpg" alt="Mobirise" title="" media-simple="true">
                         </div>
-                        <h4 class="card-title py-2 mbr-fonts-style display-2" style="font-size: 2.5em">Collaborator<br>List<br></h4>
+                        <h4 class="card-title py-2 mbr-fonts-style display-2" id="card_text_3">Collaborator<br>List</h4>
                         <p class="mbr-text mbr-fonts-style display-7"></p>
                     </div>
                 </div>
@@ -91,7 +92,7 @@
             <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(35, 35, 35);">
             </div>
             <div class="container align-center">
-                <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1"><strong>Upcoming Activities</strong></h2>
+                <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1">Upcoming Activities</h2>
                 <div class="container timelines-container" mbri-timelines="">
                     <div class="row timeline-element reverse separline">
                         <div class="timeline-date-panel col-xs-12 col-md-6  align-left">
