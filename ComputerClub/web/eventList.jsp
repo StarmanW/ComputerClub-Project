@@ -1,3 +1,6 @@
+<%@page import="model.Event"%>
+<%@page import="java.util.ArrayList"%>
+<jsp:useBean id="eventDA" class="dataAccess.EventDA" scope="application"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 
@@ -100,66 +103,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <%
+                                        ArrayList<Event> eventList = eventDA.selectAllEventsList();
+                                        for (int i = 0; i < eventList.size(); i++) {
+                                    %>
                                     <tr>
-                                        <td class="body-item mbr-fonts-style display-7">E0001</td>
-                                        <td class="body-item mbr-fonts-style display-7">What Is Network Security?</td>
-                                        <td class="body-item mbr-fonts-style display-7">Workshop/Talk</td>
-                                        <td class="body-item mbr-fonts-style display-7">2016-10-17</td>
-                                        <td class="body-item mbr-fonts-style display-7">2pm-4pm</td>
-                                        <td class="body-item mbr-fonts-style display-7">Lot 5-2</td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventList.get(i).getEventID()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventList.get(i).getEventName()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventList.get(i).getEventTypeString()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventList.get(i).getEventDate()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventList.get(i).getEventStartTime()%> - <%=eventList.get(i).getEventEndTime()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventList.get(i).getEventLocation()%></td>
                                         <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
-                                            <button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button>
-                                            <button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button>
+                                            <a href="updateEvent.jsp?eventID=<%=eventList.get(i).getEventID()%>"><button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button></a>
+                                            <a href="deleteEvent.jsp?eventID=<%=eventList.get(i).getEventID()%>"><button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button></a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="body-item mbr-fonts-style display-7">E0001</td>
-                                        <td class="body-item mbr-fonts-style display-7">What Is Network Security?</td>
-                                        <td class="body-item mbr-fonts-style display-7">Workshop/Talk</td>
-                                        <td class="body-item mbr-fonts-style display-7">2016-10-17</td>
-                                        <td class="body-item mbr-fonts-style display-7">2pm-4pm</td>
-                                        <td class="body-item mbr-fonts-style display-7">Lot 5-2</td>
-                                        <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
-                                            <button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button>
-                                            <button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="body-item mbr-fonts-style display-7">E0001</td>
-                                        <td class="body-item mbr-fonts-style display-7">What Is Network Security?</td>
-                                        <td class="body-item mbr-fonts-style display-7">Workshop/Talk</td>
-                                        <td class="body-item mbr-fonts-style display-7">2016-10-17</td>
-                                        <td class="body-item mbr-fonts-style display-7">2pm-4pm</td>
-                                        <td class="body-item mbr-fonts-style display-7">Lot 5-2</td>
-                                        <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
-                                            <button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button>
-                                            <button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="body-item mbr-fonts-style display-7">E0001</td>
-                                        <td class="body-item mbr-fonts-style display-7">What Is Network Security?</td>
-                                        <td class="body-item mbr-fonts-style display-7">Workshop/Talk</td>
-                                        <td class="body-item mbr-fonts-style display-7">2016-10-17</td>
-                                        <td class="body-item mbr-fonts-style display-7">2pm-4pm</td>
-                                        <td class="body-item mbr-fonts-style display-7">Lot 5-2</td>
-                                        <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
-                                            <button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button>
-                                            <button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="body-item mbr-fonts-style display-7">E0001</td>
-                                        <td class="body-item mbr-fonts-style display-7">What Is Network Security?</td>
-                                        <td class="body-item mbr-fonts-style display-7">Workshop/Talk</td>
-                                        <td class="body-item mbr-fonts-style display-7">2016-10-17</td>
-                                        <td class="body-item mbr-fonts-style display-7">2pm-4pm</td>
-                                        <td class="body-item mbr-fonts-style display-7">Lot 5-2</td>
-                                        <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
-                                            <button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button>
-                                            <button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button>
-                                        </td>
-                                    </tr>
+                                    <%}%>
                                 </tbody>
                             </table>
                         </div>
