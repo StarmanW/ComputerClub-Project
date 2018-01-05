@@ -1,6 +1,7 @@
 package controller;
 
 import dataAccess.CollaboratorDA;
+import dataAccess.EventCollaboratorDA;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +20,7 @@ public class ProcessDeleteCollaborator extends HttpServlet {
 
     //DA declaration
     CollaboratorDA collaboratorDA;
+    EventCollaboratorDA eventCollaboratorDA;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,13 +36,13 @@ public class ProcessDeleteCollaborator extends HttpServlet {
             try {
                 //Perform member DELETE operation
                 collaboratorDA = new CollaboratorDA();
+                eventCollaboratorDA = new EventCollaboratorDA();
+
+                boolean successDeleteEC = eventCollaboratorDA.deleteRecordByCollaboratorID(collaborator.getCollabID());
                 int successDelete = collaboratorDA.deleteRecord(collaborator.getCollabID());
-                switch (successDelete) {
-                    case 1:     //Display deletion status
-                        response.sendRedirect("deleteCollaboratorStatus.jsp?success");
-                        break;
-                    default:
-                        break;
+
+                if (successDelete == 1 && successDeleteEC) {
+                    response.sendRedirect("deleteCollaboratorStatus.jsp?success");
                 }
             } catch (Exception ex) {
                 session.setAttribute("errorMsg", ex.getMessage());

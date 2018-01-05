@@ -115,12 +115,13 @@
                                             <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getAcademicYear()%></td>
                                             <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getProgramme().getProgID()%></td>
                                             <%
-                                                for (int j = 0; j < memberIDList.length; j++) {
-                                                    if (memberIDList[j].equals(memberList.get(i).getStudID())) {
+                                                if (memberIDList != null) {
+                                                    for (int j = 0; j < memberIDList.length; j++) {
+                                                        if (memberIDList[j].equals(memberList.get(i).getStudID())) {
                                             %>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="memberID" checked value="<%=memberList.get(i).getStudID()%>" /></td>
                                             <%  checkboxPrinted = true;
-                                                break;}} %>
+                                                break;}}} %>
                                             <% if (!checkboxPrinted) {%>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="memberID" value="<%=memberList.get(i).getStudID()%>" /></td>
                                         </tr>

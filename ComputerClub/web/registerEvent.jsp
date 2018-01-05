@@ -1,7 +1,6 @@
 <%session = request.getSession();%>  
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,7 +21,6 @@
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
         <link rel="stylesheet" href="assets/css/registerMember.css" type="text/css">
     </head>
-
     <body>
         <section class="menu cid-qDNS0J8sKR" once="menu" id="menu1-k" data-rv-view="2425">
             <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
@@ -66,6 +64,7 @@
                 <br />
                 <div class="form-container">
                     <h1 class="well">Register New Event</h1>
+
                     <hr style="border-top:1px solid gray;" />
                     <div class="col-lg-12 well" style="margin:auto; width:90%">
                         <div class="row">
@@ -81,7 +80,7 @@
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Event Date</label>
-                                            <input type="date" name="eventDate" class="form-control" required="required">
+                                            <input type="date" name="eDate" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <br/>
@@ -115,13 +114,13 @@
                                     </div>
                                     <br/>
                                     <div class="form-group" style="margin:auto">
-                                        <a href="eventCollaboratorList.jsp" target="_blank"><button type="button" class="btn btn-sm btn-primary">Add/Modify Collaborators</button></a>
+                                        <a href="eventCollaboratorList.jsp"><button type="button" class="btn btn-sm btn-primary">Add/Modify Collaborators</button></a>
                                     </div>
                                     <div class="form-group" style="margin:auto">
-                                        <a href="eventSponsoredItemList.jsp" target="_blank"><button type="button" class="btn btn-sm btn-primary">Add/Modify Sponsored Items</button></a>
+                                        <a href="eventSponsoredItemList.jsp"><button type="button" class="btn btn-sm btn-primary">Add/Modify Sponsored Items</button></a>
                                     </div>
                                     <div class="form-group" style="margin:auto">
-                                        <a href="eventMemberList.jsp" target="_blank"><button type="button" class="btn btn-sm btn-primary">Add/Modify Participants</button></a>
+                                        <a href="eventMemberList.jsp"><button type="button" class="btn btn-sm btn-primary">Add/Modify Participants</button></a>
                                     </div>
                                 </div>
                                 <br />

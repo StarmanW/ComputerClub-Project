@@ -70,7 +70,7 @@
                 <div class="form-container">
                     <h1 class="well">Deletion Status</h1>
                     <hr style="border-top:1px solid gray;" />
-                    <div class="col-lg-12 well">
+                    <div class="col-lg-12 well" style="margin:auto">
                         <div class="row">
                             <form method="post" action="">
                                 <div class="row" style="margin:auto">

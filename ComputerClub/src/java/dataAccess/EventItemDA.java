@@ -53,15 +53,13 @@ public class EventItemDA {
     }
 
     //Select record method
-    public EventItem selectRecord(String eventItemID, String eventID, String itemID) {
+    public EventItem selectRecord(String eventID) {
         EventItem eventItem = null;
-        String queryStr = "SELECT * FROM" + tableName + "WHERE EVENTITEMID = ? AND EVENTID = ? AND ITEMID = ?";
+        String queryStr = "SELECT * FROM" + tableName + "WHERE EVENTID = ?";
 
         try {
             pstmt = conn.prepareStatement(queryStr);
-            pstmt.setString(1, eventItemID);
-            pstmt.setString(2, eventID);
-            pstmt.setString(3, itemID);
+            pstmt.setString(1, eventID);
             rs = pstmt.executeQuery();
             if (rs.next()) {
                 eventItem = new EventItem(rs.getString(1), eventDA.selectRecord(rs.getString(2)), itemDA.selectRecord(rs.getString(3)));
@@ -82,8 +80,6 @@ public class EventItemDA {
         String queryStr = "INSERT INTO" + tableName + "VALUES(?,?,?)";
 
         try {
-            findRecord(eventItemID, eventID, itemID);
-
             if (rs.next()) {
                 successInsert = -1;
             } else {
@@ -101,13 +97,11 @@ public class EventItemDA {
     }
 
     //Retrieve method
-    private void findRecord(String eventItemID, String eventID, String itemID) {
-        String queryStr = "SELECT * FROM" + tableName + "WHERE EVENTITEMID = ? AND EVENTID = ? AND ITEMID = ?";
+    private void findRecord(String eventID) {
+        String queryStr = "SELECT * FROM" + tableName + "WHERE EVENTID = ?";
         try {
             pstmt = conn.prepareStatement(queryStr);
-            pstmt.setString(1, eventItemID);
-            pstmt.setString(2, eventID);
-            pstmt.setString(3, itemID);
+            pstmt.setString(1, eventID);
             rs = pstmt.executeQuery();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -124,7 +118,7 @@ public class EventItemDA {
         String queryStr = "UPDATE" + tableName + "SET EVENTID = ?, ITEMID = ? WHERE EVENTITEMID = ?";
 
         try {
-            findRecord(eventItemID, eventID, itemID);
+            findRecord(eventID);
 
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
@@ -142,25 +136,42 @@ public class EventItemDA {
         return successUpdate;
     }
 
-    //Delete method
-    public int deleteRecord(String eventItemID, String eventID, String itemID) throws Exception {
-        int successDelete = 0;
+    //Delete method by Event ID - used for deleting an event
+    public boolean deleteRecordByEventID(String eventID) throws Exception {
+        boolean successDelete = false;
 
-        String queryStr = "DELETE FROM" + tableName + "WHERE EVENTITEMID = ? AND EVENTID = ? AND ITEMID = ?";
+        String queryStr = "DELETE FROM" + tableName + "WHERE EVENTID = ?";
 
         try {
-            findRecord(eventItemID, eventID, itemID);
-
+            findRecord(eventID);
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
-                pstmt.setString(1, eventItemID);
-                pstmt.setString(2, eventID);
-                pstmt.setString(3, itemID);
-                successDelete = pstmt.executeUpdate();
+                pstmt.setString(1, eventID);
+                pstmt.executeUpdate();
+                successDelete = true;
             } else {
-                successDelete = 0;
+                successDelete = false;
             }
         } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return successDelete;
+    }
+
+    //Delete method by Item ID - used when deleting a item
+    public boolean deleteRecordByItemID(String itemID) throws Exception {
+        boolean successDelete = false;
+
+        String queryStr = "DELETE FROM" + tableName + "WHERE ITEMID = ?";
+
+        try {
+            pstmt = conn.prepareStatement(queryStr);
+            pstmt.setString(1, itemID);
+            pstmt.executeUpdate();
+            successDelete = true;
+        } catch (SQLException ex) {
+            successDelete = false;
             ex.printStackTrace();
         }
 

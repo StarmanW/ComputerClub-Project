@@ -1,5 +1,6 @@
 package controller;
 
+import dataAccess.EventItemDA;
 import dataAccess.ItemDA;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -19,6 +20,7 @@ public class ProcessDeleteSponsoredItem extends HttpServlet {
 
     //DA declaration
     ItemDA itemDA;
+    EventItemDA eventItemDA;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,15 +36,14 @@ public class ProcessDeleteSponsoredItem extends HttpServlet {
             try {
                 //Creating ItemDA for DELETE operation
                 itemDA = new ItemDA();
+                eventItemDA = new EventItemDA();
 
                 //Perform DELETE operation on selected itemID
+                boolean successDeleteEI = eventItemDA.deleteRecordByItemID(item.getItemID());
                 int successDelete = itemDA.deleteRecord(item.getItemID());
-                switch (successDelete) {
-                    case 1:     //Display deletion status
-                        response.sendRedirect("deleteSponsoredItemStatus.jsp?success");
-                        break;
-                    default:
-                        break;
+
+                if (successDeleteEI && successDelete == 1) {
+                    response.sendRedirect("deleteSponsoredItemStatus.jsp?success");
                 }
             } catch (Exception ex) {
                 session.setAttribute("errorMsg", ex.getMessage());

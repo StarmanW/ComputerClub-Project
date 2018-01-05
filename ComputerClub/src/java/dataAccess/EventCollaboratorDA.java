@@ -53,15 +53,14 @@ public class EventCollaboratorDA {
     }
 
     //Select record method
-    public EventCollaborator selectRecord(String eventCollabID, String eventID, String collabID) {
+    public EventCollaborator selectRecord(String eventID, String collabID) {
         EventCollaborator eventCollaborator = null;
-        String queryStr = "SELECT * FROM" + tableName + "WHERE EVENTCOLLABID = ? AND EVENTID = ? AND COLLABID = ?";
+        String queryStr = "SELECT * FROM" + tableName + "WHERE EVENTID = ? AND COLLABID = ?";
 
         try {
             pstmt = conn.prepareStatement(queryStr);
-            pstmt.setString(1, eventCollabID);
-            pstmt.setString(2, eventID);
-            pstmt.setString(3, collabID);
+            pstmt.setString(1, eventID);
+            pstmt.setString(2, collabID);
             rs = pstmt.executeQuery();
             if (rs.next()) {
                 eventCollaborator = new EventCollaborator(rs.getString(1), eventDA.selectRecord(rs.getString(2)), collaboratorDA.selectRecord(rs.getString(3)));
@@ -82,8 +81,6 @@ public class EventCollaboratorDA {
         String queryStr = "INSERT INTO" + tableName + "VALUES(?,?,?)";
 
         try {
-            findRecord(eventCollabID, eventID, collabID);
-
             if (rs.next()) {
                 successInsert = -1;
             } else {
@@ -101,13 +98,11 @@ public class EventCollaboratorDA {
     }
 
     //Retrieve method
-    private void findRecord(String eventCollabID, String eventID, String collabID) {
-        String queryStr = "SELECT * FROM" + tableName + "WHERE EVENTCOLLABID = ? AND EVENTID = ? AND COLLABID = ?";
+    private void findRecord(String eventID) {
+        String queryStr = "SELECT * FROM" + tableName + "WHERE EVENTID = ?";
         try {
             pstmt = conn.prepareStatement(queryStr);
-            pstmt.setString(1, eventCollabID);
-            pstmt.setString(2, eventID);
-            pstmt.setString(3, collabID);
+            pstmt.setString(1, eventID);
             rs = pstmt.executeQuery();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -124,7 +119,7 @@ public class EventCollaboratorDA {
         String queryStr = "UPDATE" + tableName + "SET EVENTID = ?, COLLABID = ? WHERE EVENTCOLLABID = ?";
 
         try {
-            findRecord(eventCollabID, eventID, collabID);
+            findRecord(eventID);
 
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
@@ -142,25 +137,42 @@ public class EventCollaboratorDA {
         return successUpdate;
     }
 
-    //Delete method
-    public int deleteRecord(String eventCollabID, String eventID, String collabID) throws Exception {
-        int successDelete = 0;
+    //Delete method by Event ID - used for deleting an event
+    public boolean deleteRecordByEventID(String eventID) throws Exception {
+        boolean successDelete = false;
 
-        String queryStr = "DELETE FROM" + tableName + "WHERE EVENTCOLLABID = ? AND EVENTID = ? AND COLLABID = ?";
+        String queryStr = "DELETE FROM" + tableName + "WHERE EVENTID = ?";
 
         try {
-            findRecord(eventCollabID, eventID, collabID);
-
+            findRecord(eventID);
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
-                pstmt.setString(1, eventCollabID);
-                pstmt.setString(2, collabID);
-                pstmt.setString(3, eventCollabID);
-                successDelete = pstmt.executeUpdate();
+                pstmt.setString(1, eventID);
+                pstmt.executeUpdate();
+                successDelete = true;
             } else {
-                successDelete = 0;
+                successDelete = false;
             }
         } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return successDelete;
+    }
+
+    //Delete method by Collaborator ID - used when deleting a collaborator
+    public boolean deleteRecordByCollaboratorID(String collabID) throws Exception {
+        boolean successDelete = false;
+
+        String queryStr = "DELETE FROM" + tableName + "WHERE COLLABID = ?";
+
+        try {
+            pstmt = conn.prepareStatement(queryStr);
+            pstmt.setString(1, collabID);
+            pstmt.executeUpdate();
+            successDelete = true;
+        } catch (SQLException ex) {
+            successDelete = false;
             ex.printStackTrace();
         }
 

@@ -102,7 +102,7 @@ public class ProcessRegistrationEvent extends HttpServlet {
         int successEventInsert = 0;
 
         String eventName = request.getParameter("eventName");
-        String eventDate = request.getParameter("eventDate");
+        String eventDate = request.getParameter("eDate");
         String eventStartTime = request.getParameter("eventStartTime");
         String eventEndTime = request.getParameter("eventEndTime");
         String eventLocation = request.getParameter("eventLocation");

@@ -53,15 +53,14 @@ public class EventMemberDA {
     }
 
     //Select record method
-    public EventMember selectRecord(String eventMemberID, String memberID, String eventID) {
+    public EventMember selectRecord(String memberID, String eventID) {
         EventMember eventMember = null;
-        String queryStr = "SELECT * FROM" + tableName + "WHERE EVENTMEMBERID = ? AND MEMBERID = ? AND EVENTID = ?";
+        String queryStr = "SELECT * FROM" + tableName + "WHERE MEMBERID = ? AND EVENTID = ?";
 
         try {
             pstmt = conn.prepareStatement(queryStr);
-            pstmt.setString(1, eventMemberID);
-            pstmt.setString(2, memberID);
-            pstmt.setString(3, eventID);
+            pstmt.setString(1, memberID);
+            pstmt.setString(2, eventID);
             rs = pstmt.executeQuery();
             if (rs.next()) {
                 eventMember = new EventMember(rs.getString(1), memberDA.selectRecord(rs.getString(2)), eventDA.selectRecord(rs.getString(3)));
@@ -82,8 +81,6 @@ public class EventMemberDA {
         String queryStr = "INSERT INTO" + tableName + "VALUES(?,?,?)";
 
         try {
-            findRecord(eventMemberID, memberID, eventID);
-
             if (rs.next()) {
                 successInsert = -1;
             } else {
@@ -101,13 +98,11 @@ public class EventMemberDA {
     }
 
     //Retrieve method
-    private void findRecord(String eventMemberID, String memberID, String eventID) {
-        String queryStr = "SELECT * FROM" + tableName + "WHERE EVENTMEMBERID = ? AND MEMBERID = ? AND EVENTID = ?";
+    private void findRecord(String eventID) {
+        String queryStr = "SELECT * FROM" + tableName + "WHERE EVENTID = ?";
         try {
             pstmt = conn.prepareStatement(queryStr);
-            pstmt.setString(1, eventMemberID);
-            pstmt.setString(2, memberID);
-            pstmt.setString(3, eventID);
+            pstmt.setString(1, eventID);
             rs = pstmt.executeQuery();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -124,7 +119,7 @@ public class EventMemberDA {
         String queryStr = "UPDATE" + tableName + "SET MEMBERID = ?, EVENTID = ? WHERE EVENTMEMBERID = ?";
 
         try {
-            findRecord(eventMemberID, memberID, eventID);
+            findRecord(eventID);
 
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
@@ -142,25 +137,38 @@ public class EventMemberDA {
         return successUpdate;
     }
 
-    //Delete method
-    public int deleteRecord(String eventMemberID, String memberID, String eventID) throws Exception {
-        int successDelete = 0;
-
-        String queryStr = "DELETE FROM" + tableName + "WHERE EVENTMEMBERID = ? AND MEMBERID = ? AND EVENTID = ?";
-
+    //Delete method by Event ID - used for deleting an event
+    public boolean deleteRecordByEventID(String eventID) throws Exception {
+        boolean successDelete = false;
+        String queryStr = "DELETE FROM" + tableName + "WHERE EVENTID = ?";
         try {
-            findRecord(eventMemberID, memberID, eventID);
-
+            findRecord(eventID);
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
-                pstmt.setString(1, eventMemberID);
-                pstmt.setString(2, memberID);
-                pstmt.setString(3, eventID);
-                successDelete = pstmt.executeUpdate();
+                pstmt.setString(1, eventID);
+                pstmt.executeUpdate();
+                successDelete = true;
             } else {
-                successDelete = 0;
+                successDelete = false;
             }
         } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return successDelete;
+    }
+
+    //Delete method by Member ID - used when deleting a member
+    public boolean deleteRecordByMemberID(String memberID) throws Exception {
+        boolean successDelete = false;
+        String queryStr = "DELETE FROM" + tableName + "WHERE MEMBERID = ?";
+        try {
+            pstmt = conn.prepareStatement(queryStr);
+            pstmt.setString(1, memberID);
+            pstmt.executeUpdate();
+            successDelete = true;
+        } catch (SQLException ex) {
+            successDelete = false;
             ex.printStackTrace();
         }
 

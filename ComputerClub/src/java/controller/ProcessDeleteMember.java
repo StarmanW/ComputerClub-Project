@@ -1,5 +1,6 @@
 package controller;
 
+import dataAccess.EventMemberDA;
 import dataAccess.MemberDA;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -19,10 +20,11 @@ public class ProcessDeleteMember extends HttpServlet {
 
     //Data Access declaration
     MemberDA memberDA;
+    EventMemberDA eventMemberDA;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
         //If memberToDelete attribute is empty, redirect back to deleteMember.jsp?studID=
         if (request.getSession().getAttribute("memberToDelete") == null) {
             response.sendRedirect("deleteMember.jsp?studID=");
@@ -34,13 +36,13 @@ public class ProcessDeleteMember extends HttpServlet {
             try {
                 //Execute member deletion
                 memberDA = new MemberDA();
+                eventMemberDA = new EventMemberDA();
+
+                boolean successDeleteEM = eventMemberDA.deleteRecordByMemberID(member.getStudID());
                 int successDelete = memberDA.deleteRecord(member);
-                switch (successDelete) {
-                    case 1:     //Display deletion status
-                        response.sendRedirect("deleteMemberStatus.jsp?success");
-                        break;
-                    default:
-                        break;
+
+                if (successDelete == 1 && successDeleteEM) {
+                    response.sendRedirect("deleteMemberStatus.jsp?success");
                 }
             } catch (Exception ex) {
                 session.setAttribute("errorMsg", ex.getMessage());

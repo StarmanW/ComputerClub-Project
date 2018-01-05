@@ -158,7 +158,7 @@ public class EventDA {
     }
 
     //Delete method
-    public int deleteRecord(String eventID, String facultyID) throws Exception {
+    public int deleteRecord(String eventID) throws Exception {
         int successDelete = 0;
 
         String queryStr = "DELETE FROM" + tableName + "WHERE EVENTID = ?";

@@ -112,12 +112,13 @@
                                             <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabContact()%></td>
                                             <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabEmail()%></td>
                                         <%
-                                                for (int j = 0; j < collabIDList.length; j++) {
-                                                    if (collabIDList[j].equals(collabList.get(i).getCollabID())) {
+                                                if (collabIDList != null) {
+                                                    for (int j = 0; j < collabIDList.length; j++) {
+                                                        if (collabIDList[j].equals(collabList.get(i).getCollabID())) {
                                         %>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="collabID" value="<%=collabList.get(i).getCollabID()%>" checked/></td>
                                             <%  checkboxPrinted = true;
-                                                break;}} %>
+                                                break;}}} %>
                                             <% if (!checkboxPrinted) {%>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="collabID" value="<%=collabList.get(i).getCollabID()%>" /></td>
 
