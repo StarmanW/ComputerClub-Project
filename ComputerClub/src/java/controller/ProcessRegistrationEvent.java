@@ -59,7 +59,7 @@ public class ProcessRegistrationEvent extends HttpServlet {
 
             //Insert validation
             if ((successEventInsert == 1)
-                    && ((itemIDList != null && successEventItemInsert == itemIDList.length)
+                    || ((itemIDList != null && successEventItemInsert == itemIDList.length)
                     || (collabIDList != null && successEventCollaboratorInsert == collabIDList.length)
                     || (memberIDList != null && successEventMemberInsert == memberIDList.length))) {
                 response.sendRedirect("registerEvent.jsp?success");

@@ -60,7 +60,7 @@ public class ProcessUpdateEventItem extends HttpServlet {
             int lastID = Integer.parseInt(eventItemList.get(eventItemList.size() - 1).getEventItemID().substring(2, 6));
             eventItemID = String.format("EI%04d", (lastID + 1));
         } else {
-            eventItemID = String.format("EI04d", 1);
+            eventItemID = String.format("EI%04d", 1);
         }
 
         EventItem eventItem = new EventItem(eventItemID, eventDA.selectRecord(eventID), itemDA.selectRecord(itemID));
