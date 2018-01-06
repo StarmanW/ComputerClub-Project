@@ -1,7 +1,5 @@
-<%@page import="model.Collaborator"%>
 <%@page import="model.EventCollaborator"%>
 <%@page import="java.util.ArrayList"%>
-<jsp:useBean id="collaboratorDA" class="dataAccess.CollaboratorDA" scope="application"></jsp:useBean>
 <jsp:useBean id="eventCollaboratorDA" class="dataAccess.EventCollaboratorDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
@@ -73,7 +71,7 @@
             <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(35, 35, 35);">
             </div>
             <div class="container container-table">
-                <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Collaborator List</strong><strong><br></strong></h2>
+                <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Collaborator List for <%=request.getParameter("eventID")%></strong><strong><br></strong></h2>
                 <div class="table-backpanel">
                     <div class="table-wrapper">
                         <div class="container">
@@ -101,33 +99,22 @@
                                 </thead>
                                 <tbody>
                                     <%
-                                        ArrayList<Collaborator> collabList = collaboratorDA.selectAllCollaboratorList();
                                         ArrayList<EventCollaborator> eventCollaboratorList = eventCollaboratorDA.selectAllEventCollabByEventID(request.getParameter("eventID"));
-                                        for (int i = 0; i < collabList.size(); i++) {
-                                            boolean addedCollab = false;
-                                            for (int j = 0; j < eventCollaboratorList.size(); j++) {
-                                                if (collabList.get(i).getCollabID().equals(eventCollaboratorList.get(j).getCollaborator().getCollabID())) {
-                                                    addedCollab = true;
-                                                    break;
-                                                }
-                                            }
-                                            if (addedCollab) {
-                                                continue;
-                                            } else {
+                                        for (int i = 0; i < eventCollaboratorList.size(); i++) {
                                     %>
                                     <tr>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabID()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabName()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabTypeString()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabContact()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabEmail()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventCollaboratorList.get(i).getCollaborator().getCollabID()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventCollaboratorList.get(i).getCollaborator().getCollabName()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventCollaboratorList.get(i).getCollaborator().getCollabTypeString()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventCollaboratorList.get(i).getCollaborator().getCollabContact()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventCollaboratorList.get(i).getCollaborator().getCollabEmail()%></td>
                                         <td class="body-item mbr-fonts-style display-7">
                                             <form action="ProcessUpdateEventCollab" method="POST" style="display:inline">
-                                                <button type="submit" name="add" value="<%=collabList.get(i).getCollabID()%>" class="edit-button"><img src="assets/images/plus-square.svg" /></button>
+                                                <button type="submit" name="delete" value="<%=eventCollaboratorList.get(i).getCollaborator().getCollabID()%>" class="delete-button"><img src="assets/images/delete.png" /></button>
                                             </form>
                                         </td>
                                     </tr>
-                                    <%}}%>
+                                    <%}%>
                                 </tbody>
                             </table>
                         </div>
@@ -227,8 +214,8 @@
         </script>
         <script>
             var urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('successAdd')) {
-                window.alert("Collaborator successfully added into event " + urlParams.get('eventID') + '!');
+            if (urlParams.has('successDelete')) {
+                window.alert("Collaborator successfully removed from event " + urlParams.get('eventID') + '!');
             } else if (urlParams.has('error')) {
                 window.alert("Oh no! An error has occured, please contact the system administrator.");
             }

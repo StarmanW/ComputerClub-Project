@@ -106,7 +106,16 @@
                                         ArrayList<Member> memberList = memberDA.selectAllMembersList();
                                         ArrayList<EventMember> eventMemberList = eventMemberDA.selectAllEventMemberList();
                                         for (int i = 0; i < memberList.size(); i++) {
-                                            boolean checkboxPrinted = false;
+                                            boolean addedCollab = false;
+                                            for (int j = 0; j < eventMemberList.size(); j++) {
+                                                if (memberList.get(i).getStudID().equals(eventMemberList.get(j).getMember().getStudID())) {
+                                                    addedCollab = true;
+                                                    break;
+                                                }
+                                            }
+                                            if (addedCollab) {
+                                                continue;
+                                            } else {
                                     %>
                                     <tr>
                                         <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getStudName().getFullName()%></td>
@@ -115,22 +124,9 @@
                                         <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getGender()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getAcademicYear()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getProgramme().getProgID()%></td>
-                                        <%
-                                            for (int j = 0; j < eventMemberList.size(); j++) {
-                                                if (memberList.get(i).getStudID().equals(eventMemberList.get(j).getMember().getStudID())) {
-                                        %>
-                                        <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="itemID" checked value="<%=memberList.get(i).getStudID()%>" onclick="return false;"/>
+                                        <td class="body-item mbr-fonts-style display-7">
                                             <form action="ProcessUpdateEventMember" method="POST" style="display:inline">
                                                 <button type="submit" name="add" value="<%=memberList.get(i).getStudID()%>" class="edit-button"><img src="assets/images/plus-square.svg" /></button>
-                                                <button type="submit" name="delete" value="<%=memberList.get(i).getStudID()%>" class="delete-button"><img src="assets/images/delete.png" /></button>
-                                            </form>
-                                        </td>
-                                            <% checkboxPrinted = true; break; }} %>
-                                            <% if (!checkboxPrinted) {%>
-                                        <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="itemID" value="<%=memberList.get(i).getStudID()%>" onclick="return false;"/>
-                                            <form action="ProcessUpdateEventMember" method="POST" style="display:inline">
-                                                <button type="submit" name="add" value="<%=memberList.get(i).getStudID()%>" class="edit-button"><img src="assets/images/plus-square.svg" /></button>
-                                                <button type="submit" name="delete" value="<%=memberList.get(i).getStudID()%>" class="delete-button"><img src="assets/images/delete.png" /></button>
                                             </form>
                                         </td>
                                     </tr>
@@ -236,8 +232,6 @@
             var urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('successAdd')) {
                 window.alert("Participant successfully added into event " + urlParams.get('eventID') + '!');
-            } else if (urlParams.has('successDelete')) {
-                window.alert("Participant successfully removed from event " + urlParams.get('eventID') + '!');
             } else if (urlParams.has('error')) {
                 window.alert("Oh no! An error has occured, please contact the system administrator.");
             }

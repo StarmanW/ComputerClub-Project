@@ -1,8 +1,8 @@
-<%@page import="model.Collaborator"%>
-<%@page import="model.EventCollaborator"%>
+<%@page import="model.EventItem"%>
+<%@page import="model.Item"%>
 <%@page import="java.util.ArrayList"%>
-<jsp:useBean id="collaboratorDA" class="dataAccess.CollaboratorDA" scope="application"></jsp:useBean>
-<jsp:useBean id="eventCollaboratorDA" class="dataAccess.EventCollaboratorDA" scope="application"></jsp:useBean>
+<jsp:useBean id="itemDA" class="dataAccess.ItemDA" scope="application"></jsp:useBean>
+<jsp:useBean id="eventItemDA" class="dataAccess.EventItemDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
 %>
@@ -15,8 +15,8 @@
         <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/title bar logo.png" type="image/x-icon">
-        <meta name="description" content="Collaborator List">
-        <title>Update Collaborator List</title>
+        <meta name="description" content="Sponsored Item List">
+        <title>Sponsored Item List</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -69,11 +69,11 @@
             </nav>
         </section>
         <section class="engine"><a href="https://mobirise.co/n">bootstrap modal popup</a></section>
-        <section class="section-table cid-qEChLAALjA mbr-parallax-background" id="table1-z" data-rv-view="3793">
+        <section class="section-table cid-qFp8UAA2m0 mbr-parallax-background" id="table1-1f" data-rv-view="1776">
             <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(35, 35, 35);">
             </div>
             <div class="container container-table">
-                <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Collaborator List</strong><strong><br></strong></h2>
+                <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Sponsored Item List for <%=request.getParameter("eventID")%></strong><strong><br></strong></h2>
                 <div class="table-backpanel">
                     <div class="table-wrapper">
                         <div class="container">
@@ -91,43 +91,33 @@
                             <table class="table isSearch" cellspacing="0">
                                 <thead>
                                     <tr class="table-heads ">
-                                        <th class="head-item mbr-fonts-style display-7">Collaborator ID</th>
-                                        <th class="head-item mbr-fonts-style display-7">Collaborator Name</th>
-                                        <th class="head-item mbr-fonts-style display-7">Collaborator Type</th>
-                                        <th class="head-item mbr-fonts-style display-7">Contact No.</th>
-                                        <th class="head-item mbr-fonts-style display-7">Email</th>
+                                        <th class="head-item mbr-fonts-style display-7">Item ID</th>
+                                        <th class="head-item mbr-fonts-style display-7">Item Name</th>
+                                        <th class="head-item mbr-fonts-style display-7">Sponsored By</th>
+                                        <th class="head-item mbr-fonts-style display-7">Item Quantity</th>
+                                        <th class="head-item mbr-fonts-style display-7">Item Type</th>
                                         <th class="head-item mbr-fonts-style display-7"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <%
-                                        ArrayList<Collaborator> collabList = collaboratorDA.selectAllCollaboratorList();
-                                        ArrayList<EventCollaborator> eventCollaboratorList = eventCollaboratorDA.selectAllEventCollabByEventID(request.getParameter("eventID"));
-                                        for (int i = 0; i < collabList.size(); i++) {
-                                            boolean addedCollab = false;
-                                            for (int j = 0; j < eventCollaboratorList.size(); j++) {
-                                                if (collabList.get(i).getCollabID().equals(eventCollaboratorList.get(j).getCollaborator().getCollabID())) {
-                                                    addedCollab = true;
-                                                    break;
-                                                }
-                                            }
-                                            if (addedCollab) {
-                                                continue;
-                                            } else {
+                                        ArrayList<EventItem> eventItemList = eventItemDA.selectAllEventItemList();
+                                        for (int i = 0; i < eventItemList.size(); i++) {
                                     %>
                                     <tr>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabID()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabName()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabTypeString()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabContact()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=collabList.get(i).getCollabEmail()%></td>
+
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventItemList.get(i).getItem().getItemID()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventItemList.get(i).getItem().getItemName()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventItemList.get(i).getItem().getCollaborator().getCollabName()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventItemList.get(i).getItem().getQuantity()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=eventItemList.get(i).getItem().getItemTypeString()%></td>
                                         <td class="body-item mbr-fonts-style display-7">
-                                            <form action="ProcessUpdateEventCollab" method="POST" style="display:inline">
-                                                <button type="submit" name="add" value="<%=collabList.get(i).getCollabID()%>" class="edit-button"><img src="assets/images/plus-square.svg" /></button>
+                                            <form action="ProcessUpdateEventItem" method="POST" style="display:inline">
+                                                <button type="submit" name="delete" value="<%=eventItemList.get(i).getItem().getItemID()%>" class="delete-button"><img src="assets/images/delete.png" /></button>
                                             </form>
                                         </td>
                                     </tr>
-                                    <%}}%>
+                                    <%}%>
                                 </tbody>
                             </table>
                         </div>
@@ -143,7 +133,7 @@
                                         <span class="infoFilteredAfter">total entries)</span>
                                     </div>
                                 </div>
-                                <div class="col-md-6"></div>
+
                             </div>
                         </div>
                     </div>
@@ -227,12 +217,12 @@
         </script>
         <script>
             var urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('successAdd')) {
-                window.alert("Collaborator successfully added into event " + urlParams.get('eventID') + '!');
+            if (urlParams.has('successDelete')) {
+                window.alert("Sponsored Item successfully removed from event " + urlParams.get('eventID') + '!');
             } else if (urlParams.has('error')) {
                 window.alert("Oh no! An error has occured, please contact the system administrator.");
             }
-        </script>       
+        </script>  
         <style>
             #top-link-block>.btn {
                 font-size: 1.5em!important;

@@ -101,8 +101,8 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-6 form-group">
-                                        <label><span style="color:red;">*</span>Event Location</label>
-                                        <input type="text" name="eventLocation" value="<%=event.getEventLocation()%>" placeholder="Lot 1-1" class="form-control" required="required">
+                                            <label><span style="color:red;">*</span>Event Location</label>
+                                            <input type="text" name="eventLocation" value="<%=event.getEventLocation()%>" placeholder="Lot 1-1" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <br/>
@@ -118,14 +118,17 @@
                                         </select>
                                     </div>
                                     <br/>
-                                    <div class="form-group" style="margin:auto">
-                                        <a href="updateEventCollaborators.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Manage Collaborators</button></a>
-                                    </div>
-                                    <div class="form-group" style="margin:auto">
-                                        <a href="updateEventSponsoredItems.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Manage Sponsored Items</button></a>
-                                    </div>
-                                    <div class="form-group" style="margin:auto">
-                                        <a href="updateEventParticipants.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Manage Participants</button></a>
+                                    <div class="row">
+                                        <div class="form-group" style="width:220px;">
+                                            <a href="updateEventCollaborators.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Manage Collaborators</button></a>
+                                            <a href="updateEventSponsoredItems.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Manage Sponsored Items</button></a>
+                                            <a href="updateEventParticipants.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Manage Participants</button></a>
+                                        </div>                                   
+                                        <div class="form-group" style="width:220px;">
+                                            <a href="listEventCollaborators.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">List Collaborators</button></a>
+                                            <a href="listEventSponsoredItems.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">List Sponsored Items</button></a>
+                                            <a href="listEventParticipants.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">List Participants</button></a>
+                                        </div>
                                     </div>
                                 </div>
                                 <br />

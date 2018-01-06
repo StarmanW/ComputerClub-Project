@@ -60,7 +60,7 @@
             <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(35, 35, 35);">
             </div>
             <div class="container">
-                <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1"><br>Welcome, <%%>!<br><br></h2>
+                <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1"><br>Welcome to the Computer Club!<br><br></h2>
                 <!--- CSS Overriden -->
                 <div class="media-container-row container">
                     <!--- CSS Overriden -->
