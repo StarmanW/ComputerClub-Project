@@ -59,16 +59,23 @@
                     <div class="box-header">
                         <h2 id="login_header">Log In</h2>
                     </div>
-                    <label for="username">Username</label>
-                    <br/>
-                    <input type="text" id="username">
-                    <br/>
-                    <label for="password">Password</label>
-                    <br/>
-                    <input type="password" id="password">
-                    <br/>
-                    <button type="submit">Login</button>
-                    <br/>
+                    <%
+                        if (request.getParameter("invalid") != null) {
+                    %>
+                    <p><span style="color:red;font-weight: bold;font-size: 20px">Invalid username or password, please try again.</span></p>
+                    <%}%>
+                    <form method="POST" action="ProcessLogin">
+                        <label for="username">Username</label>
+                        <br/>
+                        <input type="text" name="username" id="username">
+                        <br/>
+                        <label for="password">Password</label>
+                        <br/>
+                        <input type="password" name="password" id="password">
+                        <br/>
+                        <button type="submit">Login</button>
+                        <br/>
+                    </form>
                 </div>
             </div>
         </section>
@@ -119,7 +126,7 @@
                 <div class="media-container-row mbr-white">
                     <div class="col-sm-6 copyright">
                         <p class="mbr-text mbr-fonts-style display-7">
-                            Â© Copyright 2017 TAR UC Computer Club - All Rights Reserved
+                            © Copyright 2017 TAR UC Computer Club - All Rights Reserved
                         </p>
                     </div>
                     <div class="col-md-6">
@@ -139,18 +146,6 @@
     <script src="assets/dropdown/js/script.min.js"></script>
     <script src="assets/theme/js/script.js"></script>
     <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i></i></a></div>
-
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script>
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-        }
-    </script>
-
     <!-- Back to top -->
     <script>
         if (($(window).height() + 100) < $(document).height()) {

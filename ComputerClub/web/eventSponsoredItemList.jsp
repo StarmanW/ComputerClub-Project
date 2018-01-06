@@ -55,7 +55,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
                         <li class="nav-item dropdown open"><a class="nav-link link text-white dropdown-toggle display-4" aria-expanded="true" data-toggle="dropdown-submenu">REGISTER</a>
-                            <div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="registerMember.jsp" aria-expanded="false">MEMBER</a><a class="text-white dropdown-item display-4" href="registerEvent.jsp" aria-expanded="false">EVENT</a><a class="text-white dropdown-item display-4" href="registerCollaborator.jsp" aria-expanded="false">COLLABORATOR</a><a class="dropdown-item text-white display-4" href="registerSponsoredItem.jsp">SPONSORED ITEMS</a></div>
+                            <div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="registerMember.jsp" aria-expanded="false">MEMBER</a><a class="text-white dropdown-item display-4" href="registerEvent.jsp" aria-expanded="false">EVENT</a></div>
                         </li>
                         <li class="nav-item dropdown"><a class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown-submenu" aria-expanded="false">MANAGE</a>
                             <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS</a><a class="dropdown-item text-white display-4" href="sponsoredItemList.jsp">SPONSORED ITEMS</a></div>
@@ -90,6 +90,13 @@
                             <div class="container scroll">
                                 <table class="table isSearch" cellspacing="0">
                                     <thead>
+                                        <tr class="table-heads" style="border-bottom-style:solid">
+                                            <th class="head-item mbr-fonts-style display-7" colspan="7">
+                                                <div style="text-align: center;">
+                                                    <a href="registerSponsoredItem.jsp"><img src="assets/images/plus-square.svg" width="30px" /><span class="addNewRecordTxt">&nbsp;Add New Sponsored Item</span></a>
+                                                </div>
+                                            </th>
+                                        </tr>
                                         <tr class="table-heads ">
                                             <th class="head-item mbr-fonts-style display-7">Item ID</th>
                                             <th class="head-item mbr-fonts-style display-7">Item Name</th>
@@ -103,7 +110,7 @@
                                         <%
                                             ArrayList<Item> itemList = itemDA.selectAllItem();
                                             for (int i = 0; i < itemList.size(); i++) {
-                                            boolean checkboxPrinted = false;
+                                                boolean checkboxPrinted = false;
                                         %>
                                         <tr>
 
@@ -118,12 +125,16 @@
                                                         if (itemIDList[j].equals(itemList.get(i).getItemID())) {
                                             %>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="itemID" checked value="<%=itemList.get(i).getItemID()%>" /></td>
-                                            <%  checkboxPrinted = true;
-                                                break;}}} %>
-                                            <% if (!checkboxPrinted) {%>
+                                                <%  checkboxPrinted = true;
+                                                                break;
+                                                            }
+                                                        }
+                                                    } %>
+                                                <% if (!checkboxPrinted) {%>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="itemID" value="<%=itemList.get(i).getItemID()%>" /></td>
                                         </tr>
-                                        <%}}%>
+                                        <%}
+                                            }%>
                                     </tbody>
                                 </table>
                             </div>
@@ -197,7 +208,7 @@
                     <div class="media-container-row mbr-white">
                         <div class="col-sm-6 copyright">
                             <p class="mbr-text mbr-fonts-style display-7">
-                                Â© Copyright 2017 TAR UC Computer Club - All Rights Reserved
+                                � Copyright 2017 TAR UC Computer Club - All Rights Reserved
                             </p>
                         </div>
                         <div class="col-md-6">

@@ -49,7 +49,7 @@
                             <div class="dropdown-menu"><a class="dropdown-item text-white display-4" href="memberList.jsp">MEMBERS LIST</a><a class="dropdown-item text-white display-4" href="eventList.jsp">EVENTS LIST</a><a class="dropdown-item text-white display-4" href="collaboratorList.jsp">COLLABORATORS LIST</a><a class="dropdown-item text-white display-4" href="sponsoredItemList.jsp">SPONSORED ITEMS LIST</a></div>
                         </li>
                     </ul>
-                    <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
+                    <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="../index.jsp"><span class="mbrib-lock mbr-iconfont mbr-iconfont-btn"></span>
 
                             LOGOUT</a></div>
                 </div>
@@ -197,7 +197,7 @@
                     <div class="media-container-row mbr-white">
                         <div class="col-sm-6 copyright">
                             <p class="mbr-text mbr-fonts-style display-7">
-                                Â© Copyright 2017 TAR UC Computer Club - All Rights Reserved
+                                © Copyright 2017 TAR UC Computer Club - All Rights Reserved
                             </p>
                         </div>
                         <div class="col-md-6">
