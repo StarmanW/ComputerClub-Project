@@ -52,6 +52,23 @@ public class EventCollaboratorDA {
         return selectAllEventCollabList;
     }
 
+    //Method to retrieve all records
+    public ArrayList<EventCollaborator> selectAllEventCollabByEventID(String eventID) {
+        ArrayList<EventCollaborator> selectAllEventCollabList = new ArrayList<EventCollaborator>();
+
+        try {
+            pstmt = conn.prepareStatement("SELECT * FROM" + tableName + "WHERE EVENTID = ?");
+            pstmt.setString(1, eventID);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                selectAllEventCollabList.add(new EventCollaborator(rs.getString(1), eventDA.selectRecord(rs.getString(2)), collaboratorDA.selectRecord(rs.getString(3))));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return selectAllEventCollabList;
+    }
+    
     //Select record method
     public EventCollaborator selectRecord(String eventID, String collabID) {
         EventCollaborator eventCollaborator = null;

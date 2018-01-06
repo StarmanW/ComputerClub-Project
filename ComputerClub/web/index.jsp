@@ -68,8 +68,7 @@
                     <input type="password" id="password">
                     <br/>
                     <button type="submit">Login</button>
-                    <br/><br/>
-                    <div align="center" class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <br/>
                 </div>
             </div>
         </section>

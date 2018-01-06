@@ -146,7 +146,8 @@ public class EventDA {
                 pstmt.setString(5, eventEndTime);
                 pstmt.setString(6, eventLocation);
                 pstmt.setString(7, eventID);
-                successUpdate = pstmt.executeUpdate();
+                pstmt.executeUpdate();
+                successUpdate = 1;
             } else {
                 successUpdate = 0;
             }
