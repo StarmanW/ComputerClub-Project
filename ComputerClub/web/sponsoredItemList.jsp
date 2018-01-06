@@ -89,33 +89,38 @@
                             <table class="table isSearch" cellspacing="0">
                                 <thead>
                                     <tr class="table-heads" style="border-bottom-style:solid">
-                                        <th class="head-item mbr-fonts-style display-7">
-                                            <a href="registerSponsoredItem.jsp"><img class="addNewRecord" src="assets/images/plus-square.svg" width="40px" /><span style="font-weight:bold;color:black;vertical-align: middle">&nbsp;Add New Item</span></a>
+                                        <th class="head-item mbr-fonts-style display-7" colspan="7">
+                                            <div style="text-align: center;">
+                                                <a href="registerSponsoredItem.jsp"><img class="addNewRecord" src="assets/images/plus-square.svg" width="40px" /><span style="font-weight:bold;color:black;vertical-align: middle">&nbsp;Add New Item</span></a>
+                                            </div>
                                         </th>
                                     </tr>
                                     <tr class="table-heads ">
                                         <th class="head-item mbr-fonts-style display-7">Item ID</th>
                                         <th class="head-item mbr-fonts-style display-7">Item Name</th>
-                                        <th class="head-item mbr-fonts-style display-7">Sponsored By</th>
                                         <th class="head-item mbr-fonts-style display-7">Item Quantity</th>
                                         <th class="head-item mbr-fonts-style display-7">Item Type</th>
+                                        <th class="head-item mbr-fonts-style display-7">Sponsored By</th>
                                         <th class="head-item mbr-fonts-style display-7"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <%
                                         ArrayList<Item> itemList = itemDA.selectAllItem();
+                                        
+                                        String itemID = null;
                                         for (int i = 0; i < itemList.size(); i++) {
+                                            itemID = itemList.get(i).getItemID();
                                     %>
                                     <tr>
-                                        <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemID()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=itemID%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemName()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getCollaborator().getCollabName()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getQuantity()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemTypeString()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getCollaborator().getCollabName()%></td>
                                         <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
-                                            <a href="updateSponsoredItem.jsp?itemID=<%=itemList.get(i).getItemID()%>"><button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button></a>
-                                            <a href="deleteSponsoredItem.jsp?itemID=<%=itemList.get(i).getItemID()%>"><button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button></a>
+                                            <a href="updateSponsoredItem.jsp?itemID=<%=itemID%>"><button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button></a>
+                                            <a href="deleteSponsoredItem.jsp?itemID=<%=itemID%>"><button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button></a>
                                         </td>
                                     </tr>
                                     <%}%>
