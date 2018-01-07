@@ -90,7 +90,7 @@
                             <table class="table isSearch" cellspacing="0">
                                 <thead>
                                     <tr class="table-heads" style="border-bottom-style:solid">
-                                        <th class="head-item mbr-fonts-style display-7" colspan="7">
+                                        <th class="head-item mbr-fonts-style display-7" colspan="8">
                                             <div style="text-align: center;">
                                                 <a href="registerMember.jsp"><img src="assets/images/plus-square.svg" width="40px" /><span class="addNewRecordTxt">&nbsp;Add New Member</span></a>
                                             </div>
