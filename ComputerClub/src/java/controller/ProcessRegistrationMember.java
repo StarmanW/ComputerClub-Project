@@ -42,7 +42,7 @@ public class ProcessRegistrationMember extends HttpServlet {
 
         if (fName.isEmpty() || lName.isEmpty() || icNum.isEmpty() || memID.isEmpty() || contactNo.isEmpty() || email.isEmpty() || progID.isEmpty() || academicYear.isEmpty()
                 || String.valueOf(gender).isEmpty()) {
-            response.sendRedirect("registerMember.jsp?empty");
+            response.sendRedirect(request.getSession().getAttribute("requestURL") + "?empty");
         } else {
             try {
                 //Creating memberDA and member object 
@@ -55,13 +55,13 @@ public class ProcessRegistrationMember extends HttpServlet {
                 int successInsert = memberDA.createRecord(member);
                 switch (successInsert) {
                     case 1:
-                        response.sendRedirect("registerMember.jsp?success");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?success");
                         break;
                     case -1:
-                        response.sendRedirect("registerMember.jsp?duplicated");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?duplicated");
                         break;
                     default:
-                        response.sendRedirect("registerMember.jsp?error");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?error");
                         break;
                 }
             } catch (Exception ex) {

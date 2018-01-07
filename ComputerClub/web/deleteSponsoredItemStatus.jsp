@@ -1,5 +1,7 @@
 <%@page import="model.Item"%>
 <%
+    session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
     Item item = (Item) session.getAttribute("itemToDelete");
 %>
 <!DOCTYPE html>

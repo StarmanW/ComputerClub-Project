@@ -33,7 +33,7 @@ public class ProcessRegistrationCollaborator extends HttpServlet {
         //Redirect back to registerCollaborator page with parameter ?empty
         //To display empty fields error message
         if (collabName.isEmpty() || collabContact.isEmpty() || collabEmail.isEmpty()) {
-            response.sendRedirect("registerCollaborator.jsp?empty");
+            response.sendRedirect(request.getSession().getAttribute("requestURL") + "?empty");
         } else {
             try {
                 Collaborator collaborator = null;
@@ -53,13 +53,13 @@ public class ProcessRegistrationCollaborator extends HttpServlet {
                 int successInsert = collaboratorDA.createRecord(collaborator);
                 switch (successInsert) {
                     case 1:
-                        response.sendRedirect("registerCollaborator.jsp?success");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?success");
                         break;
                     case -1:
-                        response.sendRedirect("registerCollaborator.jsp?duplicated");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?duplicated");
                         break;
                     case 0:
-                        response.sendRedirect("registerCollaborator.jsp?error");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?error");
                         break;
                 }
             } catch (Exception ex) {

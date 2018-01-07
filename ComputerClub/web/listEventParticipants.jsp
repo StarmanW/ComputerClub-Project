@@ -6,6 +6,7 @@
 <%
     session = request.getSession();
 %>
+<%session.setAttribute("requestURL", request.getRequestURL().toString());%>
 <!DOCTYPE html>
 <html>
 
@@ -16,7 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/title bar logo.png" type="image/x-icon">
         <meta name="description" content="Member List">
-        <title>Member List</title>
+        <title>Participant List</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -72,7 +73,7 @@
             <div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(35, 35, 35);">
             </div>
             <div class="container container-table">
-                <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Member List for <%=request.getParameter("eventID")%></strong><strong><br></strong></h2>
+                <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Participant List for <%=request.getParameter("eventID")%></strong><strong><br></strong></h2>
                 <div class="table-backpanel">
                     <div class="table-wrapper">
                         <div class="container">
@@ -103,7 +104,7 @@
                                 </thead>
                                 <tbody>
                                     <%
-                                        ArrayList<EventMember> eventMemberList = eventMemberDA.selectAllEventMemberList();
+                                        ArrayList<EventMember> eventMemberList = eventMemberDA.selectAllEventMemberList(request.getParameter("eventID"));
                                         for (int i = 0; i < eventMemberList.size(); i++) {
                                     %>
                                     <tr>

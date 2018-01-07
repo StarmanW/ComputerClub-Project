@@ -1,5 +1,7 @@
 <%@page import="model.Collaborator"%>
 <%
+    session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
     Collaborator collaborator = (Collaborator) session.getAttribute("collaboratorToDelete");
 %>
 <!DOCTYPE html>

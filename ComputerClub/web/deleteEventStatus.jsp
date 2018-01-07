@@ -1,5 +1,7 @@
 <%@page import="model.Event"%>
 <%
+    session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
     Event event = (Event) session.getAttribute("eventToDelete");
 %>
 <!DOCTYPE html>

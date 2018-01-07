@@ -33,11 +33,11 @@ public class ProcessUpdateEventItem extends HttpServlet {
         if (request.getParameter("add") != null) {
             String itemID = request.getParameter("add");
             addNewEventItem(itemID, eventID);
-            response.sendRedirect("updateEventSponsoredItems.jsp?successAdd&eventID=" + eventID);
+            response.sendRedirect(request.getSession().getAttribute("requestURL") + "?successAdd&eventID=" + eventID);
         } else if (request.getParameter("delete") != null) {
             String itemID = request.getParameter("delete");
-            deleteEventItem(itemID);
-            response.sendRedirect("updateEventSponsoredItems.jsp?successDelete&eventID=" + eventID);
+            deleteEventItem(eventID, itemID);
+            response.sendRedirect(request.getSession().getAttribute("requestURL") + "?successDelete&eventID=" + eventID);
         }
     }
     
@@ -72,9 +72,9 @@ public class ProcessUpdateEventItem extends HttpServlet {
     }
 
     //Method to perform deletion on EventItem
-    private void deleteEventItem(String itemID) {
+    private void deleteEventItem(String eventID, String itemID) {
         try {
-            eventItemDA.deleteRecordByItemID(itemID);
+            eventItemDA.deleteRecordByItemID(eventID, itemID);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

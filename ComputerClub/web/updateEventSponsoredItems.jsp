@@ -5,6 +5,7 @@
 <jsp:useBean id="eventItemDA" class="dataAccess.EventItemDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
 %>
 <!DOCTYPE html>
 <html>

@@ -34,7 +34,7 @@ public class ProcessUpdateSponsoredItem extends HttpServlet {
 
         //Validate values - if empty, redirect back to page
         if (itemName.isEmpty() || collabName.isEmpty()) {
-            response.sendRedirect("registerSponsoredItem.jsp?empty");
+            response.sendRedirect(request.getSession().getAttribute("requestURL") + "?empty");
         } else {
             try {
                 //Creating collaboratorDA and itemDA object for UPDATE operation
@@ -49,10 +49,10 @@ public class ProcessUpdateSponsoredItem extends HttpServlet {
                 int successUpdate = itemDA.updateRecord(item);
                 switch (successUpdate) {
                     case 1:
-                        response.sendRedirect("updateSponsoredItem.jsp?itemID=" + itemID + "&success");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?itemID=" + itemID + "&success");
                         break;
                     case 0:
-                        response.sendRedirect("updateSponsoredItem.jsp?itemID=" + itemID + "&error");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?itemID=" + itemID + "&error");
                         break;
                 }
             } catch (Exception ex) {

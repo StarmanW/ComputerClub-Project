@@ -5,6 +5,7 @@
     session = request.getSession();
     String[] memberIDList = (String[]) session.getAttribute("memberIDList");
 %>
+<%session.setAttribute("requestURL", request.getRequestURL().toString());%>
 <!DOCTYPE html>
 <html>
 

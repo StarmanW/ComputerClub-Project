@@ -2,6 +2,7 @@
 <jsp:useBean id="eventDA" class="dataAccess.EventDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
     Event event = eventDA.selectRecord(request.getParameter("eventID"));
     session.setAttribute("eventID", event.getEventID());
 %><!DOCTYPE html>

@@ -32,11 +32,11 @@ public class ProcessUpdateEventMember extends HttpServlet {
         if (request.getParameter("add") != null) {
             String studID = request.getParameter("add");
             addNewEventParticipant(studID, eventID);
-            response.sendRedirect("updateEventParticipants.jsp?successAdd&eventID=" + eventID);
+            response.sendRedirect(request.getSession().getAttribute("requestURL") + "?successAdd&eventID=" + eventID);
         } else if (request.getParameter("delete") != null) {
             String studID = request.getParameter("delete");
-            deleteEventParticipant(studID);
-            response.sendRedirect("updateEventParticipants.jsp?successDelete&eventID=" + eventID);
+            deleteEventParticipant(studID, eventID);
+            response.sendRedirect(request.getSession().getAttribute("requestURL") + "?successDelete&eventID=" + eventID);
         }    
     }
     
@@ -72,9 +72,9 @@ public class ProcessUpdateEventMember extends HttpServlet {
     }
 
     //Method to perform deletion on EventMember
-    private void deleteEventParticipant(String studID) {
+    private void deleteEventParticipant(String studID, String eventID) {
         try {
-            eventMemberDA.deleteRecordByMemberID(studID);
+            eventMemberDA.deleteRecordByMemberEventID(studID, eventID);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

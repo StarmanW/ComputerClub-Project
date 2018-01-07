@@ -47,7 +47,7 @@ public class ProcessDeleteEvent extends HttpServlet {
                 boolean successDeleteEM = eventMemberDA.deleteRecordByEventID(event.getEventID());
                 boolean successDeleteEC = eventCollaboratorDA.deleteRecordByEventID(event.getEventID());
                 int successDeleteE = eventDA.deleteRecord(event.getEventID());
-                if (successDeleteE == 1 && successDeleteEC && successDeleteEI && successDeleteEM) {
+                if (successDeleteE == 1 || successDeleteEC || successDeleteEI || successDeleteEM) {
                     response.sendRedirect("deleteEventStatus.jsp?success");
                 }
             } catch (Exception ex) {

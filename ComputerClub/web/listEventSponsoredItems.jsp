@@ -5,6 +5,7 @@
 <jsp:useBean id="eventItemDA" class="dataAccess.EventItemDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
 %>
 <!DOCTYPE html>
 <html>
@@ -101,7 +102,7 @@
                                 </thead>
                                 <tbody>
                                     <%
-                                        ArrayList<EventItem> eventItemList = eventItemDA.selectAllEventItemList();
+                                        ArrayList<EventItem> eventItemList = eventItemDA.selectAllEventItemListByEventID(request.getParameter("eventID"));
                                         for (int i = 0; i < eventItemList.size(); i++) {
                                     %>
                                     <tr>

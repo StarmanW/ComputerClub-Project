@@ -34,7 +34,7 @@ public class ProcessUpdateCollaborator extends HttpServlet {
         //Redirect back to registerCollaborator page with parameter ?empty
         //To display empty fields error message
         if (collabName.isEmpty() || collabContact.isEmpty() || collabEmail.isEmpty()) {
-            response.sendRedirect("updateCollaborator.jsp?empty");
+            response.sendRedirect(request.getSession().getAttribute("requestURL") + "?empty");
         } else {
             try {
                 collaboratorDA = new CollaboratorDA();
@@ -47,10 +47,10 @@ public class ProcessUpdateCollaborator extends HttpServlet {
                 int successUpdate = collaboratorDA.updateRecord(collaborator);
                 switch (successUpdate) {
                     case 1:
-                        response.sendRedirect("updateCollaborator.jsp?collabID=" + collabID + "&success");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?collabID=" + collabID + "&success");
                         break;
                     default:
-                        response.sendRedirect("updateCollaborator.jsp?collabID=" + collabID + "&error");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?collabID=" + collabID + "&error");
                         break;
                 }
             } catch (Exception ex) {

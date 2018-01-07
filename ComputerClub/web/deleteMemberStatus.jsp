@@ -1,6 +1,7 @@
 <%@page import="model.Member"%>
 <%
     Member member = (Member) session.getAttribute("memberToDelete");
+    session.setAttribute("requestURL", request.getRequestURL().toString());
 %>
 <!DOCTYPE html>
 <html>

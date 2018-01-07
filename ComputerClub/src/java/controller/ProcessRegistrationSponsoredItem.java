@@ -32,7 +32,7 @@ public class ProcessRegistrationSponsoredItem extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
 
         if (itemName.isEmpty() || collabName.isEmpty()) {
-            response.sendRedirect("registerSponsoredItem.jsp?empty");
+            response.sendRedirect(request.getSession().getAttribute("requestURL") + "?empty");
         } else {
             try {
                 Item item = null;
@@ -52,13 +52,13 @@ public class ProcessRegistrationSponsoredItem extends HttpServlet {
                 int successInsert = itemDA.createRecord(item);
                 switch (successInsert) {
                     case 1:
-                        response.sendRedirect("registerSponsoredItem.jsp?success");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?success");
                         break;
                     case -1:
-                        response.sendRedirect("registerSponsoredItem.jsp?duplicated");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?duplicated");
                         break;
                     case 0:
-                        response.sendRedirect("registerSponsoredItem.jsp?error");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?error");
                         break;
                 }
             } catch (Exception ex) {

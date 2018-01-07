@@ -10,6 +10,7 @@
     } else {
         session.removeAttribute("memberToDelete");  //Removing attribute, otherwise deletion still can be proceed from previous session
     }
+    session.setAttribute("requestURL", request.getRequestURL().toString());
 %>
 <!DOCTYPE html>
 <html>

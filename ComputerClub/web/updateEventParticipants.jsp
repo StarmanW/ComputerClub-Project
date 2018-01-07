@@ -5,6 +5,7 @@
 <jsp:useBean id="eventMemberDA" class="dataAccess.EventMemberDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
 %>
 <!DOCTYPE html>
 <html>
@@ -103,17 +104,18 @@
                                 </thead>
                                 <tbody>
                                     <%
+                                        String eventID = request.getParameter("eventID");
                                         ArrayList<Member> memberList = memberDA.selectAllMembersList();
                                         ArrayList<EventMember> eventMemberList = eventMemberDA.selectAllEventMemberList();
                                         for (int i = 0; i < memberList.size(); i++) {
-                                            boolean addedCollab = false;
+                                            boolean addedMember = false;
                                             for (int j = 0; j < eventMemberList.size(); j++) {
-                                                if (memberList.get(i).getStudID().equals(eventMemberList.get(j).getMember().getStudID())) {
-                                                    addedCollab = true;
+                                                if (memberList.get(i).getStudID().equals(eventMemberList.get(j).getMember().getStudID()) && eventID.equals(eventMemberList.get(j).getEvent().getEventID())) {
+                                                    addedMember = true;
                                                     break;
                                                 }
                                             }
-                                            if (addedCollab) {
+                                            if (addedMember) {
                                                 continue;
                                             } else {
                                     %>

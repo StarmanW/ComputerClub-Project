@@ -3,6 +3,7 @@
 <jsp:useBean id="collaboratorDA" class="dataAccess.CollaboratorDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
 %>
 <!DOCTYPE html>
 <html>

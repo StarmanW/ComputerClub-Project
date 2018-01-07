@@ -4,6 +4,7 @@
 <jsp:useBean id="memberDA" class="dataAccess.MemberDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
     session.setAttribute("studIDOriginal", request.getParameter("studID"));
     Member member = memberDA.selectRecord(request.getParameter("studID"));
 %>

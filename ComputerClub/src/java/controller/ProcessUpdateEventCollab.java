@@ -32,11 +32,11 @@ public class ProcessUpdateEventCollab extends HttpServlet {
         if (request.getParameter("add") != null) {
             String collabID = request.getParameter("add");
             addNewEventCollaborator(collabID, eventID);
-            response.sendRedirect("updateEventCollaborators.jsp?successAdd&eventID=" + eventID);
+            response.sendRedirect(request.getSession().getAttribute("requestURL") + "?successAdd&eventID=" + eventID);
         } else if (request.getParameter("delete") != null) {
             String collabID = request.getParameter("delete");
-            deleteEventCollaborator(collabID);
-            response.sendRedirect("updateEventCollaborators.jsp?successDelete&eventID=" + eventID);
+            deleteEventCollaborator(eventID, collabID);
+            response.sendRedirect(request.getSession().getAttribute("requestURL") + "?successDelete&eventID=" + eventID);
         }
     }
 
@@ -71,9 +71,9 @@ public class ProcessUpdateEventCollab extends HttpServlet {
     }
 
     //Method to perform deletion on EventCollaborator
-    private void deleteEventCollaborator(String collabID) {
+    private void deleteEventCollaborator(String eventID, String collabID) {
         try {
-            eventCollaboratorDA.deleteRecordByCollaboratorID(collabID);
+            eventCollaboratorDA.deleteRecordByCollabEventID(eventID, collabID);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

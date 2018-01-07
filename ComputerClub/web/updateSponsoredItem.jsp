@@ -5,6 +5,7 @@
 <jsp:useBean id="itemDA" class="dataAccess.ItemDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
     session.setAttribute("itemID", request.getParameter("itemID"));
     Item item = itemDA.selectRecord(request.getParameter("itemID"));
 %>

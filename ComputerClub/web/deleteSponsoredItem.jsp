@@ -2,6 +2,7 @@
 <jsp:useBean id="itemDA" class="dataAccess.ItemDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
     Item item = null;
     String itemID = request.getParameter("itemID");
     if (itemID != null && !itemID.isEmpty()) {

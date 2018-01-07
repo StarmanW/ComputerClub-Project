@@ -4,6 +4,7 @@
     session = request.getSession();
     Collaborator collaborator = collaboratorDA.selectRecord(request.getParameter("collabID"));
     session.setAttribute("collabID", collaborator.getCollabID());
+    session.setAttribute("requestURL", request.getRequestURL().toString());
 %>
 <!DOCTYPE html>
 <html>

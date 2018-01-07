@@ -4,6 +4,7 @@
 <%
     session = request.getSession();
     String[] itemIDList = (String[]) session.getAttribute("itemIDList");
+    session.setAttribute("requestURL", request.getRequestURL().toString());
 %>
 <!DOCTYPE html>
 <html>

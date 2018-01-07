@@ -1,6 +1,7 @@
 <%@page import="model.Collaborator"%>
 <%@page import="java.util.ArrayList"%>
 <jsp:useBean id="collaboratorDA" class="dataAccess.CollaboratorDA" scope="application"></jsp:useBean>
+<%session.setAttribute("requestURL", request.getRequestURL().toString());%>
 <!DOCTYPE html>
 <html>
 

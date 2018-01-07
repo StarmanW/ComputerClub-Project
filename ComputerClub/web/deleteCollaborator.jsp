@@ -2,6 +2,7 @@
 <jsp:useBean id="collaboratorDA" class="dataAccess.CollaboratorDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
     Collaborator collaborator = null;
     String collabID = request.getParameter("collabID");
     if (collabID != null && !collabID.isEmpty()) {

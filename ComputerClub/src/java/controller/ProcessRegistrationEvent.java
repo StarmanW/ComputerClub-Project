@@ -62,7 +62,7 @@ public class ProcessRegistrationEvent extends HttpServlet {
                     || ((itemIDList != null && successEventItemInsert == itemIDList.length)
                     || (collabIDList != null && successEventCollaboratorInsert == collabIDList.length)
                     || (memberIDList != null && successEventMemberInsert == memberIDList.length))) {
-                response.sendRedirect("registerEvent.jsp?success");
+                response.sendRedirect(request.getSession().getAttribute("requestURL") + "?success");
             }
         } catch (Exception ex) {
             ex.printStackTrace();

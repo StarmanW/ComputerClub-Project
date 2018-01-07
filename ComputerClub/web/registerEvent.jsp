@@ -1,4 +1,7 @@
-<%session = request.getSession();%>  
+<%
+    session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
+%>  
 <!DOCTYPE html>
 <html>
     <head>

@@ -52,7 +52,7 @@ public class EventCollaboratorDA {
         return selectAllEventCollabList;
     }
 
-    //Method to retrieve all records
+    //Method to retrieve all records for a specific event
     public ArrayList<EventCollaborator> selectAllEventCollabByEventID(String eventID) {
         ArrayList<EventCollaborator> selectAllEventCollabList = new ArrayList<EventCollaborator>();
 
@@ -186,6 +186,26 @@ public class EventCollaboratorDA {
         try {
             pstmt = conn.prepareStatement(queryStr);
             pstmt.setString(1, collabID);
+            pstmt.executeUpdate();
+            successDelete = true;
+        } catch (SQLException ex) {
+            successDelete = false;
+            ex.printStackTrace();
+        }
+
+        return successDelete;
+    }
+
+    //Delete method by Collaborator ID and Event ID - used when updating a specific event
+    public boolean deleteRecordByCollabEventID(String eventID, String collabID) throws Exception {
+        boolean successDelete = false;
+
+        String queryStr = "DELETE FROM" + tableName + "WHERE EVENTID = ? AND COLLABID = ?";
+
+        try {
+            pstmt = conn.prepareStatement(queryStr);
+            pstmt.setString(1, eventID);
+            pstmt.setString(2, collabID);
             pstmt.executeUpdate();
             successDelete = true;
         } catch (SQLException ex) {

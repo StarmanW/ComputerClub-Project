@@ -1,7 +1,8 @@
 <%@page import="model.Event"%>
 <%@page import="java.util.ArrayList"%>
 <jsp:useBean id="eventDA" class="dataAccess.EventDA" scope="application"></jsp:useBean>
-    <!DOCTYPE html>
+<%session.setAttribute("requestURL", request.getRequestURL().toString());%>
+<!DOCTYPE html>
     <html>
 
         <head>

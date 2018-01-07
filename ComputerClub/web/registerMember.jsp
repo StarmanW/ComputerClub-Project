@@ -1,5 +1,8 @@
 <%@page import="java.util.ArrayList"%>
 <jsp:useBean id="programmeDA" class="dataAccess.ProgrammeDA" scope="application"></jsp:useBean>
+<%    
+    session.setAttribute("requestURL", request.getRequestURL().toString());
+%>
     <!DOCTYPE html>
     <html>
 

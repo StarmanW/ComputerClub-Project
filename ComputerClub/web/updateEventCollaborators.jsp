@@ -5,6 +5,7 @@
 <jsp:useBean id="eventCollaboratorDA" class="dataAccess.EventCollaboratorDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
 %>
 <!DOCTYPE html>
 <html>
@@ -90,6 +91,13 @@
                         <div class="container scroll">
                             <table class="table isSearch" cellspacing="0">
                                 <thead>
+                                    <tr class="table-heads" style="border-bottom-style:solid">
+                                        <th class="head-item mbr-fonts-style display-7" colspan="7">
+                                            <div style="text-align: center;">
+                                                <a href="updateEventAddCollab.jsp"><img src="assets/images/plus-square.svg" width="30px" /><span class="addNewRecordTxt">&nbsp;Add New Collaborator</span></a>
+                                            </div>
+                                        </th>
+                                    </tr>
                                     <tr class="table-heads ">
                                         <th class="head-item mbr-fonts-style display-7">Collaborator ID</th>
                                         <th class="head-item mbr-fonts-style display-7">Collaborator Name</th>
@@ -127,7 +135,8 @@
                                             </form>
                                         </td>
                                     </tr>
-                                    <%}}%>
+                                    <%}
+                                        }%>
                                 </tbody>
                             </table>
                         </div>

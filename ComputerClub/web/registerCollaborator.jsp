@@ -1,3 +1,4 @@
+<%session.setAttribute("requestURL", request.getRequestURL().toString());%>
 <!DOCTYPE html>
 <html>
 

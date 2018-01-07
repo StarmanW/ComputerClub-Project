@@ -42,7 +42,7 @@ public class ProcessUpdateMember extends HttpServlet {
         //Empty fields verification
         if (fName.isEmpty() || lName.isEmpty() || icNum.isEmpty() || memID.isEmpty() || contactNo.isEmpty() || email.isEmpty() || progID.isEmpty() || academicYear.isEmpty()
                 || String.valueOf(gender).isEmpty()) {
-            response.sendRedirect("updateMember.jsp?empty");
+            response.sendRedirect(request.getSession().getAttribute("requestURL") + "?empty");
         } else {
             try {
                 //Creating programmeDA and memberDA object for UPDATE operation
@@ -58,10 +58,10 @@ public class ProcessUpdateMember extends HttpServlet {
                 int successUpdate = memberDA.updateRecord(member, studIDOriginal);
                 switch (successUpdate) {
                     case 1:
-                        response.sendRedirect("updateMember.jsp?studID=" + member.getStudID() + "&success");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?studID=" + member.getStudID() + "&success");
                         break;
                     default:
-                        response.sendRedirect("updateMember.jsp?studID=" + member.getStudID() + "&error");
+                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?studID=" + member.getStudID() + "&error");
                         break;
                 }
             } catch (Exception ex) {

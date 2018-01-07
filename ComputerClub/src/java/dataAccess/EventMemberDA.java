@@ -38,18 +38,35 @@ public class EventMemberDA {
 
     //Method to retrieve all records
     public ArrayList<EventMember> selectAllEventMemberList() {
-        ArrayList<EventMember> selectAllEventCollabList = new ArrayList<EventMember>();
+        ArrayList<EventMember> membersList = new ArrayList<EventMember>();
 
         try {
             pstmt = conn.prepareStatement("SELECT * FROM" + tableName);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                selectAllEventCollabList.add(new EventMember(rs.getString(1), memberDA.selectRecord(rs.getString(2)), eventDA.selectRecord(rs.getString(3))));
+                membersList.add(new EventMember(rs.getString(1), memberDA.selectRecord(rs.getString(2)), eventDA.selectRecord(rs.getString(3))));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return selectAllEventCollabList;
+        return membersList;
+    }
+
+    //Method to retrieve all records for a specific event
+    public ArrayList<EventMember> selectAllEventMemberList(String eventID) {
+        ArrayList<EventMember> membersList = new ArrayList<EventMember>();
+
+        try {
+            pstmt = conn.prepareStatement("SELECT * FROM" + tableName + "WHERE EVENTID = ?");
+            pstmt.setString(1, eventID);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                membersList.add(new EventMember(rs.getString(1), memberDA.selectRecord(rs.getString(2)), eventDA.selectRecord(rs.getString(3))));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return membersList;
     }
 
     //Select record method
@@ -165,6 +182,24 @@ public class EventMemberDA {
         try {
             pstmt = conn.prepareStatement(queryStr);
             pstmt.setString(1, memberID);
+            pstmt.executeUpdate();
+            successDelete = true;
+        } catch (SQLException ex) {
+            successDelete = false;
+            ex.printStackTrace();
+        }
+
+        return successDelete;
+    }
+
+    //Delete method by Member ID and Event ID - used when updating a specific event
+    public boolean deleteRecordByMemberEventID(String memberID, String eventID) throws Exception {
+        boolean successDelete = false;
+        String queryStr = "DELETE FROM" + tableName + "WHERE MEMBERID = ? AND EVENTID = ?";
+        try {
+            pstmt = conn.prepareStatement(queryStr);
+            pstmt.setString(1, memberID);
+            pstmt.setString(2, eventID);
             pstmt.executeUpdate();
             successDelete = true;
         } catch (SQLException ex) {

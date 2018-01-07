@@ -52,6 +52,24 @@ public class EventItemDA {
         return selectAllEventItemList;
     }
 
+    
+    //Method to retrieve all records for a specific event
+    public ArrayList<EventItem> selectAllEventItemListByEventID(String eventID) {
+        ArrayList<EventItem> selectAllEventItemList = new ArrayList<EventItem>();
+
+        try {
+            pstmt = conn.prepareStatement("SELECT * FROM" + tableName + "WHERE EVENTID = ?");
+            pstmt.setString(1, eventID);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                selectAllEventItemList.add(new EventItem(rs.getString(1), eventDA.selectRecord(rs.getString(2)), itemDA.selectRecord(rs.getString(3))));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return selectAllEventItemList;
+    }
+
     //Select record method
     public EventItem selectRecord(String eventID) {
         EventItem eventItem = null;
@@ -168,6 +186,26 @@ public class EventItemDA {
         try {
             pstmt = conn.prepareStatement(queryStr);
             pstmt.setString(1, itemID);
+            pstmt.executeUpdate();
+            successDelete = true;
+        } catch (SQLException ex) {
+            successDelete = false;
+            ex.printStackTrace();
+        }
+
+        return successDelete;
+    }
+    
+    //Delete method by Item ID and Event ID - used when updating a specific event
+    public boolean deleteRecordByItemID(String eventID, String itemID) throws Exception {
+        boolean successDelete = false;
+
+        String queryStr = "DELETE FROM" + tableName + "WHERE EVENTID = ? AND ITEMID = ?";
+
+        try {
+            pstmt = conn.prepareStatement(queryStr);
+            pstmt.setString(1, eventID);
+            pstmt.setString(2, itemID);
             pstmt.executeUpdate();
             successDelete = true;
         } catch (SQLException ex) {

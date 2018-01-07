@@ -3,6 +3,7 @@
 <jsp:useBean id="memberDA" class="dataAccess.MemberDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    session.setAttribute("requestURL", request.getRequestURL().toString());
 %>
 <!DOCTYPE html>
 <html>
