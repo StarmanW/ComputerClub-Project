@@ -72,7 +72,7 @@
                     <hr style="border-top:1px solid gray;" />
                     <div class="col-lg-12 well">
                         <div class="row">
-                            <form action="ProcessRegistrationSponsoredItem" method="POST" style="margin-left:5%">
+                            <form action="ProcessRegistrationSponsoredItem" method="POST">
                                 <p style="color:red; float: left;">"*" Required fields</p>
                                 <br />
                                 <br />
@@ -124,7 +124,7 @@
                                 <div class="submit-button">
                                     <button type="submit" class="btn btn-lg btn-info">Submit</button>
                                     <button type="reset" class="btn btn-lg btn-info">Reset</button>
-                                    <a href="updateEventSponsoredItems.jsp"><button type="button" class="btn btn-lg btn-info">Back to List</button></a>
+                                    <a href="updateEventSponsoredItems.jsp?eventID=<%=session.getAttribute("eventID")%>"><button type="button" class="btn btn-lg btn-info">Back to List</button></a>
                                 </div>
                             </form>
                         </div>
