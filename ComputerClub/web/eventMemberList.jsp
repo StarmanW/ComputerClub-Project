@@ -1,8 +1,13 @@
+<%@page import="model.Event"%>
 <%@page import="model.Member"%>
 <%@page import="java.util.ArrayList"%>
 <jsp:useBean id="memberDA" class="dataAccess.MemberDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    if (request.getParameter("eName") != null) {
+        Event tempEvent = new Event("TMP001", request.getParameter("eName"), Integer.parseInt(request.getParameter("eType")), request.getParameter("eDate"), request.getParameter("eStartTime"), request.getParameter("eEndTime"), request.getParameter("eLocation"));
+        session.setAttribute("tempEvent", tempEvent);
+    }
     String[] memberIDList = (String[]) session.getAttribute("memberIDList");
 %>
 <%session.setAttribute("requestURL", request.getRequestURL().toString());%>
@@ -14,7 +19,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-        <link rel="shortcut icon" href="assets/images/title bar logo.png" type="image/x-icon">
+        <link rel="shortcut icon" href="assets/images/title bar logo.jpg" type="image/x-icon">
         <meta name="description" content="Member List">
         <title>Member List</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
@@ -103,10 +108,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <%                                            
+                                        <%
                                             ArrayList<Member> memberList = memberDA.selectAllMembersList();
                                             for (int i = 0; i < memberList.size(); i++) {
-                                            boolean checkboxPrinted = false;
+                                                boolean checkboxPrinted = false;
                                         %>
                                         <tr>
                                             <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getStudName().getFullName()%></td>
@@ -121,12 +126,16 @@
                                                         if (memberIDList[j].equals(memberList.get(i).getStudID())) {
                                             %>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="memberID" checked value="<%=memberList.get(i).getStudID()%>" /></td>
-                                            <%  checkboxPrinted = true;
-                                                break;}}} %>
-                                            <% if (!checkboxPrinted) {%>
+                                                <%  checkboxPrinted = true;
+                                                            break;
+                                                        }
+                                                    }
+                                                } %>
+                                                <% if (!checkboxPrinted) {%>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="memberID" value="<%=memberList.get(i).getStudID()%>" /></td>
                                         </tr>
-                                        <%}}%>
+                                        <%}
+                                            }%>
                                     </tbody>
                                 </table>
                             </div>

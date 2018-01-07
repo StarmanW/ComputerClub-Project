@@ -1,8 +1,13 @@
+<%@page import="model.Event"%>
 <%@page import="model.Collaborator"%>
 <%@page import="java.util.ArrayList"%>
 <jsp:useBean id="collaboratorDA" class="dataAccess.CollaboratorDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
+    if (request.getParameter("eName") != null) {
+        Event tempEvent = new Event("TMP001", request.getParameter("eName"), Integer.parseInt(request.getParameter("eType")), request.getParameter("eDate"), request.getParameter("eStartTime"), request.getParameter("eEndTime"), request.getParameter("eLocation"));
+        session.setAttribute("tempEvent", tempEvent);
+    }
     session.setAttribute("requestURL", request.getRequestURL().toString());
     String[] collabIDList = (String[]) session.getAttribute("collabIDList");
 %>
@@ -14,7 +19,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-        <link rel="shortcut icon" href="assets/images/title bar logo.png" type="image/x-icon">
+        <link rel="shortcut icon" href="assets/images/title bar logo.jpg" type="image/x-icon">
         <meta name="description" content="Collaborator List">
         <title>Collaborator List</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">

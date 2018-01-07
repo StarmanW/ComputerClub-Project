@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-        <link rel="shortcut icon" href="assets/images/title bar logo.png" type="image/x-icon">
+        <link rel="shortcut icon" href="assets/images/title bar logo.jpg" type="image/x-icon">
         <meta name="description" content="Main login page">
         <title>Login</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
@@ -59,8 +59,7 @@
                     <div class="box-header">
                         <h2 id="login_header">Log In</h2>
                     </div>
-                    <%
-                        if (request.getParameter("invalid") != null) {
+                    <%                        if (request.getParameter("invalid") != null) {
                     %>
                     <p><span style="color:red;font-weight: bold;font-size: 20px">Invalid username or password, please try again.</span></p>
                     <%}%>

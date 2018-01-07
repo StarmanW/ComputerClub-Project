@@ -1,5 +1,6 @@
 <%
     session = request.getSession();
+    model.Event tempEvent = (model.Event) session.getAttribute("tempEvent");
     session.setAttribute("requestURL", request.getRequestURL().toString());
 %>  
 <!DOCTYPE html>
@@ -9,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-        <link rel="shortcut icon" href="assets/images/title bar logo.png" type="image/x-icon">
+        <link rel="shortcut icon" href="assets/images/title bar logo.jpg" type="image/x-icon">
         <meta name="description" content="Website Creator Description">
         <title>Register Event</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
@@ -79,11 +80,11 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Event Name</label>
-                                            <input type="text" name="eventName" placeholder="Capture The Flag" class="form-control" pattern="[0-9A-Za-z\-@ ]{2,}" title="Alphanumeric, @ and - symbols only. E.g. - Dota Competition 1v1" required="required">
+                                            <input type="text" name="eventName" value="<%if(tempEvent != null) {%> <%=tempEvent.getEventName()%> <%}%>" placeholder="Capture The Flag" class="form-control" pattern="[0-9A-Za-z\-@ ]{2,}" title="Alphanumeric, @ and - symbols only. E.g. - Dota Competition 1v1" required="required">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Event Date</label>
-                                            <input type="date" name="eDate" class="form-control" required="required">
+                                            <input type="date" name="eDate" <%if(tempEvent != null) {%> value="<%=tempEvent.getEventDate()%>" <%}%> class="form-control" required="required">
                                         </div>
                                     </div>
                                     <br/>
@@ -93,14 +94,14 @@
                                                 <label><span style="color:red;">*</span>Event Time: &nbsp;</label>
                                                 <br/>
                                                 <div style="display: block;">
-                                                    <input type="time" name="eventStartTime" value="" required="required"><br/>to<br/>
-                                                    <input type="time" name="eventEndTime" value="" required="required">
+                                                    <input type="time" name="eventStartTime" <%if(tempEvent != null) {%> value="<%=tempEvent.getEventStartTime()%>" <%}%> required="required"><br/>to<br/>
+                                                    <input type="time" name="eventEndTime" <%if(tempEvent != null) {%> value="<%=tempEvent.getEventEndTime()%>" <%}%>  required="required">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6 form-group">
-                                        <label><span style="color:red;">*</span>Event Location</label>
-                                        <input type="text" name="eventLocation" placeholder="Lot 1-1" class="form-control" required="required">
+                                            <label><span style="color:red;">*</span>Event Location</label>
+                                            <input type="text" name="eventLocation" value="<%if(tempEvent != null) {%> <%=tempEvent.getEventLocation()%> <%}%>"  placeholder="Lot 1-1" class="form-control" required="required">
                                         </div>
                                     </div>
                                     <br/>
@@ -108,22 +109,22 @@
                                         <label><span style="color:red;">*</span>Event Category</label>
                                         <select name="eventType" class="form-control" required="required">
                                             <option disabled selected value>Select an event category</option>
-                                            <option value="5">Competitions</option>
-                                            <option value="4">Educational Visit/Trips</option>
-                                            <option value="3">Workshops/Talks</option>
-                                            <option value="2">Event Exhibitions</option>
-                                            <option value="1">Others</option>
+                                            <option value="5" <%if(tempEvent != null && tempEvent.getEventType() == 5) {%> selected <%}%>>Competitions</option>
+                                            <option value="4" <%if(tempEvent != null && tempEvent.getEventType() == 4) {%> selected <%}%>>Educational Visit/Trips</option>
+                                            <option value="3" <%if(tempEvent != null && tempEvent.getEventType() == 3) {%> selected <%}%>>Workshops/Talks</option>
+                                            <option value="2" <%if(tempEvent != null && tempEvent.getEventType() == 2) {%> selected <%}%>>Event Exhibitions</option>
+                                            <option value="1" <%if(tempEvent != null && tempEvent.getEventType() == 1) {%> selected <%}%>>Others</option>
                                         </select>
                                     </div>
                                     <br/>
                                     <div class="form-group" style="margin:auto">
-                                        <a href="eventCollaboratorList.jsp"><button type="button" class="btn btn-sm btn-primary">Add/Modify Collaborators</button></a>
+                                        <a href="eventCollaboratorList.jsp" id="eventCollabList"><button type="button" class="btn btn-sm btn-primary" onclick="getEventDataCollabList()">Add/Modify Collaborators</button></a>
                                     </div>
                                     <div class="form-group" style="margin:auto">
-                                        <a href="eventSponsoredItemList.jsp"><button type="button" class="btn btn-sm btn-primary">Add/Modify Sponsored Items</button></a>
+                                        <a href="eventSponsoredItemList.jsp" id="eventItemList"><button type="button" class="btn btn-sm btn-primary" onclick="getEventDataItemList()">Add/Modify Sponsored Items</button></a>
                                     </div>
                                     <div class="form-group" style="margin:auto">
-                                        <a href="eventMemberList.jsp"><button type="button" class="btn btn-sm btn-primary">Add/Modify Participants</button></a>
+                                        <a href="eventMemberList.jsp" id="eventMemberList"><button type="button" class="btn btn-sm btn-primary" onclick="getEventDataMemberList()">Add/Modify Participants</button></a>
                                     </div>
                                 </div>
                                 <br />
@@ -137,6 +138,23 @@
                 </div>
             </div>
             <!-- /.container -->
+            <script>
+                var eventName = document.getElementsByName('eventName')[0].value.trim();
+                var eDate = document.getElementsByName('eDate')[0].value.trim();
+                var eventStartTime = document.getElementsByName('eventStartTime')[0].value.trim();
+                var eventEndTime = document.getElementsByName('eventEndTime')[0].value.trim();
+                var eventLocation = document.getElementsByName('eventLocation')[0].value.trim();
+                var eventType = document.getElementsByName('eventType')[0].value;
+                function getEventDataCollabList() {
+                    document.getElementById("eventCollabList").href = "eventCollaboratorList.jsp?eName="+eventName+"&eDate="+eDate+"&eStartTime="+eventStartTime+"&eEndTime="+eventEndTime+"&eLocation="+eventLocation+"&eType="+eventType;
+                }
+                function getEventDataItemList() {
+                    document.getElementById("eventItemList").href = "eventSponsoredItemList.jsp?eName="+eventName+"&eDate="+eDate+"&eStartTime="+eventStartTime+"&eEndTime="+eventEndTime+"&eLocation="+eventLocation+"&eType="+eventType;
+                }
+                function getEventDataMemberList() {
+                    document.getElementById("eventMemberList").href = "eventMemberList.jsp?eName="+eventName+"&eDate="+eDate+"&eStartTime="+eventStartTime+"&eEndTime="+eventEndTime+"&eLocation="+eventLocation+"&eType="+eventType;
+                }
+            </script>
             <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
             <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
             <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
@@ -208,9 +226,9 @@
         <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i></i></a></div>
         <!-- Back to top -->
         <script>
-            if (($(window).height() + 100) < $(document).height()) {
-                $('#top-link-block').removeClass('hidden').affix({offset: {top: 100}});
-            }
+                if (($(window).height() + 100) < $(document).height()) {
+                    $('#top-link-block').removeClass('hidden').affix({offset: {top: 100}});
+                }
         </script>
         <script>
             var urlParams = new URLSearchParams(window.location.search);

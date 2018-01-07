@@ -33,7 +33,10 @@ public class ProcessRegistrationEvent extends HttpServlet {
             int successEventItemInsert = 0;
             int successEventCollaboratorInsert = 0;
             int successEventMemberInsert = 0;
-
+            
+            //Remove the temporary event object
+            request.getSession().removeAttribute("tempEvent");
+            
             //Get the length of each list for verification below
             String[] itemIDList = (String[]) request.getSession().getAttribute("itemIDList");
             String[] collabIDList = (String[]) request.getSession().getAttribute("collabIDList");
