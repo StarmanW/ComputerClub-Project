@@ -3,7 +3,6 @@ package controller;
 import dataAccess.CollaboratorDA;
 import dataAccess.ItemDA;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,7 +41,6 @@ public class ProcessUpdateSponsoredItem extends HttpServlet {
                 //Creating a new Item object for UPDATE operation
                 collaboratorDA = new CollaboratorDA();
                 itemDA = new ItemDA();
-                ArrayList<Item> itemList = itemDA.selectAllItem();
                 Item item = new Item(itemID, collaboratorDA.selectRecord(collabName), itemType, itemName, quantity);
 
                 //Perform UPDATE operation on new item details

@@ -140,8 +140,7 @@
                                                 <%} else if (i == 2) {%>
                                                 <option value="<%=year%>/<%=year + 1%>"><%=year%>/<%=year + 1%></option>
                                                 <%} else {%>
-                                                <option value="<%=year + i%>/<%=year + i%>"><%=year + i - 2%>/<%=year + i - 1%></option>
-                                                %>
+                                                <option value="<%=year + i - 2%>/<%=year + i - 1%>"><%=year + i - 2%>/<%=year + i - 1%></option>
                                                 <%      }
                                                     }
                                                 %>

@@ -12,7 +12,6 @@ public class Member {
     private String studEmail;
     private String studContact;
     private String ic;
-    private String password;
     private char gender;
     private boolean membershipFeeStatus;
     private int position;
@@ -22,14 +21,13 @@ public class Member {
 
     }
 
-    public Member(String studID, Programme programme, Name studName, String studEmail, String studContact, String ic, String password, char gender, boolean membershipFeeStatus, int position, String academicYear) {
+    public Member(String studID, Programme programme, Name studName, String studEmail, String studContact, String ic, char gender, boolean membershipFeeStatus, int position, String academicYear) {
         this.studID = studID;
         this.programme = programme;
         this.studName = studName;
         this.studEmail = studEmail;
         this.studContact = studContact;
         this.ic = ic;
-        this.password = password;
         this.gender = gender;
         this.membershipFeeStatus = membershipFeeStatus;
         this.position = position;
@@ -59,10 +57,6 @@ public class Member {
 
     public String getIc() {
         return ic;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public char getGender() {
@@ -128,10 +122,6 @@ public class Member {
 
     public void setIc(String ic) {
         this.ic = ic;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public void setGender(char gender) {

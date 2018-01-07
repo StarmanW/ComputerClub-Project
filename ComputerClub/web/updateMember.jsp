@@ -160,7 +160,6 @@
                                                     acadYear = (year + i - 2) + "/" + (year + i - 1);
                                                 %>
                                                 <option value="<%=year + i - 2%>/<%=year + i - 1%>" <%if (member.getAcademicYear().equals(acadYear)) { %> selected="selected" <%}%>><%=year + i - 2%>/<%=year + i - 1%></option>
-                                                %>
                                                 <%      }
                                                     }
                                                 %>

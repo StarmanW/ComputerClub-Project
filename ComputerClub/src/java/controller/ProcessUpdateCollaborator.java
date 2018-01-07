@@ -2,7 +2,6 @@ package controller;
 
 import dataAccess.CollaboratorDA;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +37,6 @@ public class ProcessUpdateCollaborator extends HttpServlet {
         } else {
             try {
                 collaboratorDA = new CollaboratorDA();
-                ArrayList<Collaborator> collabList = collaboratorDA.selectAllCollaboratorList();
 
                 //Creating new collaborator object
                 Collaborator collaborator = new Collaborator(collabID, collabName, collabType, collabContact, collabEmail, additionalNotes);

@@ -52,7 +52,7 @@ public class ProcessUpdateMember extends HttpServlet {
                 //Creating member object
                 Member member = new Member(memID, programmeDA.selectProgramme(progID),
                         new Name(fName, lName), email, contactNo, icNum,
-                        icNum, gender, memFeeStats, position, academicYear);
+                        gender, memFeeStats, position, academicYear);
 
                 //Perform UPDATE on member details
                 int successUpdate = memberDA.updateRecord(member, studIDOriginal);
