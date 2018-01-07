@@ -170,33 +170,39 @@
                             
 
                     %>
-                    <%if (upcomingEventListSize >= 1) {%>
+                    
+                    <%for (int i = 0; i < upcomingEventListSize; i++) {
+                        if (i % 2 == 0) {
+                    %>
                     <div class="row timeline-element reverse separline">
+                    <%} else {%>
+                    <div class="row timeline-element separline">
+                    <%}%>
                         <div class="timeline-date-panel col-xs-12 col-md-6  align-left">
                             <div class="time-line-date-content">
-                                <p class="mbr-timeline-date mbr-fonts-style display-5"><%=dispUpcomingDateList[0]%>&nbsp;
+                                <p class="mbr-timeline-date mbr-fonts-style display-5"><%=dispUpcomingDateList[i]%>&nbsp;
                                     <br>
                                 </p>
                             </div>
                         </div>
                         <span class="iconBackground"></span>
-                        <div class="col-xs-12 col-md-6 align-right">
+                        <div class="col-xs-12 col-md-6 align-left">
                             <div class="timeline-text-content">
-                                <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5"><%=upcomingEventList.get(0).getEventName()%></h4>
+                                <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5"><%=upcomingEventList.get(i).getEventName()%></h4>
                                 <h4 class="mbr-timeline-text mbr-fonts-style display-7">
                                     <table border="0" cellpadding="10" style="text-align:left; " >
                                         <tbody>
                                             <tr>
                                                 <td>What: </td>
-                                                <td><%=upcomingEventList.get(0).getEventTypeString()%></td>
+                                                <td><%=upcomingEventList.get(i).getEventTypeString()%></td>
                                             </tr>
                                             <tr>
                                                 <td>When: </td>
-                                                <td><%=dispUpcomingStartTimeList[0]%> to <%=dispUpcomingEndTimeList[0]%></td>
+                                                <td><%=dispUpcomingStartTimeList[i]%> to <%=dispUpcomingEndTimeList[i]%></td>
                                             </tr>
                                             <tr>
                                                 <td>Where: </td>
-                                                <td><%=upcomingEventList.get(0).getEventLocation()%></td>
+                                                <td><%=upcomingEventList.get(i).getEventLocation()%></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -204,77 +210,7 @@
                             </div>
                         </div>
                     </div>
-                    <%}%>       
-                    <%if (upcomingEventListSize >= 2) {%>
-                    <div class="row timeline-element  separline">
-                        <div class="timeline-date-panel col-xs-12 col-md-6 align-right">
-                            <div class="time-line-date-content">
-                                <p class="mbr-timeline-date mbr-fonts-style display-5"><%=dispUpcomingDateList[1]%>&nbsp;
-                                    <br>
-                                </p>
-                            </div>
-                        </div>
-                        <span class="iconBackground"></span>
-                        <div class="col-xs-12 col-md-6 align-left ">
-                            <div class="timeline-text-content">
-                                <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5"><%=upcomingEventList.get(1).getEventName()%></h4>
-                                <h4 class="mbr-timeline-text mbr-fonts-style display-7">
-                                    <table border="0" cellpadding="10" style="text-align:left; " >
-                                        <tbody>
-                                            <tr>
-                                                <td>What: </td>
-                                                <td><%=upcomingEventList.get(1).getEventTypeString()%></td>
-                                            </tr>
-                                            <tr>
-                                                <td>When: </td>
-                                                <td><%=dispUpcomingStartTimeList[1]%> to <%=dispUpcomingEndTimeList[1]%></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Where: </td>
-                                                <td><%=upcomingEventList.get(1).getEventLocation()%></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                    <%}%>
-                    <%if (upcomingEventListSize >= 3) {%>
-                    <div class="row timeline-element reverse">
-                        <div class="timeline-date-panel col-xs-12 col-md-6  align-left">
-                            <div class="time-line-date-content">
-                                <p class="mbr-timeline-date mbr-fonts-style display-5"><%=dispUpcomingDateList[2]%>&nbsp;
-                                    <br>
-                                </p>
-                            </div>
-                        </div>
-                        <span class="iconBackground"></span>
-                        <div class="col-xs-12 col-md-6 align-right">
-                            <div class="timeline-text-content">
-                                <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5"><%=upcomingEventList.get(2).getEventName()%></h4>
-                                <h4 class="mbr-timeline-text mbr-fonts-style display-7">
-                                    <table border="0" cellpadding="10" style="text-align:left; " >
-                                        <tbody>
-                                            <tr>
-                                                <td>What: </td>
-                                                <td><%=upcomingEventList.get(2).getEventTypeString()%></td>
-                                            </tr>
-                                            <tr>
-                                                <td>When: </td>
-                                                <td><%=dispUpcomingStartTimeList[2]%> to <%=dispUpcomingEndTimeList[2]%></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Where: </td>
-                                                <td><%=upcomingEventList.get(2).getEventLocation()%></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                    <%}%>
+                    <%}%>  
                     <%} else if (eventListSize <= 0) {%>
                     <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1"></br></br>No Upcoming Events Right Now</h2>
                     <%}%>
