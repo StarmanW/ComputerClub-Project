@@ -1,3 +1,10 @@
+ <!-- 
+ --
+ --@author Samuel Wong Kim Foong 
+ --
+ --
+ --> 
+
 <%@page import="model.Event"%>
 <jsp:useBean id="eventDA" class="dataAccess.EventDA" scope="application"></jsp:useBean>
 <%

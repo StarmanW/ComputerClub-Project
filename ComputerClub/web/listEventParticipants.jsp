@@ -1,3 +1,10 @@
+ <!-- 
+ --
+ --@author Samuel Wong Kim Foong 
+ --
+ --
+ --> 
+
 <%@page import="model.Member"%>
 <%@page import="model.EventMember"%>
 <%@page import="java.util.ArrayList"%>

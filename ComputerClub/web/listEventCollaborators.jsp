@@ -1,3 +1,10 @@
+ <!-- 
+ --
+ --@author Samuel Wong Kim Foong 
+ --
+ --
+ --> 
+
 <%@page import="model.EventCollaborator"%>
 <%@page import="java.util.ArrayList"%>
 <jsp:useBean id="eventCollaboratorDA" class="dataAccess.EventCollaboratorDA" scope="application"></jsp:useBean>

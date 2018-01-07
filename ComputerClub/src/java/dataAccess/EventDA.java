@@ -6,7 +6,7 @@ import model.Event;
 
 /**
  *
- * @author preloaded
+ * @author ChongJH
  */
 public class EventDA {
     //Data fields declaration

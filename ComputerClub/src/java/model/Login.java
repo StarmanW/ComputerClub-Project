@@ -2,7 +2,7 @@ package model;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong King Foong
  */
 public class Login {
     

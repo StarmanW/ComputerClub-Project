@@ -13,7 +13,7 @@ import model.Item;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  */
 @WebServlet(name = "ProcessDeleteSponsoredItem", urlPatterns = {"/ProcessDeleteSponsoredItem"})
 public class ProcessDeleteSponsoredItem extends HttpServlet {

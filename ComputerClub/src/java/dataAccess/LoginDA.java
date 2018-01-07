@@ -9,7 +9,7 @@ import model.Login;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  */
 public class LoginDA {
 

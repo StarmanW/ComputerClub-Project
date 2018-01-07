@@ -1,6 +1,8 @@
 /**
  *
- * @author Kyj
+ * @author Shirlina Koo Yung Ja
+ * 
+ * Contributed by ChongJH
  */
 package model;
 

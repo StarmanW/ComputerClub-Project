@@ -1,3 +1,8 @@
+/**
+ *
+ * @author Samuel Wong King Foong
+ */
+
 package model;
 
 import java.security.MessageDigest;

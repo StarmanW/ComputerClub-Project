@@ -7,7 +7,7 @@ import model.Faculty;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  */
 public class ProgrammeDA {
 

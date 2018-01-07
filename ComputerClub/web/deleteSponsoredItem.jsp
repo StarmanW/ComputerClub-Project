@@ -1,3 +1,10 @@
+ <!-- 
+ --
+ --@author Samuel Wong Kim Foong 
+ --
+ --
+ --> 
+
 <%@page import="model.Item"%>
 <jsp:useBean id="itemDA" class="dataAccess.ItemDA" scope="application"></jsp:useBean>
 <%

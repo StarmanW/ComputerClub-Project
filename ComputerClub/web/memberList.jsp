@@ -1,3 +1,10 @@
+ <!-- 
+ --
+ --@author ChongJH
+ --
+ --
+ --> 
+
 <%@page import="model.Member"%>
 <%@page import="java.util.ArrayList"%>
 <jsp:useBean id="memberDA" class="dataAccess.MemberDA" scope="application"></jsp:useBean>

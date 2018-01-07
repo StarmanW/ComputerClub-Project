@@ -15,7 +15,7 @@ import model.Event;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  */
 @WebServlet(name = "ProcessDeleteEvent", urlPatterns = {"/ProcessDeleteEvent"})
 public class ProcessDeleteEvent extends HttpServlet {

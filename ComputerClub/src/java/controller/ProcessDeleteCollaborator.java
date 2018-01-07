@@ -13,7 +13,7 @@ import model.Collaborator;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  */
 @WebServlet(name = "ProcessDeleteCollaborator", urlPatterns = {"/ProcessDeleteCollaborator"})
 public class ProcessDeleteCollaborator extends HttpServlet {

@@ -1,3 +1,10 @@
+ <!-- 
+ --
+ --@author ChongJH
+ --
+ --
+ --> 
+
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Collections"%>
@@ -104,43 +111,45 @@
                 <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1">Upcoming Events</h2>
                 <div class="container timelines-container" mbri-timelines="">
                     <%
+                        //Get all event records and sort by date
                         ArrayList<Event> eventList = eventDA.selectAllEventsList();
                         Collections.sort(eventList);
 
                         int eventListSize = eventList.size();
-
                         if (eventListSize > 0) {
 
+                            //Add 3 records with date after current date
                             ArrayList<Event> upcomingEventList;
                             upcomingEventList = new ArrayList<Event>(3);
-                            String comparisonFormat = "yyyy-MM-dd";
-                            String displayFormat = "d MMMM yyyy";
-                            String _24HrFormat = "HH:mm";
-                            String _12HrFormat = "hh:mm aa";
-                            SimpleDateFormat parser = new SimpleDateFormat();
                             Date todayDate = new Date();
 
-                            int addedCount = 0;
+                            SimpleDateFormat parser = new SimpleDateFormat();
+                            String comparisonFormat = "yyyy-MM-dd";
                             parser.applyPattern(comparisonFormat);
+                            
+                            int addedCount = 0;
                             for (int i = 0; i < eventListSize; i++) {
                                 Date eventDate = parser.parse(eventList.get(i).getEventDate());
 
                                 if (todayDate.before(eventDate) == true) {
                                     upcomingEventList.add(eventList.get(i));
                                     addedCount++;
-                                    if (addedCount >= 3) 
+                                    if (addedCount >= 3) {
                                         break;
+                                    }
                                 }
                             }
 
                             int upcomingEventListSize = upcomingEventList.size();
 
+                            //Parse all selected record's date
                             Date[] upcomingDateList;
                             upcomingDateList = new Date[3];
                             for (int i = 0; i < upcomingEventListSize; i++) {
                                 upcomingDateList[i] = parser.parse(upcomingEventList.get(i).getEventDate());
                             }
 
+                            String displayFormat = "d MMMM yyyy";
                             parser.applyPattern(displayFormat);
 
                             String[] dispUpcomingDateList;
@@ -149,6 +158,8 @@
                                 dispUpcomingDateList[i] = parser.format(upcomingDateList[i]);
                             }
 
+                            //Parse all selected record's start and end time
+                            String _24HrFormat = "HH:mm";
                             parser.applyPattern(_24HrFormat);
 
                             Date[] upcomingStartTimeList;
@@ -160,6 +171,7 @@
                                 upcomingEndTimeList[i] = parser.parse(upcomingEventList.get(i).getEventEndTime());
                             }
 
+                            String _12HrFormat = "hh:mm aa";
                             parser.applyPattern(_12HrFormat);
 
                             String[] dispUpcomingStartTimeList;
@@ -288,9 +300,9 @@
         <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i></i></a></div>
         <!-- Back to top -->
         <script>
-                            if (($(window).height() + 100) < $(document).height()) {
-                                $('#top-link-block').removeClass('hidden').affix({offset: {top: 100}});
-                            }
+                        if (($(window).height() + 100) < $(document).height()) {
+                            $('#top-link-block').removeClass('hidden').affix({offset: {top: 100}});
+                        }
         </script>
         <style>
             #top-link-block>.btn {

@@ -13,7 +13,7 @@ import model.SHA256Hashing;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  */
 @WebServlet(name = "ProcessLogin", urlPatterns = {"/ProcessLogin"})
 public class ProcessLogin extends HttpServlet {

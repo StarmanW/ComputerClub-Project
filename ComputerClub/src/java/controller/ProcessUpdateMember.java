@@ -13,7 +13,7 @@ import model.Name;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  */
 @WebServlet(name = "ProcessUpdateMember", urlPatterns = {"/ProcessUpdateMember"})
 public class ProcessUpdateMember extends HttpServlet {

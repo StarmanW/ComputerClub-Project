@@ -12,7 +12,7 @@ import model.Collaborator;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  */
 @WebServlet(name = "ProcessRegistrationCollaborator", urlPatterns = {"/ProcessRegistrationCollaborator"})
 public class ProcessRegistrationCollaborator extends HttpServlet {

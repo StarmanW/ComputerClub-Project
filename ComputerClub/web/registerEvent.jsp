@@ -1,3 +1,10 @@
+ <!-- 
+ --
+ --@author Samuel Wong Kim Foong 
+ --
+ --
+ --> 
+
 <%
     session = request.getSession();
     model.Event tempEvent = (model.Event) session.getAttribute("tempEvent");

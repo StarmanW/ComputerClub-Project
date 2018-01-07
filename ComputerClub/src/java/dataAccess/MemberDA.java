@@ -7,7 +7,7 @@ import model.Name;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  */
 public class MemberDA {
 

@@ -1,4 +1,11 @@
-<%@page import="model.Item"%>
+ <!-- 
+ --
+ --@author Samuel Wong Kim Foong 
+ --
+ --
+ --> 
+
+ <%@page import="model.Item"%>
 <%@page import="java.util.ArrayList"%>
 <jsp:useBean id="itemDA" class="dataAccess.ItemDA" scope="application"></jsp:useBean>
 <%

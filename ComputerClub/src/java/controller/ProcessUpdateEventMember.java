@@ -14,7 +14,7 @@ import model.EventMember;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  */
 @WebServlet(name = "ProcessUpdateEventMember", urlPatterns = {"/ProcessUpdateEventMember"})
 public class ProcessUpdateEventMember extends HttpServlet {

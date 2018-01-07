@@ -14,7 +14,7 @@ import model.EventCollaborator;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  */
 @WebServlet(name = "ProcessUpdateEventCollab", urlPatterns = {"/ProcessUpdateEventCollab"})
 public class ProcessUpdateEventCollab extends HttpServlet {

@@ -11,7 +11,7 @@ import model.Collaborator;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  */
 @WebServlet(name = "ProcessUpdateCollaborator", urlPatterns = {"/ProcessUpdateCollaborator"})
 public class ProcessUpdateCollaborator extends HttpServlet {

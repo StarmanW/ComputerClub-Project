@@ -13,7 +13,7 @@ import model.Member;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  */
 @WebServlet(name = "ProcessDeleteMember", urlPatterns = {"/ProcessDeleteMember"})
 public class ProcessDeleteMember extends HttpServlet {

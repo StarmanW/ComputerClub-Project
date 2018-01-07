@@ -1,3 +1,10 @@
+ <!-- 
+ --
+ --@author Samuel Wong Kim Foong
+ --
+ --
+ --> 
+
 <%@page import="model.Event"%>
 <%
     session = request.getSession();

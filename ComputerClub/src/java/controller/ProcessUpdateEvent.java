@@ -8,7 +8,7 @@ import dataAccess.*;
 import model.*;
 
 /**
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  * 
  */
 @WebServlet(name = "ProcessUpdateEvent", urlPatterns = {"/ProcessUpdateEvent"})

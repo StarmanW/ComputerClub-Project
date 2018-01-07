@@ -13,7 +13,7 @@ import model.Item;
 
 /**
  *
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  */
 @WebServlet(name = "ProcessRegistrationSponsoredItem", urlPatterns = {"/ProcessRegistrationSponsoredItem"})
 public class ProcessRegistrationSponsoredItem extends HttpServlet {

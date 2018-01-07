@@ -11,7 +11,7 @@ import model.*;
 /**
  * @author StarmanW
  * 
- * Contributed by Chong JH
+ * Contributed by ChongJH
  * 
  */
 @WebServlet(name = "ProcessRegistrationEvent", urlPatterns = {"/ProcessRegistrationEvent"})

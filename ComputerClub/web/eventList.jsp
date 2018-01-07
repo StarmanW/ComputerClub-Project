@@ -1,3 +1,10 @@
+ <!-- 
+ --
+ --@author ChongJH
+ --
+ --
+ --> 
+
 <%@page import="model.Event"%>
 <%@page import="java.util.ArrayList"%>
 <jsp:useBean id="eventDA" class="dataAccess.EventDA" scope="application"></jsp:useBean>
