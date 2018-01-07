@@ -120,16 +120,19 @@
                             SimpleDateFormat parser = new SimpleDateFormat();
                             Date todayDate = new Date();
 
+                            int addedCount = 0;
                             parser.applyPattern(comparisonFormat);
-                            for (int i = 0, addedCount = 0; i <= eventListSize && addedCount < 3; i++) {
+                            for (int i = 0; i < eventListSize; i++) {
                                 Date eventDate = parser.parse(eventList.get(i).getEventDate());
 
                                 if (todayDate.before(eventDate) == true) {
                                     upcomingEventList.add(eventList.get(i));
                                     addedCount++;
+                                    if (addedCount >= 3) 
+                                        break;
                                 }
                             }
-                            
+
                             int upcomingEventListSize = upcomingEventList.size();
 
                             Date[] upcomingDateList;
@@ -145,9 +148,9 @@
                             for (int i = 0; i < upcomingEventListSize; i++) {
                                 dispUpcomingDateList[i] = parser.format(upcomingDateList[i]);
                             }
-                            
+
                             parser.applyPattern(_24HrFormat);
-                            
+
                             Date[] upcomingStartTimeList;
                             upcomingStartTimeList = new Date[3];
                             Date[] upcomingEndTimeList;
@@ -156,9 +159,9 @@
                                 upcomingStartTimeList[i] = parser.parse(upcomingEventList.get(i).getEventStartTime());
                                 upcomingEndTimeList[i] = parser.parse(upcomingEventList.get(i).getEventEndTime());
                             }
-                            
+
                             parser.applyPattern(_12HrFormat);
-                            
+
                             String[] dispUpcomingStartTimeList;
                             dispUpcomingStartTimeList = new String[3];
                             String[] dispUpcomingEndTimeList;
@@ -167,149 +170,148 @@
                                 dispUpcomingStartTimeList[i] = parser.format(upcomingStartTimeList[i]);
                                 dispUpcomingEndTimeList[i] = parser.format(upcomingEndTimeList[i]);
                             }
-                            
 
                     %>
-                    
+
                     <%for (int i = 0; i < upcomingEventListSize; i++) {
-                        if (i % 2 == 0) {
+                            if (i % 2 == 0) {
                     %>
                     <div class="row timeline-element reverse separline">
-                    <%} else {%>
-                    <div class="row timeline-element separline">
-                    <%}%>
-                        <div class="timeline-date-panel col-xs-12 col-md-6  align-left">
-                            <div class="time-line-date-content">
-                                <p class="mbr-timeline-date mbr-fonts-style display-5"><%=dispUpcomingDateList[i]%>&nbsp;
-                                    <br>
-                                </p>
+                        <%} else {%>
+                        <div class="row timeline-element separline">
+                            <%}%>
+                            <div class="timeline-date-panel col-xs-12 col-md-6  align-left">
+                                <div class="time-line-date-content">
+                                    <p class="mbr-timeline-date mbr-fonts-style display-5"><%=dispUpcomingDateList[i]%>&nbsp;
+                                        <br>
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="iconBackground"></span>
+                            <div class="col-xs-12 col-md-6 align-left">
+                                <div class="timeline-text-content">
+                                    <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5"><%=upcomingEventList.get(i).getEventName()%></h4>
+                                    <h4 class="mbr-timeline-text mbr-fonts-style display-7">
+                                        <table border="0" cellpadding="10" style="text-align:left; " >
+                                            <tbody>
+                                                <tr>
+                                                    <td>What: </td>
+                                                    <td><%=upcomingEventList.get(i).getEventTypeString()%></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>When: </td>
+                                                    <td><%=dispUpcomingStartTimeList[i]%> to <%=dispUpcomingEndTimeList[i]%></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Where: </td>
+                                                    <td><%=upcomingEventList.get(i).getEventLocation()%></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </h4>
+                                </div>
                             </div>
                         </div>
-                        <span class="iconBackground"></span>
-                        <div class="col-xs-12 col-md-6 align-left">
-                            <div class="timeline-text-content">
-                                <h4 class="mbr-timeline-title pb-3 mbr-fonts-style display-5"><%=upcomingEventList.get(i).getEventName()%></h4>
-                                <h4 class="mbr-timeline-text mbr-fonts-style display-7">
-                                    <table border="0" cellpadding="10" style="text-align:left; " >
-                                        <tbody>
-                                            <tr>
-                                                <td>What: </td>
-                                                <td><%=upcomingEventList.get(i).getEventTypeString()%></td>
-                                            </tr>
-                                            <tr>
-                                                <td>When: </td>
-                                                <td><%=dispUpcomingStartTimeList[i]%> to <%=dispUpcomingEndTimeList[i]%></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Where: </td>
-                                                <td><%=upcomingEventList.get(i).getEventLocation()%></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </h4>
-                            </div>
-                        </div>
+                        <%}%>  
+                        <%} else if (eventListSize <= 0) {%>
+                        <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1"></br></br>No Upcoming Events Right Now</h2>
+                        <%}%>
                     </div>
-                    <%}%>  
-                    <%} else if (eventListSize <= 0) {%>
-                    <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1"></br></br>No Upcoming Events Right Now</h2>
-                    <%}%>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="cid-qEC8bhfjoN" id="footer1-r" data-rv-view="11972">
-        <div class="container">
-            <div class="media-container-row content text-white">
-                <div class="col-12 col-md-3">
-                    <div class="media-wrap">
-                        <a href="homepage.jsp"><img src="assets/images/logo-2-3508x2480.jpg" alt="Mobirise" title="" media-simple="true"></a>
+        <section class="cid-qEC8bhfjoN" id="footer1-r" data-rv-view="11972">
+            <div class="container">
+                <div class="media-container-row content text-white">
+                    <div class="col-12 col-md-3">
+                        <div class="media-wrap">
+                            <a href="homepage.jsp"><img src="assets/images/logo-2-3508x2480.jpg" alt="Mobirise" title="" media-simple="true"></a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                    <h5 class="pb-3">
-                        Address
-                    </h5>
-                    <p class="mbr-text">Lot 1, Ground Floor,
-                        <br>Pusat Dagangan Donggongon,
-                        <br>Jalan Sapau,
-                        <br>89500 Donggongon,
-                        <br>Penampang, Sabah</p>
-                </div>
-                <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                    <h5 class="pb-3">
-                        Contacts
-                    </h5>
-                    <p class="mbr-text">
-                        Email: sabah@tarc.edu.my
-                        <br>Phone: (6)088-718481, 718482
-                        <br>Fax: (6)088-718486
-                    </p>
-                </div>
-                <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                    <h5 class="pb-3">
-                        Links
-                    </h5>
-                    <p class="mbr-text"><a href="http://www.tarc.edu.my/" target="_blank" class="text-primary">TAR UC</a>
-                        <br><a href="http://www.tarc.edu.my/sabah/index.jsp" class="text-primary" target="_blank">TAR UC Sabah</a>
-                        <br><a class="text-primary" href="https://www.facebook.com/tarucsabah/" target="_blank">TAR UC Sabah Facebook</a></p>
-                </div>
-            </div>
-            <div class="footer-lower">
-                <div class="media-container-row">
-                    <div class="col-sm-12">
-                        <hr>
+                    <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                        <h5 class="pb-3">
+                            Address
+                        </h5>
+                        <p class="mbr-text">Lot 1, Ground Floor,
+                            <br>Pusat Dagangan Donggongon,
+                            <br>Jalan Sapau,
+                            <br>89500 Donggongon,
+                            <br>Penampang, Sabah</p>
                     </div>
-                </div>
-                <div class="media-container-row mbr-white">
-                    <div class="col-sm-6 copyright">
-                        <p class="mbr-text mbr-fonts-style display-7">
-                            © Copyright 2017 TAR UC Computer Club - All Rights Reserved
+                    <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                        <h5 class="pb-3">
+                            Contacts
+                        </h5>
+                        <p class="mbr-text">
+                            Email: sabah@tarc.edu.my
+                            <br>Phone: (6)088-718481, 718482
+                            <br>Fax: (6)088-718486
                         </p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                        <h5 class="pb-3">
+                            Links
+                        </h5>
+                        <p class="mbr-text"><a href="http://www.tarc.edu.my/" target="_blank" class="text-primary">TAR UC</a>
+                            <br><a href="http://www.tarc.edu.my/sabah/index.jsp" class="text-primary" target="_blank">TAR UC Sabah</a>
+                            <br><a class="text-primary" href="https://www.facebook.com/tarucsabah/" target="_blank">TAR UC Sabah Facebook</a></p>
+                    </div>
+                </div>
+                <div class="footer-lower">
+                    <div class="media-container-row">
+                        <div class="col-sm-12">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="media-container-row mbr-white">
+                        <div class="col-sm-6 copyright">
+                            <p class="mbr-text mbr-fonts-style display-7">
+                                © Copyright 2017 TAR UC Computer Club - All Rights Reserved
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <script src="assets/web/assets/jquery/jquery.min.js"></script>
-    <script src="assets/popper/popper.min.js"></script>
-    <script src="assets/tether/tether.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/dropdown/js/script.min.js"></script>
-    <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
-    <script src="assets/parallax/jarallax.min.js"></script>
-    <script src="assets/smoothscroll/smooth-scroll.js"></script>
-    <script src="assets/theme/js/script.js"></script>
-    <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i></i></a></div>
-    <!-- Back to top -->
-    <script>
-                        if (($(window).height() + 100) < $(document).height()) {
-                            $('#top-link-block').removeClass('hidden').affix({offset: {top: 100}});
-                        }
-    </script>
-    <style>
-        #top-link-block>.btn {
-            font-size: 1.5em!important;
-            opacity: 0.4!important;
-            padding: 10px 20px!important
-        }
+        </section>
+        <script src="assets/web/assets/jquery/jquery.min.js"></script>
+        <script src="assets/popper/popper.min.js"></script>
+        <script src="assets/tether/tether.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/dropdown/js/script.min.js"></script>
+        <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+        <script src="assets/parallax/jarallax.min.js"></script>
+        <script src="assets/smoothscroll/smooth-scroll.js"></script>
+        <script src="assets/theme/js/script.js"></script>
+        <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i></i></a></div>
+        <!-- Back to top -->
+        <script>
+                            if (($(window).height() + 100) < $(document).height()) {
+                                $('#top-link-block').removeClass('hidden').affix({offset: {top: 100}});
+                            }
+        </script>
+        <style>
+            #top-link-block>.btn {
+                font-size: 1.5em!important;
+                opacity: 0.4!important;
+                padding: 10px 20px!important
+            }
 
-        #top-link-block.affix-top {
-            position: absolute;
-            bottom: -82px;
-            right: 10px;
-        }
+            #top-link-block.affix-top {
+                position: absolute;
+                bottom: -82px;
+                right: 10px;
+            }
 
-        #top-link-block.affix {
-            position: fixed;
-            bottom: 18px;
-            right: 10px;
-            z-index: 999;
-        }
-    </style>
-</body>
+            #top-link-block.affix {
+                position: fixed;
+                bottom: 18px;
+                right: 10px;
+                z-index: 999;
+            }
+        </style>
+    </body>
 
 </html>
