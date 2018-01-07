@@ -47,11 +47,10 @@ public class MemberDA {
                 member = new Member(rs.getString(1), programmeDA.selectProgramme(rs.getString(2)),
                                     new Name(rs.getString(3), rs.getString(4)), rs.getString(5), rs.getString(6),
                                     rs.getString(7),
-                                    rs.getString(8),
-                                    rs.getString(9).charAt(0),
-                                    rs.getBoolean(10),
-                                    rs.getInt(11),
-                                    rs.getString(12)
+                                    rs.getString(8).charAt(0),
+                                    rs.getBoolean(9),
+                                    rs.getInt(10),
+                                    rs.getString(11)
                                     );
             }
         } catch (Exception ex) {
@@ -80,7 +79,7 @@ public class MemberDA {
             if (rs.next()) {
                 successInsert = -1;
             } else {
-                pstmt = conn.prepareStatement("INSERT INTO" + tableName + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+                pstmt = conn.prepareStatement("INSERT INTO" + tableName + "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
                 pstmt.setString(1, member.getStudID());
                 pstmt.setString(2, member.getProgramme().getProgID());
                 pstmt.setString(3, member.getStudName().getFirstName());
@@ -88,11 +87,10 @@ public class MemberDA {
                 pstmt.setString(5, member.getStudEmail());
                 pstmt.setString(6, member.getStudContact());
                 pstmt.setString(7, member.getIc());
-                pstmt.setString(8, member.getPassword());
-                pstmt.setString(9, String.valueOf(member.getGender()));
-                pstmt.setBoolean(10, member.isMembershipFeeStatus());
-                pstmt.setInt(11, member.getPosition());
-                pstmt.setString(12, member.getAcademicYear());
+                pstmt.setString(8, String.valueOf(member.getGender()));
+                pstmt.setBoolean(9, member.isMembershipFeeStatus());
+                pstmt.setInt(10, member.getPosition());
+                pstmt.setString(11, member.getAcademicYear());
                 successInsert = pstmt.executeUpdate();
             }
         } catch (Exception ex) {
@@ -126,7 +124,7 @@ public class MemberDA {
         try {
             findRecord(studIDOriginal);
             if (rs.next()) {
-                pstmt = conn.prepareStatement("UPDATE" + tableName + "SET MEMBERID = ?, PROGID = ?, FIRSTNAME = ?, LASTNAME = ?, STUDEMAIL = ?, STUDCONTACT = ?, ICNUM = ?, PASS = ?, GENDER = ?, MEMFEESTATS = ?, POSITION = ?, ACADEMICYEAR = ? WHERE MEMBERID = ?");
+                pstmt = conn.prepareStatement("UPDATE" + tableName + "SET MEMBERID = ?, PROGID = ?, FIRSTNAME = ?, LASTNAME = ?, STUDEMAIL = ?, STUDCONTACT = ?, ICNUM = ?, GENDER = ?, MEMFEESTATS = ?, POSITION = ?, ACADEMICYEAR = ? WHERE MEMBERID = ?");
                 pstmt.setString(1, member.getStudID());
                 pstmt.setString(2, member.getProgramme().getProgID());
                 pstmt.setString(3, member.getStudName().getFirstName());
@@ -134,12 +132,11 @@ public class MemberDA {
                 pstmt.setString(5, member.getStudEmail());
                 pstmt.setString(6, member.getStudContact());
                 pstmt.setString(7, member.getIc());
-                pstmt.setString(8, member.getPassword());
-                pstmt.setString(9, String.valueOf(member.getGender()));
-                pstmt.setBoolean(10, member.isMembershipFeeStatus());
-                pstmt.setInt(11, member.getPosition());
-                pstmt.setString(12, member.getAcademicYear());
-                pstmt.setString(13, studIDOriginal);    //Get the original Student ID
+                pstmt.setString(8, String.valueOf(member.getGender()));
+                pstmt.setBoolean(9, member.isMembershipFeeStatus());
+                pstmt.setInt(10, member.getPosition());
+                pstmt.setString(11, member.getAcademicYear());
+                pstmt.setString(12, studIDOriginal);    //Get the original Student ID
                 successUpdate = pstmt.executeUpdate();
             }
         } catch (Exception ex) {
@@ -159,11 +156,10 @@ public class MemberDA {
                 selectAllMembersList.add(new Member(rs.getString(1), programmeDA.selectRecord(rs.getString(2)),
                                          new Name(rs.getString(3), rs.getString(4)), rs.getString(5), rs.getString(6),
                                          rs.getString(7),
-                                         rs.getString(8),
-                                         rs.getString(9).charAt(0),
-                                         rs.getBoolean(10),
-                                         rs.getInt(11),
-                                         rs.getString(12))
+                                         rs.getString(8).charAt(0),
+                                         rs.getBoolean(9),
+                                         rs.getInt(10),
+                                         rs.getString(11))
                                          );
             }
         } catch (Exception ex) {

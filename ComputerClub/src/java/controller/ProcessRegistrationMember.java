@@ -48,7 +48,7 @@ public class ProcessRegistrationMember extends HttpServlet {
                 //Creating memberDA and member object 
                 Member member = new Member(memID, programmeDA.selectProgramme(progID),
                         new Name(fName, lName), email, contactNo, icNum,
-                        icNum, gender, memFeeStats, position, academicYear);
+                        gender, memFeeStats, position, academicYear);
                 memberDA = new MemberDA();
                 
                 //Perform INSERT operation and validate insert operation

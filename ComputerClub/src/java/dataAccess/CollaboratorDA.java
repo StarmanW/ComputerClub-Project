@@ -34,18 +34,18 @@ public class CollaboratorDA {
     
     //Method to retrieve all records
     public ArrayList<Collaborator> selectAllCollaboratorList() {
-        ArrayList<Collaborator> selectAllCollabList = new ArrayList<Collaborator>();
+        ArrayList<Collaborator> collabList = new ArrayList<Collaborator>();
 
         try {
             pstmt = conn.prepareStatement("SELECT * FROM" + tableName);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                selectAllCollabList.add(new Collaborator(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                collabList.add(new Collaborator(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6)));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return selectAllCollabList;
+        return collabList;
     }
 
     //Select record method

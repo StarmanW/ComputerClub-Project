@@ -79,7 +79,7 @@ public class FacultyDA {
             selectRecord(facultyID);
 
             if (rs.next()) {
-                //ADD ERR MSG
+                successInsert = -1;
             } else {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, facultyID);
@@ -107,7 +107,7 @@ public class FacultyDA {
 
     //Update method
     public int updateRecord(Faculty faculty) throws Exception {
-        int successInsert = 0;
+        int successUpdate = 0;
 
         String facultyID = faculty.getFacultyID();
         String facultyName = faculty.getFacultyName();
@@ -120,20 +120,20 @@ public class FacultyDA {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, facultyName);
                 pstmt.setString(2, facultyID);
-                successInsert = pstmt.executeUpdate();
+                successUpdate = pstmt.executeUpdate();
             } else {
-                //ADD INVALID RESPONSE
+                successUpdate = -1;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return successInsert;
+        return successUpdate;
     }
 
     //Delete method
     public int deleteRecord(String facultyID) throws Exception {
-        int succesInsert = 0;
+        int succesDelete = 0;
 
         String queryStr = "DELETE FROM" + tableName + "WHERE FACULTYID = ?";
 
@@ -143,14 +143,14 @@ public class FacultyDA {
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, facultyID);
-                succesInsert = pstmt.executeUpdate();
+                succesDelete = pstmt.executeUpdate();
             } else {
-                //ADD INVALID RESPONSE
+                succesDelete = -1;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return succesInsert;
+        return succesDelete;
     }
 }

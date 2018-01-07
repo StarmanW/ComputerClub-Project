@@ -38,36 +38,36 @@ public class EventItemDA {
 
     //Method to retrieve all records
     public ArrayList<EventItem> selectAllEventItemList() {
-        ArrayList<EventItem> selectAllEventItemList = new ArrayList<EventItem>();
+        ArrayList<EventItem> eventItemList = new ArrayList<EventItem>();
 
         try {
             pstmt = conn.prepareStatement("SELECT * FROM" + tableName);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                selectAllEventItemList.add(new EventItem(rs.getString(1), eventDA.selectRecord(rs.getString(2)), itemDA.selectRecord(rs.getString(3))));
+                eventItemList.add(new EventItem(rs.getString(1), eventDA.selectRecord(rs.getString(2)), itemDA.selectRecord(rs.getString(3))));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return selectAllEventItemList;
+        return eventItemList;
     }
 
     
     //Method to retrieve all records for a specific event
     public ArrayList<EventItem> selectAllEventItemListByEventID(String eventID) {
-        ArrayList<EventItem> selectAllEventItemList = new ArrayList<EventItem>();
+        ArrayList<EventItem> eventItemList = new ArrayList<EventItem>();
 
         try {
             pstmt = conn.prepareStatement("SELECT * FROM" + tableName + "WHERE EVENTID = ?");
             pstmt.setString(1, eventID);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                selectAllEventItemList.add(new EventItem(rs.getString(1), eventDA.selectRecord(rs.getString(2)), itemDA.selectRecord(rs.getString(3))));
+                eventItemList.add(new EventItem(rs.getString(1), eventDA.selectRecord(rs.getString(2)), itemDA.selectRecord(rs.getString(3))));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return selectAllEventItemList;
+        return eventItemList;
     }
 
     //Select record method

@@ -2,7 +2,6 @@ package dataAccess;
 
 import java.sql.*;
 import java.util.ArrayList;
-import model.Collaborator;
 import model.Item;
 
 /**
@@ -116,7 +115,7 @@ public class ItemDA {
 
     //Update method
     public int updateRecord(Item item) throws Exception {
-        int successInsert = 0;
+        int successUpdate = 0;
 
         String itemID = item.getItemID();
         String collabID = item.getCollaborator().getCollabID();
@@ -135,20 +134,20 @@ public class ItemDA {
                 pstmt.setString(3, itemName);
                 pstmt.setInt(4, itemQuantity);
                 pstmt.setString(5, itemID);
-                successInsert = pstmt.executeUpdate();
+                successUpdate = pstmt.executeUpdate();
             } else {
-                //ADD INVALID RESPONSE
+                successUpdate = -1;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return successInsert;
+        return successUpdate;
     }
 
     //Delete method
     public int deleteRecord(String itemID) throws Exception {
-        int succesInsert = 0;
+        int successDelete = 0;
 
         String queryStr = "DELETE FROM" + tableName + "WHERE ITEMID = ?";
 
@@ -158,14 +157,14 @@ public class ItemDA {
             if (rs.next()) {
                 pstmt = conn.prepareStatement(queryStr);
                 pstmt.setString(1, itemID);
-                succesInsert = pstmt.executeUpdate();
+                successDelete = pstmt.executeUpdate();
             } else {
-                //ADD INVALID RESPONSE
+                successDelete = -1;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return succesInsert;
+        return successDelete;
     }
 }
