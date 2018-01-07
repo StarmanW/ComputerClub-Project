@@ -90,7 +90,7 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Collaborator Name</label>
-                                            <input type="text" name="collabName" placeholder="Ajax Inc." class="form-control" pattern="[A-Za-z\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Ajax Inc." required="required">
+                                            <input type="text" name="collabName" placeholder="Ajax Inc." class="form-control" pattern="[A-Za-z\&\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Ajax Inc." required="required">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Collaborator Type</label>
@@ -103,7 +103,7 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Contact Number</label>
-                                            <input type="text" name="collabContact" placeholder="0195421325" class="form-control" pattern="([0-9]|[0-9\-]){3,20}" title="Numeric and '-' symbols only. E.g. 014-8897875" required="required">
+                                            <input type="text" name="collabContact" placeholder="0195421325" class="form-control" pattern="([0-9]|[0-9\- ]){3,20}" title="Numeric and '-' symbols only. E.g. 014-8897875" required="required">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Email</label>
