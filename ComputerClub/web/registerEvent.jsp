@@ -139,19 +139,31 @@
             </div>
             <!-- /.container -->
             <script>
-                var eventName = document.getElementsByName('eventName')[0].value.trim();
-                var eDate = document.getElementsByName('eDate')[0].value.trim();
-                var eventStartTime = document.getElementsByName('eventStartTime')[0].value.trim();
-                var eventEndTime = document.getElementsByName('eventEndTime')[0].value.trim();
-                var eventLocation = document.getElementsByName('eventLocation')[0].value.trim();
-                var eventType = document.getElementsByName('eventType')[0].value;
                 function getEventDataCollabList() {
+                    var eventName = document.getElementsByName('eventName')[0].value.trim();
+                    var eDate = document.getElementsByName('eDate')[0].value.trim();
+                    var eventStartTime = document.getElementsByName('eventStartTime')[0].value.trim();
+                    var eventEndTime = document.getElementsByName('eventEndTime')[0].value.trim();
+                    var eventLocation = document.getElementsByName('eventLocation')[0].value.trim();
+                    var eventType = document.getElementsByName('eventType')[0].value;
                     document.getElementById("eventCollabList").href = "eventCollaboratorList.jsp?eName="+eventName+"&eDate="+eDate+"&eStartTime="+eventStartTime+"&eEndTime="+eventEndTime+"&eLocation="+eventLocation+"&eType="+eventType;
                 }
                 function getEventDataItemList() {
+                    var eventName = document.getElementsByName('eventName')[0].value.trim();
+                    var eDate = document.getElementsByName('eDate')[0].value.trim();
+                    var eventStartTime = document.getElementsByName('eventStartTime')[0].value.trim();
+                    var eventEndTime = document.getElementsByName('eventEndTime')[0].value.trim();
+                    var eventLocation = document.getElementsByName('eventLocation')[0].value.trim();
+                    var eventType = document.getElementsByName('eventType')[0].value;
                     document.getElementById("eventItemList").href = "eventSponsoredItemList.jsp?eName="+eventName+"&eDate="+eDate+"&eStartTime="+eventStartTime+"&eEndTime="+eventEndTime+"&eLocation="+eventLocation+"&eType="+eventType;
                 }
                 function getEventDataMemberList() {
+                    var eventName = document.getElementsByName('eventName')[0].value.trim();
+                    var eDate = document.getElementsByName('eDate')[0].value.trim();
+                    var eventStartTime = document.getElementsByName('eventStartTime')[0].value.trim();
+                    var eventEndTime = document.getElementsByName('eventEndTime')[0].value.trim();
+                    var eventLocation = document.getElementsByName('eventLocation')[0].value.trim();
+                    var eventType = document.getElementsByName('eventType')[0].value;
                     document.getElementById("eventMemberList").href = "eventMemberList.jsp?eName="+eventName+"&eDate="+eDate+"&eStartTime="+eventStartTime+"&eEndTime="+eventEndTime+"&eLocation="+eventLocation+"&eType="+eventType;
                 }
             </script>
