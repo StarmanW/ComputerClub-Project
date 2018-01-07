@@ -15,30 +15,38 @@ INSERT INTO NBUSER.PROGRAMME VALUES ('DAC', 'Diploma in Business Studies (Accoun
 -- MEMBER TABLE
 CREATE TABLE MEMBERS (MEMBERID VARCHAR(10) NOT NULL, PROGID VARCHAR(3) NOT NULL, FIRSTNAME VARCHAR(255) NOT NULL, LASTNAME VARCHAR(255) NOT NULL, STUDEMAIL VARCHAR(200) NOT NULL, STUDCONTACT VARCHAR(20) NOT NULL, ICNUM VARCHAR(12) NOT NULL, GENDER VARCHAR(1) NOT NULL, MEMFEESTATS BOOLEAN DEFAULT false  NOT NULL, "POSITION" INTEGER NOT NULL, ACADEMICYEAR VARCHAR(9) NOT NULL, PRIMARY KEY (MEMBERID));
 INSERT INTO NBUSER.MEMBERS VALUES ('16SMD00990', 'DIA', 'Samuel', 'Wong Kim Foong', 'samuelwkf-sa16@student.tarc.edu.my', '014-5569877', '980714126653', 'M', true, 5, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SMD00882', 'DIA', 'Chong', 'Jia Herng', 'chongjh-sa16@student.tarc.edu.my', '016-2222123', '981130125333', 'M', true, 3, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SMD05943', 'DIA', 'Shirlina', 'Koo Yung Ja', 'kooyj-sa16@student.tarc.edu.my', '019-9988776', '990909125555', 'F', true, 4, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SMD00994', 'DIA', 'Zion', 'Tseu', 'zionT-sa16@student.tarc.edu.my', '014-9881234', '971130125666', 'M', true, 3, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SMD00148', 'DIA', 'Enjiun', 'Tan', 'enjiunT-sa16@student.tarc.edu.my', '014-5628714', '98171125657', 'M', true, 4, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SMD01576', 'DIA', 'Lee', 'Jun Kai', 'leejk-sa16@student.tarc.edu.my', '016-2222123', '981130126343', 'M', true, 5, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SMD01893', 'DIA', 'Belden', 'Wong', 'beldenw-sa16@student.tarc.edu.my', '019-9988776', '990909125735', 'M', true, 4, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SMD02233', 'DIA', 'Woo', 'Guo Hao', 'woogh-sa16@student.tarc.edu.my', '014-9881234', '971130125996', 'M', true, 3, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SMD02372', 'DIA', 'Kelly', 'Chin Yin Yu', 'kellycyy-sa16@student.tarc.edu.my', '014-5562736', '970624125913', 'F', true, 4, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SMD00877', 'DIA', 'Ng', 'Zi Qing', 'ngzq-sa16@student.tarc.edu.my', '016-2222123', '981130125757', 'F', true, 3, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SMD01437', 'DIA', 'Khor', 'Chi Hao', 'khooch-sa16@student.tarc.edu.my', '019-9988776', '990909125665', 'M', true, 4, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SMD04378', 'DIA', 'Thomus', 'Liau', 'thomusl-sa16@student.tarc.edu.my', '014-9881234', '971130125442', 'M', true, 3, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SMD04538', 'DIA', 'Julius', 'Soo', 'juliuss-sa16@student.tarc.edu.my', '014-5569877', '980714125454', 'M', true, 4, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SMD12782', 'DIA', 'Ritchie', 'Boy', 'richieb-sa16@student.tarc.edu.my', '016-2222123', '981130125566', 'M', true, 3, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SHM05837', 'DHM', 'Joyce', 'Lee', 'chuaks-sa16@student.tarc.edu.my', '019-9988776', '990909125782', 'F', true, 4, '2017/2018');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SAC14772', 'DAC', 'Sherly', 'Tan', 'SherlyT-sa16@student.tarc.edu.my', '014-9881234', '971130125248', 'F', true, 3, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SMK08572', 'DMK', 'Chistina', 'Lee', 'christinal-sa16@student.tarc.edu.my', '014-5569877', '980714125997', 'F', true, 5, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SBU00247', 'DBU', 'Liona', 'yap', 'Lionay-sa16@student.tarc.edu.my', '016-2222123', '981130125602', 'F', true, 3, '2017/2018');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SHM07727', 'DHM', 'Lo', 'Chun Ha', 'lochunha-sa16@student.tarc.edu.my', '019-9988776', '990909125500', 'F', true, 4, '2017/2018');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SBU04278', 'DBU', 'Chia', 'Lian Zhi', 'chialz-sa16@student.tarc.edu.my', '014-9881234', '971130125270', 'F', true, 3, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SAC06741', 'DAC', 'Wong', 'kim fok', 'wongkf-sa16@student.tarc.edu.my', '016-2222123', '981130125548', 'M', true, 3, '2016/2017');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SHM07377', 'DHM', 'Fanie', 'Lim', 'faniel-sa16@student.tarc.edu.my', '019-9988776', '990909125758', 'F', true, 4, '2017/2018');
-INSERT INTO NBUSER.MEMBERS VALUES ('16SAC03840', 'DAC', 'Wong', 'Li Hong', 'wonglh-sa16@student.tarc.edu.my', '014-9881234', '971130125950', 'M', true, 3, '2017/2018');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SMD00882', 'DIA', 'Chong', 'Jia Herng', 'chongjh-sa16@student.tarc.edu.my', '016-2222123', '981130125333', 'M', true, 4, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SMD05943', 'DIA', 'Shirlina', 'Koo Yung Ja', 'kooyj-sa16@student.tarc.edu.my', '019-9988776', '990909125555', 'F', true, 3, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SMD00994', 'DIA', 'Zion', 'Tseu', 'zionT-sa16@student.tarc.edu.my', '014-9881234', '971130125666', 'M', true, 2, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SMD00148', 'DIA', 'Enjiun', 'Tan', 'enjiunT-sa16@student.tarc.edu.my', '014-5628714', '98171125657', 'M', true, 1, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SMD01576', 'DIA', 'Lee', 'Jun Kai', 'leejk-sa16@student.tarc.edu.my', '016-2222123', '981130126343', 'M', true, 1, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SMD01893', 'DIA', 'Belden', 'Wong', 'beldenw-sa16@student.tarc.edu.my', '019-9988776', '990909125735', 'M', true, 1, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SMD02233', 'DIA', 'Woo', 'Guo Hao', 'woogh-sa16@student.tarc.edu.my', '014-9881234', '971130125996', 'M', true, 1, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SMD02372', 'DIA', 'Kelly', 'Chin Yin Yu', 'kellycyy-sa16@student.tarc.edu.my', '014-5562736', '970624125913', 'F', true, 1, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SMD00877', 'DIA', 'Ng', 'Zi Qing', 'ngzq-sa16@student.tarc.edu.my', '016-2222123', '981130125757', 'F', true, 1, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SMD01437', 'DIA', 'Khor', 'Chi Hao', 'khooch-sa16@student.tarc.edu.my', '019-9988776', '990909125665', 'M', true, 1, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SMD04378', 'DIA', 'Thomus', 'Liau', 'thomusl-sa16@student.tarc.edu.my', '014-9881234', '971130125442', 'M', true, 1, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SMD04538', 'DIA', 'Julius', 'Soo', 'juliuss-sa16@student.tarc.edu.my', '014-5569877', '980714125454', 'M', true, 1, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SMD12782', 'DIA', 'Ritchie', 'Boy', 'richieb-sa16@student.tarc.edu.my', '016-2222123', '981130125566', 'M', true, 1, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SHM05837', 'DHM', 'Joyce', 'Lee', 'chuaks-sa16@student.tarc.edu.my', '019-9988776', '990909125782', 'F', true, 1, '2017/2018');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SAC14772', 'DAC', 'Sherly', 'Tan', 'SherlyT-sa16@student.tarc.edu.my', '014-9881234', '971130125248', 'F', true, 1, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SMK08572', 'DMK', 'Chistina', 'Lee', 'christinal-sa16@student.tarc.edu.my', '014-5569877', '980714125997', 'F', true, 1, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SBU00247', 'DBU', 'Liona', 'yap', 'Lionay-sa16@student.tarc.edu.my', '016-2222123', '981130125602', 'F', true, 1, '2017/2018');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SHM07727', 'DHM', 'Lo', 'Chun Ha', 'lochunha-sa16@student.tarc.edu.my', '019-9988776', '990909125500', 'F', true, 1, '2017/2018');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SBU04278', 'DBU', 'Chia', 'Lian Zhi', 'chialz-sa16@student.tarc.edu.my', '014-9881234', '971130125270', 'F', true, 1, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SAC06741', 'DAC', 'Wong', 'kim fok', 'wongkf-sa16@student.tarc.edu.my', '016-2222123', '981130125548', 'M', true, 1, '2016/2017');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SHM07377', 'DHM', 'Fanie', 'Lim', 'faniel-sa16@student.tarc.edu.my', '019-9988776', '990909125758', 'F', true, 1, '2017/2018');
+INSERT INTO NBUSER.MEMBERS VALUES ('16SAC03840', 'DAC', 'Wong', 'Li Hong', 'wonglh-sa16@student.tarc.edu.my', '014-9881234', '971130125950', 'M', true, 1, '2017/2018');
+
 -- EVENT TABLE
 CREATE TABLE EVENT (EVENTID VARCHAR(10) NOT NULL, EVENTNAME VARCHAR(255), EVENTTYPE INTEGER, EVENTDATE VARCHAR(25), EVENTSTARTTIME VARCHAR(20), EVENTENDTIME VARCHAR(20), EVENTLOCATION VARCHAR(255), PRIMARY KEY (EVENTID));
+INSERT INTO NBUSER.EVENT VALUES ('E0001', 'Network Security', 3, '2017-11-24', '14:00', '16:00', 'Lot 1-1');
+INSERT INTO NBUSER.EVENT VALUES ('E0002', 'Artificial Intelligence and Robotics', 3, '2017-12-01', '14:00', '16:00', 'Computer Lab 1A');
+INSERT INTO NBUSER.EVENT VALUES ('E0003', 'Capture The Flag Competition', 5, '2018-01-13', '08:00', '18:00', 'Lot 1-1');
+INSERT INTO NBUSER.EVENT VALUES ('E0004', 'Working in the IT fields', 3, '2018-01-19', '14:00', '16:00', 'Computer Lab 1A');
+INSERT INTO NBUSER.EVENT VALUES ('E0005', 'Visit to Sabah Net', 4, '2018-01-25', '08:00', '12:00', '1B, Ground Floor, Likas Square Commercial Centre');
+INSERT INTO NBUSER.EVENT VALUES ('E0006', 'ROBO Tournaments', 5, '2018-02-09', '09:00', '16:00', 'Lot 1-1');
+INSERT INTO NBUSER.EVENT VALUES ('E0007', 'The Future of Computing', 3, '2018-03-13', '13:00', '15:00', 'Computer Lab 5-1');
 
 -- EVENTMEMBER TABLE (BRIDGE TABLE FOR MEMBER && EVENT)
 CREATE TABLE EVENTMEMBER (EVENTMEMBERID VARCHAR(10) NOT NULL, MEMBERID VARCHAR(10), EVENTID VARCHAR(10), PRIMARY KEY (EVENTMEMBERID));
