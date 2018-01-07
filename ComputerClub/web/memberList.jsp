@@ -97,12 +97,13 @@
                                         </th>
                                     </tr>
                                     <tr class="table-heads">
-                                        <th class="head-item mbr-fonts-style display-7">Name</th>
                                         <th class="head-item mbr-fonts-style display-7">Member ID</th>
+                                        <th class="head-item mbr-fonts-style display-7">Name</th>
                                         <th class="head-item mbr-fonts-style display-7">Position</th>
                                         <th class="head-item mbr-fonts-style display-7">Gender</th>
                                         <th class="head-item mbr-fonts-style display-7">Academic Year</th>
                                         <th class="head-item mbr-fonts-style display-7">Programme</th>
+                                        <th class="head-item mbr-fonts-style display-7">Membership Fee Status</th>
                                         <th class="head-item mbr-fonts-style display-7">
                                             </div>
                                         </th>
@@ -114,12 +115,13 @@
                                         for (int i = 0; i < memberList.size(); i++) {
                                     %>
                                     <tr>
-                                        <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getStudName().getFullName()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getStudID()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getStudName().getFullName()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getPositionString()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getGender()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getAcademicYear()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getProgramme().getProgID()%></td>
+                                        <td class="body-item mbr-fonts-style display-7"><%=memberList.get(i).getMembershipFeeStatusString()%></td>
                                         <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
                                             <a href="updateMember.jsp?studID=<%=memberList.get(i).getStudID()%>"><button type="button" name="edit" class="edit-button"><img src="assets/images/edit.png" /></button></a>
                                             <a href="deleteMember.jsp?studID=<%=memberList.get(i).getStudID()%>"><button type="button" name="delete" class="delete-button"><img src="assets/images/delete.png" /></button></a>

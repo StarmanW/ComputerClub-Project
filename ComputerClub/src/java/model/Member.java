@@ -67,6 +67,14 @@ public class Member {
         return membershipFeeStatus;
     }
 
+    public String getMembershipFeeStatusString() {
+        if (this.membershipFeeStatus) {
+            return "Paid";
+        } else {
+            return "Pending";
+        }
+    }
+
     public int getPosition() {
         return position;
     }
