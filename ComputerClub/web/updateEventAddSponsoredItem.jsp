@@ -1,12 +1,7 @@
-<%@page import="model.EventItem"%>
-<%@page import="model.Item"%>
+<%@page import="model.Collaborator"%>
 <%@page import="java.util.ArrayList"%>
-<jsp:useBean id="itemDA" class="dataAccess.ItemDA" scope="application"></jsp:useBean>
-<jsp:useBean id="eventItemDA" class="dataAccess.EventItemDA" scope="application"></jsp:useBean>
-<%
-    session = request.getSession();
-    session.setAttribute("requestURL", request.getRequestURL().toString());
-%>
+<jsp:useBean id="collaboratorDA" class="dataAccess.CollaboratorDA" scope="application"></jsp:useBean>
+<%session.setAttribute("requestURL", request.getRequestURL().toString());%>
 <!DOCTYPE html>
 <html>
 
@@ -16,8 +11,9 @@
         <meta name="generator" content="Mobirise v4.5.2, mobirise.com">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/title bar logo.png" type="image/x-icon">
-        <meta name="description" content="Sponsored Item List">
-        <title>Sponsored Item List</title>
+        <meta name="description" content="Website Creator Description">
+        <title>Register Sponsored Item</title>
+        <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -25,11 +21,9 @@
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
         <link rel="stylesheet" href="assets/socicon/css/styles.css">
         <link rel="stylesheet" href="assets/dropdown/css/style.css">
-        <link rel="stylesheet" href="assets/datatables/data-tables.bootstrap4.min.css">
         <link rel="stylesheet" href="assets/theme/css/style.css">
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-        <link rel="stylesheet" href="assets/css/editDeleteBtn.css" type="text/css">
-        <link rel="stylesheet" href="assets/css/lists.css" type="text/css">
+        <link rel="stylesheet" href="assets/css/registerMember.css" type="text/css">
     </head>
 
     <body>
@@ -69,101 +63,79 @@
                 </div>
             </nav>
         </section>
-        <section class="engine"><a href="https://mobirise.co/n">bootstrap modal popup</a></section>
-        <section class="section-table cid-qFp8UAA2m0 mbr-parallax-background" id="table1-1f" data-rv-view="1776">
-            <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(35, 35, 35);">
-            </div>
-            <div class="container container-table">
-                <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-1"><br><strong>Sponsored Item List</strong><strong><br></strong></h2>
-                <div class="table-backpanel">
-                    <div class="table-wrapper">
-                        <div class="container">
-                            <div class="row search">
-                                <div class="col-md-6"></div>
-                                <div class="col-md-6">
-                                    <div class="dataTables_filter">
-                                        <label class="searchInfo mbr-fonts-style display-7">Search:</label>
-                                        <input class="form-control input-sm" disabled="">
+        <section class="cid-qFp6fBXr4v mbr-fullscreen mbr-parallax-background" id="header2-1c" data-rv-view="983">
+            <div class="container align-center">
+                <br />
+                <br />
+                <div class="form-container">
+                    <h1 class="well">Register Sponsored Item</h1>
+                    <hr style="border-top:1px solid gray;" />
+                    <div class="col-lg-12 well">
+                        <div class="row">
+                            <form action="ProcessRegistrationSponsoredItem" method="POST" style="margin-left:5%">
+                                <p style="color:red; float: left;">"*" Required fields</p>
+                                <br />
+                                <br />
+                                <% if (request.getParameter("empty") != null) {%>
+                                <p style="color:red">Please ensure all the fields are not left blank</p>
+                                <%}%>    
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <label><span style="color:red;">*</span>Item Name</label>
+                                            <input type="text" name="itemName" placeholder="Premium package Hamper" class="form-control" pattern="[A-Za-z0-9\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Premium package Hamper" required="required">
+                                        </div>                                    
+                                        <div class="col-sm-6 form-group">
+                                            <label><span style="color:red;">*</span>Item Type</label>
+                                            <select name="itemType" class="form-control" required="required">
+                                                <option disabled selected value>Select item type</option>
+                                                <option value="6">Trophy</option>
+                                                <option value="5">Equipments</option>
+                                                <option value="4">Certificates</option>
+                                                <option value="3">Foods & drinks</option>
+                                                <option value="2">Funds</option>
+                                                <option value="1">Others</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="container scroll">
-                            <table class="table isSearch" cellspacing="0">
-                                <thead>
-                                    <tr class="table-heads" style="border-bottom-style:solid">
-                                        <th class="head-item mbr-fonts-style display-7" colspan="7">
-                                            <div style="text-align: center;">
-                                                <a href="updateEventAddSponsoredItem.jsp"><img src="assets/images/plus-square.svg" width="30px" /><span class="addNewRecordTxt">&nbsp;Add New Sponsored Item</span></a>
-                                            </div>
-                                        </th>
-                                    </tr>
-                                    <tr class="table-heads ">
-                                        <th class="head-item mbr-fonts-style display-7">Item ID</th>
-                                        <th class="head-item mbr-fonts-style display-7">Item Name</th>
-                                        <th class="head-item mbr-fonts-style display-7">Sponsored By</th>
-                                        <th class="head-item mbr-fonts-style display-7">Item Quantity</th>
-                                        <th class="head-item mbr-fonts-style display-7">Item Type</th>
-                                        <th class="head-item mbr-fonts-style display-7"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <%
-                                        ArrayList<Item> itemList = itemDA.selectAllItem();
-                                        ArrayList<EventItem> eventItemList = eventItemDA.selectAllEventItemList();
-                                        for (int i = 0; i < itemList.size(); i++) {
-                                            boolean addedItem = false;
-                                            for (int j = 0; j < eventItemList.size(); j++) {
-                                                if (itemList.get(i).getItemID().equals(eventItemList.get(j).getItem().getItemID())) {
-                                                    addedItem = true;
-                                                    break;
-                                                }
-                                            }
-                                            if (addedItem) {
-                                                continue;
-                                            } else {
-                                    %>
-                                    <tr>
-
-                                        <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemID()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemName()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getCollaborator().getCollabName()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getQuantity()%></td>
-                                        <td class="body-item mbr-fonts-style display-7"><%=itemList.get(i).getItemTypeString()%></td>
-                                        <td class="body-item mbr-fonts-style display-7">
-                                            <form action="ProcessUpdateEventItem" method="POST" style="display:inline">
-                                                <button type="submit" name="add" value="<%=itemList.get(i).getItemID()%>" class="edit-button"><img src="assets/images/plus-square.svg" /></button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <%}
-                                        }%>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="container table-info-container">
-                            <div class="row info">
-                                <div class="col-md-6">
-                                    <div class="dataTables_info mbr-fonts-style display-7">
-                                        <span class="infoBefore">Showing</span>
-                                        <span class="inactive infoRows"></span>
-                                        <span class="infoAfter">entries</span>
-                                        <span class="infoFilteredBefore">(filtered from</span>
-                                        <span class="inactive infoRows"></span>
-                                        <span class="infoFilteredAfter">total entries)</span>
+                                <div class="col-sm-12">
+                                    <div class="row" style="margin:auto">
+                                        <label><span style="color:red;">*</span>Item Quantity</label>
+                                        <input type="number" name="quantity" class="form-control" min="1" required="required">
                                     </div>
                                 </div>
-
-                            </div>
+                                <br />
+                                <div class="col-sm-12">
+                                    <div class="row" style="margin:auto">
+                                        <label><span style="color:red;">*</span>Select Collaborator</label>
+                                        <select name="collabName" class="form-control" required="required">
+                                            <option disabled selected value>Select collaborator type</option>
+                                            <%
+                                                ArrayList<Collaborator> collaboratorList = collaboratorDA.selectAllCollaboratorList();
+                                                for (int i = 0; i < collaboratorList.size(); i++) {
+                                            %>
+                                            <option value="<%=collaboratorList.get(i).getCollabID()%>"><%=collaboratorList.get(i).getCollabName()%></option>
+                                            <%}%>
+                                        </select>                                   
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="submit-button">
+                                    <button type="submit" class="btn btn-lg btn-info">Submit</button>
+                                    <button type="reset" class="btn btn-lg btn-info">Reset</button>
+                                    <a href="updateEventSponsoredItems.jsp"><button type="button" class="btn btn-lg btn-info">Back to List</button></a>
+                                </div>
+                            </form>
                         </div>
-                    </div>
-                    <div class="form-group" style="margin:auto; width:120px;">
-                        <a href="updateEvent.jsp?eventID=<%=request.getParameter("eventID")%>"><button type="button" class="btn btn-sm btn-primary">Back</button></a>
                     </div>
                 </div>
-            </div>
+                <!-- /.container -->
+                <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+                <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+                <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
         </section>
-        <section class="cid-qEChLCCjpO" id="footer1-10" data-rv-view="555">
+        <section class="cid-qECiDnaZnD" id="footer1-12" data-rv-view="11590">
             <div class="container">
                 <div class="media-container-row content text-white">
                     <div class="col-12 col-md-3">
@@ -222,11 +194,10 @@
         <script src="assets/popper/popper.min.js"></script>
         <script src="assets/tether/tether.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/dropdown/js/script.min.js"></script>
         <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
-        <script src="assets/datatables/jquery.data-tables.min.js"></script>
-        <script src="assets/datatables/data-tables.bootstrap4.min.js"></script>
+        <script src="assets/parallax/jarallax.min.js"></script>
         <script src="assets/smoothscroll/smooth-scroll.js"></script>
+        <script src="assets/dropdown/js/script.min.js"></script>
         <script src="assets/theme/js/script.js"></script>
         <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i></i></a></div>
         <!-- Back to top -->
@@ -237,12 +208,14 @@
         </script>
         <script>
             var urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('successAdd')) {
-                window.alert("Sponsored Item successfully added into event " + urlParams.get('eventID') + '!');
+            if (urlParams.has('success')) {
+                window.alert("New Sponsored Item successfully added!");
+            } else if (urlParams.has('duplicated')) {
+                window.alert("Duplicated records found, please ensure the new sponsored item record does not exist in the sponsored item list.");
             } else if (urlParams.has('error')) {
                 window.alert("Oh no! An error has occured, please contact the system administrator.");
             }
-        </script>  
+        </script>
         <style>
             #top-link-block>.btn {
                 font-size: 1.5em!important;

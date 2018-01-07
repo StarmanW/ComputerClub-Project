@@ -120,12 +120,12 @@
                                     </div>
                                     <br/>
                                     <div class="row">
-                                        <div class="form-group" style="width:220px;">
-                                            <a href="updateEventCollaborators.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Manage Collaborators</button></a>
-                                            <a href="updateEventSponsoredItems.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Manage Sponsored Items</button></a>
-                                            <a href="updateEventParticipants.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Manage Participants</button></a>
+                                        <div class="form-group" style="width:240px;">
+                                            <a href="updateEventCollaborators.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Add Collaborators from List</button></a>
+                                            <a href="updateEventSponsoredItems.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Add Sponsored Items from List</button></a>
+                                            <a href="updateEventParticipants.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Add Participants from List</button></a>
                                         </div>                                   
-                                        <div class="form-group" style="width:220px;">
+                                        <div class="form-group" style="width:190px;">
                                             <a href="listEventCollaborators.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">List Collaborators</button></a>
                                             <a href="listEventSponsoredItems.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">List Sponsored Items</button></a>
                                             <a href="listEventParticipants.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">List Participants</button></a>
