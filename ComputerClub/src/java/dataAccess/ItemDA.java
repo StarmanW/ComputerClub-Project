@@ -50,7 +50,7 @@ public class ItemDA {
         return selectAllItemList;
     }
 
-    //Select record method
+    //Select record method by Item ID
     public Item selectRecord(String itemID) {
         Item item = null;
         String queryStr = "SELECT * FROM" + tableName + "WHERE ITEMID = ?";
@@ -58,6 +58,25 @@ public class ItemDA {
         try {
             pstmt = conn.prepareStatement(queryStr);
             pstmt.setString(1, itemID);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                item = new Item(rs.getString(1), collaboratorDA.selectRecord(rs.getString(2)), rs.getInt(3), rs.getString(4), rs.getInt(5));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return item;
+    }
+
+    //Select record method by Collab ID
+    public Item selectRecordByCollabID(String collabID) {
+        Item item = null;
+        String queryStr = "SELECT * FROM" + tableName + "WHERE COLLABID = ?";
+
+        try {
+            pstmt = conn.prepareStatement(queryStr);
+            pstmt.setString(1, collabID);
             rs = pstmt.executeQuery();
             if (rs.next()) {
                 item = new Item(rs.getString(1), collaboratorDA.selectRecord(rs.getString(2)), rs.getInt(3), rs.getString(4), rs.getInt(5));
@@ -145,7 +164,7 @@ public class ItemDA {
         return successUpdate;
     }
 
-    //Delete method
+    //Delete method by Item ID
     public int deleteRecord(String itemID) throws Exception {
         int successDelete = 0;
 
@@ -162,6 +181,25 @@ public class ItemDA {
                 successDelete = -1;
             }
         } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return successDelete;
+    }
+
+    //Delete method by Collab ID
+    public boolean deleteRecordByCollabID(String collabID) throws Exception {
+        boolean successDelete = false;
+
+        String queryStr = "DELETE FROM" + tableName + "WHERE COLLABID = ?";
+
+        try {
+            pstmt = conn.prepareStatement(queryStr);
+            pstmt.setString(1, collabID);
+            pstmt.executeUpdate();
+            successDelete = true;
+        } catch (SQLException ex) {
+            successDelete = false;
             ex.printStackTrace();
         }
 

@@ -1,9 +1,9 @@
- <!-- 
- --
- --@author Samuel Wong Kim Foong 
- --
- --
- --> 
+<!-- 
+--
+--@author Samuel Wong Kim Foong 
+--
+--
+--> 
 
 <%@page import="model.Event"%>
 <%@page import="model.Item"%>
@@ -11,9 +11,11 @@
 <jsp:useBean id="itemDA" class="dataAccess.ItemDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
-    if (!request.getParameter("eName").isEmpty() && !request.getParameter("eType").isEmpty() && !request.getParameter("eDate").isEmpty() && !request.getParameter("eStartTime").isEmpty() && !request.getParameter("eEndTime").isEmpty() && !request.getParameter("eLocation").isEmpty()) {
-        Event tempEvent = new Event("TMP001", request.getParameter("eName"), Integer.parseInt(request.getParameter("eType")), request.getParameter("eDate"), request.getParameter("eStartTime"), request.getParameter("eEndTime"), request.getParameter("eLocation"));
-        session.setAttribute("tempEvent", tempEvent);
+    if (request.getParameter("eName") != null) {
+        if (!request.getParameter("eName").isEmpty() && !request.getParameter("eType").isEmpty() && !request.getParameter("eDate").isEmpty() && !request.getParameter("eStartTime").isEmpty() && !request.getParameter("eEndTime").isEmpty() && !request.getParameter("eLocation").isEmpty()) {
+            Event tempEvent = new Event("TMP001", request.getParameter("eName"), Integer.parseInt(request.getParameter("eType")), request.getParameter("eDate"), request.getParameter("eStartTime"), request.getParameter("eEndTime"), request.getParameter("eLocation"));
+            session.setAttribute("tempEvent", tempEvent);
+        }
     }
     String[] itemIDList = (String[]) session.getAttribute("itemIDList");
     session.setAttribute("requestURL", request.getRequestURL().toString());

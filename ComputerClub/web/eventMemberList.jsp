@@ -1,9 +1,9 @@
- <!-- 
- --
- --@author Samuel Wong Kim Foong
- --
- --
- --> 
+<!-- 
+--
+--@author Samuel Wong Kim Foong
+--
+--
+--> 
 
 <%@page import="model.Event"%>
 <%@page import="model.Member"%>
@@ -11,9 +11,11 @@
 <jsp:useBean id="memberDA" class="dataAccess.MemberDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
-    if (!request.getParameter("eName").isEmpty() && !request.getParameter("eType").isEmpty() && !request.getParameter("eDate").isEmpty() && !request.getParameter("eStartTime").isEmpty() && !request.getParameter("eEndTime").isEmpty() && !request.getParameter("eLocation").isEmpty()) {
-        Event tempEvent = new Event("TMP001", request.getParameter("eName"), Integer.parseInt(request.getParameter("eType")), request.getParameter("eDate"), request.getParameter("eStartTime"), request.getParameter("eEndTime"), request.getParameter("eLocation"));
-        session.setAttribute("tempEvent", tempEvent);
+    if (request.getParameter("eName") != null) {
+        if (!request.getParameter("eName").isEmpty() && !request.getParameter("eType").isEmpty() && !request.getParameter("eDate").isEmpty() && !request.getParameter("eStartTime").isEmpty() && !request.getParameter("eEndTime").isEmpty() && !request.getParameter("eLocation").isEmpty()) {
+            Event tempEvent = new Event("TMP001", request.getParameter("eName"), Integer.parseInt(request.getParameter("eType")), request.getParameter("eDate"), request.getParameter("eStartTime"), request.getParameter("eEndTime"), request.getParameter("eLocation"));
+            session.setAttribute("tempEvent", tempEvent);
+        }
     }
     String[] memberIDList = (String[]) session.getAttribute("memberIDList");
 %>
@@ -134,10 +136,10 @@
                                             %>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="memberID" checked value="<%=memberList.get(i).getStudID()%>" /></td>
                                                 <%  checkboxPrinted = true;
-                                                            break;
+                                                                break;
+                                                            }
                                                         }
-                                                    }
-                                                } %>
+                                                    } %>
                                                 <% if (!checkboxPrinted) {%>
                                             <td class="body-item mbr-fonts-style display-7"><input type="checkbox" name="memberID" value="<%=memberList.get(i).getStudID()%>" /></td>
                                         </tr>
