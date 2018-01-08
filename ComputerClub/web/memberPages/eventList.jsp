@@ -82,13 +82,6 @@
                             <div class="container scroll">
                                 <table class="table isSearch" cellspacing="0">
                                     <thead>
-                                        <tr class="table-heads" style="border-bottom-style:solid;">
-                                            <th class="head-item mbr-fonts-style display-7" colspan="7" >
-                                                <div style="text-align: center;">
-                                                    <a href="registerEvent.jsp"><img src="../assets/images/plus-square.svg" width="30px" /><span class="addNewRecordTxt">&nbsp;Add New Event</span></a>
-                                                </div>
-                                            </th>
-                                        </tr>
                                         <tr class="table-heads ">
                                             <th class="head-item mbr-fonts-style display-7">Event ID</th>
                                             <th class="head-item mbr-fonts-style display-7">Event Name</th>
@@ -111,8 +104,8 @@
                                         <td class="body-item mbr-fonts-style display-7"><%=eventList.get(i).getEventDate()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=eventList.get(i).getEventStartTime()%> - <%=eventList.get(i).getEventEndTime()%></td>
                                         <td class="body-item mbr-fonts-style display-7"><%=eventList.get(i).getEventLocation()%></td>
-                                        <td class="body-item mbr-fonts-style display-7" id="edit-delete-td">
-                                            <a href="updateEvent.jsp?eventID=<%=eventList.get(i).getEventID()%>"><button type="button" name="edit" class="edit-button"><img src="../assets/images/edit.png" /></button></a>
+                                        <td class="body-item mbr-fonts-style display-7">
+                                            <a href="eventInfo.jsp?eventID=<%=eventList.get(i).getEventID()%>"><button type="button" name="edit" class="edit-button"><img src="../assets/images/info.svg" /></button></a>
                                         </td>
                                     </tr>
                                     <%}%>

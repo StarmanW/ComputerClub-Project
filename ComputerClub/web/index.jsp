@@ -2,10 +2,11 @@
  --
  --@author Samuel Wong Kim Foong
  --
- --
  --> 
-
-
+<%
+    session.invalidate();
+    request.getSession(true);
+%>
 <!DOCTYPE html>
 <html>
 
