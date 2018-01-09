@@ -81,7 +81,7 @@
                 <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(35, 35, 35);">
                 </div>
                 <div class="container">
-                    <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1"><br>Welcome, <%=userName%>!<br><br></h2>
+                    <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1"><br>Welcome<% if (userName != null) { %>, <%=userName%>! <%}%><br><br></h2>
                 <div class="media-container-row container">
                     <!--- CSS Overriden -->
                     <div class="card col-12 col-md-6 p-5 m-3 align-center col-lg-4" id="hover_image" onclick="window.open('memberList.jsp', 'Manage Member');">
