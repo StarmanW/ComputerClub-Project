@@ -68,7 +68,7 @@ h1 {
 }
 
 .submit-button {
-    margin-left: 8%;
+    margin:auto;
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1200px) {

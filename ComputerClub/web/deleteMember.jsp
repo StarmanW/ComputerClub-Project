@@ -90,7 +90,7 @@
                     <div class="col-lg-12 well">
                         <div class="row">
                             <form method="post" action="ProcessDeleteMember">
-                                <div class="row" style="margin:auto">
+                                <div class="row" style="margin: auto">
                                     <h5>Confirm delete member <%if (studID != null && !studID.isEmpty()) {%> <%=member.getStudID()%> (<%=member.getStudName().getFullName()%>) <%}%> details? 
                                         <br/><br/><span style="color:red">*Please note that this action cannot be undone.</span></h5>
                                 </div>
