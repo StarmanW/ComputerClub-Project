@@ -4,6 +4,7 @@
 * {
     outline:none;
 }
+/*Add record*/
 .addNewRecordTxt {
     font-weight:bold;
     color:black;
@@ -11,6 +12,7 @@
     vertical-align: middle;
     font-size: 100%
 }
+/*Homepage*/
 #card_text_1,
 #card_text_2,
 #card_text_3 {
