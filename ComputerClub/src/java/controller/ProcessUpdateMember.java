@@ -26,7 +26,6 @@ public class ProcessUpdateMember extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Retrieve all values from request
-        String studIDOriginal = (String) request.getSession().getAttribute("studIDOriginal");
         String fName = request.getParameter("fName");
         String lName = request.getParameter("lName");
         String icNum = request.getParameter("icNum");
@@ -55,14 +54,12 @@ public class ProcessUpdateMember extends HttpServlet {
                         gender, memFeeStats, position, academicYear);
 
                 //Perform UPDATE on member details
-                int successUpdate = memberDA.updateRecord(member, studIDOriginal);
-                switch (successUpdate) {
-                    case 1:
-                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?studID=" + member.getStudID() + "&success");
-                        break;
-                    default:
-                        response.sendRedirect(request.getSession().getAttribute("requestURL") + "?studID=" + member.getStudID() + "&error");
-                        break;
+                int successUpdate = memberDA.updateRecord(member);
+
+                if (successUpdate == 1) {
+                    response.sendRedirect(request.getSession().getAttribute("requestURL") + "?studID=" + member.getStudID() + "&success");
+                } else {
+                    response.sendRedirect(request.getSession().getAttribute("requestURL") + "?studID=" + member.getStudID() + "&error");
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();

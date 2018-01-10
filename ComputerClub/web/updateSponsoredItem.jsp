@@ -98,7 +98,7 @@
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Item Name</label>
-                                            <input type="text" name="itemName" placeholder="Premium package Hamper" value="<%=item.getItemName()%>" class="form-control" pattern="[A-Za-z0-9\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Premium package Hamper" required="required">
+                                            <input type="text" name="itemName" placeholder="Premium package Hamper" value="<%=item.getItemName()%>" class="form-control" pattern="[A-Za-z0-9\,\- ]{2,}" title="Alphabetic, @ and - symbols only. E.g. - Premium package Hamper" required="required">
                                         </div>                                    
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Item Type</label>

@@ -13,7 +13,6 @@
 <%
     session = request.getSession();
     session.setAttribute("requestURL", request.getRequestURL().toString());
-    session.setAttribute("studIDOriginal", request.getParameter("studID"));
     Member member = memberDA.selectRecord(request.getParameter("studID"));
 %>
 <!DOCTYPE html>
@@ -111,7 +110,7 @@
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label><span style="color:red;">*</span>Member ID</label>
-                                            <input type="text" name="memID" placeholder="16SMD00990" class="form-control" value="<%=member.getStudID()%>" pattern="^\d{2}[A-Z]{3}\d{5}$" title="E.g. 16SMD00990" required="required">
+                                            <input type="text" name="memID" placeholder="16SMD00990" readonly="readonly" class="form-control" value="<%=member.getStudID()%>" pattern="^\d{2}[A-Z]{3}\d{5}$" title="E.g. 16SMD00990" required="required">
                                         </div>
                                     </div>
                                     <div class="row">

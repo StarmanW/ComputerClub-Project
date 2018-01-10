@@ -150,7 +150,6 @@ public class EventMemberDA {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
         return successUpdate;
     }
 

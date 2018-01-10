@@ -118,25 +118,24 @@ public class MemberDA {
     }
 
     //Method to update a record
-    public int updateRecord(Member member, String studIDOriginal) {
+    public int updateRecord(Member member) {
         int successUpdate = 0;
 
         try {
-            findRecord(studIDOriginal);
+            findRecord(member.getStudID());
             if (rs.next()) {
-                pstmt = conn.prepareStatement("UPDATE" + tableName + "SET MEMBERID = ?, PROGID = ?, FIRSTNAME = ?, LASTNAME = ?, STUDEMAIL = ?, STUDCONTACT = ?, ICNUM = ?, GENDER = ?, MEMFEESTATS = ?, POSITION = ?, ACADEMICYEAR = ? WHERE MEMBERID = ?");
-                pstmt.setString(1, member.getStudID());
-                pstmt.setString(2, member.getProgramme().getProgID());
-                pstmt.setString(3, member.getStudName().getFirstName());
-                pstmt.setString(4, member.getStudName().getLastName());
-                pstmt.setString(5, member.getStudEmail());
-                pstmt.setString(6, member.getStudContact());
-                pstmt.setString(7, member.getIc());
-                pstmt.setString(8, String.valueOf(member.getGender()));
-                pstmt.setBoolean(9, member.isMembershipFeeStatus());
-                pstmt.setInt(10, member.getPosition());
-                pstmt.setString(11, member.getAcademicYear());
-                pstmt.setString(12, studIDOriginal);    //Get the original Student ID
+                pstmt = conn.prepareStatement("UPDATE" + tableName + "SET PROGID = ?, FIRSTNAME = ?, LASTNAME = ?, STUDEMAIL = ?, STUDCONTACT = ?, ICNUM = ?, GENDER = ?, MEMFEESTATS = ?, POSITION = ?, ACADEMICYEAR = ? WHERE MEMBERID = ?");
+                pstmt.setString(1, member.getProgramme().getProgID());
+                pstmt.setString(2, member.getStudName().getFirstName());
+                pstmt.setString(3, member.getStudName().getLastName());
+                pstmt.setString(4, member.getStudEmail());
+                pstmt.setString(5, member.getStudContact());
+                pstmt.setString(6, member.getIc());
+                pstmt.setString(7, String.valueOf(member.getGender()));
+                pstmt.setBoolean(8, member.isMembershipFeeStatus());
+                pstmt.setInt(9, member.getPosition());
+                pstmt.setString(10, member.getAcademicYear());
+                pstmt.setString(11, member.getStudID());
                 successUpdate = pstmt.executeUpdate();
             }
         } catch (Exception ex) {
