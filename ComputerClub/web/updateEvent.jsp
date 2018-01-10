@@ -21,7 +21,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/title bar logo.jpg" type="image/x-icon">
         <meta name="description" content="Website Creator Description">
-        <title>Update Event</title>
+        <title>Update Event for <%=request.getParameter("eventID")%></title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
@@ -126,21 +126,21 @@
                                         </select>
                                     </div>
                                     <br/>
-                                    <div class="row">
-                                        <div class="form-group" style="width:240px;">
+                                    <div class="row" >
+                                        <div class="form-group" style="width:220px;">
                                             <a href="updateEventCollaborators.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Add Collaborators from List</button></a>
                                             <a href="updateEventSponsoredItems.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Add Sponsored Items from List</button></a>
                                             <a href="updateEventParticipants.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Add Participants from List</button></a>
                                         </div>                                   
-                                        <div class="form-group" style="width:190px;">
-                                            <a href="listEventCollaborators.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">List Collaborators</button></a>
-                                            <a href="listEventSponsoredItems.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">List Sponsored Items</button></a>
-                                            <a href="listEventParticipants.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">List Participants</button></a>
+                                        <div class="form-group" style="width:220px;">
+                                                <a href="listEventCollaborators.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">View Added Collaborators</button></a>
+                                            <a href="listEventSponsoredItems.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">View Added Sponsored Items</button></a>
+                                            <a href="listEventParticipants.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">View Added Participants</button></a>
                                         </div>
                                     </div>
                                 </div>
                                 <br />
-                                <div class="form-group" style="margin-left:8%">
+                                <div class="form-group" style="margin:auto">
                                     <button type="submit" class="btn btn-lg btn-info">Submit</button>
                                     <a href="eventList.jsp"><button type="button" class="btn btn-lg btn-info">Back</button></a>
                                 </div>

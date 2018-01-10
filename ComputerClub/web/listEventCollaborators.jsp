@@ -22,7 +22,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/title bar logo.jpg" type="image/x-icon">
         <meta name="description" content="Collaborator List">
-        <title>Update Collaborator List</title>
+        <title>Update Collaborator List for <%=request.getParameter("eventID")%></title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">

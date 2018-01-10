@@ -21,7 +21,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="../assets/images/title bar logo.jpg" type="image/x-icon">
         <meta name="description" content="Website Creator Description">
-        <title>Update Event</title>
+        <title>Event Info for <%=request.getParameter("eventID")%></title>
         <link rel="stylesheet" href="../assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="../assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
         <link rel="stylesheet" href="../assets/tether/tether.min.css">
@@ -76,9 +76,9 @@
                     <h1 class="well">Information for Event <%=event.getEventID()%></h1>
 
                     <hr style="border-top:1px solid gray;" />
-                    <div class="col-lg-12 well" style="margin:auto; width:90%">
+                    <div class="col-lg-12 well" style="margin:auto; width:90%;">
                         <div class="row">
-                            <div class="form-group" style=" margin: auto;">
+                            <div class="form-group" style=" margin: auto; width: 60%">
                                 <a href="listEventCollaborators.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">List Collaborators</button></a>
                                 <a href="listEventSponsoredItems.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">List Sponsored Items</button></a>
                                 <a href="listEventParticipants.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">List Participants</button></a>

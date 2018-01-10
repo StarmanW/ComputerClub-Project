@@ -23,7 +23,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/title bar logo.jpg" type="image/x-icon">
         <meta name="description" content="Website Creator Description">
-        <title>Update Collaborator</title>
+        <title>Update Collaborator for <%=request.getParameter("collabID")%></title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
