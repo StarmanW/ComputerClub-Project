@@ -26,6 +26,8 @@ public class ProcessUpdateEvent extends HttpServlet {
             //Update validation
             if ((successEventUpdate == 1)) {
                 response.sendRedirect(request.getSession().getAttribute("requestURL") + "?success&eventID=" + request.getSession().getAttribute("eventID"));
+            } else {
+                response.sendRedirect(request.getSession().getAttribute("requestURL") + "?error&eventID=" + request.getSession().getAttribute("eventID"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
