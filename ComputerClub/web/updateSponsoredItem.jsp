@@ -2,19 +2,20 @@
  --
  --@author Samuel Wong Kim Foong 
  --
- --
  --> 
-
+<%-- Importing Item and Collaborator class from model package --%>
 <%@page import="model.Item"%>
 <%@page import="model.Collaborator"%>
 <%@page import="java.util.ArrayList"%>
+
+<%-- Using the existing DA bean --%>
 <jsp:useBean id="collaboratorDA" class="dataAccess.CollaboratorDA" scope="application"></jsp:useBean>
 <jsp:useBean id="itemDA" class="dataAccess.ItemDA" scope="application"></jsp:useBean>
 <%
     session = request.getSession();
-    session.setAttribute("requestURL", request.getRequestURL().toString());
-    session.setAttribute("itemID", request.getParameter("itemID"));
-    Item item = itemDA.selectRecord(request.getParameter("itemID"));
+    session.setAttribute("requestURL", request.getRequestURL().toString()); //Set the current URL to the request URL 
+    session.setAttribute("itemID", request.getParameter("itemID"));     //Set itemID into session attribute
+    Item item = itemDA.selectRecord(request.getParameter("itemID"));    //Retrieving Item object from itemDA for displaying item details
 %>
 <!DOCTYPE html>
 <html>
@@ -195,7 +196,7 @@
                     <div class="media-container-row mbr-white">
                         <div class="col-sm-6 copyright">
                             <p class="mbr-text mbr-fonts-style display-7">
-                                © Copyright 2017 TAR UC Computer Club - All Rights Reserved
+                                © Copyright <%=java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)%> TAR UC Computer Club - All Rights Reserved
                             </p>
                         </div>
                         <div class="col-md-6">

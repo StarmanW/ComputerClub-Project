@@ -223,7 +223,7 @@
                     <div class="media-container-row mbr-white">
                         <div class="col-sm-6 copyright">
                             <p class="mbr-text mbr-fonts-style display-7">
-                                © Copyright 2017 TAR UC Computer Club - All Rights Reserved
+                                © Copyright <%=java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)%> TAR UC Computer Club - All Rights Reserved
                             </p>
                         </div>
                         <div class="col-md-6">
