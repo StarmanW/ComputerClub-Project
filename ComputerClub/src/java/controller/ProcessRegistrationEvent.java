@@ -9,7 +9,7 @@ import dataAccess.*;
 import model.*;
 
 /**
- * @author StarmanW
+ * @author Samuel Wong Kim Foong
  * 
  * Contributed by ChongJH
  * 
