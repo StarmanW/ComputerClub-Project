@@ -38,14 +38,6 @@
     <body>
         <section class="menu cid-qDNS0J8sKR" once="menu" id="menu1-k" data-rv-view="2425">
             <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <div class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
                 <div class="menu-logo">
                     <div class="navbar-brand">
                         <span class="navbar-logo">
@@ -63,7 +55,7 @@
         <section class="header8 cid-qEC5OqO45Z mbr-fullscreen mbr-parallax-background" id="header8-p" data-rv-view="11520">
             <div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(0, 0, 0);">
             </div>
-            <div class="container">
+            <div class="container" style="margin-top: 10%">
                 <div class="login-box animated fadeInUp">
                     <div class="box-header">
                         <h2 id="login_header">Log In</h2>

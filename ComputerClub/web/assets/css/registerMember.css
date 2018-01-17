@@ -26,10 +26,6 @@ h1 {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
 }
 
-.col-sm-12 {
-    margin-left: 5%;
-}
-
 .form-control {
     display: block;
     width: 100%;
@@ -68,7 +64,7 @@ h1 {
 }
 
 .submit-button {
-    margin:auto;
+    margin: auto;
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1200px) {
@@ -81,8 +77,8 @@ h1 {
         background-color: #d8d8d8;
     }
 
-    .col-sm-12 {
-        margin-left: 2%;
+    .row form {
+        margin: auto;
     }
 }
 
@@ -97,7 +93,7 @@ h1 {
         background-color: #d8d8d8;
     }
 
-    .col-sm-12 {
-        margin-left: 5%;
+    .row form {
+        margin: auto;
     }
 }

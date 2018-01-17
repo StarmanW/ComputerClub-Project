@@ -33,6 +33,7 @@
         <link rel="stylesheet" href="assets/theme/css/style.css">
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
         <link rel="stylesheet" href="assets/css/registerMember.css" type="text/css">
+        <link rel="stylesheet" href="assets/css/updateEvent.css" type="text/css">
     </head>
     <body>
         <section class="menu cid-qDNS0J8sKR" once="menu" id="menu1-k" data-rv-view="2425">
@@ -79,7 +80,7 @@
                     <h1 class="well">Update Event <%=event.getEventID()%></h1>
 
                     <hr style="border-top:1px solid gray;" />
-                    <div class="col-lg-12 well" style="margin:auto; width:90%">
+                    <div class="col-lg-12 well">
                         <div class="row">
                             <form action="ProcessUpdateEvent" method="POST">
                                 <p style="color:red; float: left;">"*" Required fields</p>
@@ -126,13 +127,13 @@
                                         </select>
                                     </div>
                                     <br/>
-                                    <div class="row" >
-                                        <div class="form-group" style="width:220px;">
+                                    <div class="row" style="margin: auto">
+                                        <div class="form-group" id="row-buttons">
                                             <a href="updateEventCollaborators.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Add Collaborators from List</button></a>
                                             <a href="updateEventSponsoredItems.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Add Sponsored Items from List</button></a>
                                             <a href="updateEventParticipants.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">Add Participants from List</button></a>
                                         </div>                                   
-                                        <div class="form-group" style="width:220px;">
+                                        <div class="form-group" id="row-buttons">
                                                 <a href="listEventCollaborators.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">View Added Collaborators</button></a>
                                             <a href="listEventSponsoredItems.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">View Added Sponsored Items</button></a>
                                             <a href="listEventParticipants.jsp?eventID=<%=event.getEventID()%>"><button type="button" class="btn btn-sm btn-primary">View Added Participants</button></a>

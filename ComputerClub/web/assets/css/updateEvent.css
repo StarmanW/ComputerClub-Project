@@ -1,0 +1,12 @@
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+    #row-buttons {
+        width: 210px;
+    }
+}
+
+
+@media only screen and (min-width: 1200px) {
+    #row-buttons {
+        width: 230px;
+    }
+}

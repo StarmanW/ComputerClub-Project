@@ -135,7 +135,7 @@
                                     </div>
                                 </div>
                                 <br />
-                                <div class="form-group" style="margin-left:8%">
+                                <div class="form-group">
                                     <button type="submit" class="btn btn-lg btn-info">Submit</button>
                                     <button type="reset" class="btn btn-lg btn-info">Reset</button>
                                 </div>

@@ -79,7 +79,7 @@
                     <hr style="border-top:1px solid gray;" />
                     <div class="col-lg-12 well">
                         <div class="row">
-                            <form action="ProcessRegistrationSponsoredItem" method="POST" style="width:92%;">
+                            <form action="ProcessRegistrationSponsoredItem" method="POST">
                                 <p style="color:red; float: left;">"*" Required fields</p>
                                 <br />
                                 <br />

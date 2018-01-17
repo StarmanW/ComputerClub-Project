@@ -211,16 +211,13 @@
                                         <table border="0" cellpadding="10" style="text-align:left; " >
                                             <tbody>
                                                 <tr>
-                                                    <td>What: </td>
-                                                    <td><%=upcomingEventList.get(i).getEventTypeString()%></td>
+                                                    <td>What: <%=upcomingEventList.get(i).getEventTypeString()%></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>When: </td>
-                                                    <td><%=dispUpcomingStartTimeList[i]%> to <%=dispUpcomingEndTimeList[i]%></td>
+                                                    <td>When: <%=dispUpcomingStartTimeList[i]%> to <%=dispUpcomingEndTimeList[i]%></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Where: </td>
-                                                    <td><%=upcomingEventList.get(i).getEventLocation()%></td>
+                                                    <td>Where: <%=upcomingEventList.get(i).getEventLocation()%></td>
                                                 </tr>
                                             </tbody>
                                         </table>
